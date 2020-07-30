@@ -1,0 +1,9 @@
+inoreabbrev Ccl console.log()<esc>h
+inoreabbrev Tdate <C-R>=strftime("%d-%b-%Y")<CR>
+inoreabbrev Gdate <C-R>=strftime("%FT%T")<CR>
+inoreabbrev seperate separate 
+inoreabbrev definately definitely
+inoreabbrev accomadate accommodate
+inoreabbrev ryme rhyme
+inoreabbrev undering understanding
+inoreabbrev understaning understanding

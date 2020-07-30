@@ -1,0 +1,21 @@
+# custom aliases
+alias -s js=nvim
+alias -s zsh=nvim
+alias -s txt=nvim
+alias -s md=nvim
+alias -s MD=nvim
+alias triage='nvim ~/notes/rust/triage-template'
+alias cpwd='pwd|pbcopy'
+alias ppwd='pbpaste'
+alias v='nvim'
+alias vsl='nvim -S ~/vim-sessions/latest.ses'
+alias gCal='cd ~/oss/gCal'
+alias gql='cd ~/Documents/MAX/GraphQL'
+alias cre='cd ~/Dropbox/CreatorContent'
+alias gijs='git init && echo "node_modules" >> .gitignore'
+alias hack='history -75 | ack'
+alias dots='zsh ~/dotfiles/index.txt'
+alias cpnotes='cp -R  ~/notes/ ~/Dropbox/notes'
+alias nij='node inspect node_modules/.bin/jest --runInBand'
+alias ghil='gh issue list'
+alias exat='exa -T --git-ignore'
