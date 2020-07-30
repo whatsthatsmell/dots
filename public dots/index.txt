@@ -1,0 +1,10 @@
+cp ~/.zshrc ~/dotfiles
+cp ~/.oh-my-zsh/custom/aliases.zsh ~/dotfiles
+cp ~/.oh-my-zsh/custom/functions.zsh ~/dotfiles
+cp ~/.vimrc ~/dotfiles
+cp ~/.oh-my-zsh/custom/aliases.zsh ~/dotfiles
+cp ~/.vim/abbrev.vim ~/dotfiles
+cp ~/.gitignore_global ~/dotfiles
+cp ~/.gitconfig ~/dotfiles
+cp ~/.config/nvim/init.vim ~/dotfiles
+exec zsh
