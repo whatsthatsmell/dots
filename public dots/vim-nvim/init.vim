@@ -27,3 +27,8 @@ let g:gruvbox_italic=1
 let g:gruvbox_contrast_light = 'soft'
 set termguicolors
 colorscheme gruvbox
+nnoremap <Del> <Esc>
+vnoremap <Del> <Esc>gV
+onoremap <Del> <Esc>
+cnoremap <Del> <C-C><Esc>
+inoremap <Del> <Esc>`^
