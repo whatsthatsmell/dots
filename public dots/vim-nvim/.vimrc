@@ -29,8 +29,8 @@ nnoremap <silent> <leader>b :bn<CR>
 nnoremap <silent> <leader>B :bp<CR>
 " delete current buffer
 nnoremap <silent> <leader>x :bd<CR>
-" 'grep' word under cursor in curr dir - O or q
-nnoremap <silent> <leader>g :Ack! -S -w --ignore-dir=coverage  <cword> .<cr>
+" 'grep' word under cursor 
+nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
 " ALE keys
 nmap <silent> <leader>h :ALEHover<cr>
 nmap <silent> <leader>f :ALEFix<cr>
@@ -58,11 +58,9 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'mileszs/ack.vim'
 call vundle#end()
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
@@ -71,6 +69,7 @@ let g:ale_linters = {
 \   'javascript': ['eslint', 'tsserver'],
 \}
 let g:airline#extensions#ale#enabled = 1
+"let g:airline_section_a = 'Easy Mode'
 let g:airline_section_y = 'BN: %{bufnr("%")}'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
