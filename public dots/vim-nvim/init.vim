@@ -25,6 +25,18 @@ let g:firenvim_config = {
 \ }
 set t_Co=256
 set bg=light
+" papercolor config
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.light': { 
+  \       'override' : {
+  \         'color10' : ['#005f00', '22'],
+  \         'color11' : ['#lclclc', '234'],
+  \         'spellbad' : ['#ffaf87', '216']
+  \       }
+  \     }
+  \   }
+  \ }
 colorscheme PaperColor
 " Delete to Esc from (almost) all the things
 nnoremap <Del> <Esc>

@@ -15,6 +15,10 @@ set smartcase
 set ts=2
 set sw=2
 highlight ColorColumn ctermbg=darkgrey
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+let g:ale_sign_error = "❗️"
+let g:ale_sign_warning = "🔸"
 syntax enable
 " copy to sys clipboard
 noremap <Leader>y "+y
@@ -78,8 +82,6 @@ let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='papercolor'
 let g:lightline = { 'colorscheme': 'PaperColor' }
-let g:ctrlp_root_markers = ['.editorconfig']
-let g:ctrlp_show_hidden = 1
 filetype plugin indent on    " required
 so ~/.vim/abbrev.vim
 au CursorHoldI * stopinsert
