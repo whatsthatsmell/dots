@@ -9,7 +9,6 @@ Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
-Plug 'morhetz/gruvbox'
 call plug#end()
 let g:firenvim_config = { 
     \ 'globalSettings': {
@@ -24,11 +23,9 @@ let g:firenvim_config = {
         \ },
     \ }
 \ }
+set t_Co=256
 set bg=light
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_light = 'soft'
-set termguicolors
-colorscheme gruvbox
+colorscheme PaperColor
 " Delete to Esc from (almost) all the things
 nnoremap <Del> <Esc>
 vnoremap <Del> <Esc>gV
@@ -38,7 +35,7 @@ inoremap <Del> <Esc>`^
 " fzf configure
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>p :Files<CR>
-let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.5 } }
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5 } }
 let g:fzf_preview_window = 'right:55%'
 let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Rg

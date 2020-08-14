@@ -61,6 +61,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'NLKNguyen/papercolor-theme'
 call vundle#end()
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
@@ -75,6 +76,8 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
+let g:airline_theme='papercolor'
+let g:lightline = { 'colorscheme': 'PaperColor' }
 let g:ctrlp_root_markers = ['.editorconfig']
 let g:ctrlp_show_hidden = 1
 filetype plugin indent on    " required
