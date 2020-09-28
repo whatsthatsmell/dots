@@ -18,7 +18,7 @@ highlight ColorColumn ctermbg=darkgrey
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_error = "❗️"
-let g:ale_sign_warning = "🔸"
+let g:ale_sign_warning = "⚠︎"
 syntax enable
 " copy to sys clipboard
 noremap <Leader>y "+y
@@ -33,12 +33,15 @@ nnoremap <silent> <leader>b :bn<CR>
 nnoremap <silent> <leader>B :bp<CR>
 " delete current buffer
 nnoremap <silent> <leader>x :bd<CR>
-" 'grep' word under cursor 
+" 'grep' word under cursor
 nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
 " ALE keys
 nmap <silent> <leader>h :ALEHover<cr>
 nmap <silent> <leader>f :ALEFix<cr>
 nmap <silent> <leader>d :ALEGoToDefinition<cr>
+nnoremap <silent> <leader>r :ALEFindReferences -relative<Return>
+nnoremap <silent> <leader>rn :ALERename<Return>
+
 " make/save current (latest) session
 nmap <leader>M :mksession! ~/vim-sessions/latest.ses<cr>
 " make/save a new session
@@ -50,7 +53,7 @@ nmap <leader>m :mksession! ~/vim-sessions/
 	" autocmd Filetype haskell setlocal ts=2 sw=2 expandtab autoindent
 " augroup END
 let g:ale_completion_enabled = 1
-let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_text_changed = 'never'
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'editorconfig/editorconfig-vim'
@@ -68,6 +71,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'NLKNguyen/papercolor-theme'
 call vundle#end()
 let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \}
 let g:ale_linters = {

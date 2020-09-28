@@ -9,6 +9,7 @@ Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-rhubarb'
 call plug#end()
 let g:firenvim_config = { 
     \ 'globalSettings': {
@@ -44,6 +45,8 @@ vnoremap <Del> <Esc>gV
 onoremap <Del> <Esc>
 cnoremap <Del> <C-C><Esc>
 inoremap <Del> <Esc>`^
+" diff since last save
+nnoremap <leader>c :w !diff % -<CR>
 " fzf configure
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>p :Files<CR>
