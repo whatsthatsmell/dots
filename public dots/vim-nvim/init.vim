@@ -3,13 +3,18 @@ let &packpath=&runtimepath
 source ~/.vimrc
 set guicursor=
 set noshowcmd
+set updatetime=3000
 call plug#begin('~/.vim/plugged')
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rhubarb'
+Plug 'stsewd/fzf-checkout.vim'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'vim-test/vim-test'
 call plug#end()
 let g:firenvim_config = { 
     \ 'globalSettings': {
@@ -39,6 +44,50 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 colorscheme PaperColor
+" Replace word under cursor in file
+nmap <leader>sr *:%s//
+" Fugitive settings
+nnoremap <silent> <leader>gb :Git blame<Return>
+nmap <leader>gp :Gpush origin 
+" fzf-checkout settings
+nnoremap <leader>gc :GBranches<CR>
+let g:fzf_branch_actions = {
+      \ 'rebase': {
+      \   'prompt': 'Rebase> ',
+      \   'execute': 'echo system("{git} rebase {branch}")',
+      \   'multiple': v:false,
+      \   'keymap': 'ctrl-r',
+      \   'required': ['branch'],
+      \   'confirm': v:false,
+      \ },
+      \ 'diff': {
+      \   'prompt': 'Diff> ',
+      \   'execute': 'Git diff {branch}',
+      \   'multiple': v:false,
+      \   'keymap': 'ctrl-f',
+      \   'required': ['branch'],
+      \   'confirm': v:false,
+      \ },
+      \ 'track': {
+      \   'prompt': 'Track> ',
+      \   'execute': 'echo system("{git} checkout --track {branch}")',
+      \   'multiple': v:false,
+      \   'keymap': 'ctrl-t',
+      \   'required': ['branch'],
+      \   'confirm': v:false,
+      \ },
+      \}
+" Markdown-preview settings
+nmap <leader>md <Plug>MarkdownPreview
+
+" Test settings
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
+let g:test#runner_commands = ['Jest']
+
 " Delete to Esc from (almost) all the things
 nnoremap <Del> <Esc>
 vnoremap <Del> <Esc>gV
@@ -50,7 +99,7 @@ nnoremap <leader>c :w !diff % -<CR>
 " fzf configure
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>p :Files<CR>
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 let g:fzf_preview_window = 'right:55%'
 let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Rg

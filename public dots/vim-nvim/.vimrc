@@ -20,8 +20,11 @@ highlight clear ALEWarningSign
 let g:ale_sign_error = "❗️"
 let g:ale_sign_warning = "⚠︎"
 syntax enable
-" copy to sys clipboard
+" copy selection to sys clipboard
 noremap <Leader>y "+y
+" copy word undor cursor to sys clipboard
+noremap <Leader>yw "+yiw
+
 noremap <Leader>\ :noh<cr>
 noremap <Leader>w :w<cr>
 noremap <silent> <Leader>q :q<cr>
@@ -35,6 +38,9 @@ nnoremap <silent> <leader>B :bp<CR>
 nnoremap <silent> <leader>x :bd<CR>
 " 'grep' word under cursor
 nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
+" 'grep' -- ripgrep!
+nnoremap <silent> <leader>rg :Rg <CR>
+
 " ALE keys
 nmap <silent> <leader>h :ALEHover<cr>
 nmap <silent> <leader>f :ALEFix<cr>
@@ -46,6 +52,8 @@ nnoremap <silent> <leader>rn :ALERename<Return>
 nmap <leader>M :mksession! ~/vim-sessions/latest.ses<cr>
 " make/save a new session
 nmap <leader>m :mksession! ~/vim-sessions/
+" open file in directory of current file
+nmap <leader>e :e %:h/
 " augroup filetype_haskell
 	" autocmd FileType haskell set iskeyword=a-z,A-Z,_,.,39,<,>,*,$,#
 	" autocmd FileType haskell set formatoptions+=tcro
@@ -67,16 +75,22 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-commentary'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'NLKNguyen/papercolor-theme'
 call vundle#end()
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
+\  'javascript': glob('.eslintrc*', '.;') != '' ? [ 'eslint' ] : [ 'standard' ],
+\   'yaml': ['prettier'],
+\   'json': ['jq'],
 \}
-let g:ale_linters = {
-\   'javascript': ['eslint', 'tsserver'],
+autocmd FileType javascript let g:ale_linters = {
+\  'javascript': glob('.eslintrc*', '.;') != '' ? [ 'eslint', 'tsserver' ] : [ 'standard', 'tsserver' ],
 \}
+" let g:ale_linters = {
+" \   'javascript': ['eslint', 'tsserver'],
+" \}
 let g:airline#extensions#ale#enabled = 1
 "let g:airline_section_a = 'Easy Mode'
 let g:airline_section_y = 'BN: %{bufnr("%")}'
