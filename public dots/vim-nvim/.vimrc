@@ -108,7 +108,7 @@ let g:lightline = { 'colorscheme': 'PaperColor' }
 filetype plugin indent on    " required
 so ~/.vim/abbrev.vim
 au CursorHoldI * stopinsert
-au FileType markdown set colorcolumn=100 autoindent linebreak
+au FileType markdown set colorcolumn=100 autoindent linebreak conceallevel=2
 au FileType text set colorcolumn=100 autoindent linebreak
 au FileType javascript set linebreak
 au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
