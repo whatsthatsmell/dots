@@ -6,7 +6,7 @@ set noshowcmd
 set updatetime=2000
 set undodir=~/.vim/undodir
 set undofile
-set inccommand=split
+set inccommand=nosplit
 call plug#begin('~/.vim/plugged')
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
