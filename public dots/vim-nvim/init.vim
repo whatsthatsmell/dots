@@ -6,6 +6,7 @@ set noshowcmd
 set updatetime=2000
 set undodir=~/.vim/undodir
 set undofile
+set inccommand=split
 call plug#begin('~/.vim/plugged')
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -195,6 +196,11 @@ let g:startify_lists = [
         \ ]
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
-" custom commands/functions
-	" Work specific
+" bring on the goodness nvim 0.5
+augroup LuaHighlight
+  autocmd!
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
+" --Custom commands/functions--
+" Work specific
 so ~/.vim/work.vim

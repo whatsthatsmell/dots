@@ -25,7 +25,7 @@ syntax enable
 noremap <Leader>y "+y
 " copy word undor cursor to sys clipboard
 noremap <Leader>yw "+yiw
-
+" rando
 noremap <Leader>\ :noh<cr>
 noremap <Leader>w :w<cr>
 noremap <silent> <Leader>q :q<cr>
