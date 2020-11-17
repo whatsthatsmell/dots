@@ -14,6 +14,7 @@ set ignorecase
 set smartcase
 set ts=2
 set sw=2
+set splitbelow
 highlight ColorColumn ctermbg=darkgrey
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
@@ -31,11 +32,14 @@ noremap <silent> <Leader>q :q<cr>
 nnoremap <silent> <leader>s :setlocal spell!<cr>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " go to next buffer
-nnoremap <silent> <leader>b :bn<CR>
+" nnoremap <silent> <leader>b :bn<CR>
+nnoremap <silent> <leader><right> :bn<CR>
 " go to prev buffer
 nnoremap <silent> <leader>B :bp<CR>
+nnoremap <silent> <leader><left> :bp<CR>
 " delete current buffer
 nnoremap <silent> <leader>x :bd<CR>
+nnoremap <silent> <leader>bf :Buffers<CR>
 " 'grep' word under cursor
 nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
 " 'grep' -- ripgrep!
@@ -48,10 +52,8 @@ nmap <silent> <leader>d :ALEGoToDefinition<cr>
 nnoremap <silent> <leader>r :ALEFindReferences -relative<Return>
 nnoremap <silent> <leader>rn :ALERename<Return>
 
-" make/save current (latest) session
-nmap <leader>M :mksession! ~/vim-sessions/latest.ses<cr>
-" make/save a new session
-nmap <leader>m :mksession! ~/vim-sessions/
+" Startify: make/save a (new) session
+nmap <leader>ss :SSave<cr>
 " open file in directory of current file
 nmap <leader>e :e %:h/
 " augroup filetype_haskell
@@ -61,6 +63,7 @@ nmap <leader>e :e %:h/
 	" autocmd Filetype haskell setlocal ts=2 sw=2 expandtab autoindent
 " augroup END
 let g:ale_completion_enabled = 1
+"let g:ale_lint_delay = 1000
 "let g:ale_lint_on_text_changed = 'never'
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -91,6 +94,8 @@ autocmd FileType javascript let g:ale_linters = {
 " let g:ale_linters = {
 " \   'javascript': ['eslint', 'tsserver'],
 " \}
+" let g:ale_virtualtext_cursor = 1
+" Airline
 let g:airline#extensions#ale#enabled = 1
 "let g:airline_section_a = 'Easy Mode'
 let g:airline_section_y = 'BN: %{bufnr("%")}'
@@ -105,4 +110,5 @@ so ~/.vim/abbrev.vim
 au CursorHoldI * stopinsert
 au FileType markdown set colorcolumn=100 autoindent linebreak
 au FileType text set colorcolumn=100 autoindent linebreak
+au FileType javascript set linebreak
 au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
