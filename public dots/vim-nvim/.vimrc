@@ -52,8 +52,8 @@ nnoremap <silent> <leader>rg :Rg <CR>
 
 " ALE keys
 nmap <silent> <leader>h :ALEHover<cr>
-nmap <silent> <leader>f :ALEFix<cr>
-nmap <silent> <leader>d :ALEGoToDefinition<cr>
+nmap <silent> <leader>f <Plug>(ale_fix)
+nmap <silent> <leader>d <Plug>(ale_go_to_definition)
 nnoremap <silent> <leader>r :ALEFindReferences -relative<Return>
 nnoremap <silent> <leader>rn :ALERename<Return>
 
@@ -69,8 +69,8 @@ Plugin 'dense-analysis/ale'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
@@ -79,15 +79,14 @@ call vundle#end()
 " NERDTree
 let NERDTreeShowHidden=1
 " Airline
-let g:airline#extensions#ale#enabled = 1
-"let g:airline_section_a = 'Easy Mode'
-let g:airline_section_y = 'BN: %{bufnr("%")}'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline_powerline_fonts = 1
-let g:airline_theme='papercolor'
-let g:lightline = { 'colorscheme': 'PaperColor' }
+" let g:airline#extensions#ale#enabled = 1
+" let g:airline_section_y = 'B:%{bufnr("%")}'
+" let g:airline#extensions#tabline#buffer_nr_show = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#formatter = 'default'
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme='papercolor'
+"let g:lightline = { 'colorscheme': 'PaperColor' }
 filetype plugin indent on    " required
 " move to rtp ASAP
 so ~/.vim/abbrev.vim

@@ -4,6 +4,7 @@ source ~/.vimrc
 set guicursor=
 set clipboard=unnamedplus
 set noshowcmd
+set splitright
 set updatetime=2000
 set undodir=~/.vim/undodir
 set undofile
@@ -18,6 +19,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rhubarb'
+Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
 Plug 'tpope/vim-abolish'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'pbrisbin/vim-mkdir'
@@ -38,34 +41,63 @@ call plug#end()
 let g:tq_enabled_backends=["datamuse_com", "mthesaur_txt"]
 " firenvim
 let g:firenvim_config = {
-    \ 'globalSettings': {
-        \ 'alt': 'all',
-    \  },
-    \ 'localSettings': {
-        \ '.*': {
-            \ 'cmdline': 'neovim',
-            \ 'priority': 0,
-            \ 'selector': 'textarea, div[role="textbox"]',
-            \ 'takeover': 'never',
-        \ },
-    \ }
-\ }
+			\ 'globalSettings': {
+			\ 'alt': 'all',
+			\  },
+			\ 'localSettings': {
+			\ '.*': {
+			\ 'cmdline': 'neovim',
+			\ 'priority': 0,
+			\ 'selector': 'textarea, div[role="textbox"]',
+			\ 'takeover': 'never',
+			\ },
+			\ }
+			\ }
 set t_Co=256
 set bg=light
 " syntax highlight only to 1K instead of default 3K
 set synmaxcol=1000
-" papercolor config
+" lightline config
+let g:lightline = {
+			\ 'component': {
+	    \  'spell': '%{&spell?"SPELL":""}' },
+			\ 'active': {
+			\   'left': [ [ 'mode', 'paste', 'spell' ],
+			\             [ 'gitbranch', 'readonly', 'filename' ] ],
+			\   'right': [ [ 'lineinfo' ],
+			\             [ 'filetype' ], [ 'linter_errors'] ] },
+			\ 'inactive': {
+			\  'left': [ ['filename'] ],
+			\  'right': [ ['filetype'] ] }, 
+			\ 'component_function': {
+			\   'gitbranch': 'FugitiveHead',
+			\   'filename': 'LightlineFilename',
+			\ }
+			\ }
+let g:lightline.component_expand = {
+      \  'linter_errors': 'lightline#ale#errors'
+      \ }
+let g:lightline.component_type = {
+      \     'linter_errors': 'warning'
+      \ }
+function! LightlineFilename()
+	let filename = expand('%:~:.') !=# '' ? expand('%:~:.') : '[No Name]'
+	let modified = &modified ? ' +' : ''
+	return filename . modified
+endfunction
+
+" PaperColor settings
 let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default.light': {
-  \       'override' : {
-  \         'color10' : ['#005f00', '22'],
-  \         'color11' : ['#lclclc', '234'],
-  \         'spellbad' : ['#ffaf87', '216']
-  \       }
-  \     }
-  \   }
-  \ }
+			\   'theme': {
+			\     'default.light': {
+			\       'override' : {
+			\         'color10' : ['#005f00', '22'],
+			\         'color11' : ['#lclclc', '234'],
+			\         'spellbad' : ['#ffaf87', '216']
+			\       }
+			\     }
+			\   }
+			\ }
 colorscheme PaperColor
 " open quickfix or loc list
 nmap <silent><leader>co :cope<CR>
@@ -79,7 +111,7 @@ nmap <leader>` ysiw`
 vmap D y'>p
 " Join lines and restore cursor location (J) {{{
 nnoremap J mjJ`j
-  " }}}
+" }}}
 " save some strokes
 nnoremap ; :
 vnoremap ; :
@@ -91,9 +123,9 @@ inoremap <C-t> <C-x><C-u>
 inoremap <C-l> <C-x><C-l>
 " When editing a file, always jump to the last known cursor position
 autocmd BufReadPost *
-      \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-      \ |   exe "normal! g`\""
-      \ | endif
+			\ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+			\ |   exe "normal! g`\""
+			\ | endif
 " clone paragraph -- needs work for code
 " noremap cp yap<S-}>p
 " --- end of trial mappings ---
@@ -129,31 +161,31 @@ nmap <leader>gp :Gpush origin
 " fzf-checkout settings
 nnoremap <leader>gc :GBranches<CR>
 let g:fzf_branch_actions = {
-      \ 'rebase': {
-      \   'prompt': 'Rebase> ',
-      \   'execute': 'echo system("{git} rebase {branch}")',
-      \   'multiple': v:false,
-      \   'keymap': 'ctrl-r',
-      \   'required': ['branch'],
-      \   'confirm': v:false,
-      \ },
-      \ 'diff': {
-      \   'prompt': 'Diff> ',
-      \   'execute': 'Git diff {branch}',
-      \   'multiple': v:false,
-      \   'keymap': 'ctrl-f',
-      \   'required': ['branch'],
-      \   'confirm': v:false,
-      \ },
-      \ 'track': {
-      \   'prompt': 'Track> ',
-      \   'execute': 'echo system("{git} checkout --track {branch}")',
-      \   'multiple': v:false,
-      \   'keymap': 'ctrl-t',
-      \   'required': ['branch'],
-      \   'confirm': v:false,
-      \ },
-      \}
+			\ 'rebase': {
+			\   'prompt': 'Rebase> ',
+			\   'execute': 'echo system("{git} rebase {branch}")',
+			\   'multiple': v:false,
+			\   'keymap': 'ctrl-r',
+			\   'required': ['branch'],
+			\   'confirm': v:false,
+			\ },
+			\ 'diff': {
+			\   'prompt': 'Diff> ',
+			\   'execute': 'Git diff {branch}',
+			\   'multiple': v:false,
+			\   'keymap': 'ctrl-f',
+			\   'required': ['branch'],
+			\   'confirm': v:false,
+			\ },
+			\ 'track': {
+			\   'prompt': 'Track> ',
+			\   'execute': 'echo system("{git} checkout --track {branch}")',
+			\   'multiple': v:false,
+			\   'keymap': 'ctrl-t',
+			\   'required': ['branch'],
+			\   'confirm': v:false,
+			\ },
+			\}
 let g:fzf_checkout_git_options = '--sort=-committerdate'
 let g:fzf_checkout_previous_ref_first = v:true
 
@@ -179,7 +211,7 @@ let g:coverage_show_uncovered = 1
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 if has('nvim')
-  tmap <C-o> <C-\><C-n>
+	tmap <C-o> <C-\><C-n>
 endif
 let g:test#runner_commands = ['Jest']
 
@@ -203,9 +235,9 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 let g:fzf_preview_window = 'right:55%'
 let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
+			\ call fzf#vim#grep(
+			\   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+			\   fzf#vim#with_preview(), <bang>0)
 " vim-doge
 let g:doge_mapping = '<Leader>j'
 
@@ -222,29 +254,29 @@ let g:startify_relative_path = 1
 " `2>/dev/null` makes the command fail quietly, so that when we are not
 " in a git repo, the list will be empty
 function! s:gitModified()
-    let files = systemlist('git ls-files -m 2>/dev/null')
-    return map(files, "{'line': v:val, 'path': v:val}")
+	let files = systemlist('git ls-files -m 2>/dev/null')
+	return map(files, "{'line': v:val, 'path': v:val}")
 endfunction
 
 " same as above, but show untracked files, honoring .gitignore
 function! s:gitUntracked()
-    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
-    return map(files, "{'line': v:val, 'path': v:val}")
+	let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+	return map(files, "{'line': v:val, 'path': v:val}")
 endfunction
 
 let g:startify_lists = [
-        \ { 'type': 'files',     'header': ['   Recent']            },
-        \ { 'type': 'dir',       'header': ['   Dir '. getcwd()] },
-        \ { 'type': 'sessions',  'header': ['   Sessions']       },
-        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-        \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-        \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
-        \ { 'type': 'commands',  'header': ['   Commands']       },
-        \ ]
+			\ { 'type': 'files',     'header': ['   Recent']            },
+			\ { 'type': 'dir',       'header': ['   Dir '. getcwd()] },
+			\ { 'type': 'sessions',  'header': ['   Sessions']       },
+			\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+			\ { 'type': function('s:gitModified'),  'header': ['   git modified']},
+			\ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
+			\ { 'type': 'commands',  'header': ['   Commands']       },
+			\ ]
 " bring on the goodness nvim 0.5
 augroup LuaHighlight
-  autocmd!
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+	autocmd!
+	autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 " open already open files read-only
 autocmd SwapExists * let v:swapchoice = "o"
