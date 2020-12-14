@@ -9,7 +9,6 @@ set updatetime=2000
 set undodir=~/.vim/undodir
 set undofile
 set inccommand=nosplit
-" trial settings
 set scrolloff=1
 call plug#begin('~/.vim/plugged')
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
@@ -112,6 +111,7 @@ vmap D y'>p
 " Join lines and restore cursor location (J) {{{
 nnoremap J mjJ`j
 " }}}
+" ----
 " save some strokes
 nnoremap ; :
 vnoremap ; :
@@ -283,7 +283,3 @@ augroup LuaHighlight
 augroup END
 " open already open files read-only
 autocmd SwapExists * let v:swapchoice = "o"
-" --Custom commands/functions--
-" Work specific
-" move to rtp ASAP
-so ~/.vim/work.vim

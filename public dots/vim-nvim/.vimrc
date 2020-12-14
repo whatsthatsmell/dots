@@ -10,7 +10,6 @@ set omnifunc=ale#completion#OmniFunc
 set dictionary+=/usr/share/dict/words
 " set thesaurus+=~/.vim/thesaurus/mthesaur.txt
 set wildignore+=*/node_modules/*,*/coverage/*
-" set colorcolumn=120 " ******- handled by matchadd below
 set incsearch
 set ignorecase
 set smartcase
@@ -92,8 +91,8 @@ let NERDTreeShowHidden=1
 "let g:lightline = { 'colorscheme': 'PaperColor' }
 filetype plugin indent on    " required
 " move to rtp ASAP
-so ~/.vim/abbrev.vim
 au CursorHoldI * stopinsert
 " au FileType markdown set colorcolumn=100 autoindent linebreak conceallevel=2
 au FileType text set colorcolumn=100 autoindent linebreak
+" js, md and others have rtp after ftplugin functionality as well
 au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
