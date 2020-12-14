@@ -18,7 +18,7 @@ set ts=2
 set sw=2
 set splitbelow
 " highlight ColorColumn ctermbg=darkgrey - handled by theme/color.vim
-call matchadd('ColorColumn', '\%81v', 100)
+" call matchadd('ColorColumn', '\%81v', 100)
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_error = "❗️"
@@ -39,8 +39,10 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap <silent> <leader><right> :bn<CR>
 " go to prev buffer
 nnoremap <silent> <leader><left> :bp<CR>
-" delete current buffer
+" delete current buffer - will close split
 nnoremap <silent> <leader>x :bd<CR>
+" Experimental *** delete current buffer - don't close split*
+nmap ,d :b#<bar>bd#<CR>
 " delete terminial buffer
 nnoremap <silent> <leader>tx :bd!<CR>
 " fuzzy buff!
@@ -61,6 +63,7 @@ nnoremap <silent> <leader>rn :ALERename<Return>
 nmap <leader>ss :SSave<cr>
 " open file in directory of current file
 nmap <leader>e :e %:h/
+nmap <leader>v :vs %:h/
 let g:ale_completion_enabled = 1
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
