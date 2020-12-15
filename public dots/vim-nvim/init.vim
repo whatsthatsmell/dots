@@ -59,7 +59,8 @@ set synmaxcol=1000
 " lightline config
 let g:lightline = {
 			\ 'component': {
-	    \  'spell': '%{&spell?"SPELL":""}' },
+	    \  'spell': '%{&spell?"SPELL":""}',
+      \  'lineinfo': '%3l/%3L:%-2c'},
 			\ 'active': {
 			\   'left': [ [ 'mode', 'paste', 'spell' ],
 			\             [ 'gitbranch', 'readonly', 'filename' ] ],
@@ -79,6 +80,11 @@ let g:lightline.component_expand = {
 let g:lightline.component_type = {
       \     'linter_errors': 'warning'
       \ }
+" let g:lightline = {
+"       \ 'component': {
+"       \   'lineinfo': '%3l/%3L:%-2c',
+"       \ },
+"       \ }
 function! LightlineFilename()
 	let filename = expand('%:~:.') !=# '' ? expand('%:~:.') : '[No Name]'
 	let modified = &modified ? ' +' : ''
