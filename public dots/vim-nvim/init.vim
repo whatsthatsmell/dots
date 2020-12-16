@@ -35,6 +35,12 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rust-lang/rust.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+" Neovim lsp Plugins
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'tjdevries/nlua.nvim'
+Plug 'tjdevries/lsp_extensions.nvim'
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 " thesaurus settings
 let g:tq_enabled_backends=["datamuse_com", "mthesaur_txt"]
@@ -60,7 +66,7 @@ set synmaxcol=1000
 let g:lightline = {
 			\ 'component': {
 	    \  'spell': '%{&spell?"SPELL":""}',
-      \  'lineinfo': '%3l/%3L:%-2c'},
+      \  'lineinfo': '%3l/%1L:%-2c'},
 			\ 'active': {
 			\   'left': [ [ 'mode', 'paste', 'spell' ],
 			\             [ 'gitbranch', 'readonly', 'filename' ] ],
@@ -104,6 +110,13 @@ let g:PaperColor_Theme_Options = {
 			\   }
 			\ }
 colorscheme PaperColor
+" nvim lsp settings
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
+" this lsp server is not ready for primetime
+" lua require'lspconfig'.gopls.setup{ on_attach=require'completion'.on_attach }
+lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
+
 " open quickfix or loc list
 nmap <silent><leader>co :cope<CR>
 nmap <silent><leader>lo :lope<CR>
