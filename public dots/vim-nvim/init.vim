@@ -36,10 +36,10 @@ Plug 'rust-lang/rust.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Neovim lsp Plugins
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'tjdevries/nlua.nvim'
-Plug 'tjdevries/lsp_extensions.nvim'
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'tjdevries/nlua.nvim'
+" Plug 'tjdevries/lsp_extensions.nvim'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 " thesaurus settings
@@ -110,12 +110,13 @@ let g:PaperColor_Theme_Options = {
 			\   }
 			\ }
 colorscheme PaperColor
-" nvim lsp settings
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
-" this lsp server is not ready for primetime
+" WIP nvim lsp settings - prevent me from exiting insert mode on CursorHoldI
+"  need to look in to that.
+" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+" lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
+" this Go lsp server is not ready for primetime
 " lua require'lspconfig'.gopls.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
 
 " open quickfix or loc list
 nmap <silent><leader>co :cope<CR>
