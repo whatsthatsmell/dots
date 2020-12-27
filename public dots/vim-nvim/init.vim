@@ -36,8 +36,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Neovim lsp Plugins
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'nvim-lua/completion-nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 " Plug 'tjdevries/nlua.nvim'
 " Plug 'tjdevries/lsp_extensions.nvim'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -86,11 +86,7 @@ let g:lightline.component_expand = {
 let g:lightline.component_type = {
       \     'linter_errors': 'warning'
       \ }
-" let g:lightline = {
-"       \ 'component': {
-"       \   'lineinfo': '%3l/%3L:%-2c',
-"       \ },
-"       \ }
+
 function! LightlineFilename()
 	let filename = expand('%:~:.') !=# '' ? expand('%:~:.') : '[No Name]'
 	let modified = &modified ? ' +' : ''
@@ -112,11 +108,13 @@ let g:PaperColor_Theme_Options = {
 colorscheme PaperColor
 " WIP nvim lsp settings - prevent me from exiting insert mode on CursorHoldI
 "  need to look in to that.
-" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 " lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
 " this Go lsp server is not ready for primetime
 " lua require'lspconfig'.gopls.setup{ on_attach=require'completion'.on_attach }
 " lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
+" ** using ALE as the client except for clang (for now) specifics in after/ftplugin/c.vim **
+lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
 
 " open quickfix or loc list
 nmap <silent><leader>co :cope<CR>
