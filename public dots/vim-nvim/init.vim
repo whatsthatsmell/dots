@@ -38,6 +38,10 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Neovim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+" Plug 'pwntester/octo.nvim'
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
 " Plug 'tjdevries/nlua.nvim'
 " Plug 'tjdevries/lsp_extensions.nvim'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -106,15 +110,19 @@ let g:PaperColor_Theme_Options = {
 			\   }
 			\ }
 colorscheme PaperColor
-" WIP nvim lsp settings - prevent me from exiting insert mode on CursorHoldI
-"  need to look in to that.
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-" lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
-" this Go lsp server is not ready for primetime
-" lua require'lspconfig'.gopls.setup{ on_attach=require'completion'.on_attach }
+"let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 " lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
 " ** using ALE as the client except for clang (for now) specifics in after/ftplugin/c.vim **
 lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
+" still not working: allow stop insert while editing a file under lsp
+" lua << EOF
+"     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+"       vim.lsp.diagnostic.on_publish_diagnostics, {
+"         -- delay update diagnostics
+"         update_in_insert = false,
+"       }
+"     )
+" EOF
 
 " open quickfix or loc list
 nmap <silent><leader>co :cope<CR>
