@@ -243,7 +243,8 @@ nmap <silent> <leader>T :TestFile<CR>
 " Term settings
 " open zsh in vsplit
 nmap <silent> <leader>t :vs term://zsh<cr>
-" - not sure why I have this a <del> set? hmmm
+au TermOpen * setlocal nonu nornu
+" - not sure why I have this & <del> set? hmmm
 if has('nvim')
 	tmap <C-o> <C-\><C-n>
 endif
