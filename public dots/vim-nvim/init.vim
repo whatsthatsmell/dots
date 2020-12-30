@@ -240,16 +240,20 @@ let g:coverage_show_uncovered = 1
 " using lowercase t for term:// split now
 " nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
-" Term settings
+" **Term settings**
 " open zsh in vsplit
 nmap <silent> <leader>t :vs term://zsh<cr>
-au TermOpen * setlocal nonu nornu
+" open file under cursor in vert split - not term specific but...
+nmap <silent> <leader>gf :vs <cfile><CR>
+" change lcd to term dir (whatever is last copy will be pasted)
+" - prior to the below call, run zsh -> yp (yank path)
+nmap <silent> <leader>= :lcd<c-r>+<cr>
+au TermOpen,TermEnter,TermLeave * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd(), ':t')
 " - not sure why I have this & <del> set? hmmm
 if has('nvim')
 	tmap <C-o> <C-\><C-n>
 endif
-
-
+" end term settings ***
 
 let g:test#runner_commands = ['Jest']
 
