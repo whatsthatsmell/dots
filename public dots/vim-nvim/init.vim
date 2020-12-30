@@ -237,11 +237,19 @@ let g:coverage_show_covered = 0
 " Display signs on uncovered lines
 let g:coverage_show_uncovered = 1
 " Test settings
-nmap <silent> <leader>t :TestNearest<CR>
+" using lowercase t for term:// split now
+" nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
+" Term settings
+" open zsh in vsplit
+nmap <silent> <leader>t :vs term://zsh<cr>
+" - not sure why I have this a <del> set? hmmm
 if has('nvim')
 	tmap <C-o> <C-\><C-n>
 endif
+
+
+
 let g:test#runner_commands = ['Jest']
 
 " Delete to Esc from (almost) all the things
