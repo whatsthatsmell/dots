@@ -45,7 +45,10 @@ Plug 'nvim-lua/completion-nvim'
 " Plug 'tjdevries/nlua.nvim'
 " Plug 'tjdevries/lsp_extensions.nvim'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" trial ** cheatsheet sh - settings in after/ftplugin/javascript.vim
+Plug 'dbeniamine/cheat.sh-vim'
 call plug#end()
+
 " thesaurus settings
 let g:tq_enabled_backends=["datamuse_com", "mthesaur_txt"]
 " firenvim
@@ -257,6 +260,7 @@ nnoremap <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>p :Files<CR>
 nnoremap <silent> <leader>fm :Marks<CR>
+nnoremap <silent> <leader>rt :VimRTP<CR>
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 let g:fzf_preview_window = 'right:55%'
 let $FZF_DEFAULT_OPTS='--reverse'
@@ -309,3 +313,5 @@ augroup LuaHighlight
 augroup END
 " open already open files read-only
 autocmd SwapExists * let v:swapchoice = "o"
+" no c++ here
+autocmd BufRead,BufNewFile *.h set filetype=c
