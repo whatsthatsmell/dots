@@ -18,6 +18,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-unimpaired'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'tpope/vim-abolish'
@@ -161,7 +162,7 @@ autocmd BufReadPost *
 " no help when I fat finger F1
 nmap <F1> <Esc>
 nmap Y "+y$
-" Move between panes
+" Move between Vimdows
 nmap <up> <C-w><up>
 nmap <down> <C-w><down>
 nmap <left> <C-w><left>
@@ -171,8 +172,9 @@ nmap <silent> <leader><bs> <C-o>
 " forward in jumplist
 nmap <silent> <leader><space> <C-i>
 " Add empty line(s)
-nnoremap <silent> [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-nnoremap <silent> ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+" handled by unimpaired for now
+" nnoremap <silent> [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+" nnoremap <silent> ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 " open latest `todo` file, set by `T mark
 nnoremap <silent> <leader>to :sp \| norm `T<cr>
 " Replace word under cursor in file
@@ -243,12 +245,14 @@ nmap <silent> <leader>T :TestFile<CR>
 " **Term settings**
 " open zsh in vsplit
 nmap <silent> <leader>t :vs term://zsh<cr>
+" delete terminial buffer - :q is fine in split
+nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
 nmap <silent> <leader>gf :vs <cfile><CR>
 " change lcd to term dir (whatever is last copy will be pasted)
 " - prior to the below call, run zsh -> yp (yank path)
 nmap <silent> <leader>= :lcd<c-r>+<cr>
-au TermOpen,TermEnter,TermLeave * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd(), ':t')
+au TermOpen,TermEnter,TermLeave * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . ' BN:' . bufnr('%'), ':t')
 " - not sure why I have this & <del> set? hmmm
 if has('nvim')
 	tmap <C-o> <C-\><C-n>
