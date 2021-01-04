@@ -243,15 +243,18 @@ let g:coverage_show_uncovered = 1
 " nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 " **Term settings**
-" open zsh in vsplit
-nmap <silent> <leader>t :vs term://zsh<cr>
+" open zsh in vsplit or split
+command! -nargs=* T split | terminal <args>
+nmap <silent> <leader>ts :T<cr>
+command! -nargs=* VT vsplit | terminal <args>
+nmap <silent> <leader>t :VT<cr>
 " delete terminial buffer - :q is fine in split
 nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
 nmap <silent> <leader>gf :vs <cfile><CR>
 " change lcd to term dir (whatever is last copy will be pasted)
 " - prior to the below call, run zsh -> yp (yank path)
-nmap <silent> <leader>= :lcd<c-r>+<cr>
+nmap <silent> <leader>D :lcd<c-r>+<cr>
 au TermOpen,TermEnter,TermLeave * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . ' BN:' . bufnr('%'), ':t')
 " - not sure why I have this & <del> set? hmmm
 if has('nvim')
