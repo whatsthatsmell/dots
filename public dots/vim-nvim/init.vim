@@ -50,6 +50,11 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'dbeniamine/cheat.sh-vim'
 call plug#end()
 
+" NERDTree
+let NERDTreeShowHidden=1
+let NERDTreeMinimalMenu=1
+let NERDTreeMinimalUI = 1
+
 " thesaurus settings
 let g:tq_enabled_backends=["datamuse_com", "mthesaur_txt"]
 " firenvim
@@ -252,14 +257,18 @@ nmap <silent> <leader>t :VT<cr>
 nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
 nmap <silent> <leader>gf :vs <cfile><CR>
-" change lcd to term dir (whatever is last copy will be pasted)
-" - prior to the below call, run zsh -> yp (yank path)
-nmap <silent> <leader>D :lcd<c-r>+<cr>
 au TermOpen,TermEnter,TermLeave * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . ' BN:' . bufnr('%'), ':t')
 " - not sure why I have this & <del> set? hmmm
 if has('nvim')
 	tmap <C-o> <C-\><C-n>
 endif
+" -- this all needs to become one function call --
+" -- yank path out of terminal
+command! -nargs=* NCD call chansend(b:terminal_job_id, "yp\<cr>")
+nmap <silent><leader>D :NCD<cr>
+" -- change lcd to term dir (copied from above :NCD)
+nmap <silent><leader>F :lcd<c-r>+<cr>
+" --- 
 " end term settings ***
 
 let g:test#runner_commands = ['Jest']

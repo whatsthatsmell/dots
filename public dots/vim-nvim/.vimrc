@@ -32,7 +32,8 @@ noremap <silent><Leader>\ :noh<cr>
 " write only if something is changed
 noremap <Leader>w :up<cr>
 noremap <silent> <Leader>q :q<cr>
-nnoremap <silent> <leader>s :setlocal spell!<cr>
+" handled by unimpaired [os ]os
+" nnoremap <silent> <leader>s :setlocal spell!<cr>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " go to next buffer
 nnoremap <silent> <leader><right> :bn<CR>
@@ -42,8 +43,6 @@ nnoremap <silent> <leader><left> :bp<CR>
 nnoremap <silent> <leader>x :bd<CR>
 " Experimental *** delete current buffer - don't close split*
 nmap ,d :b#<bar>bd#<CR>
-" delete terminial buffer
-nnoremap <silent> <leader>tx :bd!<CR>
 " fuzzy buff!
 nnoremap <silent> <leader>b :Buffers<CR>
 " 'grep' word under cursor
@@ -53,7 +52,7 @@ nnoremap <silent> <leader>rg :Rg <CR>
 
 " ALE keys
 nmap <silent> <leader>h :ALEHover<cr>
-nmap <silent> <leader>f <Plug>(ale_fix)
+nmap <leader>f <Plug>(ale_fix)
 nmap <silent> <leader>d <Plug>(ale_go_to_definition)
 nnoremap <silent> <leader>r :ALEFindReferences -relative<Return>
 nnoremap <silent> <leader>rn :ALERename<Return>
@@ -71,23 +70,11 @@ Plugin 'dense-analysis/ale'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
 Plugin 'airblade/vim-gitgutter'
 call vundle#end()
-" NERDTree
-let NERDTreeShowHidden=1
-" Airline
-" let g:airline#extensions#ale#enabled = 1
-" let g:airline_section_y = 'B:%{bufnr("%")}'
-" let g:airline#extensions#tabline#buffer_nr_show = 1
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#formatter = 'default'
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme='papercolor'
 "let g:lightline = { 'colorscheme': 'PaperColor' }
 filetype plugin indent on    " required
 " move to rtp ASAP
