@@ -48,6 +48,7 @@ Plug 'nvim-lua/completion-nvim'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " trial ** cheatsheet sh - settings in after/ftplugin/javascript.vim
 Plug 'dbeniamine/cheat.sh-vim'
+Plug 'junegunn/vim-peekaboo'
 call plug#end()
 
 " NERDTree
@@ -123,6 +124,7 @@ colorscheme PaperColor
 " lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
 " ** using ALE as the client except for clang (for now) specifics in after/ftplugin/c.vim **
 lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.pyls_ms.setup{ on_attach=require'completion'.on_attach }
 " still not working: allow stop insert while editing a file under lsp
 " lua << EOF
 "     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -132,6 +134,10 @@ lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
 "       }
 "     )
 " EOF
+
+" paste last thing yanked, not deleted
+nmap ,p "0p
+nmap ,P "0P
 
 " open quickfix or loc list
 nmap <silent><leader>co :cope<CR>
@@ -257,7 +263,7 @@ nmap <silent> <leader>t :VT<cr>
 nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
 nmap <silent> <leader>gf :vs <cfile><CR>
-au TermOpen,TermEnter,TermLeave * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . ' BN:' . bufnr('%'), ':t')
+au TermOpen,TermEnter * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . ' BN:' . bufnr('%'), ':t')
 " - not sure why I have this & <del> set? hmmm
 if has('nvim')
 	tmap <C-o> <C-\><C-n>
@@ -290,6 +296,10 @@ nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>p :Files<CR>
 nnoremap <silent> <leader>fm :Marks<CR>
 nnoremap <silent> <leader>rt :VimRTP<CR>
+" search notes
+nnoremap <silent> <leader>n :Notes<CR>
+" new not or open a note
+nnoremap <silent>,n :vs ~/notes/<CR>
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 let g:fzf_preview_window = 'right:55%'
 let $FZF_DEFAULT_OPTS='--reverse'
@@ -299,6 +309,7 @@ command! -bang -nargs=* Rg
 			\   fzf#vim#with_preview(), <bang>0)
 
 command! -bang VimRTP call fzf#vim#files('~/.vim', <bang>0)
+command! -bang Notes call fzf#vim#files('~/notes', <bang>0)
 
 " vim-doge
 let g:doge_mapping = '<Leader>j'
