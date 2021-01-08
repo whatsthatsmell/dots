@@ -1,9 +1,146 @@
+# screenshot
+sc() {
+	screencapture -x ~/Screenshots/$1
+}
+# create file, add to repo and open
 tgav() {
 	touch $1
 	git add $1
 	nvim $1
 }
 
+# view GH issue in Vim
 ghiv() {
-	gh issue view $1 | nvim -R -c 'set ft=markdown' -
+	gh issue view $1 | nvim -R -c 'set ft=markdown' -c 'norm! 8jzt' -
+}
+
+# take, npm init and git init and ignore node_modules
+tng() {
+	take $1 && npm init -y && git init && echo "node_modules" >> .gitignore
+}
+
+# see environment variables
+envs() {
+	ps eww -o command | tr ' ' '\n'
+}
+
+# see node processes
+nodes() {
+	#	ps -aef | Rg 'node' --colors 'match:fg:magenta'
+	ps wup $(pgrep -x node)
+}
+
+# get JSON response from route and make it pretty
+csjq() {
+	curl -s $1 | jq
+}
+
+# find a file and open it
+vo() {
+	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0))
+	[[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
+}
+
+# fuzzy grep open via rg with line number and `zz`
+vg() {
+	local file
+	local line
+
+	read -r file line <<<"$(rg --no-heading --line-number $@ | fzf -0 -1 | awk -F: '{print $1, $2}')"
+
+	if [[ -n $file ]]
+	then
+		nvim $file +$line -c 'norm! zz'
+	fi
+}
+
+# cdf - cd into the directory of the selected file
+cdf() {
+	local file
+	local dir
+	file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
+# find-in-file(s)
+fif() {
+	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+	rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 8 '$1' || rg --ignore-case --pretty --context 8 '$1' {}" --preview-window=right:60%
+}
+
+# find in files - open in Vim - go to 1st search result
+vf() {
+	local file
+	file=$(fif $1)
+	if [[ -n $file ]]
+	then
+		nvim $file -c /$1 -c 'norm! n'
+	fi
+
+}
+
+# fkill - kill processes - list only the ones you can kill. 
+fkill() {
+	local pid 
+	if [ "$UID" != "0" ]; then
+		pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
+	else
+		pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+	fi  
+
+	if [ "x$pid" != "x" ]
+	then
+		echo $pid | xargs kill -${1:-9}
+	fi  
+}
+
+# TEMP TRIAL of f() and fm()
+# Use fd and fzf to get the args to a command.
+# Works only with zsh
+# Examples:
+# f mv # To move files. You can write the destination after selecting the files.
+# f 'echo Selected:'
+# f 'echo Selected music:' --extention mp3
+# fm rm # To rm files in current directory
+f() {
+    sels=( "${(@f)$(fd "${fd_default[@]}" "${@:2}"| fzf)}" )
+    test -n "$sels" && print -z -- "$1 ${sels[@]:q:q}"
+}
+
+# Like f, but not recursive.
+fm() f "$@" --max-depth 1
+
+# Deps - may not need these
+alias fz="fzf-noempty --bind 'tab:toggle,shift-tab:toggle+beginning-of-line+kill-line,ctrl-j:toggle+beginning-of-line+kill-line,ctrl-t:top' --color=light -1 -m"
+fzf-noempty () {
+	local in="$(</dev/stdin)"
+	test -z "$in" && (
+		exit 130
+	) || {
+		ec "$in" | fzf "$@"
+	}
+}
+ec () {
+	if [[ -n $ZSH_VERSION ]]
+	then
+		print -r -- "$@"
+	else
+		echo -E -- "$@"
+	fi
+}
+# --- end trial
+
+# fco_p(review) - checkout git branch/tag, w/ preview showing commits between the tag/branch & HEAD
+fco() {
+  local tags branches target
+  branches=$(
+    git --no-pager branch --all \
+      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
+    | sed '/^$/d') || return
+  tags=$(
+    git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$branches"; echo "$tags") |
+    fzf --no-hscroll --no-multi -n 2 \
+        --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
+  git checkout $(awk '{print $2}' <<<"$target" )
 }

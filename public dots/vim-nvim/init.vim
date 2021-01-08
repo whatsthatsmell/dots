@@ -172,7 +172,7 @@ autocmd BufReadPost *
 " --- end of trial mappings ---
 " no help when I fat finger F1
 nmap <F1> <Esc>
-nmap Y "+y$
+nmap Y y$
 " Move between Vimdows
 nmap <up> <C-w><up>
 nmap <down> <C-w><down>

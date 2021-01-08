@@ -1,4 +1,5 @@
-set colorcolumn=100
+set colorcolumn=101
+" call matchadd('ColorColumn', '\%101v', 100)
 set autoindent
 set linebreak
 set conceallevel=2
@@ -7,3 +8,7 @@ iabbrev >> →
 iabbrev << ←
 iabbrev ^^ ↑
 iabbrev VV ↓
+
+" eunuch map
+nmap <buffer><silent><localleader>rn :Rename<space>
+

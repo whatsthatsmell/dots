@@ -9,6 +9,7 @@ export ZSH="/Users/joel/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7"
 # Bat Theme
 export BAT_THEME="GitHub"
 # Set list of themes to pick from when loading at random
@@ -69,7 +70,7 @@ export BAT_THEME="GitHub"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx web-search nvm)
+plugins=(git osx web-search nvm zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -78,10 +79,10 @@ prompt_dir () {
   prompt_segment blue $CURRENT_FG '%2~'
 }
 # Context: user@hostname (who am I and where am I)
-prompt_context() { } 
+prompt_context() { }
 
 # User configuration
-
+export MANPAGER='nvim +Man!'
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -107,4 +108,23 @@ export JQ_COLORS="1;30:0;30:0;30:0;30:0;32:1;30:1;30"
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 bindkey -v
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+bindkey "ç" fzf-cd-widget
+bindkey "^F" fzf-cd-widget
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+# Setting rg as the default source for fzf
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+
+# Apply the command to CTRL-T
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='--height 64% --layout=reverse --border'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.iterm2_shell_integration.zsh
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+# bindkey -r '^T'
+bindkey '^P' fzf-file-widget
+export PATH="/usr/local/opt/llvm/bin:$PATH"
