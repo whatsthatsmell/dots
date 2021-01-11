@@ -39,6 +39,8 @@ let g:javascript_plugin_jsdoc = 1
 
 " sync syntax on large-ish file
 nmap <silent><localleader>st :syntax sync fromstart<cr>
+" retab - fix existing after expandtab
+nmap <silent>,rt :retab<cr>
 " execute visual selection in node REPL
 vmap <silent><localleader>1 :w !node<cr>
 " wrap selection is JSON.stringify(*)

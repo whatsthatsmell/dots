@@ -14,6 +14,11 @@ ghiv() {
 	gh issue view $1 | nvim -R -c 'set ft=markdown' -c 'norm! 8jzt' -
 }
 
+# view GH issue in browser
+ghib() {
+  gh issue view --web $1
+}
+
 # take, npm init and git init and ignore node_modules
 tng() {
 	take $1 && npm init -y && git init && echo "node_modules" >> .gitignore

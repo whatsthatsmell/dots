@@ -157,7 +157,7 @@ nnoremap J mjJ`j
 nnoremap ; :
 vnoremap ; :
 " dictionary completion - overrides digraphs mapping
-inoremap <C-k> <C-x><C-k>
+inoremap <C-d> <C-x><C-k>
 " thesaurus completion- plugin
 inoremap <C-t> <C-x><C-u>
 " line completion
@@ -172,6 +172,9 @@ autocmd BufReadPost *
 " --- end of trial mappings ---
 " no help when I fat finger F1
 nmap <F1> <Esc>
+" yank all in buffer
+nmap <silent><leader>a :%y<cr>
+" yank the rest of the line
 nmap Y y$
 " Move between Vimdows
 nmap <up> <C-w><up>
