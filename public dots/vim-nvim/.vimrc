@@ -24,7 +24,7 @@ let g:ale_sign_error = "❗️"
 let g:ale_sign_warning = "⚠︎"
 syntax enable
 " copy selection to sys clipboard
-noremap <Leader>y "+y
+" noremap <Leader>y "+y
 " copy word undor cursor to sys clipboard
 noremap <Leader>yw "+yiw
 " rando
@@ -43,8 +43,6 @@ nnoremap <silent> <leader><left> :bp<CR>
 nnoremap <silent> <leader>x :bd<CR>
 " Experimental *** delete current buffer - don't close split*
 nmap ,d :b#<bar>bd#<CR>
-" fuzzy buff!
-nnoremap <silent> <leader>b :Buffers<CR>
 " 'grep' word under cursor
 nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
 " 'grep' -- ripgrep!
