@@ -42,6 +42,6 @@ nmap <silent><localleader>st :syntax sync fromstart<cr>
 " retab - fix existing after expandtab
 nmap <silent>,rt :retab<cr>
 " execute visual selection in node REPL
-vmap <silent><localleader>1 :w !node<cr>
+vmap <silent><localleader>1 :w !node -p<cr>
 " wrap selection is JSON.stringify(*)
 vmap ,js cJSON.stringify(<c-r>"<esc>
