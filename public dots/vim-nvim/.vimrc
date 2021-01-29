@@ -32,6 +32,7 @@ noremap <silent><Leader>\ :noh<cr>
 " write only if something is changed
 noremap <Leader>w :up<cr>
 noremap <silent> <Leader>q :q<cr>
+noremap <silent> <Leader>Q :q!<cr>
 " handled by unimpaired [os ]os
 " nnoremap <silent> <leader>s :setlocal spell!<cr>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'

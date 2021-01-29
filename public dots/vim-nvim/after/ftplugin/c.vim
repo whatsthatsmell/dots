@@ -16,6 +16,10 @@ nnoremap <buffer><silent><localleader>cr :!./%:r<cr>
 " compile
 nnoremap <buffer><silent><localleader>cc :make %:r<cr>
 
+" open the braces
+" inoremap <buffer> {<cr> {<cr>}<c-o>O<tab>
+inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
+
 " let g:ale_linters = {
 " \  'c': ['clangd']
 " \}

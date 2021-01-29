@@ -47,17 +47,17 @@ vo() {
 }
 
 # fuzzy grep open via rg with line number and `zz`
-# vg() {
-# 	local file
-# 	local line
+vg() {
+	local file
+	local line
 
-# 	read -r file line <<<"$(rg --no-heading --line-number $@ | fzf -0 -1 | awk -F: '{print $1, $2}')"
+	read -r file line <<<"$(rg --no-heading --line-number $@ | fzf -0 -1 | awk -F: '{print $1, $2}')"
 
-# 	if [[ -n $file ]]
-# 	then
-# 		nvim $file +$line -c 'norm! zz'
-# 	fi
-# }
+	if [[ -n $file ]]
+	then
+		nvim $file +$line -c 'norm! zz'
+	fi
+}
 
 # cdf - cd into the directory of the selected file
 cdf() {
