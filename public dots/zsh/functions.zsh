@@ -94,7 +94,11 @@ rc() {
   local crate
   crate=$(cargo search $1 | fzf | awk '{print $1}')
   cargo install $crate
+}
 
+# find word by partial string and pbcopy
+word() {
+  rg $1 /usr/share/dict/words | fzf | pbcopy
 }
 
 # fkill - kill processes - list only the ones you can kill. 
