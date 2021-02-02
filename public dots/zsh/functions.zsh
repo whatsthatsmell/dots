@@ -80,6 +80,20 @@ vf() {
 	then
 		nvim $file -c /$1 -c 'norm! n zz'
 	fi
+}
+
+# go to GH issue on web
+ghi() {
+  local item
+  item=$(gh issue list | fzf | awk '{print $1}')
+  gh issue view $item --web
+}
+
+# find rust crate and install
+rc() {
+  local crate
+  crate=$(cargo search $1 | fzf | awk '{print $1}')
+  cargo install $crate
 
 }
 
