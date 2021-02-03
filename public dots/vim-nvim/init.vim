@@ -296,6 +296,7 @@ nnoremap <Leader>do :DiffOrig<cr>
 nnoremap <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
 " fzf configure
 nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>bc :BCommits<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>p :Files<CR>
 nnoremap <silent> <leader>fm :Marks<CR>
@@ -304,7 +305,7 @@ nnoremap <silent> <leader>rt :VimRTP<CR>
 nnoremap <silent> <leader>n :Notes<CR>
 " new not or open a note
 nnoremap <silent>,n :vs ~/notes/<CR>
-let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.8 } }
+let g:fzf_layout = { 'window': { 'width': 0.99, 'height': 0.8 } }
 let g:fzf_preview_window = 'right:67%'
 let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Rg
@@ -315,7 +316,7 @@ command! -bang -nargs=* Rg
 command! -bang VimRTP call fzf#vim#files('~/.vim', <bang>0)
 command! -bang Notes call fzf#vim#files('~/notes', <bang>0)
 
-autocmd! FileType fzf set laststatus=0 noshowmode noruler
+autocmd! FileType fzf set laststatus=1 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 " function! s:fzf_statusline()
