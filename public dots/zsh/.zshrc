@@ -115,7 +115,10 @@ bindkey "ç" fzf-cd-widget
 bindkey "^F" fzf-cd-widget
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 # Setting rg as the default source for fzf
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+
+# use fd instead of rg for file search, rg author says so!
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Apply the command to CTRL-T
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

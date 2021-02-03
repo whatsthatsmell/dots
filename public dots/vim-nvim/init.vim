@@ -304,8 +304,8 @@ nnoremap <silent> <leader>rt :VimRTP<CR>
 nnoremap <silent> <leader>n :Notes<CR>
 " new not or open a note
 nnoremap <silent>,n :vs ~/notes/<CR>
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
-let g:fzf_preview_window = 'right:55%'
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.8 } }
+let g:fzf_preview_window = 'right:67%'
 let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Rg
 			\ call fzf#vim#grep(
@@ -314,6 +314,18 @@ command! -bang -nargs=* Rg
 
 command! -bang VimRTP call fzf#vim#files('~/.vim', <bang>0)
 command! -bang Notes call fzf#vim#files('~/notes', <bang>0)
+
+autocmd! FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+" function! s:fzf_statusline()
+"   " Override statusline as you like
+"   highlight fzf1 ctermfg=161 ctermbg=251
+"   highlight fzf2 ctermfg=23 ctermbg=251
+"   highlight fzf3 ctermfg=237 ctermbg=251
+"   setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+" endfunction
+" autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 " vim-doge
 let g:doge_mapping = '<Leader>j'
