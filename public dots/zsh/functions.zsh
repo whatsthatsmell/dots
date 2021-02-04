@@ -35,6 +35,12 @@ nodes() {
 	ps wup $(pgrep -x node)
 }
 
+#get last 10 reddit post titles from $1 subreddit
+reddit() {
+curl -s -A 'commandline reader' "https://www.reddit.com/r/$1/new.json?limit=10" \
+  | jq '.data.children| .[] | .data.title' \
+}
+
 # get JSON response from route and make it pretty
 csjq() {
 	curl -s $1 | jq
@@ -87,6 +93,16 @@ ghi() {
   local item
   item=$(gh issue list | fzf | awk '{print $1}')
   gh issue view $item --web
+}
+
+# search notes and open it in nvim
+vn() {
+  local note
+  note=$(fd . '/Users/joel/notes' | fzf)
+ 	if [[ -n $note ]]
+	then
+		nvim $note
+	fi
 }
 
 # find rust crate and install
