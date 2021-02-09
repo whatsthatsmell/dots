@@ -62,6 +62,7 @@ nmap <leader>ss :SSave<cr>
 nmap <leader>e :e %:h/
 nmap <leader>v :vs %:h/
 let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'editorconfig/editorconfig-vim'

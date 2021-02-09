@@ -46,23 +46,10 @@ csjq() {
 	curl -s $1 | jq
 }
 
-# find a file and open it
-vo() {
-	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0))
+# find a file and open it fzf → fd → Vim
+vf() {
+	IFS=$'\n' files=($(fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60%  --query="$1" --multi --select-1 --exit-0))
 	[[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
-}
-
-# fuzzy grep open via rg with line number and `zz`
-vg() {
-	local file
-	local line
-
-	read -r file line <<<"$(rg --no-heading --line-number $@ | fzf -0 -1 | awk -F: '{print $1, $2}')"
-
-	if [[ -n $file ]]
-	then
-		nvim $file +$line -c 'norm! zz'
-	fi
 }
 
 # cdf - cd into the directory of the selected file
@@ -72,14 +59,15 @@ cdf() {
 	file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
-# find-in-file(s)
+# for `vg` grep- find-in-file(s)
 fif() {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-	rg --ignore-case --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 8 '$1' || rg --ignore-case --pretty --context 8 '$1' {}" --preview-window=right:60%
+	rg --ignore-case --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60%
 }
 
 # find in files - open in Vim - go to 1st search result
-vf() {
+# vim - grep
+vg() {
 	local file
 	file=$(fif $1)
 	if [[ -n $file ]]

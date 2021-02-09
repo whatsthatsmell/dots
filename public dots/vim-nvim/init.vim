@@ -121,7 +121,7 @@ let g:PaperColor_Theme_Options = {
 			\ }
 colorscheme PaperColor
 "let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-" lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
+lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
 " ** using ALE as the client except for clang (for now) specifics in after/ftplugin/c.vim **
 lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
 " lua require'lspconfig'.pyls_ms.setup{ on_attach=require'completion'.on_attach }
