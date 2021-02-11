@@ -70,7 +70,7 @@ export BAT_THEME="GitHub"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx web-search nvm zsh-autosuggestions)
+plugins=(git osx web-search nvm zsh-autosuggestions cargo)
 
 source $ZSH/oh-my-zsh.sh
 

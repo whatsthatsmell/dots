@@ -1,10 +1,13 @@
 # custom aliases
-alias -s js=nvim
+alias -s {js,json}=nvim
+alias -s {c,h}=nvim
 alias -s rs=nvim
 alias -s zsh=nvim
+alias -s vim=nvim
 alias -s txt=nvim
-alias -s md=nvim
-alias -s MD=nvim
+alias -s {md,MD}=nvim
+alias dud='du -d 1 -h'
+alias ldot='exa -ld .*'
 alias yp='pwd|pbcopy'
 alias vt='nvim +terminal'
 alias vd='nvim -d'
