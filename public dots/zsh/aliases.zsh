@@ -1,11 +1,13 @@
 # custom aliases
 alias -s {js,json}=nvim
 alias -s {c,h}=nvim
-alias -s rs=nvim
+alias -s {rs,toml}=nvim
 alias -s zsh=nvim
 alias -s vim=nvim
 alias -s txt=nvim
 alias -s {md,MD}=nvim
+alias c='cargo'
+alias rdb='rust-lldb'
 alias mps='multipass shell'
 alias mpl='multipass list'
 alias dud='du -d 1 -h'

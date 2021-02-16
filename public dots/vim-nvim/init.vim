@@ -44,7 +44,7 @@ Plug 'nvim-lua/completion-nvim'
 " Plug 'nvim-lua/plenary.nvim'
 " Plug 'nvim-telescope/telescope.nvim'
 " Plug 'tjdevries/nlua.nvim'
-" Plug 'tjdevries/lsp_extensions.nvim'
+Plug 'nvim-lua/lsp_extensions.nvim'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " trial ** cheatsheet sh - settings in after/ftplugin/javascript.vim
 Plug 'dbeniamine/cheat.sh-vim'
@@ -113,6 +113,7 @@ let g:PaperColor_Theme_Options = {
 			\     'default.light': {
 			\       'override' : {
 			\         'color10' : ['#005f00', '22'],
+			\         'color03' : ['#005f87', '24'],
 			\         'color11' : ['#lclclc', '234'],
 			\         'spellbad' : ['#ffaf87', '216']
 			\       }
@@ -120,8 +121,8 @@ let g:PaperColor_Theme_Options = {
 			\   }
 			\ }
 colorscheme PaperColor
-"let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
+" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+" lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
 " ** using ALE as the client except for clang (for now) specifics in after/ftplugin/c.vim **
 lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
 " lua require'lspconfig'.pyls_ms.setup{ on_attach=require'completion'.on_attach }
@@ -134,6 +135,29 @@ lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
 "       }
 "     )
 " EOF
+
+lua <<EOF
+
+-- nvim_lsp object
+local nvim_lsp = require'lspconfig'
+
+-- function to attach completion when setting up lsp
+local on_attach = function(client)
+    require'completion'.on_attach(client)
+end
+
+-- Enable rust_analyzer
+nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+
+-- Enable diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+    signs = true,
+    update_in_insert = true,
+  }
+)
+EOF
 
 " paste last thing yanked, not deleted
 nmap ,p "0p
