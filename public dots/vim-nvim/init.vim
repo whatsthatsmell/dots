@@ -28,7 +28,6 @@ Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
 Plug 'ruanyl/coverage.vim'
 Plug 'mhinz/vim-startify'
-Plug 'ron89/thesaurus_query.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'moll/vim-node'
 Plug 'scrooloose/nerdtree'
@@ -56,8 +55,6 @@ let NERDTreeShowHidden=1
 let NERDTreeMinimalMenu=1
 let NERDTreeMinimalUI = 1
 
-" thesaurus settings
-let g:tq_enabled_backends=["datamuse_com", "mthesaur_txt"]
 " firenvim
 let g:firenvim_config = {
 			\ 'globalSettings': {
@@ -121,21 +118,11 @@ let g:PaperColor_Theme_Options = {
 			\   }
 			\ }
 colorscheme PaperColor
-" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-" lua require'lspconfig'.rust_analyzer.setup{ on_attach=require'completion'.on_attach }
-" ** using ALE as the client except for clang (for now) specifics in after/ftplugin/c.vim **
-lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
-" lua require'lspconfig'.pyls_ms.setup{ on_attach=require'completion'.on_attach }
-" still not working: allow stop insert while editing a file under lsp
-" lua << EOF
-"     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-"       vim.lsp.diagnostic.on_publish_diagnostics, {
-"         -- delay update diagnostics
-"         update_in_insert = false,
-"       }
-"     )
-" EOF
 
+" lsp config
+" - C
+lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
+" - Rust → (other languages still uses ALE only)
 lua <<EOF
 
 -- nvim_lsp object
@@ -169,31 +156,33 @@ nmap <silent><leader>lo :lope<CR>
 " vim-surround maps
 " surround word under cursor w/ backticks
 nmap <leader>` ysiw`
-" -- trial mappings --
 " Duplicate a selection
 " Visual mode: D
 vmap D y'>p
-" Join lines and restore cursor location (J) {{{
+" Join lines and restore cursor location
 nnoremap J mjJ`j
-" }}}
-" ----
-" save some strokes
+" save some strokes (best mapping ever)
 nnoremap ; :
 vnoremap ; :
 " dictionary completion - overrides digraphs mapping
 inoremap <C-d> <C-x><C-k>
-" thesaurus completion- plugin
-inoremap <C-t> <C-x><C-u>
+" thesaurus completion
+set thesaurus+=~/.vim/thesaurus/thesaurii.txt
+inoremap <C-t> <C-x><C-t>
 " line completion
 inoremap <C-l> <C-x><C-l>
+" check for spelling completion
+inoremap <C-s> <C-x><C-s>
+" file path completion
+inoremap <C-f> <C-x><C-f>
+" Vim command-line completion
+inoremap <C-v> <C-x><C-v>
+
 " When editing a file, always jump to the last known cursor position
 autocmd BufReadPost *
 			\ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
 			\ |   exe "normal! g`\""
 			\ | endif
-" clone paragraph -- needs work for code
-" noremap cp yap<S-}>p
-" --- end of trial mappings ---
 " no help when I fat finger F1
 nmap <F1> <Esc>
 " yank all in buffer
