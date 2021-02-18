@@ -1,7 +1,15 @@
+# rust doc find:  rustup doc get result or search
+rdf() {
+	local query
+	query=$1
+  rustup doc $1 || (echo "Searching..." && open "https://doc.rust-lang.org/std/?search=$query")
+}
+
 # screenshot
 sc() {
 	screencapture -x ~/Screenshots/$1
 }
+
 # create file, add to repo and open
 tgav() {
 	touch $1
