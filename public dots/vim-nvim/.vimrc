@@ -8,7 +8,6 @@ set hidden
 set completeopt=menu,menuone,preview,noselect,noinsert
 set omnifunc=ale#completion#OmniFunc
 set dictionary+=/usr/share/dict/words
-" set thesaurus+=~/.vim/thesaurus/mthesaur.txt
 set wildignore+=*/node_modules/*,*/coverage/*
 set incsearch
 set ignorecase
@@ -16,25 +15,20 @@ set smartcase
 set ts=2
 set sw=2
 set splitbelow
-" highlight ColorColumn ctermbg=darkgrey - handled by theme/color.vim
-" call matchadd('ColorColumn', '\%81v', 100)
+
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_error = "❗️"
 let g:ale_sign_warning = "⚠︎"
+
 syntax enable
-" copy selection to sys clipboard
-" noremap <Leader>y "+y
-" copy word undor cursor to sys clipboard
-noremap <Leader>yw "+yiw
 " rando
 noremap <silent><Leader>\ :noh<cr>
 " write only if something is changed
 noremap <Leader>w :up<cr>
 noremap <silent> <Leader>q :q<cr>
 noremap <silent> <Leader>Q :q!<cr>
-" handled by unimpaired [os ]os
-" nnoremap <silent> <leader>s :setlocal spell!<cr>
+
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " go to next buffer
 nnoremap <silent> <leader><right> :bn<CR>
@@ -63,6 +57,7 @@ nmap <leader>e :e %:h/
 nmap <leader>v :vs %:h/
 let g:ale_completion_enabled = 1
 let g:ale_completion_autoimport = 1
+
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'editorconfig/editorconfig-vim'
@@ -75,11 +70,10 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
 Plugin 'airblade/vim-gitgutter'
 call vundle#end()
+
 "let g:lightline = { 'colorscheme': 'PaperColor' }
 filetype plugin indent on    " required
-" move to rtp ASAP
+" auto exit insert mode
 au CursorHoldI * stopinsert
-" au FileType markdown set colorcolumn=100 autoindent linebreak conceallevel=2
 au FileType text set colorcolumn=100 autoindent linebreak
-" js, md and others have rtp after ftplugin functionality as well
 au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
