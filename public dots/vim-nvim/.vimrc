@@ -28,7 +28,7 @@ noremap <silent><Leader>\ :noh<cr>
 noremap <Leader>w :up<cr>
 noremap <silent> <Leader>q :q<cr>
 noremap <silent> <Leader>Q :q!<cr>
-
+inoremap <C-a> <esc>:call AutoPairsToggle()<cr>a
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " go to next buffer
 nnoremap <silent> <leader><right> :bn<CR>

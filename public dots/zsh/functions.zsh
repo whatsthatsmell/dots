@@ -67,6 +67,13 @@ cdf() {
 	file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
+# find all git repos, select one and CD to its parent dir
+cdg() {
+  local file
+  local dir
+  file=$(fd -H -g .git | fzf) && dir=$(dirname "$file") && cd "$dir"
+}
+
 # for `vg` grep- find-in-file(s)
 fif() {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
