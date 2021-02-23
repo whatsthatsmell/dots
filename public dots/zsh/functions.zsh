@@ -2,12 +2,15 @@
 cn() {
   cargo new $1
   cd $1
-  nvim src/main.rs Cargo.toml
+  mkdir tests
+  cp ../lib_tmpl.rs src/lib.rs
+  nvim src/main.rs src/lib.rs Cargo.toml
 }
 
 cnl() {
   cargo new $1 --lib
   cd $1
+  mkdir tests
   nvim src/lib.rs Cargo.toml
 }
 

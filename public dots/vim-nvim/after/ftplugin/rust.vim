@@ -6,7 +6,14 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 sign define LspDiagnosticsSignHint text=ⓗ texthl=LspDiagnosticsSignHint linehl= numhl=
 sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl= numhl=
+" snippets
 iabbrev <buffer> w18 #![warn(rust_2018_idioms)]
+" -- testing
+iabbrev <buffer> #t #[test]<c-o>o<left>
+iabbrev <buffer> #p #[should_panic(expected = "")]<left><left><left>
+iabbrev <buffer> #b #[bench]<c-o>o<left>
+iabbrev <buffer> #i #[ignore]<c-o>o<left>
+" -- end snippets
 let g:completion_enable_auto_paren = 1
 " open the braces
 " inoremap <buffer> {<cr> {<cr>}<c-o>O<tab>
@@ -14,7 +21,7 @@ inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " ale settings
 " let g:ale_completion_enabled = 0
 " let g:ale_disable_lsp = 0
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent><buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
