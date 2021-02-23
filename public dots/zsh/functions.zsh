@@ -1,3 +1,16 @@
+# create new rust proj, move in to it & open main/lib & toml
+cn() {
+  cargo new $1
+  cd $1
+  nvim src/main.rs Cargo.toml
+}
+
+cnl() {
+  cargo new $1 --lib
+  cd $1
+  nvim src/lib.rs Cargo.toml
+}
+
 # rust doc find:  rustup doc get result or search
 rdf() {
 	local query

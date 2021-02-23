@@ -6,7 +6,7 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 sign define LspDiagnosticsSignHint text=ⓗ texthl=LspDiagnosticsSignHint linehl= numhl=
 sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl= numhl=
-
+iabbrev <buffer> w18 #![warn(rust_2018_idioms)]
 let g:completion_enable_auto_paren = 1
 " open the braces
 " inoremap <buffer> {<cr> {<cr>}<c-o>O<tab>
