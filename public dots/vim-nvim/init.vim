@@ -33,8 +33,10 @@ Plug 'moll/vim-node'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+Plug 'andymass/vim-matchup'
 " Neovim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -108,11 +110,13 @@ endfunction
 let g:PaperColor_Theme_Options = {
 			\   'theme': {
 			\     'default.light': {
+			\       'transparent_background': 1,
 			\       'override' : {
+			\       'cursorlinenr_bg' : ['#e4e4e4', '254'],
 			\         'color10' : ['#005f00', '22'],
 			\         'color03' : ['#005f87', '24'],
 			\         'color11' : ['#lclclc', '234'],
-			\         'spellbad' : ['#ffaf87', '216']
+			\         'spellbad' : ['#ffaf87', '216'],
 			\       }
 			\     }
 			\   }
@@ -218,6 +222,8 @@ nmap <silent> <leader><space> <C-i>
 nnoremap <silent> <leader>to :sp \| norm `T<cr>
 " Replace word under cursor in file
 nmap <leader>sr *:%s//
+" Replace word under cursor in line
+nmap <leader>sl *:s///g<left><left>
 " undotree
 nnoremap <silent><leader>u :UndotreeToggle<CR>
 let g:undotree_HelpLine = 0
@@ -394,6 +400,6 @@ augroup LuaHighlight
 	autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 " open already open files read-only
-autocmd SwapExists * let v:swapchoice = "o"
+" autocmd SwapExists * let v:swapchoice = "o"
 " no c++ here
 autocmd BufRead,BufNewFile *.h set filetype=c

@@ -1,4 +1,5 @@
 set colorcolumn=101
+" setlocal textwidth=100
 " call matchadd('ColorColumn', '\%101v', 100)
 set autoindent
 set linebreak

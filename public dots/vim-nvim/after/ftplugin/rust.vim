@@ -16,8 +16,9 @@ iabbrev <buffer> #i #[ignore]<c-o>o<left>
 " -- end snippets
 let g:completion_enable_auto_paren = 1
 " open the braces
-" inoremap <buffer> {<cr> {<cr>}<c-o>O<tab>
 inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
+" wrap selection in Some(*)
+vmap ,sm cSome(<c-r>"<esc>
 " ale settings
 " let g:ale_completion_enabled = 0
 " let g:ale_disable_lsp = 0

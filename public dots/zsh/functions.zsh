@@ -93,7 +93,7 @@ cdg() {
 # for `vg` grep- find-in-file(s)
 fif() {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-	rg --ignore-case --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60%
+	rg --ignore-case --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60% --multi --select-1 --exit-0
 }
 
 # find in files - open in Vim - go to 1st search result
@@ -202,3 +202,20 @@ fco() {
         --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
   git checkout $(awk '{print $2}' <<<"$target" )
 }
+
+# from the rga ripgrep-all README - integrating with FZF for PDF etc greppin'
+rgaf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+  # might want to convert to text and open the text file instead or as an option
+	echo "opening $file" &&
+	open "$file"
+}
+
