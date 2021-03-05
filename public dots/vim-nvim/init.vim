@@ -10,7 +10,22 @@ set undodir=~/.vim/undodir
 set undofile
 set inccommand=nosplit
 set scrolloff=1
+
+" rip off TJ DeVries' local_plug func until I move to lua (seems inevitable)
+" https://github.com/tjdevries/config_manager/blob/993bf6852bfec2778df797dcd7e217579b8f563d/xdg_config/nvim/init.vim#L31
+function! s:local_plug(package_name) abort 
+  if isdirectory(expand("~/vim-dev/plugins/" . a:package_name))
+    execute "Plug '~/vim-dev/plugins/".a:package_name."'"
+  else
+    execute "Plug 'joelpalmer/" .a:package_name."'"
+  endif
+endfunction
+" -- end local_plug()
+
 call plug#begin('~/.vim/plugged')
+" locals
+call s:local_plug('cyclist.vim')
+" add more locals --
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'jparise/vim-graphql'
@@ -27,7 +42,7 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
 Plug 'ruanyl/coverage.vim'
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'moll/vim-node'
 Plug 'scrooloose/nerdtree'
@@ -51,6 +66,7 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'junegunn/vim-peekaboo'
 call plug#end()
+
 
 " NERDTree
 let NERDTreeShowHidden=1
@@ -363,37 +379,35 @@ autocmd! FileType fzf set laststatus=1 noshowmode noruler
 let g:doge_mapping = '<Leader>j'
 
 " startify
-nmap <silent> <leader>m :Startify<cr>
-let g:startify_files_number = 4
-let g:startify_enable_special = 0
-let g:startify_change_to_vcs_root = 1
-let g:startify_padding_left = 2
-let g:startify_custom_header = "startify#pad(split(system('date'), '\n') + split(system('pwd'), '\n'))"
-let g:startify_relative_path = 1
+" let g:startify_enable_special = 0
+" let g:startify_change_to_vcs_root = 1
+" let g:startify_padding_left = 2
+" let g:startify_custom_header = "startify#pad(split(system('date'), '\n') + split(system('pwd'), '\n'))"
+" let g:startify_relative_path = 1
 
-" returns all modified files of the current git repo
-" `2>/dev/null` makes the command fail quietly, so that when we are not
-" in a git repo, the list will be empty
-function! s:gitModified()
-	let files = systemlist('git ls-files -m 2>/dev/null')
-	return map(files, "{'line': v:val, 'path': v:val}")
-endfunction
+" " returns all modified files of the current git repo
+" " `2>/dev/null` makes the command fail quietly, so that when we are not
+" " in a git repo, the list will be empty
+" function! s:gitModified()
+" 	let files = systemlist('git ls-files -m 2>/dev/null')
+" 	return map(files, "{'line': v:val, 'path': v:val}")
+" endfunction
 
-" same as above, but show untracked files, honoring .gitignore
-function! s:gitUntracked()
-	let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
-	return map(files, "{'line': v:val, 'path': v:val}")
-endfunction
+" " same as above, but show untracked files, honoring .gitignore
+" function! s:gitUntracked()
+" 	let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+" 	return map(files, "{'line': v:val, 'path': v:val}")
+" endfunction
 
-let g:startify_lists = [
-			\ { 'type': 'files',     'header': ['   Recent']            },
-			\ { 'type': 'dir',       'header': ['   Dir '. getcwd()] },
-			\ { 'type': 'sessions',  'header': ['   Sessions']       },
-			\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-			\ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-			\ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
-			\ { 'type': 'commands',  'header': ['   Commands']       },
-			\ ]
+" let g:startify_lists = [
+" 			\ { 'type': 'files',     'header': ['   Recent']            },
+" 			\ { 'type': 'dir',       'header': ['   Dir '. getcwd()] },
+" 			\ { 'type': 'sessions',  'header': ['   Sessions']       },
+" 			\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+" 			\ { 'type': function('s:gitModified'),  'header': ['   git modified']},
+" 			\ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
+" 			\ { 'type': 'commands',  'header': ['   Commands']       },
+" 			\ ]
 " bring on the goodness nvim 0.5
 augroup LuaHighlight
 	autocmd!

@@ -1,4 +1,5 @@
 setlocal shortmess+=c
+syn match parens /[(){}]/ | hi parens ctermfg=31
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
