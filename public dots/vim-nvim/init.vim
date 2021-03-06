@@ -8,7 +8,7 @@ set splitright
 set updatetime=2000
 set undodir=~/.vim/undodir
 set undofile
-set inccommand=nosplit
+set inccommand=split
 set scrolloff=1
 
 " rip off TJ DeVries' local_plug func until I move to lua (seems inevitable)
@@ -24,7 +24,7 @@ endfunction
 
 call plug#begin('~/.vim/plugged')
 " locals
-call s:local_plug('cyclist.vim')
+" call s:local_plug('TDB.vim')
 " add more locals --
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -142,6 +142,8 @@ colorscheme PaperColor
 " lsp config
 " - C
 lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
+" - VimL 
+lua require'lspconfig'.vimls.setup{}
 " - Rust → (other languages still uses ALE only)
 lua <<EOF
 
