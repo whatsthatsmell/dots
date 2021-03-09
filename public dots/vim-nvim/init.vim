@@ -24,7 +24,7 @@ endfunction
 
 call plug#begin('~/.vim/plugged')
 " locals
-" call s:local_plug('TDB.vim')
+" call s:local_plug('TBD.vim')
 " add more locals --
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
