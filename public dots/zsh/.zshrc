@@ -113,6 +113,8 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey "ç" fzf-cd-widget
 bindkey "^F" fzf-cd-widget
+# bindkey "^[a" beginning-of-line
+# bindkey "^[e" end-of-line
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 # Setting rg as the default source for fzf
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'

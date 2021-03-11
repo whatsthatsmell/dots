@@ -91,6 +91,7 @@ set t_Co=256
 set bg=light
 " syntax highlight only to 1K instead of default 3K
 set synmaxcol=1000
+
 " lightline config
 let g:lightline = {
 			\ 'component': {
@@ -248,8 +249,9 @@ let g:undotree_HelpLine = 0
 let g:undotree_WindowLayout = 2
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 6
-" Fugitive settings
+" Fugitive & git gutter settings
 nnoremap <silent> <leader>gb :Git blame<Return>
+nnoremap <silent> <leader>hu :GitGutterUndoHunk<Return>
 nnoremap <silent> <leader>hh :GitGutterLineHighlightsToggle<Return>
 nmap <leader>gp :Gpush origin
 " fzf-checkout settings
