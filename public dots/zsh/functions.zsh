@@ -70,12 +70,6 @@ csjq() {
 	curl -s $1 | jq
 }
 
-# find a file and open it fzf → fd → Vim
-vf() {
-	IFS=$'\n' files=($(fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60%  --query="$1" --multi --select-1 --exit-0))
-	[[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
-}
-
 # cdf - cd into the directory of the selected file
 cdf() {
 	local file
@@ -97,7 +91,7 @@ fif() {
 }
 
 # find in files - open in Vim - go to 1st search result
-# vim - grep
+# vim - grep - takes a query to grep
 vg() {
 	local file
 	file=$(fif $1)
@@ -105,6 +99,12 @@ vg() {
 	then
 		nvim $file -c /$1 -c 'norm! n zz'
 	fi
+}
+
+# find a file and open it fzf → fd → Vim -- no args, looks in cwd
+vf() {
+	IFS=$'\n' files=($(fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60%  --query="$1" --multi --select-1 --exit-0))
+	[[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
 }
 
 # go to GH issue on web
@@ -121,6 +121,16 @@ vn() {
  	if [[ -n $note ]]
 	then
 		nvim $note
+	fi
+}
+
+# list vim sessions and select one to open
+vs() {
+  local ses
+  ses=$(fd . '/Users/joel/vim-sessions' | fzf)
+ 	if [[ -n $ses ]]
+	then
+		nvim -S $ses
 	fi
 }
 

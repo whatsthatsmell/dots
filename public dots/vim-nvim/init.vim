@@ -181,6 +181,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 EOF
 
+" sessions
+nmap <leader>ss :mksession ~/vim-sessions/
+nmap <leader>os :mksession! ~/vim-sessions/
+nmap <silent><leader>ls :mksession! ~/vim-sessions/latest.vim<cr>
+
 " paste last thing yanked, not deleted
 nmap ,p "0p
 nmap ,P "0P

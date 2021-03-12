@@ -52,7 +52,7 @@ nnoremap <silent> <leader>r :ALEFindReferences -relative<Return>
 nnoremap <silent> <leader>rn :ALERename<Return>
 
 " Startify: make/save a (new) session
-nmap <leader>ss :SSave<cr>
+" nmap <leader>ss :SSave<cr>
 " open file in directory of current file
 nmap <leader>e :e %:h/
 nmap <leader>v :vs %:h/
