@@ -16,6 +16,7 @@ sign define LspDiagnosticsSignHint text=ⓗ texthl=LspDiagnosticsSignHint linehl
 sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl= numhl=
 " snippets
 iabbrev <buffer> w18 #![warn(rust_2018_idioms)]
+iabbrev <buffer> epl  eprintln!("{:#?}",);<left><left>
 " -- testing
 iabbrev <buffer> #t #[test]<c-o>o<left>
 iabbrev <buffer> #p #[should_panic(expected = "")]<left><left><left>
@@ -27,6 +28,8 @@ let g:completion_enable_auto_paren = 1
 inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " wrap selection in Some(*)
 vmap ,sm cSome(<c-r>"<esc>
+" surround (W)ord with angle brackets
+nmap <localleader>ab ysiW>
 " ale settings
 " let g:ale_completion_enabled = 0
 " let g:ale_disable_lsp = 0

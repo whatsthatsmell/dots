@@ -5,7 +5,7 @@ set guicursor=
 set clipboard=unnamedplus
 set noshowcmd
 set splitright
-set updatetime=2000
+set updatetime=2500
 set undodir=~/.vim/undodir
 set undofile
 set inccommand=split
@@ -42,7 +42,6 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
 Plug 'ruanyl/coverage.vim'
-" Plug 'mhinz/vim-startify'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'moll/vim-node'
 Plug 'scrooloose/nerdtree'
@@ -50,7 +49,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'andymass/vim-matchup'
 " Neovim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
@@ -61,9 +59,6 @@ Plug 'nvim-lua/completion-nvim'
 " Plug 'nvim-telescope/telescope.nvim'
 " Plug 'tjdevries/nlua.nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" trial ** cheatsheet sh - settings in after/ftplugin/javascript.vim
-Plug 'dbeniamine/cheat.sh-vim'
 Plug 'junegunn/vim-peekaboo'
 call plug#end()
 
@@ -195,7 +190,7 @@ nmap <silent><leader>co :cope<CR>
 nmap <silent><leader>lo :lope<CR>
 " vim-surround maps
 " surround word under cursor w/ backticks
-nmap <leader>` ysiw`
+nmap <leader>` ysiW`
 " Duplicate a selection
 " Visual mode: D
 vmap D y'>p
@@ -362,7 +357,7 @@ nnoremap <silent> <leader>n :Notes<CR>
 " new not or open a note
 nnoremap <silent>,n :vs ~/notes/<CR>
 let g:fzf_layout = { 'window': { 'width': 0.99, 'height': 0.8 } }
-let g:fzf_preview_window = 'right:67%'
+let g:fzf_preview_window = 'right:61%'
 let $FZF_DEFAULT_OPTS='--reverse'
 command! -bang -nargs=* Rg
 			\ call fzf#vim#grep(
@@ -375,49 +370,6 @@ command! -bang Notes call fzf#vim#files('~/notes', <bang>0)
 autocmd! FileType fzf set laststatus=1 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
-" function! s:fzf_statusline()
-"   " Override statusline as you like
-"   highlight fzf1 ctermfg=161 ctermbg=251
-"   highlight fzf2 ctermfg=23 ctermbg=251
-"   highlight fzf3 ctermfg=237 ctermbg=251
-"   setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-" endfunction
-" autocmd! User FzfStatusLine call <SID>fzf_statusline()
-
-" vim-doge
-let g:doge_mapping = '<Leader>j'
-
-" startify
-" let g:startify_enable_special = 0
-" let g:startify_change_to_vcs_root = 1
-" let g:startify_padding_left = 2
-" let g:startify_custom_header = "startify#pad(split(system('date'), '\n') + split(system('pwd'), '\n'))"
-" let g:startify_relative_path = 1
-
-" " returns all modified files of the current git repo
-" " `2>/dev/null` makes the command fail quietly, so that when we are not
-" " in a git repo, the list will be empty
-" function! s:gitModified()
-" 	let files = systemlist('git ls-files -m 2>/dev/null')
-" 	return map(files, "{'line': v:val, 'path': v:val}")
-" endfunction
-
-" " same as above, but show untracked files, honoring .gitignore
-" function! s:gitUntracked()
-" 	let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
-" 	return map(files, "{'line': v:val, 'path': v:val}")
-" endfunction
-
-" let g:startify_lists = [
-" 			\ { 'type': 'files',     'header': ['   Recent']            },
-" 			\ { 'type': 'dir',       'header': ['   Dir '. getcwd()] },
-" 			\ { 'type': 'sessions',  'header': ['   Sessions']       },
-" 			\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-" 			\ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-" 			\ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
-" 			\ { 'type': 'commands',  'header': ['   Commands']       },
-" 			\ ]
-" bring on the goodness nvim 0.5
 augroup LuaHighlight
 	autocmd!
 	autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()

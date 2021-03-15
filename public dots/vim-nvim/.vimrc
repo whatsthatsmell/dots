@@ -31,6 +31,7 @@ noremap <silent> <Leader>Q :q!<cr>
 inoremap <C-a> <esc>:call AutoPairsToggle()<cr>a
 " expands to dir of current file in cmd mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" Buffer stuff - <C-6> is toggle current and alt(last viewed)
 " go to next buffer
 nnoremap <silent> <leader><right> :bn<CR>
 " go to prev buffer
@@ -51,8 +52,6 @@ nmap <silent> <leader>d <Plug>(ale_go_to_definition)
 nnoremap <silent> <leader>r :ALEFindReferences -relative<Return>
 nnoremap <silent> <leader>rn :ALERename<Return>
 
-" Startify: make/save a (new) session
-" nmap <leader>ss :SSave<cr>
 " open file in directory of current file
 nmap <leader>e :e %:h/
 nmap <leader>v :vs %:h/
@@ -72,7 +71,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'airblade/vim-gitgutter'
 call vundle#end()
 
-"let g:lightline = { 'colorscheme': 'PaperColor' }
 filetype plugin indent on    " required
 " auto exit insert mode
 au CursorHoldI * stopinsert
