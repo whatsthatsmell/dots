@@ -37,6 +37,7 @@ alias dots='zsh ~/dotfiles/index.txt'
 # todo: make gdot* for cs/dots
 alias gdotc='git -C ~/dotfiles commit -a -m'
 alias gdots='git -C ~/dotfiles status'
+alias glprs='git log -p --reverse --stat'
 alias cpnotes='cp -R  ~/notes/ ~/Dropbox/notes'
 alias cprs='rsync -a ~/rusty ~/Dropbox --exclude rust-sources'
 alias nij='node inspect node_modules/.bin/jest --runInBand'

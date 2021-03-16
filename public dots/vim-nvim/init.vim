@@ -135,12 +135,13 @@ let g:PaperColor_Theme_Options = {
 			\ }
 colorscheme PaperColor
 
-" lsp config
+" lsp config - JavaScipt using ALE/lsp hybrid. Look in JavaScript ftplugin.
+" Additional lsp settings in ftplugin for each language
 " - C
 lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
 " - VimL 
 lua require'lspconfig'.vimls.setup{}
-" - Rust → (other languages still uses ALE only)
+" - Rust
 lua <<EOF
 
 -- nvim_lsp object
