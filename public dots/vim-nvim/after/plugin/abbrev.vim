@@ -9,3 +9,4 @@ inoreabbrev graphql GraphQL
 iabbrev joel Joel
 iabbrev dont don't
 inoreabbrev mdl []()
+iabbrev syntac syntax

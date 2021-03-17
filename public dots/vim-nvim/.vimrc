@@ -43,7 +43,7 @@ nmap ,d :b#<bar>bd#<CR>
 " 'grep' word under cursor
 nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
 " 'grep' -- ripgrep!
-nnoremap <silent> <leader>rg :Rg <CR>
+nnoremap <silent> <leader>rg :Rg<CR>
 
 " ALE keys
 nmap <silent> <leader>h :ALEHover<cr>

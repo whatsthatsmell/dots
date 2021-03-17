@@ -17,6 +17,7 @@ sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl
 " snippets
 iabbrev <buffer> w18 #![warn(rust_2018_idioms)]
 iabbrev <buffer> epl  eprintln!("{:#?}",);<left><left>
+iabbrev <buffer> pln  println!("{}", );<left><left>
 " -- testing
 iabbrev <buffer> #t #[test]<c-o>o<left>
 iabbrev <buffer> #p #[should_panic(expected = "")]<left><left><left>
@@ -28,6 +29,8 @@ let g:completion_enable_auto_paren = 1
 inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " wrap selection in Some(*)
 vmap ,sm cSome(<c-r>"<esc>
+" grep for functions and move function sig to top of window
+nnoremap <silent><buffer>,f :Rg<Space>fn<Space><CR>
 " surround (W)ord with angle brackets
 nmap <localleader>ab ysiW>
 " ale settings

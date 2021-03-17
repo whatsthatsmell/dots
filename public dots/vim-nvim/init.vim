@@ -48,7 +48,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'chuling/ci_dark'
+Plug 'luochen1990/rainbow'
+" Plug 'NLKNguyen/papercolor-theme'
 Plug 'andymass/vim-matchup'
 " Neovim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
@@ -83,12 +85,18 @@ let g:firenvim_config = {
 			\ }
 			\ }
 set t_Co=256
-set bg=light
+set termguicolors
+set bg=dark
 " syntax highlight only to 1K instead of default 3K
 set synmaxcol=1000
-
+" THEME stuff
+" better vertsplit char- part of ci_dark theme
+set fillchars+=vert:│
+let g:ci_dark_enable_bold = 1
+let g:rainbow_active = 1
 " lightline config
 let g:lightline = {
+			\ 'colorscheme': 'ci_dark',
 			\ 'component': {
 	    \  'spell': '%{&spell?"SPELL":""}',
       \  'lineinfo': '%3l/%1L:%-2c'},
@@ -119,21 +127,20 @@ function! LightlineFilename()
 endfunction
 
 " PaperColor settings
-let g:PaperColor_Theme_Options = {
-			\   'theme': {
-			\     'default.light': {
-			\       'transparent_background': 1,
-			\       'override' : {
-			\       'cursorlinenr_bg' : ['#e4e4e4', '254'],
-			\         'color10' : ['#005f00', '22'],
-			\         'color03' : ['#005f87', '24'],
-			\         'color11' : ['#lclclc', '234'],
-			\         'spellbad' : ['#ffaf87', '216'],
-			\       }
-			\     }
-			\   }
-			\ }
-colorscheme PaperColor
+" let g:PaperColor_Theme_Options = {
+" 			\   'theme': {
+" 			\     'default.dark': {
+" 			\       'transparent_background': 0,
+" 			\       'override' : {
+" 			\         'color10' : ['#005f00', '22'],
+" 			\         'color03' : ['#005f87', '24'],
+" 			\         'color11' : ['#lclclc', '234'],
+" 			\         'spellbad' : ['#ffaf87', '216'],
+" 			\       }
+" 			\     }
+" 			\   }
+" 			\ }
+colorscheme ci_dark
 
 " lsp config - JavaScipt using ALE/lsp hybrid. Look in JavaScript ftplugin.
 " Additional lsp settings in ftplugin for each language
