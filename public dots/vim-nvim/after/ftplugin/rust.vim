@@ -1,12 +1,4 @@
 setlocal shortmess+=c
-" tab completion --
-" Use <Tab> and <S-Tab> to navigate through popup menu
-" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" use <Tab> as trigger keys
-" imap <Tab> <Plug>(completion_smart_tab)
-" imap <S-Tab> <Plug>(completion_smart_s_tab)
 
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
@@ -15,7 +7,7 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 sign define LspDiagnosticsSignHint text=ⓗ texthl=LspDiagnosticsSignHint linehl= numhl=
 sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl= numhl=
-" snippets
+" my snippets
 iabbrev <buffer> w18 #![warn(rust_2018_idioms)]
 " this is pd and ppd with rust-analyzer Magic Completions
 " iabbrev <buffer> epl  eprintln!("{:#?}",);<left><left>
@@ -25,7 +17,7 @@ iabbrev <buffer> #t #[test]<c-o>o<left>
 iabbrev <buffer> #p #[should_panic(expected = "")]<left><left><left>
 iabbrev <buffer> #b #[bench]<c-o>o<left>
 iabbrev <buffer> #i #[ignore]<c-o>o<left>
-" -- end snippets
+" -- end my snippets
 let g:completion_enable_auto_paren = 1
 " open the braces
 inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
@@ -35,9 +27,7 @@ vmap ,sm cSome(<c-r>"<esc>
 nnoremap <silent><buffer>,f :Rg<Space>fn<Space><CR>
 " surround (W)ord with angle brackets
 nmap <localleader>ab ysiW>
-" ale settings
-" let g:ale_completion_enabled = 0
-" let g:ale_disable_lsp = 0
+" mappings
 nnoremap <silent><buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
@@ -54,6 +44,8 @@ nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 " lua vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+" Don't need ALE for Rust anymore but still use some features 
+" and mappings out of habit from other languages.
 let g:ale_linters = {
 \ 'rust': ['analyzer'],
 \}
