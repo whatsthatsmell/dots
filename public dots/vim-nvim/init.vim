@@ -54,9 +54,7 @@ Plug 'luochen1990/rainbow'
 Plug 'andymass/vim-matchup'
 " Neovim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
-
 Plug 'nvim-lua/completion-nvim'
-
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
 " Plug 'pwntester/octo.nvim'
@@ -67,7 +65,6 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'junegunn/vim-peekaboo'
 call plug#end()
-
 
 " NERDTree
 let NERDTreeShowHidden=1

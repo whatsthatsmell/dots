@@ -83,8 +83,8 @@ prompt_context() { }
 
 # User configuration
 export MANPAGER='nvim +Man!'
-export BAT_PAGER="less -RF"
-export DELTA_PAGER="less -RF"
+export BAT_PAGER="less -R"
+export DELTA_PAGER="less -R"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
