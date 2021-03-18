@@ -1,11 +1,12 @@
 setlocal shortmess+=c
+" tab completion --
 " Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " use <Tab> as trigger keys
-imap <Tab> <Plug>(completion_smart_tab)
-imap <S-Tab> <Plug>(completion_smart_s_tab)
+" imap <Tab> <Plug>(completion_smart_tab)
+" imap <S-Tab> <Plug>(completion_smart_s_tab)
 
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
@@ -16,7 +17,8 @@ sign define LspDiagnosticsSignHint text=ⓗ texthl=LspDiagnosticsSignHint linehl
 sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl= numhl=
 " snippets
 iabbrev <buffer> w18 #![warn(rust_2018_idioms)]
-iabbrev <buffer> epl  eprintln!("{:#?}",);<left><left>
+" this is pd and ppd with rust-analyzer Magic Completions
+" iabbrev <buffer> epl  eprintln!("{:#?}",);<left><left>
 iabbrev <buffer> pln  println!("{}", );<left><left>
 " -- testing
 iabbrev <buffer> #t #[test]<c-o>o<left>
