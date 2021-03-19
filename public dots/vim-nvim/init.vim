@@ -11,8 +11,7 @@ set undofile
 set inccommand=split
 set scrolloff=1
 
-" rip off TJ DeVries' local_plug func until I move to lua (seems inevitable)
-" https://github.com/tjdevries/config_manager/blob/993bf6852bfec2778df797dcd7e217579b8f563d/xdg_config/nvim/init.vim#L31
+" rip off TJ DeVries' local_plug func until I fully move to lua (seems inevitable)
 function! s:local_plug(package_name) abort 
   if isdirectory(expand("~/vim-dev/plugins/" . a:package_name))
     execute "Plug '~/vim-dev/plugins/".a:package_name."'"
@@ -262,6 +261,9 @@ nmap <silent><leader>ls :mksession! ~/vim-sessions/latest.vim<cr>
 " paste last thing yanked, not deleted
 nmap ,p "0p
 nmap ,P "0P
+
+" DELETE: follow this with y,d or c{motion} & it wont replace "0
+nmap _ "_
 
 " open quickfix or loc list
 nmap <silent><leader>co :cope<CR>

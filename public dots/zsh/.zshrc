@@ -97,7 +97,7 @@ export DELTA_PAGER="less -R"
 export EDITOR='nvim'
 # fi
 # jq - change colors to show better in gruvbox lite
-export JQ_COLORS="1;30:0;30:0;30:0;30:0;32:1;30:1;30"
+export JQ_COLORS="1;30:1;31:1;32:0;37:0;32:1;30:1;30"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
