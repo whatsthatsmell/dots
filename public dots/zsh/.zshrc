@@ -62,6 +62,10 @@ export BAT_THEME="base16"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
+# use FZF with todoist cli
+source $(brew --prefix)/share/zsh/site-functions/_todoist_fzf
+# shell completion for todoist CLI
+# PROG=todoist source "$GOPATH/src/github.com/urfave/cli/autocomplete/zsh_autocomplete"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 

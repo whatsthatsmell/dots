@@ -58,7 +58,8 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
 " Plug 'pwntester/octo.nvim'
 " Plug 'nvim-lua/popup.nvim'
-" Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 " Plug 'nvim-telescope/telescope.nvim'
 " Plug 'tjdevries/nlua.nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
@@ -128,6 +129,8 @@ endfunction
 
 colorscheme ci_dark
 
+" all. the. lua. --------
+lua require('gitsigns').setup()
 " lsp config - JavaScipt using ALE/lsp hybrid. Look in JavaScript ftplugin.
 " Additional lsp settings in ftplugin for each language
 " - C
@@ -329,10 +332,9 @@ let g:undotree_HelpLine = 0
 let g:undotree_WindowLayout = 2
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 6
-" Fugitive & git gutter settings
+" Fugitive & gitsigns maps
 nnoremap <silent> <leader>gb :Git blame<Return>
-nnoremap <silent> <leader>hu :GitGutterUndoHunk<Return>
-nnoremap <silent> <leader>hh :GitGutterLineHighlightsToggle<Return>
+nnoremap <silent> <leader>hh :lua require"gitsigns".toggle_linehl()<Return>
 nmap <leader>gp :Gpush origin
 " fzf-checkout settings
 nnoremap <leader>gc :GBranches<CR>
