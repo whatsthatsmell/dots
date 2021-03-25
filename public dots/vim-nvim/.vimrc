@@ -1,7 +1,5 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
 set nu
 set rnu
 set hidden
@@ -58,18 +56,18 @@ nmap <leader>v :vs %:h/
 let g:ale_completion_enabled = 1
 let g:ale_completion_autoimport = 1
 
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'dense-analysis/ale'
-Plugin 'pangloss/vim-javascript'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-commentary'
-" Plugin 'airblade/vim-gitgutter'
-call vundle#end()
+" call vundle#begin()
+" Plugin 'VundleVim/Vundle.vim'
+" Plugin 'editorconfig/editorconfig-vim'
+" Plugin 'dense-analysis/ale'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'jiangmiao/auto-pairs'
+" Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-commentary'
+" " Plugin 'airblade/vim-gitgutter'
+" call vundle#end()
 
 filetype plugin indent on    " required
 " auto exit insert mode

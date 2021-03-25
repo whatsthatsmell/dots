@@ -25,6 +25,15 @@ call plug#begin('~/.vim/plugged')
 " locals
 call s:local_plug('ci_dark.vim')
 " add more locals --
+" Plugins
+Plug 'editorconfig/editorconfig-vim'
+Plug 'dense-analysis/ale'
+Plug 'pangloss/vim-javascript'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'jparise/vim-graphql'
@@ -47,8 +56,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
+" I use a customized version of this theme
 " Plug 'chuling/ci_dark'
 Plug 'luochen1990/rainbow'
+" the light mode theme
 " Plug 'NLKNguyen/papercolor-theme'
 Plug 'andymass/vim-matchup'
 " Neovim lsp Plugins
@@ -284,6 +295,7 @@ nnoremap ; :
 vnoremap ; :
 " dictionary completion - overrides digraphs mapping
 " inoremap <C-d> <C-x><C-k>
+" -- getting dictionary from compe
 " thesaurus completion
 set thesaurus+=~/.vim/thesaurus/thesaurii.txt
 inoremap <C-t> <C-x><C-t>
@@ -318,8 +330,6 @@ nmap <silent> <leader><bs> <C-o>
 nmap <silent> <leader><space> <C-i>
 " Add empty line(s)
 " handled by unimpaired for now
-" nnoremap <silent> [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-" nnoremap <silent> ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 " open latest `todo` file, set by `T mark
 nnoremap <silent> <leader>to :sp \| norm `T<cr>
 " Replace word under cursor in file
@@ -390,11 +400,11 @@ let g:coverage_show_uncovered = 1
 " nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 " **Term settings**
-" open zsh in vsplit or split
+" open neovim terminal: zsh in vsplit or split
 command! -nargs=* T split | terminal <args>
-nmap <silent> <leader>ts :T<cr>
+nmap <silent> <leader>t :T<cr>
 command! -nargs=* VT vsplit | terminal <args>
-nmap <silent> <leader>t :VT<cr>
+nmap <silent> <leader>tv :VT<cr>
 " delete terminial buffer - :q is fine in split
 nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
@@ -412,7 +422,8 @@ nmap <silent><leader>D :NCD<cr>
 nmap <silent><leader>F :lcd<c-r>+<cr>
 " --- 
 " end term settings ***
-
+" this needs to move to JavaScipt filetype Plug
+" or killed off
 let g:test#runner_commands = ['Jest']
 
 " Delete to Esc from (almost) all the things
