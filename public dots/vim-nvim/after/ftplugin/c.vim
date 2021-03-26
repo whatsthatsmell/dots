@@ -24,7 +24,7 @@ inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " \  'c': ['clangd']
 " \}
 
-
+let g:ale_completion_enabled = 0
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'c': ['clangtidy'],

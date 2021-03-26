@@ -47,8 +47,11 @@ alias ghil='gh issue list'
 alias exat='exa -aTI "node_modules|.git|coverage"'
 alias exal='exa -allI "node_modules|.git|coverage"'
 alias exaf='exa -allFI "node_modules|.git|coverage"'
-alias vc='nvim -O ~/.config/nvim/init.vim ~/.vimrc'
-alias nvc='nvim ~/.config/nvim/init.vim'
+alias vc='nvim ~/.config/nvim/init.vim'
+
+# RIP .vimrc
+nvc() { echo 'RIP .vimrc - use the alias: vc' }
+
 alias gt='git difftool --no-prompt' #delta
 alias tl1='tree -L 1'
 alias cov='open coverage/index.html'

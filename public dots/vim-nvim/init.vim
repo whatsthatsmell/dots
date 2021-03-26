@@ -1,10 +1,21 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
-source ~/.vimrc
+" source ~/.vimrc :-(
+set nu
+set rnu
+set hidden
+set completeopt=menu,menuone,preview,noselect,noinsert
+set dictionary+=/usr/share/dict/words
+set wildignore+=*/node_modules/*,*/coverage/*
+set incsearch
+set ignorecase
+set smartcase
+set ts=2
+set sw=2
 set guicursor=
 set clipboard=unnamedplus
 set noshowcmd
-set splitright
+set splitbelow
 set updatetime=2500
 set undodir=~/.vim/undodir
 set undofile
@@ -106,6 +117,8 @@ set synmaxcol=1000
 set fillchars+=vert:│
 let g:ci_dark_enable_bold = 1
 let g:rainbow_active = 1
+colorscheme ci_dark
+
 " lightline config
 let g:lightline = {
 			\ 'colorscheme': 'ci_dark',
@@ -116,13 +129,14 @@ let g:lightline = {
 			\   'left': [ [ 'mode', 'paste', 'spell' ],
 			\             [ 'gitbranch', 'readonly', 'filename' ] ],
 			\   'right': [ [ 'lineinfo' ],
-			\             [ 'filetype' ], [ 'linter_errors'] ] },
+			\             [ 'filetype' ], [ 'linter_errors'], [ 'lsp_diagnostics_hints' ] ] },
 			\ 'inactive': {
-			\  'left': [ ['filename'] ],
-			\  'right': [ ['filetype'] ] }, 
+			\   'left': [ ['filename'] ],
+			\   'right': [ ['filetype'] ] }, 
 			\ 'component_function': {
 			\   'gitbranch': 'FugitiveHead',
 			\   'filename': 'LightlineFilename',
+			\   'lsp_diagnostics_hints': 'LspHints',
 			\ }
 			\ }
 let g:lightline.component_expand = {
@@ -138,18 +152,33 @@ function! LightlineFilename()
 	return filename . modified
 endfunction
 
-colorscheme ci_dark
+function! LspHints() abort
+	let sl = ''
+	if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
+		let sl.='💡:'
+		let sl.= luaeval("vim.lsp.diagnostic.get_count(0, [[Hint]])")
+	else
+			let sl.='🦀'
+	endif
+	return sl
+endfunction
+" -- end of lightline configs --
 
 " all. the. lua. --------
 lua require('gitsigns').setup()
-" lsp config - JavaScipt using ALE/lsp hybrid. Look in JavaScript ftplugin.
+" --- lsp configs --- 
 " Additional lsp settings in ftplugin for each language
+" JavaScipt also using ALE for linting & fixing
+lua require'lspconfig'.tsserver.setup{}
 " - C
-lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
-" - VimL 
+lua require'lspconfig'.clangd.setup{}
+" - VimL (full circle!)
 lua require'lspconfig'.vimls.setup{}
-" - Rust
-lua <<EOF
+" - Rust and general + compe goodness!
+"   @TODO: Kill off 'completion-nvim' b/c
+"   nvim-compe is the amazing goodness!?
+
+lua << END
 
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
@@ -258,7 +287,54 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
-EOF
+END
+
+syntax enable
+
+" *** mappings galore ***
+" turn off highlight
+noremap <silent><Leader>\ :noh<cr>
+" write only if something is changed
+noremap <Leader>w :up<cr>
+" use ZZ but leave in for now 
+noremap <silent> <Leader>q :q<cr>
+" use ZQ
+" noremap <silent> <Leader>Q :q!<cr>
+
+" This sucks, find a better way to deal with this
+inoremap <C-a> <esc>:call AutoPairsToggle()<cr>a
+" expands to dir of current file in cmd mode
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" Buffer stuff - <C-6> is toggle current and alt(last viewed)
+" go to next buffer
+nnoremap <silent> <leader><right> :bn<CR>
+" go to prev buffer
+nnoremap <silent> <leader><left> :bp<CR>
+" delete current buffer - will close split - :q to close split
+nnoremap <silent> <leader>x :bd<CR>
+" Experimental *** delete current buffer - don't close split*
+nmap ,d :b#<bar>bd#<CR>
+" 'grep' word under cursor
+nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
+" 'grep' -- ripgrep!
+nnoremap <silent> <leader>rg :Rg<CR>
+
+" ALE maps+
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+let g:ale_sign_error = "❗️"
+let g:ale_sign_warning = "⚠︎"
+nmap <silent> <leader>h :ALEHover<cr>
+nmap <leader>f <Plug>(ale_fix)
+nmap <silent> <leader>d <Plug>(ale_go_to_definition)
+nnoremap <silent> <leader>r :ALEFindReferences -relative<Return>
+nnoremap <silent> <leader>rn :ALERename<Return>
+
+" open file in directory of current file
+nmap <leader>e :e %:h/
+nmap <leader>v :vs %:h/
+let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
 
 " compe maps
 inoremap <silent><expr> <C-Space> compe#complete()
@@ -307,6 +383,11 @@ inoremap <C-s> <C-x><C-s>
 inoremap <C-f> <C-x><C-f>
 " Vim command-line completion
 inoremap <C-v> <C-x><C-v>
+filetype plugin indent on    " required
+" auto exit insert mode
+au CursorHoldI * stopinsert
+au FileType text set colorcolumn=100 autoindent linebreak
+au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
 
 " When editing a file, always jump to the last known cursor position
 autocmd BufReadPost *

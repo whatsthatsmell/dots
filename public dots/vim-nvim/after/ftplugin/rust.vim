@@ -46,6 +46,7 @@ nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " Don't need ALE for Rust anymore but still use some features 
 " and mappings out of habit from other languages.
+let g:ale_completion_enabled = 0
 let g:ale_linters = {
 \ 'rust': ['analyzer'],
 \}
