@@ -369,15 +369,18 @@ nmap <leader>ss :mksession ~/vim-sessions/
 nmap <leader>os :mksession! ~/vim-sessions/
 nmap <silent><leader>ls :mksession! ~/vim-sessions/latest.vim<cr>
 
-" paste last thing yanked, not deleted
+" paste last thing yanked(not system copied), not deleted
 nmap ,p "0p
 nmap ,P "0P
 
-" DELETE: follow this with y,d or c{motion} & it wont replace "0
-nmap _ "_
-
-" open quickfix or loc list
+" DELETE: with y,d or c{motion} & it wont replace "0
+nnoremap _ "_
+" REPLACE: delete inner word & replace with last yanked (including system)
+nmap ,r "_diwhp
+" open quickfix / close
 nmap <silent><leader>co :cope<CR>
+nmap <silent><leader>cl :cclose<CR>
+" open location list - close manually
 nmap <silent><leader>lo :lope<CR>
 " vim-surround maps
 " surround word under cursor w/ backticks
@@ -390,20 +393,21 @@ nnoremap J mjJ`j
 " save some strokes (best mapping ever)
 nnoremap ; :
 vnoremap ; :
-" dictionary completion - overrides digraphs mapping
-" inoremap <C-d> <C-x><C-k>
-" -- getting dictionary from compe
-" thesaurus completion
+" -- completion maps --
+" Mostly handled by `compe` 🌟
+" thesaurus completion @TODO: Remove?
 set thesaurus+=~/.vim/thesaurus/thesaurii.txt
 inoremap <C-t> <C-x><C-t>
-" line completion
+" line completion - use more!
 inoremap <C-l> <C-x><C-l>
-" check for spelling completion
+" check for spelling completion (compe?)
 inoremap <C-s> <C-x><C-s>
-" file path completion
-inoremap <C-f> <C-x><C-f>
+" file path completion (compe!)
+" inoremap <C-f> <C-x><C-f>
 " Vim command-line completion
 inoremap <C-v> <C-x><C-v>
+" -- end completion maps --
+
 filetype plugin indent on    " required
 " auto exit insert mode
 au CursorHoldI * stopinsert
