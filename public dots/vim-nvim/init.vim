@@ -191,7 +191,6 @@ endfunction
 " -- end of lightline configs --
 
 " all. the. lua. --------
-lua require('gitsigns').setup()
 " --- lsp configs --- 
 " Additional lsp settings in ftplugin for each language
 " JavaScipt also using ALE for linting & fixing
@@ -206,6 +205,16 @@ lua require'lspconfig'.vimls.setup{}
 
 lua << END
 
+require('gitsigns').setup {
+      signs = {
+        add          = {hl = 'DiffAdd'   , text = '│', numhl='GitSignsAddNr'},
+        change       = {hl = 'DiffChange', text = '│', numhl='GitSignsChangeNr'},
+        delete       = {hl = 'DiffDelete', text = '_', numhl='GitSignsDeleteNr'},
+        topdelete    = {hl = 'DiffDelete', text = '‾', numhl='GitSignsDeleteNr'},
+        changedelete = {hl = 'DiffChange', text = '~', numhl='GitSignsChangeNr'},
+      },
+
+}
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
 
