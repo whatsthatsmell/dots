@@ -78,6 +78,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
+" try lspsaga -- ***
+" Plug 'glepnir/lspsaga.nvim'
 " Plug 'pwntester/octo.nvim'
 " Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -129,7 +131,7 @@ let g:lightline = {
 			\   'left': [ [ 'mode', 'paste', 'spell' ],
 			\             [ 'gitbranch', 'readonly', 'filename' ] ],
 			\   'right': [ [ 'lineinfo' ],
-			\             [ 'filetype' ], [ 'linter_errors'], [ 'lsp_diagnostics_hints' ] ] },
+			\             [ 'filetype' ], [ 'linter_errors'], [ 'lsp_diagnostics_hints' ],  [ 'lsp_diagnostics_warnings' ],  [ 'lsp_diagnostics_errors' ] ] },
 			\ 'inactive': {
 			\   'left': [ ['filename'] ],
 			\   'right': [ ['filetype'] ] }, 
@@ -137,6 +139,8 @@ let g:lightline = {
 			\   'gitbranch': 'FugitiveHead',
 			\   'filename': 'LightlineFilename',
 			\   'lsp_diagnostics_hints': 'LspHints',
+			\   'lsp_diagnostics_warnings': 'LspWarnings',
+			\   'lsp_diagnostics_errors': 'LspErrors',
 			\ }
 			\ }
 let g:lightline.component_expand = {
@@ -162,6 +166,28 @@ function! LspHints() abort
 	endif
 	return sl
 endfunction
+
+function! LspWarnings() abort
+	let sl = ''
+	if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
+		let sl.='⚠️ :'
+		let sl.= luaeval("vim.lsp.diagnostic.get_count(0, [[Warn]])")
+	else
+			let sl.='🦀'
+	endif
+	return sl
+endfunction
+
+function! LspErrors() abort
+	let sl = ''
+	if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
+		let sl.='❗:'
+		let sl.= luaeval("vim.lsp.diagnostic.get_count(0, [[Error]])")
+	else
+			let sl.='🦀'
+	endif
+	return sl
+endfunction
 " -- end of lightline configs --
 
 " all. the. lua. --------
@@ -182,6 +208,10 @@ lua << END
 
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
+
+-- trying saga ***
+-- local saga = require 'lspsaga'
+-- saga.init_lsp_saga()
 
 -- function to attach completion when setting up lsp
 -- local on_attach = function(client)
@@ -282,9 +312,10 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 -- Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = true,
+    virtual_text = false,
+		underline = true,
     signs = true,
-    update_in_insert = true,
+    update_in_insert = false,
   }
 )
 
@@ -341,6 +372,7 @@ nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <silent> <leader>rg :Rg<CR>
 
 " ALE maps+
+" @TODO: Run linters through lsp client & kill ALE
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_error = "❗️"

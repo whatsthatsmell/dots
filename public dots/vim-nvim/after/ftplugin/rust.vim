@@ -6,6 +6,7 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 " Show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 sign define LspDiagnosticsSignHint text=ⓗ texthl=LspDiagnosticsSignHint linehl= numhl=
+sign define LspDiagnosticsSignWarn text=⚠︎ texthl=LspDiagnosticsSignWarn linehl= numhl=
 sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl= numhl=
 " my snippets
 iabbrev <buffer> w18 #![warn(rust_2018_idioms)]
