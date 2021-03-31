@@ -359,8 +359,11 @@ noremap <silent><Leader>\ :noh<cr>
 noremap <Leader>w :up<cr>
 " use ZZ but leave in for now 
 noremap <silent> <Leader>q :q<cr>
-" use ZQ
-" noremap <silent> <Leader>Q :q!<cr>
+" use ZQ for :q! (quit & discard changes)
+" Discard all changed buffers & quit
+noremap <silent> <Leader>Q :qall!<cr>
+" write all and quit
+noremap <silent> <Leader>W :wqall<cr>
 
 " This sucks, find a better way to deal with this
 inoremap <C-a> <esc>:call AutoPairsToggle()<cr>a
@@ -378,7 +381,7 @@ nmap ,d :b#<bar>bd#<CR>
 " 'grep' word under cursor
 nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
 " 'grep' -- ripgrep!
-nnoremap <silent> <leader>rg :Rg<CR>
+nnoremap <silent> <leader>rg :RG<CR>
 
 " ALE maps+
 " @TODO: Run linters through lsp client & kill ALE
@@ -407,7 +410,7 @@ inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " sessions
 nmap <leader>ss :mksession ~/vim-sessions/
-nmap <leader>os :mksession! ~/vim-sessions/
+nmap <leader>os :wa<Bar>exe "mksession! " . v:this_session
 nmap <silent><leader>ls :mksession! ~/vim-sessions/latest.vim<cr>
 
 " paste last thing yanked(not system copied), not deleted
@@ -524,10 +527,17 @@ let g:fzf_branch_actions = {
 let g:fzf_checkout_git_options = '--sort=-committerdate'
 let g:fzf_checkout_previous_ref_first = v:true
 
+" splitsville
+" - small vertical split to the right & go to it
+nnoremap <silent> ,\ :127vsp<CR><C-w><right>
+" split - larger top
+nnoremap <silent> ,- :22sp<CR><C-w><down>
 " OS X-like space bar to scroll.
 nnoremap <Space> <C-F>
 " Markdown-preview settings
 nmap <leader>md <Plug>MarkdownPreview
+" 
+" ** Test and  coverage related **
 " Specify the path to `coverage.json` file relative to your current working directory.
 let g:coverage_json_report_path = 'coverage/coverage-final.json'
 
@@ -542,10 +552,12 @@ let g:coverage_show_covered = 0
 
 " Display signs on uncovered lines
 let g:coverage_show_uncovered = 1
-" Test settings
+
 " using lowercase t for term:// split now
 " nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
+let g:test#runner_commands = ['Jest']
+
 " **Term settings**
 " open neovim terminal: zsh in vsplit or split
 command! -nargs=* T split | terminal <args>
@@ -571,7 +583,7 @@ nmap <silent><leader>F :lcd<c-r>+<cr>
 " end term settings ***
 " this needs to move to JavaScipt filetype Plug
 " or killed off
-let g:test#runner_commands = ['Jest']
+
 
 " Delete to Esc from (almost) all the things
 nnoremap <Del> <Esc>
@@ -599,6 +611,18 @@ nnoremap <silent>,n :vs ~/notes/<CR>
 let g:fzf_layout = { 'window': { 'width': 0.99, 'height': 0.8 } }
 let g:fzf_preview_window = 'right:61%'
 let $FZF_DEFAULT_OPTS='--reverse'
+" ripgrep with FZF only used as selector
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+" FZF fuzzy file finding with ripgrep
 command! -bang -nargs=* Rg
 			\ call fzf#vim#grep(
 			\   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
