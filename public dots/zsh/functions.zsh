@@ -25,6 +25,13 @@ rdf() {
 sc() {
 	screencapture -x ~/Screenshots/$1
 }
+# -- gh cli goodness --
+# select and go to gh issue on web
+ghi() {
+  local item
+  item=$(gh issue list | fzf | awk '{print $1}')
+  gh issue view $item --web
+}
 
 # select from all PRs and view in vim
 ghprl() {
@@ -46,14 +53,6 @@ ghprr() {
 	fi
 }
 
-
-# create file, add to repo and open
-tgav() {
-	touch $1
-	git add $1
-	nvim $1
-}
-
 # view GH issue in Vim
 ghiv() {
 	gh issue view $1 | nvim -R -c 'set ft=markdown' -c 'norm! 8jzt' -
@@ -62,6 +61,15 @@ ghiv() {
 # view GH issue in browser
 ghib() {
   gh issue view --web $1
+}
+
+# end gh cli goodness --
+
+# create file, add to repo and open
+tgav() {
+	touch $1
+	git add $1
+	nvim $1
 }
 
 # take, npm init and git init and ignore node_modules
@@ -126,13 +134,6 @@ vg() {
 vf() {
 	IFS=$'\n' files=($(fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60%  --query="$1" --multi --select-1 --exit-0))
 	[[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
-}
-
-# go to GH issue on web
-ghi() {
-  local item
-  item=$(gh issue list | fzf | awk '{print $1}')
-  gh issue view $item --web
 }
 
 # search notes and open it in nvim
