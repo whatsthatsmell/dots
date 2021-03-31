@@ -45,6 +45,10 @@ nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nmap <buffer><silent><localleader>n <Plug>(ale_next_wrap)
 nmap <buffer><silent><localleader>p <Plug>(ale_previous_wrap)
 
+" abbreviations - see maps below for wrapping with these
+inoreabbrev Ccl console.log()<Left><Left><Esc>
+inoreabbrev Cclj console.log(JSON.stringify())<Left><Left><left><Esc>
+
 " sync syntax on large-ish file
 nmap <silent><localleader>st :syntax sync fromstart<cr>
 " retab - fix existing after expandtab

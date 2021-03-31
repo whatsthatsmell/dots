@@ -1,12 +1,9 @@
-inoreabbrev Ccl console.log()<Left><Esc>
-inoreabbrev Cclj console.log(JSON.stringify())<Left><left><Esc>
 inoreabbrev Tdate <C-R>=strftime("%d-%b-%Y")<CR>
 inoreabbrev Gdate <C-R>=strftime("%FT%T")<CR>
 inoreabbrev ryme rhyme
 inoreabbrev undering understanding
 inoreabbrev understaning understanding
 inoreabbrev graphql GraphQL
-iabbrev joel Joel
 iabbrev dont don't
 inoreabbrev mdl []()
 iabbrev syntac syntax

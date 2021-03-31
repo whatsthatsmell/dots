@@ -40,7 +40,8 @@ call s:local_plug('ci_dark.vim')
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dense-analysis/ale'
 Plug 'pangloss/vim-javascript'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -215,6 +216,35 @@ require('gitsigns').setup {
       },
 
 }
+
+-- nvim-autopairs
+require('nvim-autopairs').setup()
+local remap = vim.api.nvim_set_keymap
+local npairs = require('nvim-autopairs')
+
+-- skip it, if you use another global object
+_G.MUtils= {}
+
+vim.g.completion_confirm_key = ""
+MUtils.completion_confirm=function()
+  if vim.fn.pumvisible() ~= 0  then
+    if vim.fn.complete_info()["selected"] ~= -1 then
+      vim.fn["compe#confirm"]()
+      return npairs.esc("<c-y>")
+    else
+      vim.defer_fn(function()
+        vim.fn["compe#confirm"]("<cr>")
+      end, 20)
+      return npairs.esc("<c-n>")
+    end
+  else
+    return npairs.check_break_line_char()
+  end
+end
+
+
+remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
 
@@ -366,7 +396,8 @@ noremap <silent> <Leader>Q :qall!<cr>
 noremap <silent> <Leader>W :wqall<cr>
 
 " This sucks, find a better way to deal with this
-inoremap <C-a> <esc>:call AutoPairsToggle()<cr>a
+" inoremap <C-a> <esc>:call AutoPairsToggle()<cr>a
+" and windwp/nvim-autopairs was the way!
 " expands to dir of current file in cmd mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " Buffer stuff - <C-6> is toggle current and alt(last viewed)
@@ -403,7 +434,7 @@ let g:ale_completion_autoimport = 1
 
 " compe maps
 inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+" inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
