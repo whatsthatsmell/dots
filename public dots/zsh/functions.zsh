@@ -26,6 +26,27 @@ sc() {
 	screencapture -x ~/Screenshots/$1
 }
 
+# select from all PRs and view in vim
+ghprl() {
+  local prid
+  prid=$(gh pr list -L100 | fzf | cut -f1)
+	if [[ -n $prid ]]
+	then
+    gh pr view $prid | nvim -R -c 'set ft=markdown' -c 'norm! zt' -
+	fi
+}
+
+# select from PRs needing my review and view in vim
+ghprr() {
+  local prid
+  prid=$(gh pr list -L100 --search "is:open is:pr review-requested:@me" | fzf | cut -f1)
+	if [[ -n $prid ]]
+	then
+    gh pr view $prid | nvim -R -c 'set ft=markdown' -c 'norm! zt' -
+	fi
+}
+
+
 # create file, add to repo and open
 tgav() {
 	touch $1
