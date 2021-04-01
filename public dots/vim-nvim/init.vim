@@ -590,12 +590,15 @@ nmap <silent> <leader>T :TestFile<CR>
 let g:test#runner_commands = ['Jest']
 
 " **Term settings**
-" open neovim terminal: zsh in vsplit or split
+" open new neovim terminal: zsh in vsplit or split
 command! -nargs=* T split | terminal <args>
 nmap <silent> <leader>t :T<cr>
 command! -nargs=* VT vsplit | terminal <args>
 nmap <silent> <leader>tv :VT<cr>
-" delete terminial buffer - :q is fine in split
+" open existing terminal (or any) buffer in vert right split: @[N]
+command! -nargs=* VRSB vertical rightbelow sb<args>
+nnoremap <leader>br :VRSB
+" delete terminal buffer - :q is fine in split
 nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
 nmap <silent> <leader>gf :vs <cfile><CR>
