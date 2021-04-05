@@ -632,6 +632,14 @@ command! DiffOrig let g:diffline = line('.') | vert new | set bt=nofile | r # | 
 nnoremap <Leader>do :DiffOrig<cr>
 nnoremap <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
 " fzf configure
+" -- PRS: gh pr list and select via FZF
+command! PRS call fzf#run(fzf#wrap({'source': 'gh pr list -L100', 'sink': function('PrsFzf')}))
+function! PrsFzf(line)
+	echom a:line
+  let [id; rest] = split(a:line, "\t")
+	echom id
+    execute ':enew | r ! gh pr view ' . id
+endfunction
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>bc :BCommits<CR>
 nnoremap <C-p> :GFiles<CR>
