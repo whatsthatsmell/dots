@@ -74,7 +74,7 @@ source $(brew --prefix)/share/zsh/site-functions/_todoist_fzf
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx web-search nvm zsh-autosuggestions cargo)
+plugins=(git zsh-autosuggestions cargo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,8 +111,8 @@ export JQ_COLORS="1;30:1;31:1;32:0;37:0;32:1;30:1;30"
 # For a full list of active aliases, run `alias`.
 #
 # aliases
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
+# alias zshconfig="nvim ~/.zshrc"
+# alias ohmyzsh="nvim ~/.oh-my-zsh"
 bindkey -v
 autoload edit-command-line
 zle -N edit-command-line

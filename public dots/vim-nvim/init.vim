@@ -40,7 +40,6 @@ call s:local_plug('ci_dark.vim')
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dense-analysis/ale'
 Plug 'pangloss/vim-javascript'
-" Plug 'jiangmiao/auto-pairs'
 Plug 'windwp/nvim-autopairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -429,12 +428,12 @@ nnoremap <silent> <leader>rn :ALERename<Return>
 " open file in directory of current file
 nmap <leader>e :e %:h/
 nmap <leader>v :vs %:h/
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_completion_autoimport = 1
 
 " compe maps
 inoremap <silent><expr> <C-Space> compe#complete()
-" inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
@@ -635,9 +634,7 @@ nnoremap <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
 " -- PRS: gh pr list and select via FZF
 command! PRS call fzf#run(fzf#wrap({'source': 'gh pr list -L100', 'sink': function('PrsFzf')}))
 function! PrsFzf(line)
-	echom a:line
   let [id; rest] = split(a:line, "\t")
-	echom id
     execute ':enew | r ! gh pr view ' . id
 endfunction
 nnoremap <silent> <leader>b :Buffers<CR>

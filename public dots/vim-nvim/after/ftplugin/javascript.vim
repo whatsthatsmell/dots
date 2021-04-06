@@ -1,6 +1,7 @@
 setlocal linebreak
 setlocal exrc
 set colorcolumn=81
+" setlocal omnifunc=v:lua.vim.lsp.omnifunc
 " ale settings
 let g:ale_completion_enabled = 0
 let g:ale_fixers = {
@@ -15,6 +16,7 @@ let g:ale_linters = {
 \}
 
 " lsp mappings and all the goodness
+let g:completion_enable_auto_paren = 1
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }

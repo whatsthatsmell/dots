@@ -25,7 +25,7 @@ rdf() {
 sc() {
 	screencapture -x ~/Screenshots/$1
 }
-# -- gh cli goodness --
+# --- gh cli goodness ---
 # select and go to gh issue on web
 ghi() {
   local item
