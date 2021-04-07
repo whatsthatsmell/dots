@@ -22,21 +22,23 @@ set undofile
 set inccommand=split
 set scrolloff=1
 
-" rip off TJ DeVries' local_plug func until I fully move to lua (seems inevitable)
-function! s:local_plug(package_name) abort 
-  if isdirectory(expand("~/vim-dev/plugins/" . a:package_name))
-    execute "Plug '~/vim-dev/plugins/".a:package_name."'"
-  else
-    execute "Plug 'joelpalmer/" .a:package_name."'"
-  endif
-endfunction
+" load local plugin if it's there, otherwise go git it.
+" function! s:local_plug(package_name) abort 
+"   if isdirectory(expand("~/vim-dev/plugins/" . a:package_name))
+"     execute "Plug '~/vim-dev/plugins/".a:package_name."'"
+"   else
+"     execute "Plug 'joelpalmer/" .a:package_name."'"
+"   endif
+" endfunction
 " -- end local_plug()
 
 call plug#begin('~/.vim/plugged')
 " locals
-call s:local_plug('ci_dark.vim')
+" call s:local_plug('ci_dark.vim')
+" call s:local_plug('fzf-gh.vim')
 " add more locals --
 " Plugins
+Plug 'joelpalmer/fzf-gh.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dense-analysis/ale'
 Plug 'pangloss/vim-javascript'
@@ -89,6 +91,9 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'junegunn/vim-peekaboo'
 call plug#end()
+
+" fzf-gh settings
+let g:fzf_gh_website=1
 
 " NERDTree
 let NERDTreeShowHidden=1
@@ -631,12 +636,12 @@ command! DiffOrig let g:diffline = line('.') | vert new | set bt=nofile | r # | 
 nnoremap <Leader>do :DiffOrig<cr>
 nnoremap <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
 " fzf configure
-" -- PRS: gh pr list and select via FZF
-command! PRS call fzf#run(fzf#wrap({'source': 'gh pr list -L100', 'sink': function('PrsFzf')}))
-function! PrsFzf(line)
-  let [id; rest] = split(a:line, "\t")
-    execute ':enew | r ! gh pr view ' . id
-endfunction
+" -- (Now a Plugin) PRS: gh pr list and select via FZF
+" command! PRS call fzf#run(fzf#wrap({'source': 'gh pr list -L100', 'sink': function('PrsFzf')}))
+" function! PrsFzf(line)
+"   let [id; rest] = split(a:line, "\t")
+"     execute ':enew | r ! gh pr view ' . id
+" endfunction
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>bc :BCommits<CR>
 nnoremap <C-p> :GFiles<CR>
