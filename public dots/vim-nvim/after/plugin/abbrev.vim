@@ -7,3 +7,4 @@ inoreabbrev graphql GraphQL
 iabbrev dont don't
 inoreabbrev mdl []()
 iabbrev syntac syntax
+iabbrev zfz fzf

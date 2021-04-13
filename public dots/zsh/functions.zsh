@@ -130,7 +130,7 @@ vg() {
 	fi
 }
 
-# find a file and open it fzf → fd → Vim -- no args, looks in cwd
+# find a file and open it fzf → fd → Vim -- no args, looks in cwd - rg to highlight etc
 vf() {
 	IFS=$'\n' files=($(fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60%  --query="$1" --multi --select-1 --exit-0))
 	[[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"

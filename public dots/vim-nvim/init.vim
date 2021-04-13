@@ -16,29 +16,32 @@ set guicursor=
 set clipboard=unnamedplus
 set noshowcmd
 set splitbelow
+set splitright
 set updatetime=2500
 set undodir=~/.vim/undodir
 set undofile
 set inccommand=split
 set scrolloff=1
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat=%f:%l:%c:%m,%f:%l:%m
 
 " load local plugin if it's there, otherwise go git it.
-" function! s:local_plug(package_name) abort 
-"   if isdirectory(expand("~/vim-dev/plugins/" . a:package_name))
-"     execute "Plug '~/vim-dev/plugins/".a:package_name."'"
-"   else
-"     execute "Plug 'joelpalmer/" .a:package_name."'"
-"   endif
-" endfunction
+" Comment this out or change it to point at your local plugins
+function! s:local_plug(package_name) abort 
+  if isdirectory(expand("~/vim-dev/plugins/" . a:package_name))
+    execute "Plug '~/vim-dev/plugins/".a:package_name."'"
+  else
+    execute "Plug 'joelpalmer/" .a:package_name."'"
+  endif
+endfunction
 " -- end local_plug()
 
 call plug#begin('~/.vim/plugged')
-" locals
-" call s:local_plug('ci_dark.vim')
-" call s:local_plug('fzf-gh.vim')
+" locals - comment out or replace with yours
+call s:local_plug('ci_dark.vim')
+call s:local_plug('fzf-gh.vim')
 " add more locals --
 " Plugins
-Plug 'joelpalmer/fzf-gh.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dense-analysis/ale'
 Plug 'pangloss/vim-javascript'
@@ -69,11 +72,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
+Plug 'ludovicchabant/vim-gutentags'
 " I use a customized version of this theme
 " Plug 'chuling/ci_dark'
 Plug 'luochen1990/rainbow'
-" the light mode theme
-" Plug 'NLKNguyen/papercolor-theme'
 Plug 'andymass/vim-matchup'
 " Neovim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
@@ -87,9 +89,10 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 " Plug 'nvim-telescope/telescope.nvim'
-" Plug 'tjdevries/nlua.nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'junegunn/vim-peekaboo'
+" try Colorizer
+Plug 'chrisbra/Colorizer'
 call plug#end()
 
 " fzf-gh settings
@@ -136,13 +139,14 @@ let g:lightline = {
 			\   'left': [ [ 'mode', 'paste', 'spell' ],
 			\             [ 'gitbranch', 'readonly', 'filename' ] ],
 			\   'right': [ [ 'lineinfo' ],
-			\             [ 'filetype' ], [ 'linter_errors'], [ 'lsp_diagnostics_hints' ],  [ 'lsp_diagnostics_warnings' ],  [ 'lsp_diagnostics_errors' ] ] },
+			\             [ 'filetype' ], [ 'linter_errors'], [ 'lsp_diagnostics_hints' ],  [ 'lsp_diagnostics_warnings' ],  [ 'lsp_diagnostics_errors' ], [ 'bufferNr' ] ] },
 			\ 'inactive': {
 			\   'left': [ ['filename'] ],
 			\   'right': [ ['filetype'] ] }, 
 			\ 'component_function': {
 			\   'gitbranch': 'FugitiveHead',
 			\   'filename': 'LightlineFilename',
+      \   'bufferNr': 'LightlineBufferNr',
 			\   'lsp_diagnostics_hints': 'LspHints',
 			\   'lsp_diagnostics_warnings': 'LspWarnings',
 			\   'lsp_diagnostics_errors': 'LspErrors',
@@ -159,6 +163,11 @@ function! LightlineFilename()
 	let filename = expand('%:~:.') !=# '' ? expand('%:~:.') : '[No Name]'
 	let modified = &modified ? ' +' : ''
 	return filename . modified
+endfunction
+
+function! LightlineBufferNr()
+	let bn = ' BN:' . bufnr('%')
+	return bn
 endfunction
 
 function! LspHints() abort
@@ -413,18 +422,14 @@ nnoremap <silent> <leader><left> :bp<CR>
 nnoremap <silent> <leader>x :bd<CR>
 " Experimental *** delete current buffer - don't close split*
 nmap ,d :b#<bar>bd#<CR>
-" 'grep' word under cursor
-nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
-" 'grep' -- ripgrep!
-nnoremap <silent> <leader>rg :RG<CR>
 
 " ALE maps+
-" @TODO: Run linters through lsp client & kill ALE
+" @TODO: finish killing ALE
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_error = "❗️"
 let g:ale_sign_warning = "⚠︎"
-nmap <silent> <leader>h :ALEHover<cr>
+" nmap <silent> <leader>h :ALEHover<cr>
 nmap <leader>f <Plug>(ale_fix)
 nmap <silent> <leader>d <Plug>(ale_go_to_definition)
 nnoremap <silent> <leader>r :ALEFindReferences -relative<Return>
@@ -517,10 +522,10 @@ nmap <silent> <leader><space> <C-i>
 " handled by unimpaired for now
 " open latest `todo` file, set by `T mark
 nnoremap <silent> <leader>to :sp \| norm `T<cr>
-" Replace word under cursor in file
-nmap <leader>sr *:%s//
-" Replace word under cursor in line
-nmap <leader>sl *:s///g<left><left>
+" Replace word under cursor in file (case-sensitive)
+nmap <leader>sr *:%s///gI<left><left><left>
+" Replace word under cursor in line (case-sensitive)
+nmap <leader>sl *:s///gI<left><left><left>
 " undotree
 nnoremap <silent><leader>u :UndotreeToggle<CR>
 let g:undotree_HelpLine = 0
@@ -606,7 +611,8 @@ nnoremap <leader>br :VRSB
 nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
 nmap <silent> <leader>gf :vs <cfile><CR>
-au TermOpen,TermEnter * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . ' BN:' . bufnr('%'), ':t')
+au TermOpen,TermEnter * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . ' ⓣ  '. bufnr('%'), ':t')
+
 " - not sure why I have this & <del> set? hmmm
 if has('nvim')
 	tmap <C-o> <C-\><C-n>
@@ -619,9 +625,6 @@ nmap <silent><leader>D :NCD<cr>
 nmap <silent><leader>F :lcd<c-r>+<cr>
 " --- 
 " end term settings ***
-" this needs to move to JavaScipt filetype Plug
-" or killed off
-
 
 " Delete to Esc from (almost) all the things
 nnoremap <Del> <Esc>
@@ -635,26 +638,29 @@ nnoremap <leader>c :w !diff % -<CR>
 command! DiffOrig let g:diffline = line('.') | vert new | set bt=nofile | r # | 0d_ | diffthis | :exe "norm! ".g:diffline."G" | wincmd p | diffthis | wincmd p
 nnoremap <Leader>do :DiffOrig<cr>
 nnoremap <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
-" fzf configure
-" -- (Now a Plugin) PRS: gh pr list and select via FZF
-" command! PRS call fzf#run(fzf#wrap({'source': 'gh pr list -L100', 'sink': function('PrsFzf')}))
-" function! PrsFzf(line)
-"   let [id; rest] = split(a:line, "\t")
-"     execute ':enew | r ! gh pr view ' . id
-" endfunction
+" FZF mappings
+" ---> :PRS and :PRSR - fzf-gh.vim
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>bc :BCommits<CR>
+nnoremap <silent> <leader>bt :BTags<CR>
+nnoremap <silent> ,l :Lines<CR>
+nnoremap <silent> <leader>l :BLines<CR>
+nnoremap <silent> ,h :Helptags<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>p :Files<CR>
 nnoremap <silent> <leader>fm :Marks<CR>
 nnoremap <silent> <leader>rt :VimRTP<CR>
-" search notes
-nnoremap <silent> <leader>n :Notes<CR>
-" new not or open a note
-nnoremap <silent>,n :vs ~/notes/<CR>
+" 'grep' word under cursor
+nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
+" 'grep' -- ripgrep!
+nnoremap <silent> <leader>rg :RG<CR>
+" find notes
+nnoremap <silent>,n :Notes<CR>
+" new note or open a note
+nnoremap <silent> <leader>n :vs ~/notes/<CR>
 let g:fzf_layout = { 'window': { 'width': 0.99, 'height': 0.8 } }
 let g:fzf_preview_window = 'right:61%'
-let $FZF_DEFAULT_OPTS='--reverse'
+let $FZF_DEFAULT_OPTS='--reverse --multi'
 " ripgrep with FZF only used as selector
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
