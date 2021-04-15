@@ -88,10 +88,18 @@ nodes() {
 	ps wup $(pgrep -x node)
 }
 
-#get last 10 reddit post titles from $1 subreddit
+#get last 10 reddit post titles from $1 subreddit (WIP): just shows, need to go
 reddit() {
-curl -s -A 'commandline reader' "https://www.reddit.com/r/$1/new.json?limit=10" \
-  | jq '.data.children| .[] | .data.title' \
+  local json
+  local title
+  local url
+  json=$(curl -s -A 'commandline reader' "https://www.reddit.com/r/$1/new.json?limit=10" | jq '.data.children| .[] | {title: .data.title, link: .data.permalink}')
+  #echo $json
+  title=$(echo "$json" | jq '.title' | fzf)
+	if [[ -n $title ]]
+	then
+    echo $title
+	fi
 }
 
 # get JSON response from route and make it pretty

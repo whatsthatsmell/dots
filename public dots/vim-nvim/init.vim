@@ -93,6 +93,7 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'junegunn/vim-peekaboo'
 " try Colorizer
 Plug 'chrisbra/Colorizer'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 " fzf-gh settings
@@ -203,7 +204,10 @@ function! LspErrors() abort
 	return sl
 endfunction
 " -- end of lightline configs --
-
+" treesitter folding
+" * moved to ftplugins for js & rs (unsupported)
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 " all. the. lua. --------
 " --- lsp configs --- 
 " Additional lsp settings in ftplugin for each language
@@ -218,6 +222,24 @@ lua require'lspconfig'.vimls.setup{}
 "   nvim-compe is the amazing goodness!?
 
 lua << END
+-- treesitter
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true
+  },
+	incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+	indent = {
+    enable = true
+  }
+}
 
 require('gitsigns').setup {
       signs = {

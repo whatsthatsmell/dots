@@ -1,6 +1,11 @@
 setlocal linebreak
 setlocal exrc
 set colorcolumn=81
+" treesitter folding
+setlocal foldmethod=expr
+setlocal foldexpr=nvim_treesitter#foldexpr()
+setlocal foldnestmax=3
+setlocal foldlevel=2
 " setlocal omnifunc=v:lua.vim.lsp.omnifunc
 " ale settings
 let g:ale_completion_enabled = 0

@@ -1,5 +1,7 @@
 setlocal shortmess+=c
-
+" treesitter folding
+setlocal foldmethod=expr
+setlocal foldexpr=nvim_treesitter#foldexpr()
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
