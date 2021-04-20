@@ -44,7 +44,6 @@ call s:local_plug('fzf-gh.vim')
 " Plugins
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dense-analysis/ale'
-Plug 'pangloss/vim-javascript'
 Plug 'windwp/nvim-autopairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -52,7 +51,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
@@ -71,27 +69,19 @@ Plug 'moll/vim-node'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rust-lang/rust.vim'
-Plug 'cespare/vim-toml'
 Plug 'ludovicchabant/vim-gutentags'
-" I use a customized version of this theme
-" Plug 'chuling/ci_dark'
 Plug 'luochen1990/rainbow'
 Plug 'andymass/vim-matchup'
-" Neovim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
-" try lspsaga -- ***
-" Plug 'glepnir/lspsaga.nvim'
-" Plug 'pwntester/octo.nvim'
-" Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'lewis6991/gitsigns.nvim'
-" Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'junegunn/vim-peekaboo'
-" try Colorizer
 Plug 'chrisbra/Colorizer'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
@@ -143,7 +133,7 @@ let g:lightline = {
 			\             [ 'filetype' ], [ 'linter_errors'], [ 'lsp_diagnostics_hints' ],  [ 'lsp_diagnostics_warnings' ],  [ 'lsp_diagnostics_errors' ], [ 'bufferNr' ] ] },
 			\ 'inactive': {
 			\   'left': [ ['filename'] ],
-			\   'right': [ ['filetype'] ] }, 
+			\   'right': [ ['filetype'], [ 'bufferNr' ]] }, 
 			\ 'component_function': {
 			\   'gitbranch': 'FugitiveHead',
 			\   'filename': 'LightlineFilename',
@@ -254,43 +244,10 @@ require('gitsigns').setup {
 
 -- nvim-autopairs
 require('nvim-autopairs').setup()
-local remap = vim.api.nvim_set_keymap
-local npairs = require('nvim-autopairs')
-
--- skip it, if you use another global object
-_G.MUtils= {}
-
-vim.g.completion_confirm_key = ""
-MUtils.completion_confirm=function()
-  if vim.fn.pumvisible() ~= 0  then
-    if vim.fn.complete_info()["selected"] ~= -1 then
-      vim.fn["compe#confirm"]()
-      return npairs.esc("<c-y>")
-    else
-      vim.defer_fn(function()
-        vim.fn["compe#confirm"]("<cr>")
-      end, 20)
-      return npairs.esc("<c-n>")
-    end
-  else
-    return npairs.check_break_line_char()
-  end
-end
-
-
-remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
-
+-- telescope
+require('joel.telescope')
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
-
--- trying saga ***
--- local saga = require 'lspsaga'
--- saga.init_lsp_saga()
-
--- function to attach completion when setting up lsp
--- local on_attach = function(client)
---    require'completion'.on_attach(client)
--- end
 
 -- setup compe
 require'compe'.setup {
@@ -418,6 +375,9 @@ END
 syntax enable
 
 " *** mappings galore ***
+" this stopped working via compe/nvim-autopairs. So, it's back
+inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
+
 " turn off highlight
 noremap <silent><Leader>\ :noh<cr>
 " write only if something is changed
@@ -430,9 +390,6 @@ noremap <silent> <Leader>Q :qall!<cr>
 " write all and quit
 noremap <silent> <Leader>W :wqall<cr>
 
-" This sucks, find a better way to deal with this
-" inoremap <C-a> <esc>:call AutoPairsToggle()<cr>a
-" and windwp/nvim-autopairs was the way!
 " expands to dir of current file in cmd mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " Buffer stuff - <C-6> is toggle current and alt(last viewed)
@@ -591,11 +548,9 @@ let g:fzf_checkout_previous_ref_first = v:true
 
 " splitsville
 " - small vertical split to the right & go to it
-nnoremap <silent> ,\ :127vsp<CR><C-w><right>
+nnoremap <silent> ,\ :75vsp<CR><C-w><right>
 " split - larger top
 nnoremap <silent> ,- :22sp<CR><C-w><down>
-" OS X-like space bar to scroll.
-nnoremap <Space> <C-F>
 " Markdown-preview settings
 nmap <leader>md <Plug>MarkdownPreview
 " 
@@ -660,6 +615,8 @@ nnoremap <leader>c :w !diff % -<CR>
 command! DiffOrig let g:diffline = line('.') | vert new | set bt=nofile | r # | 0d_ | diffthis | :exe "norm! ".g:diffline."G" | wincmd p | diffthis | wincmd p
 nnoremap <Leader>do :DiffOrig<cr>
 nnoremap <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
+" telescope time
+nnoremap <silent> ,<space> :lua require'joel.telescope'.project_files()<cr>
 " FZF mappings
 " ---> :PRS and :PRSR - fzf-gh.vim
 nnoremap <silent> <leader>b :Buffers<CR>

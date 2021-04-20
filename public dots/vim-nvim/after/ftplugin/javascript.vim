@@ -21,7 +21,6 @@ let g:ale_linters = {
 \}
 
 " lsp mappings and all the goodness
-let g:completion_enable_auto_paren = 1
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }

@@ -11,7 +11,7 @@ export ZSH="/Users/joel/.oh-my-zsh"
 ZSH_THEME="agnoster"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7"
 # Bat Theme
-export BAT_THEME="base16"
+export BAT_THEME="ansi"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
