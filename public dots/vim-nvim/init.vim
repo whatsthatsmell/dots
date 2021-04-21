@@ -135,7 +135,7 @@ let g:lightline = {
 			\   'left': [ ['filename'] ],
 			\   'right': [ ['filetype'], [ 'bufferNr' ]] }, 
 			\ 'component_function': {
-			\   'gitbranch': 'FugitiveHead',
+			\   'gitbranch': 'LightlineGitBranch',
 			\   'filename': 'LightlineFilename',
       \   'bufferNr': 'LightlineBufferNr',
 			\   'lsp_diagnostics_hints': 'LspHints',
@@ -154,6 +154,13 @@ function! LightlineFilename()
 	let filename = expand('%:~:.') !=# '' ? expand('%:~:.') : '[No Name]'
 	let modified = &modified ? ' +' : ''
 	return filename . modified
+endfunction
+
+function! LightlineGitBranch()
+	let head = FugitiveHead()
+	let powerline_branch=" \ue0a0"
+	" @TODO: handle detached etc.
+	return strlen(head) > 0 ? head . powerline_branch : head
 endfunction
 
 function! LightlineBufferNr()
@@ -602,6 +609,9 @@ nmap <silent><leader>D :NCD<cr>
 nmap <silent><leader>F :lcd<c-r>+<cr>
 " --- 
 " end term settings ***
+
+" change dir for window to file's dir
+nnoremap <silent><leader>cd :lcd %:p:h<cr> 
 
 " Delete to Esc from (almost) all the things
 nnoremap <Del> <Esc>
