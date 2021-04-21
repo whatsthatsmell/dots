@@ -228,7 +228,10 @@ require'nvim-treesitter.configs'.setup {
   },
 	indent = {
     enable = true
-  }
+  },
+	autopairs = {
+		enable = true
+	}
 }
 
 require('gitsigns').setup {
@@ -375,9 +378,6 @@ END
 syntax enable
 
 " *** mappings galore ***
-" this stopped working via compe/nvim-autopairs. So, it's back
-inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
-
 " turn off highlight
 noremap <silent><Leader>\ :noh<cr>
 " write only if something is changed
@@ -611,12 +611,30 @@ cnoremap <Del> <C-C><Esc>
 inoremap <Del> <Esc>`^
 tnoremap <Del> <C-\><C-n>
 " diff since last save
+" -- quicky
 nnoremap <leader>c :w !diff % -<CR>
+" full featured diff
 command! DiffOrig let g:diffline = line('.') | vert new | set bt=nofile | r # | 0d_ | diffthis | :exe "norm! ".g:diffline."G" | wincmd p | diffthis | wincmd p
 nnoremap <Leader>do :DiffOrig<cr>
-nnoremap <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
+" end diffing, delete scratch(or diff2) buffer & go back to location
+nnoremap <silent> <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
+" diff 2 or more windows/splits, end with \dc or just :diffoff to keep file2
+nnoremap <leader>dw :windo diffthis<cr>
 " telescope time
+" -- find files with gitfiles & fallback on find_files
 nnoremap <silent> ,<space> :lua require'joel.telescope'.project_files()<cr>
+" find and/or create notes
+nnoremap <silent> ,n :lua require'joel.telescope'.find_notes()<cr>
+" Explore files starting at $HOME
+nnoremap <silent> ,e :lua require'joel.telescope'.file_explorer()<cr>
+" find a Vim runtimepath file
+nnoremap <silent> <leader>rt :lua require'joel.telescope'.vim_rtp()<cr>
+" find or create neovim configs
+nnoremap <silent> <leader>nc :lua require'joel.telescope'.nvim_config()<cr>
+nnoremap <silent> ,g :Telescope live_grep<cr>
+nnoremap <silent> ,b :Telescope buffers<cr>
+nnoremap <silent> ,h :Telescope help_tags<cr>
+nnoremap <silent> <leader>fm :Telescope marks<cr>
 " FZF mappings
 " ---> :PRS and :PRSR - fzf-gh.vim
 nnoremap <silent> <leader>b :Buffers<CR>
@@ -624,19 +642,12 @@ nnoremap <silent> <leader>bc :BCommits<CR>
 nnoremap <silent> <leader>bt :BTags<CR>
 nnoremap <silent> ,l :Lines<CR>
 nnoremap <silent> <leader>l :BLines<CR>
-nnoremap <silent> ,h :Helptags<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>p :Files<CR>
-nnoremap <silent> <leader>fm :Marks<CR>
-nnoremap <silent> <leader>rt :VimRTP<CR>
 " 'grep' word under cursor
 nnoremap <silent> <leader>g :Rg <C-R>=expand("<cword>")<CR><CR>
 " 'grep' -- ripgrep!
 nnoremap <silent> <leader>rg :RG<CR>
-" find notes
-nnoremap <silent>,n :Notes<CR>
-" new note or open a note
-nnoremap <silent> <leader>n :vs ~/notes/<CR>
 let g:fzf_layout = { 'window': { 'width': 0.99, 'height': 0.8 } }
 let g:fzf_preview_window = 'right:61%'
 let $FZF_DEFAULT_OPTS='--reverse --multi'
@@ -657,9 +668,6 @@ command! -bang -nargs=* Rg
 			\   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
 			\   fzf#vim#with_preview(), <bang>0)
 
-command! -bang VimRTP call fzf#vim#files('~/.vim', <bang>0)
-command! -bang Notes call fzf#vim#files('~/notes', <bang>0)
-
 autocmd! FileType fzf set laststatus=1 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
@@ -667,7 +675,5 @@ augroup LuaHighlight
 	autocmd!
 	autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
-" open already open files read-only
-" autocmd SwapExists * let v:swapchoice = "o"
-" no c++ here
+
 autocmd BufRead,BufNewFile *.h set filetype=c

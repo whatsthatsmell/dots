@@ -20,6 +20,8 @@ let g:ale_linters = {
 \  'javascript': glob('.eslintrc*', '.;') != '' ? [ 'eslint', 'tsserver' ] : [ 'standard', 'tsserver' ],
 \}
 
+" this stopped working via compe/nvim-autopairs. So, it's back
+inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " lsp mappings and all the goodness
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
