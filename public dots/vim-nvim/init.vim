@@ -157,10 +157,10 @@ function! LightlineFilename()
 endfunction
 
 function! LightlineGitBranch()
-	let head = FugitiveHead()
-	let powerline_branch=" \ue0a0"
-	" @TODO: handle detached etc.
-	return strlen(head) > 0 ? head . powerline_branch : head
+	let head = get(b:,'gitsigns_head','')
+	let status = get(b:,'gitsigns_status','')
+	let status_text = strlen(status) > 0 ? ' ' . status : ''
+	return head . status_text
 endfunction
 
 function! LightlineBufferNr()
@@ -612,6 +612,8 @@ nmap <silent><leader>F :lcd<c-r>+<cr>
 
 " change dir for window to file's dir
 nnoremap <silent><leader>cd :lcd %:p:h<cr> 
+" change dir for window to file's git working dir
+nnoremap <silent><leader>gd :Glcd<cr> 
 
 " Delete to Esc from (almost) all the things
 nnoremap <Del> <Esc>
