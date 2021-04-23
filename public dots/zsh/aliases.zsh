@@ -7,6 +7,7 @@ alias -s vim=nvim
 alias -s txt=nvim
 alias -s {md,MD}=nvim
 alias c='cargo'
+alias ta='todoist add'
 alias rdc='rustup doc --core'
 alias rds='rustup doc --std'
 alias rud='rustup doc'

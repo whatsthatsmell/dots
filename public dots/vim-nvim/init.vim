@@ -79,7 +79,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" trying out gh cli plugin
+" trying out gh cli telescope plugin
 Plug 'nvim-telescope/telescope-github.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
@@ -649,6 +649,7 @@ nnoremap <silent> ,g :Telescope live_grep<cr>
 nnoremap <silent> ,b :Telescope buffers<cr>
 nnoremap <silent> ,h :Telescope help_tags<cr>
 nnoremap <silent> <leader>fm :Telescope marks<cr>
+nnoremap <silent> <leader>is :Telescope gh issues<cr>
 " FZF mappings
 " ---> :PRS and :PRSR - fzf-gh.vim
 " PRs assigned awaiting my review

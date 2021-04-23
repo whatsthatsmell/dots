@@ -164,6 +164,16 @@ vs() {
 	fi
 }
 
+# todoist cli - list todos then show detail
+todos() {
+  local todo
+  todo=$(todoist list | fzf | awk '{print $1}')
+ 	if [[ -n $todo ]]
+	then
+		todoist show $todo
+	fi
+}
+
 # find rust crate and install
 rc() {
   local crate
