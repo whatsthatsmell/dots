@@ -26,6 +26,8 @@ require('telescope').setup{
   }
 }
 
+require('telescope').load_extension('gh')
+
 local M = {}
 
 M.project_files = function()
