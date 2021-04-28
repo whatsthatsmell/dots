@@ -645,12 +645,16 @@ nnoremap <silent> ,e :lua require'joel.telescope'.file_explorer()<cr>
 nnoremap <silent> <leader>rt :lua require'joel.telescope'.vim_rtp()<cr>
 " find or create neovim configs
 nnoremap <silent> <leader>nc :lua require'joel.telescope'.nvim_config()<cr>
+" slowness: https://github.com/nvim-telescope/telescope.nvim/issues/392
 nnoremap <silent> ,g :Telescope live_grep<cr>
 nnoremap <silent> ,b :Telescope buffers<cr>
 nnoremap <silent> ,h :Telescope help_tags<cr>
 nnoremap <silent> <leader>fm :Telescope marks<cr>
 nnoremap <silent> <leader>is :Telescope gh issues<cr>
-" FZF mappings
+" FZF mappings and config
+" -- Temporarily back in for demo
+" command! -bang VimRTP call fzf#vim#files('~/.vim', <bang>0)
+" command! -bang Notes call fzf#vim#files('~/notes/CC', <bang>0)
 " ---> :PRS and :PRSR - fzf-gh.vim
 " PRs assigned awaiting my review
 nnoremap <silent> <leader>pr :PRSR<CR>
@@ -694,3 +698,11 @@ augroup LuaHighlight
 augroup END
 
 autocmd BufRead,BufNewFile *.h set filetype=c
+
+function! OpenURLUnderCursor()
+  let l:uri = expand('<cWORD>')
+  silent exec "!open '" . l:uri . "'"
+  :redraw!
+endfunction
+
+nnoremap <silent>gx :call OpenURLUnderCursor()<CR>

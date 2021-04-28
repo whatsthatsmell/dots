@@ -7,6 +7,8 @@ alias -s vim=nvim
 alias -s txt=nvim
 alias -s {md,MD}=nvim
 alias c='cargo'
+# https://github.com/sachaos/todoist#keybind
+alias gyhc='git rev-parse HEAD | pbcopy'
 alias ta='todoist add'
 alias rdc='rustup doc --core'
 alias rds='rustup doc --std'
@@ -44,7 +46,7 @@ alias gdots='git -C ~/dotfiles status'
 alias glprs='git log -p --reverse --stat'
 alias glps='git log -p --stat'
 alias cpnotes='cp -R  ~/notes/ ~/Dropbox/notes'
-alias cprs='rsync -a ~/rusty ~/Dropbox --exclude rust-sources'
+alias cprs='rsync -a ~/rusty ~/Dropbox/tech --exclude rust-sources'
 alias nij='node inspect node_modules/.bin/jest --runInBand'
 alias jlc='jest --config=jest.local.js'
 alias ghil='gh issue list'

@@ -88,17 +88,15 @@ nodes() {
 	ps wup $(pgrep -x node)
 }
 
-#get last 10 reddit post titles from $1 subreddit (WIP): just shows, need to go
+# get 10 newest posts from @subreddit
 reddit() {
   local json
-  local title
   local url
-  json=$(curl -s -A 'commandline reader' "https://www.reddit.com/r/$1/new.json?limit=10" | jq '.data.children| .[] | {title: .data.title, link: .data.permalink}')
-  #echo $json
-  title=$(echo "$json" | jq '.title' | fzf)
-	if [[ -n $title ]]
+  json=$(curl -s -A 'commandline reader' "https://www.reddit.com/r/$1/new.json?limit=10" | jq -r '.data.children| .[] | "\(.data.title)\t\(.data.permalink)"')
+  url=$(echo "$json" | fzf --delimiter='\t' --with-nth=1 | cut -f2)
+	if [[ -n $url ]]
 	then
-    echo $title
+    open "https://www.reddit.com$url"
 	fi
 }
 
@@ -165,6 +163,7 @@ vs() {
 }
 
 # todoist cli - list todos then show detail
+# https://github.com/sachaos/todoist#keybind
 todos() {
   local todo
   todo=$(todoist list | fzf | awk '{print $1}')
@@ -237,8 +236,9 @@ ec () {
 }
 # --- end trial
 
-# fco_p(review) - checkout git branch/tag, w/ preview showing commits between the tag/branch & HEAD
-fco() {
+# fgco - checkout git branch/tag, w/ preview showing commits between the tag/branch & HEAD
+
+fgco() {
   local tags branches target
   branches=$(
     git --no-pager branch --all \
@@ -252,6 +252,23 @@ fco() {
         --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
   git checkout $(awk '{print $2}' <<<"$target" )
 }
+
+# delete a branch, works like fgco!
+fgdb() {
+  local tags branches target
+  branches=$(
+    git --no-pager branch --all \
+      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
+    | sed '/^$/d') || return
+  tags=$(
+    git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$branches"; echo "$tags") |
+    fzf --no-hscroll --no-multi -n 2 \
+        --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
+  git branch -D $(awk '{print $2}' <<<"$target" )
+}
+
 
 # from the rga ripgrep-all README - integrating with FZF for PDF etc greppin'
 rgaf() {
