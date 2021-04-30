@@ -119,10 +119,24 @@ cdg() {
   file=$(fd -H -g .git | fzf) && dir=$(dirname "$file") && cd "$dir"
 }
 
+fvh() {
+  rg "$1" --ignore-case --files-with-matches --no-messages ~/notes/ ~/dotfiles/ ~/.vim/ ~/.config/nvim/ | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60% --multi --select-1 --exit-0
+}
+
 # for `vg` grep- find-in-file(s)
 fif() {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
 	rg --ignore-case --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60% --multi --select-1 --exit-0
+}
+
+# search for local Vim help using fvh
+vh() {
+	local file
+	file=$(fvh $1)
+	if [[ -n $file ]]
+	then
+		nvim $file -c /$1 -c 'norm! n zz'
+	fi
 }
 
 # find in files - open in Vim - go to 1st search result
