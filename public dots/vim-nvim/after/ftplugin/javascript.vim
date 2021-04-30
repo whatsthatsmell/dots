@@ -20,6 +20,12 @@ let g:ale_linters = {
 \  'javascript': glob('.eslintrc*', '.;') != '' ? [ 'eslint', 'tsserver' ] : [ 'standard', 'tsserver' ],
 \}
 
+hi rainbowcol1 guifg=#4B4DA4
+hi rainbowcol2 guifg=#C7C84A
+hi rainbowcol3 guifg=#8182EB
+hi rainbowcol4 guifg=#BCCEA3
+hi rainbowcol6 guifg=#1B9C36
+
 " this stopped working via compe/nvim-autopairs. So, it's back
 inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " lsp mappings and all the goodness

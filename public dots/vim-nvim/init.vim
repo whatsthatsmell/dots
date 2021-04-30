@@ -70,7 +70,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rust-lang/rust.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'luochen1990/rainbow'
+Plug 'p00f/nvim-ts-rainbow'
 Plug 'andymass/vim-matchup'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -86,6 +86,7 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'chrisbra/Colorizer'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 call plug#end()
 
 " fzf-gh settings
@@ -119,7 +120,7 @@ set synmaxcol=1000
 " better vertsplit char- part of ci_dark theme
 set fillchars+=vert:│
 let g:ci_dark_enable_bold = 1
-let g:rainbow_active = 1
+" let g:rainbow_active = 1
 colorscheme ci_dark
 
 " lightline config
@@ -236,10 +237,34 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 	indent = {
-    enable = true
+    enable = true,
+		disable = { "javascript" }
   },
 	autopairs = {
 		enable = true
+	},
+	  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  },
+	rainbow = {
+    enable = true,
+    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+    max_file_lines = 1000, 
 	}
 }
 
