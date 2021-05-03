@@ -21,6 +21,11 @@ rdf() {
   rustup doc $1 || (echo "Searching..." && open "https://doc.rust-lang.org/std/?search=$query")
 }
 
+# set Active Browser Tab: @titleText → finds tab with title that contains the text
+abt() {
+  osascript ~/dotfiles/osascripts/tabact.scpt $1
+}
+
 # screenshot
 sc() {
 	screencapture -x ~/Screenshots/$1
@@ -120,7 +125,7 @@ cdg() {
 }
 
 fvh() {
-  rg "$1" --ignore-case --files-with-matches --no-messages ~/notes/ ~/dotfiles/ ~/.vim/ ~/.config/nvim/ | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60% --multi --select-1 --exit-0
+  rg "$1" --ignore-case --files-with-matches --no-messages ~/notes/ ~/dotfiles/ ~/.vim/ ~/.config/nvim/ /usr/local/Caskroom/neovim-nightly/latest/nvim-osx64/share/nvim/runtime/doc/ | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60% --multi --select-1 --exit-0
 }
 
 # for `vg` grep- find-in-file(s)

@@ -89,6 +89,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 call plug#end()
 
+let g:matchup_surround_enabled = 1
+
 " fzf-gh settings
 let g:fzf_gh_website=1
 
@@ -239,6 +241,9 @@ require'nvim-treesitter.configs'.setup {
 	indent = {
     enable = true,
 		disable = { "javascript" }
+  },
+	matchup = {
+    enable = true,
   },
 	autopairs = {
 		enable = true
