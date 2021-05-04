@@ -125,7 +125,7 @@ cdg() {
 }
 
 fvh() {
-  rg "$1" --ignore-case --files-with-matches --no-messages ~/notes/ ~/dotfiles/ ~/.vim/ ~/.config/nvim/ /usr/local/Caskroom/neovim-nightly/latest/nvim-osx64/share/nvim/runtime/doc/ | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60% --multi --select-1 --exit-0
+  rg "$1" --ignore-case --files-with-matches --no-messages ~/notes/ ~/dotfiles/ ~/.vim/ ~/.config/nvim/ /usr/local/Caskroom/neovim-nightly/latest/nvim-osx64/share/nvim/runtime/doc/ ~/vim-dev/ | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=up:50% --multi --select-1 --exit-0
 }
 
 # for `vg` grep- find-in-file(s)

@@ -25,32 +25,13 @@ set scrolloff=1
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m,%f:%l:%m
 
-" load local plugin if it's there, otherwise go git it.
-" Comment this out or change it to point at your local plugins
-function! s:local_plug(package_name) abort 
-  if isdirectory(expand("~/vim-dev/plugins/" . a:package_name))
-    execute "Plug '~/vim-dev/plugins/".a:package_name."'"
-  else
-    execute "Plug 'joelpalmer/" .a:package_name."'"
-  endif
-endfunction
-" -- end local_plug()
-
 call plug#begin('~/.vim/plugged')
-" locals - comment out or replace with yours
-call s:local_plug('ci_dark.vim')
-call s:local_plug('fzf-gh.vim')
-" add more locals --
 " Plugins
 Plug 'editorconfig/editorconfig-vim'
-Plug 'dense-analysis/ale'
-Plug 'windwp/nvim-autopairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
@@ -64,40 +45,25 @@ Plug 'pbrisbin/vim-mkdir'
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
 Plug 'ruanyl/coverage.vim'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'moll/vim-node'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rust-lang/rust.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'p00f/nvim-ts-rainbow'
-Plug 'andymass/vim-matchup'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'hrsh7th/nvim-compe'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-" trying out gh cli telescope plugin
-Plug 'nvim-telescope/telescope-github.nvim'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'chrisbra/Colorizer'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 call plug#end()
 
+"netrw settings
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_winsize = 27
+let g:netrw_list_hide= netrw_gitignore#Hide()
+
 let g:matchup_surround_enabled = 1
 
 " fzf-gh settings
 let g:fzf_gh_website=1
-
-" NERDTree
-let NERDTreeShowHidden=1
-let NERDTreeMinimalMenu=1
-let NERDTreeMinimalUI = 1
 
 " firenvim
 let g:firenvim_config = {
@@ -206,26 +172,13 @@ function! LspErrors() abort
 	return sl
 endfunction
 " -- end of lightline configs --
-" treesitter folding
-" * moved to ftplugins for js & rs (unsupported)
-" set foldmethod=expr
-" set foldexpr=nvim_treesitter#foldexpr()
-" all. the. lua. --------
-" --- lsp configs --- 
-" Additional lsp settings in ftplugin for each language
-" JavaScipt also using ALE for linting & fixing
-lua require'lspconfig'.tsserver.setup{}
-" - C
-lua require'lspconfig'.clangd.setup{}
-" - VimL (full circle!)
-lua require'lspconfig'.vimls.setup{}
-" - Rust and general + compe goodness!
-"   @TODO: Kill off 'completion-nvim' b/c
-"   nvim-compe is the amazing goodness!?
 
+" -- All. The. Lua --
 lua << END
+require('joel.plugins')
+
 -- treesitter
-require'nvim-treesitter.configs'.setup {
+	require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true
   },
@@ -251,8 +204,8 @@ require'nvim-treesitter.configs'.setup {
 	  playground = {
     enable = true,
     disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
+    updatetime = 25,
+    persist_queries = false,
     keybindings = {
       toggle_query_editor = 'o',
       toggle_hl_groups = 'i',
@@ -268,78 +221,15 @@ require'nvim-treesitter.configs'.setup {
   },
 	rainbow = {
     enable = true,
-    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+    extended_mode = true, -- Highlight also non-parentheses delimiters
     max_file_lines = 1000, 
 	}
 }
-
-require('gitsigns').setup {
-      signs = {
-        add          = {hl = 'DiffAdd'   , text = '│', numhl='GitSignsAddNr'},
-        change       = {hl = 'DiffChange', text = '│', numhl='GitSignsChangeNr'},
-        delete       = {hl = 'DiffDelete', text = '_', numhl='GitSignsDeleteNr'},
-        topdelete    = {hl = 'DiffDelete', text = '‾', numhl='GitSignsDeleteNr'},
-        changedelete = {hl = 'DiffChange', text = '~', numhl='GitSignsChangeNr'},
-      },
-
-}
-
--- nvim-autopairs
-require('nvim-autopairs').setup()
 -- telescope
 require('joel.telescope')
--- nvim_lsp object
-local nvim_lsp = require'lspconfig'
 
 -- setup compe
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    vsnip = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
-    tags = true;
-    snippets_nvim = true;
-    treesitter = true;
-  };
-}
-
 -- snippet support
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
--- Enable rust_analyzer
-nvim_lsp.rust_analyzer.setup({
-		capabilities = capabilities,
-    on_attach=on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            cargo = {
-                loadOutDirsFromCheck = true
-            },
-            procMacro = {
-                enable = true
-            },
-        }
-    }
-})
-
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -353,9 +243,6 @@ local check_back_space = function()
     end
 end
 
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
@@ -412,17 +299,18 @@ do
     vim.lsp.util.set_qflist(qflist)
   end
 end
+
+-- mappings galore
+  -- toggle search highlights
+vim.api.nvim_set_keymap('n', '<Leader>\\', ':set hlsearch!<CR>', { noremap = true, silent = true })
+	-- write only if changed
+vim.api.nvim_set_keymap('n', '<Leader>w', ':up<CR>', { noremap = true })
+	-- quit (or close window)
+vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', {  noremap = true, silent = true })
 END
+" -- end of Lua --
 
-syntax enable
-
-" *** mappings galore ***
-" turn off highlight
-noremap <silent><Leader>\ :noh<cr>
-" write only if something is changed
-noremap <Leader>w :up<cr>
-" use ZZ but leave in for now 
-noremap <silent> <Leader>q :q<cr>
+" mappings galore in VimL
 " use ZQ for :q! (quit & discard changes)
 " Discard all changed buffers & quit
 noremap <silent> <Leader>Q :qall!<cr>
@@ -682,9 +570,6 @@ nnoremap <silent> ,h :Telescope help_tags<cr>
 nnoremap <silent> <leader>fm :Telescope marks<cr>
 nnoremap <silent> <leader>is :Telescope gh issues<cr>
 " FZF mappings and config
-" -- Temporarily back in for demo
-" command! -bang VimRTP call fzf#vim#files('~/.vim', <bang>0)
-" command! -bang Notes call fzf#vim#files('~/notes/CC', <bang>0)
 " ---> :PRS and :PRSR - fzf-gh.vim
 " PRs assigned awaiting my review
 nnoremap <silent> <leader>pr :PRSR<CR>
