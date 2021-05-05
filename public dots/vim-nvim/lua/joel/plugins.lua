@@ -9,7 +9,13 @@ return require('packer').startup(function()
 	use 'nvim-lua/lsp_extensions.nvim'
 	use 'p00f/nvim-ts-rainbow'
 	use 'nvim-lua/popup.nvim'
-
+	use 'nvim-lua/lsp-status.nvim'
+	use {
+		'glepnir/galaxyline.nvim',
+		branch = 'main',
+		config = function() require 'joel.statusline' end,
+		requires = {'kyazdani42/nvim-web-devicons'}
+	}
   use {
     'w0rp/ale',
     ft = {'javascript'},
@@ -72,21 +78,25 @@ end
 		} end
 	}
 
+require'nvim-web-devicons'.setup {
+ override = {
+  zsh = {
+    icon = "",
+    color = "#428850",
+    name = "Zsh"
+  }
+ };
+ default = true;
+}
 
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.clangd.setup{}
 -- VimL (full circle!)
 require'lspconfig'.vimls.setup{}
--- treesitter
-
 -- nvim-autopairs
 require('nvim-autopairs').setup()
--- telescope
--- require('joel.telescope')
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
-
--- setup compe
 
 -- snippet support
 local capabilities = vim.lsp.protocol.make_client_capabilities()

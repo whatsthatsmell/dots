@@ -1,6 +1,41 @@
+" source ~/.vimrc :-(
+
+
+" -- All. The. Lua --
+lua << END
+-- the speedway to init.lua 🤣 
+vim.cmd([[
+call plug#begin('~/.vim/plugged')
+" Plugins
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-unimpaired'
+" Plug 'itchyny/lightline.vim'
+" Plug 'maximbaz/lightline-ale'
+Plug 'tpope/vim-abolish'
+Plug 'stsewd/fzf-checkout.vim'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'vim-test/vim-test'
+Plug 'mbbill/undotree'
+Plug 'ruanyl/coverage.vim'
+Plug 'moll/vim-node'
+Plug 'rust-lang/rust.vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'junegunn/vim-peekaboo'
+Plug 'chrisbra/Colorizer'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+call plug#end()
+
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
-" source ~/.vimrc :-(
 set nu
 set rnu
 set hidden
@@ -25,36 +60,7 @@ set scrolloff=1
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m,%f:%l:%m
 
-call plug#begin('~/.vim/plugged')
-" Plugins
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-unimpaired'
-Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
-Plug 'tpope/vim-abolish'
-Plug 'stsewd/fzf-checkout.vim'
-Plug 'pbrisbin/vim-mkdir'
-Plug 'vim-test/vim-test'
-Plug 'mbbill/undotree'
-Plug 'ruanyl/coverage.vim'
-Plug 'moll/vim-node'
-Plug 'rust-lang/rust.vim'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'junegunn/vim-peekaboo'
-Plug 'chrisbra/Colorizer'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
-call plug#end()
-
-"netrw settings
+" netrw settings
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_winsize = 27
@@ -79,6 +85,7 @@ let g:firenvim_config = {
 			\ },
 			\ }
 			\ }
+
 set t_Co=256
 set termguicolors
 set bg=dark
@@ -91,90 +98,8 @@ let g:ci_dark_enable_bold = 1
 " let g:rainbow_active = 1
 colorscheme ci_dark
 
-" lightline config
-let g:lightline = {
-			\ 'colorscheme': 'ci_dark',
-			\ 'component': {
-	    \  'spell': '%{&spell?"SPELL":""}',
-      \  'lineinfo': '%3l/%1L:%-2c'},
-			\ 'active': {
-			\   'left': [ [ 'mode', 'paste', 'spell' ],
-			\             [ 'gitbranch', 'readonly', 'filename' ] ],
-			\   'right': [ [ 'lineinfo' ],
-			\             [ 'filetype' ], [ 'linter_errors'], [ 'lsp_diagnostics_hints' ],  [ 'lsp_diagnostics_warnings' ],  [ 'lsp_diagnostics_errors' ], [ 'bufferNr' ] ] },
-			\ 'inactive': {
-			\   'left': [ ['filename'] ],
-			\   'right': [ ['filetype'], [ 'bufferNr' ]] }, 
-			\ 'component_function': {
-			\   'gitbranch': 'LightlineGitBranch',
-			\   'filename': 'LightlineFilename',
-      \   'bufferNr': 'LightlineBufferNr',
-			\   'lsp_diagnostics_hints': 'LspHints',
-			\   'lsp_diagnostics_warnings': 'LspWarnings',
-			\   'lsp_diagnostics_errors': 'LspErrors',
-			\ }
-			\ }
-let g:lightline.component_expand = {
-      \  'linter_errors': 'lightline#ale#errors'
-      \ }
-let g:lightline.component_type = {
-      \     'linter_errors': 'warning'
-      \ }
+]])
 
-function! LightlineFilename()
-	let filename = expand('%:~:.') !=# '' ? expand('%:~:.') : '[No Name]'
-	let modified = &modified ? ' +' : ''
-	return filename . modified
-endfunction
-
-function! LightlineGitBranch()
-	let head = get(b:,'gitsigns_head','')
-	let status = get(b:,'gitsigns_status','')
-	let status_text = strlen(status) > 0 ? ' ' . status : ''
-	return head . status_text
-endfunction
-
-function! LightlineBufferNr()
-	let bn = ' BN:' . bufnr('%')
-	return bn
-endfunction
-
-function! LspHints() abort
-	let sl = ''
-	if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
-		let sl.='💡:'
-		let sl.= luaeval("vim.lsp.diagnostic.get_count(0, [[Hint]])")
-	else
-			let sl.='🦀'
-	endif
-	return sl
-endfunction
-
-function! LspWarnings() abort
-	let sl = ''
-	if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
-		let sl.='⚠️ :'
-		let sl.= luaeval("vim.lsp.diagnostic.get_count(0, [[Warn]])")
-	else
-			let sl.='🦀'
-	endif
-	return sl
-endfunction
-
-function! LspErrors() abort
-	let sl = ''
-	if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
-		let sl.='❗:'
-		let sl.= luaeval("vim.lsp.diagnostic.get_count(0, [[Error]])")
-	else
-			let sl.='🦀'
-	endif
-	return sl
-endfunction
-" -- end of lightline configs --
-
-" -- All. The. Lua --
-lua << END
 require('joel.plugins')
 
 -- treesitter
@@ -307,9 +232,10 @@ vim.api.nvim_set_keymap('n', '<Leader>\\', ':set hlsearch!<CR>', { noremap = tru
 vim.api.nvim_set_keymap('n', '<Leader>w', ':up<CR>', { noremap = true })
 	-- quit (or close window)
 vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', {  noremap = true, silent = true })
-END
-" -- end of Lua --
-
+-- toggle hunk highlight
+vim.api.nvim_set_keymap('n', '<Leader>hh',  [[<Cmd>lua require"gitsigns".toggle_linehl()<CR>]], { noremap = true, silent = true })
+-- @TODUA: refactor mappings to Lua
+vim.cmd([[
 " mappings galore in VimL
 " use ZQ for :q! (quit & discard changes)
 " Discard all changed buffers & quit
@@ -334,7 +260,7 @@ nmap ,d :b#<bar>bd#<CR>
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_error = "❗️"
-let g:ale_sign_warning = "⚠︎"
+let g:ale_sign_warning = ""
 " nmap <silent> <leader>h :ALEHover<cr>
 nmap <leader>f <Plug>(ale_fix)
 nmap <silent> <leader>d <Plug>(ale_go_to_definition)
@@ -438,41 +364,10 @@ let g:undotree_HelpLine = 0
 let g:undotree_WindowLayout = 2
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 6
-" Fugitive & gitsigns maps
+" Fugitive maps
 nnoremap <silent> <leader>gb :Git blame<Return>
-nnoremap <silent> <leader>hh :lua require"gitsigns".toggle_linehl()<Return>
 nmap <leader>gp :Gpush origin
-" fzf-checkout settings
 nnoremap <leader>gc :GBranches<CR>
-let g:fzf_branch_actions = {
-			\ 'rebase': {
-			\   'prompt': 'Rebase> ',
-			\   'execute': 'echo system("{git} rebase {branch}")',
-			\   'multiple': v:false,
-			\   'keymap': 'ctrl-r',
-			\   'required': ['branch'],
-			\   'confirm': v:false,
-			\ },
-			\ 'diff': {
-			\   'prompt': 'Diff> ',
-			\   'execute': 'Git diff {branch}',
-			\   'multiple': v:false,
-			\   'keymap': 'ctrl-f',
-			\   'required': ['branch'],
-			\   'confirm': v:false,
-			\ },
-			\ 'track': {
-			\   'prompt': 'Track> ',
-			\   'execute': 'echo system("{git} checkout --track {branch}")',
-			\   'multiple': v:false,
-			\   'keymap': 'ctrl-t',
-			\   'required': ['branch'],
-			\   'confirm': v:false,
-			\ },
-			\}
-let g:fzf_checkout_git_options = '--sort=-committerdate'
-let g:fzf_checkout_previous_ref_first = v:true
-
 " splitsville
 " - small vertical split to the right & go to it
 nnoremap <silent> ,\ :75vsp<CR><C-w><right>
@@ -501,7 +396,6 @@ let g:coverage_show_uncovered = 1
 " nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 let g:test#runner_commands = ['Jest']
-
 " **Term settings**
 " open new neovim terminal: zsh in vsplit or split
 command! -nargs=* T split | terminal <args>
@@ -587,6 +481,48 @@ nnoremap <silent> <leader>rg :RG<CR>
 let g:fzf_layout = { 'window': { 'width': 0.99, 'height': 0.8 } }
 let g:fzf_preview_window = 'right:61%'
 let $FZF_DEFAULT_OPTS='--reverse --multi'
+
+autocmd! FileType fzf set laststatus=1 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+augroup LuaHighlight
+	autocmd!
+	autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
+
+autocmd BufRead,BufNewFile *.h set filetype=c
+
+nnoremap <silent>gx :call OpenURLUnderCursor()<CR>
+
+" fzf-checkout settings
+let g:fzf_branch_actions = {
+			\ 'rebase': {
+			\   'prompt': 'Rebase> ',
+			\   'execute': 'echo system("{git} rebase {branch}")',
+			\   'multiple': v:false,
+			\   'keymap': 'ctrl-r',
+			\   'required': ['branch'],
+			\   'confirm': v:false,
+			\ },
+			\ 'diff': {
+			\   'prompt': 'Diff> ',
+			\   'execute': 'Git diff {branch}',
+			\   'multiple': v:false,
+			\   'keymap': 'ctrl-f',
+			\   'required': ['branch'],
+			\   'confirm': v:false,
+			\ },
+			\ 'track': {
+			\   'prompt': 'Track> ',
+			\   'execute': 'echo system("{git} checkout --track {branch}")',
+			\   'multiple': v:false,
+			\   'keymap': 'ctrl-t',
+			\   'required': ['branch'],
+			\   'confirm': v:false,
+			\ },
+			\}
+let g:fzf_checkout_git_options = '--sort=-committerdate'
+let g:fzf_checkout_previous_ref_first = v:true
 " ripgrep with FZF only used as selector
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
@@ -604,20 +540,14 @@ command! -bang -nargs=* Rg
 			\   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
 			\   fzf#vim#with_preview(), <bang>0)
 
-autocmd! FileType fzf set laststatus=1 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-augroup LuaHighlight
-	autocmd!
-	autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-augroup END
-
-autocmd BufRead,BufNewFile *.h set filetype=c
-
 function! OpenURLUnderCursor()
   let l:uri = expand('<cWORD>')
   silent exec "!open '" . l:uri . "'"
   :redraw!
 endfunction
 
-nnoremap <silent>gx :call OpenURLUnderCursor()<CR>
+
+]])
+
+END
+

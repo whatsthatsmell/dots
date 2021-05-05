@@ -36,9 +36,9 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 " show signature help on cursor holder (insert)
 " autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
-sign define LspDiagnosticsSignHint text=ⓗ texthl=LspDiagnosticsSignHint linehl= numhl=
-sign define LspDiagnosticsSignWarn text=⚠︎ texthl=LspDiagnosticsSignWarn linehl= numhl=
-sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl= numhl=
+sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
+sign define LspDiagnosticsSignWarn text= texthl=LspDiagnosticsSignWarn linehl= numhl=
+sign define LspDiagnosticsSignError text= texthl=LspDiagnosticsSignError linehl= numhl=
 nnoremap <silent><buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
