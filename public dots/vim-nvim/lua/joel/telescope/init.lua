@@ -1,5 +1,6 @@
 -- telescope
 local actions = require('telescope.actions')
+local utils = require('telescope.utils')
 require('telescope').setup{
   defaults = {
 		prompt_prefix = '❯ ',
@@ -31,9 +32,13 @@ require('telescope').load_extension('gh')
 local M = {}
 
 M.project_files = function()
-  local opts = {} -- define here if you want to define something
-  local ok = pcall(require'telescope.builtin'.git_files, opts)
-  if not ok then require'telescope.builtin'.find_files(opts) end
+	local _, ret, stderr = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
+	local opts = {}
+	if ret == 0 then 
+		require'telescope.builtin'.git_files(opts)
+	else
+		require'telescope.builtin'.find_files(opts)
+	end
 end
 
 function M.find_notes()

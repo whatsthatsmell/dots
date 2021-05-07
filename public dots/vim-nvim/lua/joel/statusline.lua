@@ -369,18 +369,17 @@ gls.short_line_left[2] = {
         provider = get_current_file_name,
         condition = buffer_not_empty,
         highlight = {colors.fg, colors.section_bg},
-        separator = '|',
+        separator = ' ',
         separator_highlight = {colors.section_bg, colors.bg}
     }
 }
 
 gls.short_line_right[1] = {
-    BufferIcon = {
-        provider = 'BufferIcon',
-        highlight = {colors.yellow, colors.section_bg},
-        separator = '',
-        separator_highlight = {colors.section_bg, colors.bg}
-    }
+	BufferNumber = {
+		provider = 'BufferNumber',
+		icon = '﬘ ',
+		highlight = {colors.green, colors.bg}
+	}
 }
 
 -- Force manual load so that nvim boots with a status line

@@ -1,6 +1,5 @@
 " source ~/.vimrc :-(
-
-
+" -- ready to move to init.lua...
 " -- All. The. Lua --
 lua << END
 -- the speedway to init.lua 🤣 
@@ -234,7 +233,8 @@ vim.api.nvim_set_keymap('n', '<Leader>w', ':up<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', {  noremap = true, silent = true })
 -- toggle hunk highlight
 vim.api.nvim_set_keymap('n', '<Leader>hh',  [[<Cmd>lua require"gitsigns".toggle_linehl()<CR>]], { noremap = true, silent = true })
--- @TODUA: refactor mappings to Lua
+-- toggle blame line popup
+-- @TODUA: refactor more mappings to Lua
 vim.cmd([[
 " mappings galore in VimL
 " use ZQ for :q! (quit & discard changes)
@@ -545,9 +545,5 @@ function! OpenURLUnderCursor()
   silent exec "!open '" . l:uri . "'"
   :redraw!
 endfunction
-
-
 ]])
-
 END
-
