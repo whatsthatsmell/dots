@@ -31,19 +31,38 @@ require('telescope').load_extension('gh')
 
 local M = {}
 
+function M.grep_prompt()
+  require('telescope.builtin').grep_string {
+    shorten_path = true,
+    search = vim.fn.input("Rg❯ "),
+  }
+end
+
+function M.grep_term()
+	local opts = {}
+	opts.search_dirs = {'~/notes/vim', '~/.vim/', '~/dotfiles', '~/.config/nvim', '~/vim-dev'}
+	opts.prompt_prefix = ' ❯ '
+	opts.prompt_title = 'Terminal Docs' 
+	opts.shorten_path = true
+	require'telescope.builtin'.live_grep(opts)
+end
+
 M.project_files = function()
 	local _, ret, stderr = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
-	local opts = {}
+	local gopts = {}
+	gopts.prompt_title = 'Git Files'
+	gopts.prompt_prefix = '  '
 	if ret == 0 then 
-		require'telescope.builtin'.git_files(opts)
+		require'telescope.builtin'.git_files(gopts)
 	else
-		require'telescope.builtin'.find_files(opts)
+		require'telescope.builtin'.find_files()
 	end
 end
 
 function M.find_notes()
   require('telescope.builtin').file_browser {
     prompt_title = "\\ Notes /",
+		prompt_prefix = ' ﮷ ',
     shorten_path = false,
     cwd = "~/notes/",
     width = .25,

@@ -453,12 +453,17 @@ nnoremap <silent> ,<space> :lua require'joel.telescope'.project_files()<cr>
 nnoremap <silent> ,n :lua require'joel.telescope'.find_notes()<cr>
 " Explore files starting at $HOME
 nnoremap <silent> ,e :lua require'joel.telescope'.file_explorer()<cr>
+" greg for a string
+nnoremap <silent> <space>g :lua require'joel.telescope'.grep_prompt()<cr>
+" search terminal and vim docs, file & notes
+nnoremap <silent> <space>h :lua require'joel.telescope'.grep_term()<cr>
 " find a Vim runtimepath file
 nnoremap <silent> <leader>rt :lua require'joel.telescope'.vim_rtp()<cr>
 " find or create neovim configs
 nnoremap <silent> <leader>nc :lua require'joel.telescope'.nvim_config()<cr>
 " slowness: https://github.com/nvim-telescope/telescope.nvim/issues/392
 nnoremap <silent> ,g :Telescope live_grep<cr>
+nnoremap <silent> ,k :Telescope keymaps<cr>
 nnoremap <silent> ,b :Telescope buffers<cr>
 nnoremap <silent> ,h :Telescope help_tags<cr>
 nnoremap <silent> <leader>fm :Telescope marks<cr>
