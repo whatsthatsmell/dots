@@ -16,8 +16,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-unimpaired'
-" Plug 'itchyny/lightline.vim'
-" Plug 'maximbaz/lightline-ale'
 Plug 'tpope/vim-abolish'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'pbrisbin/vim-mkdir'
@@ -233,45 +231,30 @@ vim.api.nvim_set_keymap('n', '<Leader>w', ':up<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', {  noremap = true, silent = true })
 -- toggle hunk highlight
 vim.api.nvim_set_keymap('n', '<Leader>hh',  [[<Cmd>lua require"gitsigns".toggle_linehl()<CR>]], { noremap = true, silent = true })
--- toggle blame line popup
+-- use ZQ for :q! (quit & discard changes)
+-- Discard all changed buffers & quit
+vim.api.nvim_set_keymap('n', '<Leader>Q', ':qall!<CR>', {  noremap = true, silent = true })
+-- write all and quit
+vim.api.nvim_set_keymap('n', '<Leader>W', ':wqall<CR>', {  noremap = true, silent = true })
+-- Buffer stuff - <C-6> is toggle current and alt(last viewed)
+-- go to next buffer
+vim.api.nvim_set_keymap('n', '<Leader><right>', ':bn<CR>', {  noremap = true, silent = true })
+-- go to prev buffer
+vim.api.nvim_set_keymap('n', '<Leader><left>', ':bp<CR>', {  noremap = true, silent = true })
+-- delete current buffer - don't close split
+vim.api.nvim_set_keymap('n', ',d', ':b#<bar>bd#<CR>', { noremap = false, silent = true })
+-- delete current buffer - will close split - :q to close split
+vim.api.nvim_set_keymap('n', '<Leader>x', ':bd<CR>', {  noremap = true, silent = true })
+-- open available commands & run it
+vim.api.nvim_set_keymap('n', ',c',  [[<Cmd>lua require"telescope.builtin".commands()<CR>]], { noremap = true, silent = true })
 -- @TODUA: refactor more mappings to Lua
 vim.cmd([[
-" mappings galore in VimL
-" use ZQ for :q! (quit & discard changes)
-" Discard all changed buffers & quit
-noremap <silent> <Leader>Q :qall!<cr>
-" write all and quit
-noremap <silent> <Leader>W :wqall<cr>
-
 " expands to dir of current file in cmd mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-" Buffer stuff - <C-6> is toggle current and alt(last viewed)
-" go to next buffer
-nnoremap <silent> <leader><right> :bn<CR>
-" go to prev buffer
-nnoremap <silent> <leader><left> :bp<CR>
-" delete current buffer - will close split - :q to close split
-nnoremap <silent> <leader>x :bd<CR>
-" Experimental *** delete current buffer - don't close split*
-nmap ,d :b#<bar>bd#<CR>
-
-" ALE maps+
-" @TODO: finish killing ALE
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-let g:ale_sign_error = "❗️"
-let g:ale_sign_warning = ""
-" nmap <silent> <leader>h :ALEHover<cr>
-nmap <leader>f <Plug>(ale_fix)
-nmap <silent> <leader>d <Plug>(ale_go_to_definition)
-nnoremap <silent> <leader>r :ALEFindReferences -relative<Return>
-nnoremap <silent> <leader>rn :ALERename<Return>
 
 " open file in directory of current file
 nmap <leader>e :e %:h/
 nmap <leader>v :vs %:h/
-let g:ale_completion_enabled = 0
-let g:ale_completion_autoimport = 1
 
 " compe maps
 inoremap <silent><expr> <C-Space> compe#complete()
@@ -449,8 +432,10 @@ nnoremap <leader>dw :windo diffthis<cr>
 " telescope time
 " -- find files with gitfiles & fallback on find_files
 nnoremap <silent> ,<space> :lua require'joel.telescope'.project_files()<cr>
-" find and/or create notes
+" browse, explore and create notes
 nnoremap <silent> ,n :lua require'joel.telescope'.find_notes()<cr>
+" search notes
+nnoremap <silent> <space>n :lua require'joel.telescope'.grep_notes()<cr>
 " Explore files starting at $HOME
 nnoremap <silent> ,e :lua require'joel.telescope'.file_explorer()<cr>
 " greg for a string

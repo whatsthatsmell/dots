@@ -55,9 +55,20 @@ nnoremap <silent><localleader>=  <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
-" ale maps
+" ale maps etc.
+" @TODO: finish killing ALE
 nmap <buffer><silent><localleader>n <Plug>(ale_next_wrap)
 nmap <buffer><silent><localleader>p <Plug>(ale_previous_wrap)
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+let g:ale_sign_error = ""
+let g:ale_sign_warning = ""
+nmap <buffer><leader>f <Plug>(ale_fix)
+" nmap <buffer><silent> <leader>d <Plug>(ale_go_to_definition)
+" nnoremap <buffer><silent> <leader>r :ALEFindReferences -relative<Return>
+nnoremap <buffer><silent> <leader>rn :ALERename<Return>
+let g:ale_completion_enabled = 0
+let g:ale_completion_autoimport = 1
 
 " abbreviations - see maps below for wrapping with these
 inoreabbrev Ccl console.log()<Left><Left><Esc>

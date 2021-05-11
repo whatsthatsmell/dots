@@ -97,7 +97,7 @@ nodes() {
 reddit() {
   local json
   local url
-  json=$(curl -s -A 'commandline reader' "https://www.reddit.com/r/$1/new.json?limit=10" | jq -r '.data.children| .[] | "\(.data.title)\t\(.data.permalink)"')
+  json=$(curl -s -A 'Reddit CLI' "https://www.reddit.com/r/$1/new.json?limit=10" | jq -r '.data.children| .[] | "\(.data.title)\t\(.data.permalink)"')
   url=$(echo "$json" | fzf --delimiter='\t' --with-nth=1 | cut -f2)
 	if [[ -n $url ]]
 	then
