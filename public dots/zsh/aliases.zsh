@@ -7,6 +7,7 @@ alias -s vim=nvim
 alias -s txt=nvim
 alias -s {md,MD}=nvim
 alias c='cargo'
+alias vft='floaterm'
 # https://github.com/sachaos/todoist#keybind
 alias gyhc='git rev-parse HEAD | pbcopy'
 alias ta='todoist add'

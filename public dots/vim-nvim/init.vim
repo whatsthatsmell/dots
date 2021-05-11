@@ -29,6 +29,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'chrisbra/Colorizer'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
@@ -379,10 +380,22 @@ let g:coverage_show_uncovered = 1
 " nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 let g:test#runner_commands = ['Jest']
+
+" floaterm maps etc.
+let g:floaterm_title = '  ($1/$2) '
+" vft to open in main nvim
+nnoremap   <silent>   <leader>tn    :FloatermNew<CR>
+tnoremap   <silent>   <leader>tn    <C-\><C-n>:FloatermNew<CR>
+nnoremap   <silent>   <leader>tp    :FloatermPrev<CR>
+tnoremap   <silent>   <leader>tp    <C-\><C-n>:FloatermPrev<CR>
+" nnoremap   <silent>   <F9>    :FloatermNext<CR>
+" tnoremap   <silent>   <F9>    <C-\><C-n>:FloatermNext<CR>
+nnoremap   <silent>   <leader>t   :FloatermToggle<CR>
+tnoremap   <silent>   <leader>t   <C-\><C-n>:FloatermToggle<CR>
 " **Term settings**
 " open new neovim terminal: zsh in vsplit or split
-command! -nargs=* T split | terminal <args>
-nmap <silent> <leader>t :T<cr>
+" command! -nargs=* T split | terminal <args>
+" nmap <silent> <leader>t :T<cr>
 command! -nargs=* VT vsplit | terminal <args>
 nmap <silent> <leader>tv :VT<cr>
 " open existing terminal (or any) buffer in vert right split: @[N]

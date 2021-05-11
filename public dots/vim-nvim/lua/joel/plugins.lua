@@ -10,6 +10,14 @@ return require('packer').startup(function()
 	use 'p00f/nvim-ts-rainbow'
 	use 'nvim-lua/popup.nvim'
 	use 'nvim-lua/lsp-status.nvim'
+
+	-- use {
+	-- 	"numtostr/FTerm.nvim",
+	-- 	config = function()
+	-- 		require("FTerm").setup()
+	-- 	end
+	-- }
+
 	use {
 		'glepnir/galaxyline.nvim',
 		branch = 'main',
