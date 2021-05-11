@@ -453,8 +453,6 @@ nnoremap <silent> <space>n :lua require'joel.telescope'.grep_notes()<cr>
 nnoremap <silent> ,e :lua require'joel.telescope'.file_explorer()<cr>
 " greg for a string
 nnoremap <silent> <space>g :lua require'joel.telescope'.grep_prompt()<cr>
-" search terminal and vim docs, file & notes
-nnoremap <silent> <space>h :lua require'joel.telescope'.grep_term()<cr>
 " find a Vim runtimepath file
 nnoremap <silent> <leader>rt :lua require'joel.telescope'.vim_rtp()<cr>
 " find or create neovim configs
