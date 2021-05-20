@@ -59,7 +59,7 @@ end
 
   -- Local plugins
   use '~/vim-dev/plugins/ci_dark.vim'
-  use '~/vim-dev/plugins/fzf-gh.vim'
+	use '~/vim-dev/plugins/fzf-gh.vim'
 
   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 

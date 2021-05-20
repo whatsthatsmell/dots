@@ -24,7 +24,7 @@ Plug 'mbbill/undotree'
 Plug 'ruanyl/coverage.vim'
 Plug 'moll/vim-node'
 Plug 'rust-lang/rust.vim'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'junegunn/vim-peekaboo'
 Plug 'chrisbra/Colorizer'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -224,8 +224,9 @@ do
 end
 
 -- mappings galore
-  -- toggle search highlights
-vim.api.nvim_set_keymap('n', '<Leader>\\', ':set hlsearch!<CR>', { noremap = true, silent = true })
+  -- toggle search highlights with cursorline & cursorcolumn
+	-- See augroup nvim-incsearch-cursorline for symmetry
+vim.api.nvim_set_keymap('n', '<Leader>\\', ':set hlsearch! cursorline! cursorcolumn!<CR>', { noremap = true, silent = true })
 	-- write only if changed
 vim.api.nvim_set_keymap('n', '<Leader>w', ':up<CR>', { noremap = true })
 	-- quit (or close window)
@@ -381,6 +382,11 @@ let g:coverage_show_uncovered = 1
 nmap <silent> <leader>T :TestFile<CR>
 let g:test#runner_commands = ['Jest']
 
+" turn on cursorline, cursorcolumn when searching, sync with hlsearch
+augroup nvim-incsearch-cursorline
+	autocmd!
+	autocmd CmdlineEnter /,\? :set cursorline cursorcolumn hlsearch
+augroup END
 " floaterm maps etc.
 let g:floaterm_title = '  ($1/$2) '
 " vft to open in main nvim
