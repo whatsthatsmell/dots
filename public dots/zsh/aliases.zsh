@@ -7,6 +7,7 @@ alias -s vim=nvim
 alias -s txt=nvim
 alias -s {md,MD}=nvim
 alias c='cargo'
+alias esl='node_modules/.bin/eslint .'
 alias vft='floaterm'
 alias vdp='cd ~/vim-dev/plugins'
 # https://github.com/sachaos/todoist#keybind

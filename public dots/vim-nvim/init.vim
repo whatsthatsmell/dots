@@ -70,19 +70,19 @@ let g:matchup_surround_enabled = 1
 let g:fzf_gh_website=1
 
 " firenvim
-let g:firenvim_config = {
-			\ 'globalSettings': {
-			\ 'alt': 'all',
-			\  },
-			\ 'localSettings': {
-			\ '.*': {
-			\ 'cmdline': 'neovim',
-			\ 'priority': 0,
-			\ 'selector': 'textarea, div[role="textbox"]',
-			\ 'takeover': 'never',
-			\ },
-			\ }
-			\ }
+" let g:firenvim_config = {
+" 			\ 'globalSettings': {
+" 			\ 'alt': 'all',
+" 			\  },
+" 			\ 'localSettings': {
+" 			\ '.*': {
+" 			\ 'cmdline': 'neovim',
+" 			\ 'priority': 0,
+" 			\ 'selector': 'textarea, div[role="textbox"]',
+" 			\ 'takeover': 'never',
+" 			\ },
+" 			\ }
+" 			\ }
 
 set t_Co=256
 set termguicolors
@@ -432,6 +432,8 @@ onoremap <Del> <Esc>
 cnoremap <Del> <C-C><Esc>
 inoremap <Del> <Esc>`^
 tnoremap <Del> <C-\><C-n>
+" yank current file path
+nnoremap <leader>fp :!ls %:p <bar> pbcopy<cr>
 " diff since last save
 " -- quicky
 nnoremap <leader>c :w !diff % -<CR>

@@ -64,7 +64,7 @@ end
   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 
 
-  use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
+  -- use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
 
   use {
     'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
