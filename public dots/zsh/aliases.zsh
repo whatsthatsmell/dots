@@ -56,7 +56,7 @@ alias ghil='gh issue list'
 alias exat='exa -aTI "node_modules|.git|coverage"'
 alias exal='exa -allI "node_modules|.git|coverage"'
 alias exaf='exa -allFI "node_modules|.git|coverage"'
-alias vc='nvim ~/.config/nvim/init.vim'
+alias vc='nvim ~/.config/nvim/init.lua'
 
 # RIP .vimrc
 nvc() { echo 'RIP .vimrc - use the alias: vc' }

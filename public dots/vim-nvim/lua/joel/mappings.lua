@@ -1,4 +1,4 @@
--- Mappings galore & commands
+-- Mappings galore & commands & options FOR NOW
   -- toggle search highlights with cursorline & cursorcolumn
 	-- See augroup nvim-incsearch-cursorline for symmetry
 vim.api.nvim_set_keymap('n', '<Leader>\\', ':set hlsearch! cursorline! cursorcolumn!<CR>', { noremap = true, silent = true })
@@ -31,6 +31,67 @@ au TextYankPost * lua vim.highlight.on_yank {on_visual = false}
 
 " header files should treated like .c files
 autocmd BufRead,BufNewFile *.h set filetype=c
+
+" turn on cursorline, cursorcolumn when searching, sync with hlsearch
+augroup nvim-incsearch-cursorline
+	autocmd!
+	autocmd CmdlineEnter /,\? :set cursorline cursorcolumn hlsearch
+augroup END
+
+" Options in VimL form
+set t_Co=256
+set termguicolors
+set bg=dark
+" syntax highlight only to 1K instead of default 3K
+set synmaxcol=1000
+" THEME stuff
+" better vertsplit char- part of ci_dark theme
+set fillchars+=vert:│
+let g:ci_dark_enable_bold = 1
+" let g:rainbow_active = 1
+colorscheme ci_dark
+
+set runtimepath^=~/.vim
+let &packpath=&runtimepath
+set hidden
+set completeopt=menu,menuone,preview,noselect,noinsert
+set dictionary+=/usr/share/dict/words
+set wildignore+=*/node_modules/*,*/coverage/*
+set guicursor=
+set clipboard=unnamedplus
+set noshowcmd
+set splitbelow
+set splitright
+set updatetime=2500
+" @TODOUA: move under ~/.config/neovim/"
+set undodir=~/.vim/undodir
+set undofile
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+
+" global vars in Vim form **
+" netrw settings
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_winsize = 27
+let g:netrw_list_hide= netrw_gitignore#Hide()
+
 ]])
 
+-- Options **
+-- window scope
+vim.wo.number = true
+vim.wo.relativenumber = true
+-- global scope
+vim.o.inccommand = 'split'
+vim.o.incsearch = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.scrolloff = 1
+-- buffer scope
+vim.bo.tabstop = 2
+vim.bo.shiftwidth = 2
 
+-- Global Vim vars
+vim.g.fzf_gh_website = 1
+vim.g.matchup_surround_enabled = 1
