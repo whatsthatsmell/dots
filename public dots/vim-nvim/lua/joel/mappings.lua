@@ -33,3 +33,4 @@ au TextYankPost * lua vim.highlight.on_yank {on_visual = false}
 autocmd BufRead,BufNewFile *.h set filetype=c
 ]])
 
+
