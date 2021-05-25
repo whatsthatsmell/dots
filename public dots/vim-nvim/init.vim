@@ -148,51 +148,17 @@ require('joel.plugins')
     max_file_lines = 1000, 
 	}
 }
+
 -- telescope
 require('joel.telescope')
 
--- setup compe
--- snippet support
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
+-- mappings
+require('joel.mappings')
 
-local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-        return true
-    else
-        return false
-    end
-end
+-- compe
+require('joel.completion')
 
-_G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif vim.fn.call("vsnip#available", {1}) == 1 then
-    return t "<Plug>(vsnip-expand-or-jump)"
-  elseif check_back_space() then
-    return t "<Tab>"
-  else
-    return vim.fn['compe#complete']()
-  end
-end
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
-  else
-    return t "<S-Tab>"
-  end
-end
-
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
--- Enable diagnostics
+-- LSP Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = false,
@@ -224,31 +190,7 @@ do
 end
 
 -- mappings galore
-  -- toggle search highlights with cursorline & cursorcolumn
-	-- See augroup nvim-incsearch-cursorline for symmetry
-vim.api.nvim_set_keymap('n', '<Leader>\\', ':set hlsearch! cursorline! cursorcolumn!<CR>', { noremap = true, silent = true })
-	-- write only if changed
-vim.api.nvim_set_keymap('n', '<Leader>w', ':up<CR>', { noremap = true })
-	-- quit (or close window)
-vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', {  noremap = true, silent = true })
--- toggle hunk highlight
-vim.api.nvim_set_keymap('n', '<Leader>hh',  [[<Cmd>lua require"gitsigns".toggle_linehl()<CR>]], { noremap = true, silent = true })
--- use ZQ for :q! (quit & discard changes)
--- Discard all changed buffers & quit
-vim.api.nvim_set_keymap('n', '<Leader>Q', ':qall!<CR>', {  noremap = true, silent = true })
--- write all and quit
-vim.api.nvim_set_keymap('n', '<Leader>W', ':wqall<CR>', {  noremap = true, silent = true })
--- Buffer stuff - <C-6> is toggle current and alt(last viewed)
--- go to next buffer
-vim.api.nvim_set_keymap('n', '<Leader><right>', ':bn<CR>', {  noremap = true, silent = true })
--- go to prev buffer
-vim.api.nvim_set_keymap('n', '<Leader><left>', ':bp<CR>', {  noremap = true, silent = true })
--- delete current buffer - don't close split
-vim.api.nvim_set_keymap('n', ',d', ':b#<bar>bd#<CR>', { noremap = false, silent = true })
--- delete current buffer - will close split - :q to close split
-vim.api.nvim_set_keymap('n', '<Leader>x', ':bd<CR>', {  noremap = true, silent = true })
--- open available commands & run it
-vim.api.nvim_set_keymap('n', ',c',  [[<Cmd>lua require"telescope.builtin".commands()<CR>]], { noremap = true, silent = true })
+  -- see mappings.lua
 -- @TODUA: refactor more mappings to Lua
 vim.cmd([[
 " expands to dir of current file in cmd mode
@@ -491,15 +433,6 @@ let g:fzf_layout = { 'window': { 'width': 0.99, 'height': 0.8 } }
 let g:fzf_preview_window = 'right:61%'
 let $FZF_DEFAULT_OPTS='--reverse --multi'
 
-autocmd! FileType fzf set laststatus=1 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-augroup LuaHighlight
-	autocmd!
-	autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-augroup END
-
-autocmd BufRead,BufNewFile *.h set filetype=c
 
 nnoremap <silent>gx :call OpenURLUnderCursor()<CR>
 

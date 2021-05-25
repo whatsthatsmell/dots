@@ -24,37 +24,38 @@ return require('packer').startup(function()
     config = 'vim.cmd[[ALEEnable]]'
   }
 
-  use {
-    'hrsh7th/nvim-compe',
-    requires = {{'hrsh7th/vim-vsnip'}},
+	-- @TODOUA: move to completion.lua
+	use {
+		'hrsh7th/nvim-compe',
+		requires = {{'hrsh7th/vim-vsnip'}},
 		config = function() require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
+			enabled = true;
+			autocomplete = true;
+			debug = false;
+			min_length = 1;
+			preselect = 'enable';
+			throttle_time = 80;
+			source_timeout = 200;
+			incomplete_delay = 400;
+			max_abbr_width = 100;
+			max_kind_width = 100;
+			max_menu_width = 100;
+			documentation = true;
 
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    vsnip = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
-    tags = true;
-    snippets_nvim = true;
-    treesitter = true;
-  };
-}
-end
+			source = {
+				path = true;
+				buffer = true;
+				calc = true;
+				vsnip = true;
+				nvim_lsp = true;
+				nvim_lua = true;
+				spell = true;
+				tags = true;
+				snippets_nvim = true;
+				treesitter = true;
+			};
+		}
+		end
 	}
 
   -- Local plugins
