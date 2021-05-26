@@ -74,7 +74,7 @@ function M.find_notes()
   }
 end
 
--- @TODOUS: redundancy with these 2 Nvim config pickers
+-- @TODUA: redundancy with these 2 Nvim config pickers
 function M.vim_rtp()
   require('telescope.builtin').find_files {
     prompt_title = "\\ NVim RTP /",

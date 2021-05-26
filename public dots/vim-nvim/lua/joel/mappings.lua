@@ -1,10 +1,10 @@
--- Mappings galore & commands & options FOR NOW
-  -- toggle search highlights with cursorline & cursorcolumn
-	-- See augroup nvim-incsearch-cursorline for symmetry
+-- ** Mappings galore & commands & options FOR NOW **
+-- toggle search highlights with cursorline & cursorcolumn
+  -- See augroup nvim-incsearch-cursorline for symmetry
 vim.api.nvim_set_keymap('n', '<Leader>\\', ':set hlsearch! cursorline! cursorcolumn!<CR>', { noremap = true, silent = true })
-	-- write only if changed
+-- write only if changed
 vim.api.nvim_set_keymap('n', '<Leader>w', ':up<CR>', { noremap = true })
-	-- quit (or close window)
+-- quit (or close window)
 vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>', {  noremap = true, silent = true })
 -- toggle hunk highlight
 vim.api.nvim_set_keymap('n', '<Leader>hh',  [[<Cmd>lua require"gitsigns".toggle_linehl()<CR>]], { noremap = true, silent = true })
@@ -63,7 +63,7 @@ set noshowcmd
 set splitbelow
 set splitright
 set updatetime=2500
-" @TODOUA: move under ~/.config/neovim/"
+" @TODUA: move under ~/.config/neovim/"
 set undodir=~/.vim/undodir
 set undofile
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
@@ -92,6 +92,6 @@ vim.o.scrolloff = 1
 vim.bo.tabstop = 2
 vim.bo.shiftwidth = 2
 
--- Global Vim vars
+-- Global Vim vars **
 vim.g.fzf_gh_website = 1
 vim.g.matchup_surround_enabled = 1

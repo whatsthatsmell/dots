@@ -1,31 +1,4 @@
-vim.cmd([[
-call plug#begin('~/.vim/plugged')
-" Plugins
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-abolish'
-Plug 'pbrisbin/vim-mkdir'
-Plug 'vim-test/vim-test'
-Plug 'mbbill/undotree'
-Plug 'ruanyl/coverage.vim'
-Plug 'moll/vim-node'
-Plug 'rust-lang/rust.vim'
-Plug 'junegunn/vim-peekaboo'
-Plug 'chrisbra/Colorizer'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
-Plug 'voldikss/vim-floaterm'
-call plug#end()
-]])
-
+-- *** Neovim Config Luatized *** --
 require('joel.plugins')
 
 -- treesitter & lsp
@@ -42,7 +15,7 @@ require('joel.completion')
 
 -- mappings galore
   -- see mappings.lua
--- @TODUA: refactor more mappings to Lua
+-- @TODUA: finish refactoring mappings to Lua
 vim.cmd([[
 " expands to dir of current file in cmd mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -267,7 +240,6 @@ nnoremap <silent> <leader>rg :RG<CR>
 let g:fzf_layout = { 'window': { 'width': 0.99, 'height': 0.8 } }
 let g:fzf_preview_window = 'right:61%'
 let $FZF_DEFAULT_OPTS='--reverse --multi'
-
 
 nnoremap <silent>gx :call OpenURLUnderCursor()<CR>
 

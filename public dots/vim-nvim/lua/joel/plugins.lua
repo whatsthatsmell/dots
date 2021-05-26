@@ -1,3 +1,32 @@
+-- @TODUA: migrate the rest of legacy plugin config
+vim.cmd([[
+call plug#begin('~/.vim/plugged')
+" Plugins
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'vim-test/vim-test'
+Plug 'mbbill/undotree'
+Plug 'ruanyl/coverage.vim'
+Plug 'moll/vim-node'
+Plug 'rust-lang/rust.vim'
+Plug 'junegunn/vim-peekaboo'
+Plug 'chrisbra/Colorizer'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+Plug 'voldikss/vim-floaterm'
+call plug#end()
+]])
+
 return require('packer').startup(function()
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
@@ -24,7 +53,7 @@ return require('packer').startup(function()
 		config = 'vim.cmd[[ALEEnable]]'
 	}
 
-	-- @TODOUA: move to completion.lua
+	-- @TODUA: move to completion.lua
 	use {
 		'hrsh7th/nvim-compe',
 		requires = {{'hrsh7th/vim-vsnip'}},
