@@ -39,6 +39,7 @@ return require('packer').startup(function()
 	use 'p00f/nvim-ts-rainbow'
 	use 'nvim-lua/popup.nvim'
 	use 'nvim-lua/lsp-status.nvim'
+	use "folke/lua-dev.nvim"
 
 	use {
 		'glepnir/galaxyline.nvim',

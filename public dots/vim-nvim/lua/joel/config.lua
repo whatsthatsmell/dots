@@ -1,3 +1,12 @@
+-- lua-dev for Neovim
+local luadev = require("lua-dev").setup({
+  -- add options here
+})
+
+local lspconfig = require('lspconfig')
+lspconfig.sumneko_lua.setup(luadev)
+
+-- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true

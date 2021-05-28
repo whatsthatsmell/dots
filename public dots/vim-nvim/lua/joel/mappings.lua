@@ -24,7 +24,8 @@ vim.api.nvim_set_keymap('n', ',d', ':b#<bar>bd#<CR>', { noremap = false, silent 
 vim.api.nvim_set_keymap('n', '<Leader>x', ':bd<CR>', {  noremap = true, silent = true })
 -- open available commands & run it
 vim.api.nvim_set_keymap('n', ',c',  [[<Cmd>lua require"telescope.builtin".commands()<CR>]], { noremap = true, silent = true })
-
+-- show LSP diagnostics for all open buffers
+vim.api.nvim_set_keymap('n', '<space>d',  [[<Cmd>lua require"telescope.builtin".lsp_workspace_diagnostics()<CR>]], { noremap = true, silent = true })
 -- commands - Lua API in the works: https://github.com/neovim/neovim/pull/12378
 vim.cmd([[
 au TextYankPost * lua vim.highlight.on_yank {on_visual = false}
