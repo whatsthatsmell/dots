@@ -33,6 +33,7 @@ return require('packer').startup(function()
 	use 'neovim/nvim-lspconfig'
 	use 'nvim-telescope/telescope.nvim'
 	use 'nvim-telescope/telescope-github.nvim'
+	use 'nvim-telescope/telescope-fzy-native.nvim'
 	use 'andymass/vim-matchup'
 	use 'windwp/nvim-autopairs'
 	use 'nvim-lua/lsp_extensions.nvim'

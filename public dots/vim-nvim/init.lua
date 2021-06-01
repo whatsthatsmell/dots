@@ -107,7 +107,6 @@ let g:undotree_DiffpanelHeight = 6
 " Fugitive maps
 nnoremap <silent> <leader>gb :Git blame<Return>
 nmap <leader>gp :Gpush origin
-nnoremap <leader>gc :GBranches<CR>
 " splitsville
 " - small vertical split to the right & go to it
 nnoremap <silent> ,\ :75vsp<CR><C-w><right>

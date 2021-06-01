@@ -27,6 +27,8 @@ vim.api.nvim_set_keymap('n', ',c',  [[<Cmd>lua require"telescope.builtin".comman
 -- show LSP diagnostics for all open buffers
 vim.api.nvim_set_keymap('n', '<space>d',  [[<Cmd>lua require"telescope.builtin".lsp_workspace_diagnostics()<CR>]], { noremap = true, silent = true })
 -- commands - Lua API in the works: https://github.com/neovim/neovim/pull/12378
+-- git_branches
+vim.api.nvim_set_keymap('n', '<leader>gc', [[<Cmd>lua require"telescope.builtin".git_branches()<CR>]], { noremap = true, silent = true })
 vim.cmd([[
 au TextYankPost * lua vim.highlight.on_yank {on_visual = false}
 
@@ -79,6 +81,7 @@ let g:netrw_list_hide= netrw_gitignore#Hide()
 
 ]])
 
+-- @TODUA: Try TJ's opt update
 -- Options **
 -- window scope
 vim.wo.number = true
@@ -95,4 +98,5 @@ vim.bo.shiftwidth = 2
 
 -- Global Vim vars **
 vim.g.fzf_gh_website = 1
-vim.g.matchup_surround_enabled = 1
+-- vim.g.matchup_surround_enabled = 1
+vim.g.matchup_matchparen_deferred = 1
