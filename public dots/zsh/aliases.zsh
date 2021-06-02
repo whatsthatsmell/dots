@@ -3,6 +3,7 @@ alias -s {js,json}=nvim
 alias -s {c,h}=nvim
 alias -s {rs,toml}=nvim
 alias -s zsh=nvim
+alias -s zshrc=nvim
 alias -s vim=nvim
 alias -s txt=nvim
 alias -s {md,MD}=nvim
