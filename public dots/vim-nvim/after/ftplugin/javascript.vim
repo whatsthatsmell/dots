@@ -9,7 +9,7 @@ setlocal foldlevel=2
 " setlocal omnifunc=v:lua.vim.lsp.omnifunc
 " ale settings
 let g:ale_completion_enabled = 0
-let g:ale_javascript_tsserver_executable = 'typescript-language server'
+let g:ale_javascript_tsserver_executable = 'typescript-language-server'
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \  'javascript': glob('.eslintrc*', '.;') != '' ? [ 'eslint' ] : [ 'standard' ],
@@ -57,7 +57,6 @@ nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " ale maps etc.
-" @TODO: finish killing ALE
 nmap <buffer><silent><localleader>n <Plug>(ale_next_wrap)
 nmap <buffer><silent><localleader>p <Plug>(ale_previous_wrap)
 highlight clear ALEErrorSign
