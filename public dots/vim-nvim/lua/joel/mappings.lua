@@ -98,5 +98,4 @@ vim.bo.shiftwidth = 2
 
 -- Global Vim vars **
 vim.g.fzf_gh_website = 1
--- vim.g.matchup_surround_enabled = 1
 vim.g.matchup_matchparen_deferred = 1
