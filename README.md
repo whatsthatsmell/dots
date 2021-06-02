@@ -6,7 +6,7 @@ Current Setup (Last Updated 28-May-2021):
 - Zsh  
     - [Oh My Zsh](https://ohmyz.sh/)
 - [Neovim](https://neovim.io/)
-	- Theme: [based on ci_dark](https://github.com/yunlingz/ci_dark) (Heavily Customized)
+	- Theme: [codesmell_dark](https://github.com/whatsthatsmell/codesmell_dark.vim)
 	- Config: Lua
 	- Package Management: Packer
 	- Notable Plugins: Telescope, gitsigns, galaxyline, nvim-lspconfig

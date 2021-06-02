@@ -65,11 +65,11 @@ set bg=dark
 " syntax highlight only to 1K instead of default 3K
 set synmaxcol=1000
 " THEME stuff
-" better vertsplit char- part of ci_dark theme
+" better vertsplit char
 set fillchars+=vert:│
-let g:ci_dark_enable_bold = 1
+let g:codesmell_dark_enable_bold = 1
 " let g:rainbow_active = 1
-colorscheme ci_dark
+colorscheme codesmell_dark
 
 set runtimepath^=~/.vim
 let &packpath=&runtimepath

@@ -91,7 +91,7 @@ return require("packer").startup(function()
     }
 
     -- Local plugins
-    use '~/vim-dev/plugins/ci_dark.vim'
+    use '~/vim-dev/plugins/codesmell_dark.vim'
     use '~/vim-dev/plugins/fzf-gh.vim'
 
     use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
