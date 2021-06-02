@@ -16,8 +16,7 @@ require("joel.completion")
 -- mappings galore
 -- see mappings.lua
 -- @TODUA: finish refactoring mappings to Lua
-vim.cmd(
-    [[
+vim.cmd([[
 " expands to dir of current file in cmd mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -262,5 +261,4 @@ function! OpenURLUnderCursor()
   :redraw!
 endfunction
 
-]]
-)
+]])
