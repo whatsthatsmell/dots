@@ -33,8 +33,8 @@ inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
-" Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+" Show diagnostic popup on cursor hold but don't steal cursor
+autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
 " show signature help on cursor holder (insert)
 " autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
 sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
