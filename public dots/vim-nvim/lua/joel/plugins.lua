@@ -138,6 +138,8 @@ return require("packer").startup(function()
     }
 
     require'lspconfig'.tsserver.setup {}
+    -- TODOUA: Determine if this has any value
+    require'lspconfig'.graphql.setup {filetypes = {'graphql', 'javascript'}}
     require'lspconfig'.clangd.setup {}
     -- VimL (full circle!)
     require'lspconfig'.vimls.setup {}
