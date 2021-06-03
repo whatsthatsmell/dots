@@ -1,6 +1,6 @@
 ![Neovim](https://img.shields.io/badge/editor-Neovim-green?logo=neovim&style=plastic)
 ## Public version of Code Smell dotfiles
-Current Setup (Last Updated 28-May-2021): 
+Current Setup (Last Updated 03-Jun-2021): 
 - [Alacritty](https://github.com/alacritty/alacritty) and an [iTerm Hotkey Window](https://www.iterm2.com/)
     - Theme: Custom, see alacritty and iTerm configs
 - Zsh  
