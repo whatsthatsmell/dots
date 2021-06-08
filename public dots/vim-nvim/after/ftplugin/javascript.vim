@@ -8,6 +8,7 @@ setlocal foldnestmax=3
 setlocal foldlevel=2
 " setlocal omnifunc=v:lua.vim.lsp.omnifunc
 " ale settings
+let g:ale_disable_lsp = 1
 let g:ale_completion_enabled = 0
 let g:ale_javascript_tsserver_executable = 'typescript-language-server'
 let g:ale_fixers = {
@@ -67,8 +68,8 @@ nmap <buffer><leader>f <Plug>(ale_fix)
 " nmap <buffer><silent> <leader>d <Plug>(ale_go_to_definition)
 " nnoremap <buffer><silent> <leader>r :ALEFindReferences -relative<Return>
 nnoremap <buffer><silent> <leader>rn :ALERename<Return>
-let g:ale_completion_enabled = 0
-let g:ale_completion_autoimport = 1
+" let g:ale_completion_enabled = 0
+" let g:ale_completion_autoimport = 1
 
 " abbreviations - see maps below for wrapping with these
 inoreabbrev Ccl console.log()<Left><Left><Esc>
