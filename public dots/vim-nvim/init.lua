@@ -208,7 +208,9 @@ nnoremap <silent> <leader>g :Telescope grep_string<cr>
 " -- find files with gitfiles & fallback on find_files
 nnoremap <silent> ,<space> :lua require'joel.telescope'.project_files()<cr>
 " browse, explore and create notes
-nnoremap <silent> ,n :lua require'joel.telescope'.find_notes()<cr>
+nnoremap <silent> ,n :lua require'joel.telescope'.browse_notes()<cr>
+" find notes
+nnoremap <silent> <leader>n :lua require'joel.telescope'.find_notes()<cr>
 " search notes
 nnoremap <silent> <space>n :lua require'joel.telescope'.grep_notes()<cr>
 " Explore files starting at $HOME

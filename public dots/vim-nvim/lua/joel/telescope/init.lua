@@ -39,19 +39,10 @@ function M.grep_prompt()
     }
 end
 
-function M.grep_notes()
-    local opts = {}
-    opts.search_dirs = {'~/notes/', '~/.vim/', '~/dotfiles', '~/.config/nvim', '~/vim-dev'}
-    opts.prompt_prefix = '   '
-    opts.prompt_title = 'Search Notes'
-    opts.shorten_path = true
-    require 'telescope.builtin'.live_grep(opts)
-end
-
 M.project_files = function()
     local _, ret, stderr = utils.get_os_command_output({'git', 'rev-parse', '--is-inside-work-tree'})
     local gopts = {}
-    gopts.prompt_title = 'Git Files'
+    gopts.prompt_title = ' Git Files'
     gopts.prompt_prefix = '  '
     if ret == 0 then
         require 'telescope.builtin'.git_files(gopts)
@@ -60,9 +51,32 @@ M.project_files = function()
     end
 end
 
+function M.grep_notes()
+    local opts = {}
+    opts.search_dirs = {'~/notes/', '~/.vim/', '~/dotfiles', '~/.config/nvim', '~/vim-dev'}
+    opts.prompt_prefix = '   '
+    opts.prompt_title = ' Grep Notes'
+    opts.shorten_path = true
+    require 'telescope.builtin'.live_grep(opts)
+end
+
+
 function M.find_notes()
+    require('telescope.builtin').find_files {
+        prompt_title = ' Find Notes',
+        shorten_path = false,
+        cwd = '~/notes/',
+        width = .25,
+        layout_strategy = 'horizontal',
+        layout_config = {
+            preview_width = 0.65
+        }
+    }
+end
+
+function M.browse_notes()
     require('telescope.builtin').file_browser {
-        prompt_title = '\\ Browse Notes /',
+        prompt_title = ' Browse Notes',
         prompt_prefix = ' ﮷ ',
         shorten_path = false,
         cwd = '~/notes/',
@@ -75,9 +89,10 @@ function M.find_notes()
 end
 
 -- @TODUA: redundancy with these 2 Nvim config pickers
+-- rename these two
 function M.vim_rtp()
     require('telescope.builtin').find_files {
-        prompt_title = '\\ NVim RTP /',
+        prompt_title = ' NVim Config Find',
         shorten_path = false,
         cwd = '~/.config/nvim/',
         width = .25,
@@ -90,7 +105,7 @@ end
 
 function M.nvim_config()
     require('telescope.builtin').file_browser {
-        prompt_title = '\\ NVim Config /',
+        prompt_title = ' NVim Config Browse',
         shorten_path = false,
         cwd = '~/.config/nvim/',
         width = .25,
@@ -103,7 +118,7 @@ end
 
 function M.file_explorer()
     require('telescope.builtin').file_browser {
-        prompt_title = '\\ File Explorer /',
+        prompt_title = ' File Browser',
         shorten_path = false,
         cwd = '~',
         width = .25,
