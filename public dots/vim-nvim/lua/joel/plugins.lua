@@ -42,6 +42,7 @@ return require("packer").startup(function()
     use 'nvim-lua/lsp-status.nvim'
     use 'folke/lua-dev.nvim'
     use 'andrejlevkovitch/vim-lua-format'
+    use 'tamago324/compe-zsh'
 
     use {
         'glepnir/galaxyline.nvim',
@@ -75,16 +76,17 @@ return require("packer").startup(function()
                 max_menu_width = 100,
                 documentation = true,
                 source = {
-                    path = true,
                     buffer = true,
                     calc = true,
-                    vsnip = true,
                     nvim_lsp = true,
                     nvim_lua = true,
+                    path = true,
+                    snippets_nvim = true,
                     spell = true,
                     tags = true,
-                    snippets_nvim = true,
-                    treesitter = true
+                    treesitter = true,
+                    vsnip = true,
+		    zsh = true
                 }
             }
         end
@@ -138,8 +140,6 @@ return require("packer").startup(function()
     }
 
     require'lspconfig'.tsserver.setup {}
-    -- TODOUA: Determine if this has any value
-    require'lspconfig'.graphql.setup {filetypes = {'graphql', 'javascript'}}
     require'lspconfig'.clangd.setup {}
     -- VimL (full circle!)
     require'lspconfig'.vimls.setup {}

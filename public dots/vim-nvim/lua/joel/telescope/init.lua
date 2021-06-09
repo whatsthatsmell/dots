@@ -19,11 +19,7 @@ require('telescope').setup {
                 preview_height = 0.5
             }
         },
-        mappings = {
-            n = {
-                ['<Del>'] = actions.close
-            }
-        }
+        mappings = {n = {['<Del>'] = actions.close}}
     }
 }
 
@@ -40,26 +36,46 @@ function M.grep_prompt()
 end
 
 M.project_files = function()
-    local _, ret, stderr = utils.get_os_command_output({'git', 'rev-parse', '--is-inside-work-tree'})
+    local _, ret, stderr = utils.get_os_command_output({
+        'git', 'rev-parse', '--is-inside-work-tree'
+    })
     local gopts = {}
     gopts.prompt_title = ' Git Files'
     gopts.prompt_prefix = '  '
     if ret == 0 then
-        require 'telescope.builtin'.git_files(gopts)
+        require'telescope.builtin'.git_files(gopts)
     else
-        require 'telescope.builtin'.find_files()
+        require'telescope.builtin'.find_files()
     end
 end
 
+-- find files in popular dirs
+-- function M.find_files()
+--     require('telescope.builtin').find_files {
+--         prompt_title = ' Find Files',
+--         shorten_path = false,
+--         -- file_ignore_patterns = { "Dropbox/.*", "Library/.*", "code_smell/.*", ".rustup/.*", "Movies/" },
+--         search_dirs = {
+--             '~/.oh-my-zsh/custom/'
+--         },
+--         hidden = true,
+--         cwd = '~',
+--         width = .25,
+--         layout_strategy = 'horizontal',
+--         layout_config = {preview_width = 0.65}
+--     }
+-- end
+-- @TODOUA: work HOME dot files into one of these
 function M.grep_notes()
     local opts = {}
-    opts.search_dirs = {'~/notes/', '~/.vim/', '~/dotfiles', '~/.config/nvim', '~/vim-dev'}
+    opts.search_dirs = {
+        '~/notes/', '~/.vim/', '~/dotfiles', '~/.config/nvim', '~/vim-dev'
+    }
     opts.prompt_prefix = '   '
     opts.prompt_title = ' Grep Notes'
     opts.shorten_path = true
-    require 'telescope.builtin'.live_grep(opts)
+    require'telescope.builtin'.live_grep(opts)
 end
-
 
 function M.find_notes()
     require('telescope.builtin').find_files {
@@ -68,9 +84,7 @@ function M.find_notes()
         cwd = '~/notes/',
         width = .25,
         layout_strategy = 'horizontal',
-        layout_config = {
-            preview_width = 0.65
-        }
+        layout_config = {preview_width = 0.65}
     }
 end
 
@@ -82,24 +96,21 @@ function M.browse_notes()
         cwd = '~/notes/',
         width = .25,
         layout_strategy = 'horizontal',
-        layout_config = {
-            preview_width = 0.65
-        }
+        layout_config = {preview_width = 0.65}
     }
 end
 
--- @TODUA: redundancy with these 2 Nvim config pickers
--- rename these two
-function M.vim_rtp()
+function M.find_files()
     require('telescope.builtin').find_files {
-        prompt_title = ' NVim Config Find',
+        prompt_title = ' NVim & Term Config Find',
         shorten_path = false,
+        search_dirs = {
+            '~/.oh-my-zsh/custom/', '~/.config/nvim', '~/.config/alacritty'
+        },
         cwd = '~/.config/nvim/',
         width = .25,
         layout_strategy = 'horizontal',
-        layout_config = {
-            preview_width = 0.65
-        }
+        layout_config = {preview_width = 0.65}
     }
 end
 
@@ -110,9 +121,7 @@ function M.nvim_config()
         cwd = '~/.config/nvim/',
         width = .25,
         layout_strategy = 'horizontal',
-        layout_config = {
-            preview_width = 0.65
-        }
+        layout_config = {preview_width = 0.65}
     }
 end
 
@@ -123,9 +132,7 @@ function M.file_explorer()
         cwd = '~',
         width = .25,
         layout_strategy = 'horizontal',
-        layout_config = {
-            preview_width = 0.65
-        }
+        layout_config = {preview_width = 0.65}
     }
 end
 

@@ -215,10 +215,10 @@ nnoremap <silent> <leader>n :lua require'joel.telescope'.find_notes()<cr>
 nnoremap <silent> <space>n :lua require'joel.telescope'.grep_notes()<cr>
 " Explore files starting at $HOME
 nnoremap <silent> ,e :lua require'joel.telescope'.file_explorer()<cr>
+" Find files in popular dirs
+nnoremap <silent> <space>e :lua require'joel.telescope'.find_files()<cr>
 " greg for a string
 nnoremap <silent> <space>g :lua require'joel.telescope'.grep_prompt()<cr>
-" find a Vim runtimepath file
-nnoremap <silent> <leader>rt :lua require'joel.telescope'.vim_rtp()<cr>
 " find or create neovim configs
 nnoremap <silent> <leader>nc :lua require'joel.telescope'.nvim_config()<cr>
 " slowness: https://github.com/nvim-telescope/telescope.nvim/issues/392
