@@ -120,7 +120,10 @@ nmap <leader>md <Plug>MarkdownPreview
 let g:coverage_json_report_path = 'coverage/coverage-final.json'
 
 " Define the symbol display for covered lines
-let g:coverage_sign_covered = '⦿'
+let g:coverage_sign_covered = ''
+
+" Define the symbol display for uncovered lines
+let g:coverage_sign_uncovered = ''
 
 " Define the interval time of updating the coverage lines
 let g:coverage_interval = 3000
@@ -160,7 +163,7 @@ nnoremap <leader>br :VRSB
 nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
 nmap <silent> <leader>gf :vs <cfile><CR>
-au TermOpen,TermEnter * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . ' ⓣ  '. bufnr('%'), ':t')
+au TermOpen,TermEnter * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . '   '. bufnr('%'), ':t')
 
 " - not sure why I have this & <del> set? hmmm
 if has('nvim')
