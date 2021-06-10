@@ -3,6 +3,10 @@ local actions = require('telescope.actions')
 local utils = require('telescope.utils')
 require('telescope').setup {
     defaults = {
+        vimgrep_arguments = {
+            'rg', '--color=never', '--no-heading', '--with-filename',
+            '--line-number', '--column', '--smart-case', '--hidden'
+        },
         prompt_prefix = '❯ ',
         selection_caret = '❯ ',
         prompt_position = 'top',
@@ -68,8 +72,11 @@ end
 -- @TODOUA: work HOME dot files into one of these
 function M.grep_notes()
     local opts = {}
+    opts.hidden = true
+    -- opts.file_ignore_patterns = { 'thesaurus/'}
     opts.search_dirs = {
-        '~/notes/', '~/.vim/', '~/dotfiles', '~/.config/nvim', '~/vim-dev'
+        '~/notes/', '~/.vim/', '~/dotfiles', 'config/nvim', '~/vim-dev',
+        '~/.oh-my-zsh/custom', '~/.config/alacritty'
     }
     opts.prompt_prefix = '   '
     opts.prompt_title = ' Grep Notes'

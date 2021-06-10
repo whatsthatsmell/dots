@@ -58,7 +58,7 @@ nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " ale maps etc.
-nmap <buffer><silent><localleader>n <Plug>(ale_next_wrap)
+" nmap <buffer><silent><localleader>n <Plug>(ale_next_wrap)
 nmap <buffer><silent><localleader>p <Plug>(ale_previous_wrap)
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
