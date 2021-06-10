@@ -13,6 +13,8 @@ require("joel.mappings")
 -- compe
 require("joel.completion")
 
+-- utils
+--require("joel.utils")
 -- mappings galore
 -- see mappings.lua
 -- @TODUA: finish refactoring mappings to Lua
@@ -94,10 +96,10 @@ nmap <silent> <leader><space> <C-i>
 " handled by unimpaired for now
 " open latest `todo` file, set by `T mark
 nnoremap <silent> <leader>to :sp \| norm `T<cr>
-" Replace word under cursor in file (case-sensitive)
-nmap <leader>sr *:%s///gI<left><left><left>
-" Replace word under cursor in line (case-sensitive)
-nmap <leader>sl *:s///gI<left><left><left>
+" Replace word under cursor in File (case-sensitive)
+nmap <leader>sr :%s/<C-R><C-W>//gI<left><left><left>
+" Replace word under cursor on Line (case-sensitive)
+nmap <leader>sl :s/<C-R><C-W>//gI<left><left><left>
 " undotree
 nnoremap <silent><leader>u :UndotreeToggle<CR>
 let g:undotree_HelpLine = 0
@@ -247,6 +249,12 @@ let $FZF_DEFAULT_OPTS='--reverse --multi'
 
 nnoremap <silent>gx :call OpenURLUnderCursor()<CR>
 
+function! OpenURLUnderCursor()
+  let l:uri = expand('<cWORD>')
+  silent exec "!open '" . l:uri . "'"
+  :redraw!
+endfunction
+
 " fzf-checkout settings
 " ripgrep with FZF only used as selector
 function! RipgrepFzf(query, fullscreen)
@@ -258,12 +266,5 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-
-
-function! OpenURLUnderCursor()
-  let l:uri = expand('<cWORD>')
-  silent exec "!open '" . l:uri . "'"
-  :redraw!
-endfunction
 
 ]])
