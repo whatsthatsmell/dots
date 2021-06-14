@@ -4,6 +4,16 @@ local luadev = require('lua-dev').setup({})
 local lspconfig = require('lspconfig')
 lspconfig.sumneko_lua.setup(luadev)
 
+-- Trying nvim-DAP 
+-- local dap = require('dap')
+-- dap.adapters.node2 = {
+--     type = 'executable',
+--     command = 'node',
+--     args = {
+--         vim.fn.expand "~/vim-dev/debug/vscode-node-debug2/out/src/nodeDebug.js"
+--     }
+-- }
+
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
     highlight = {enable = true},

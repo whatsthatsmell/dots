@@ -43,6 +43,7 @@ return require("packer").startup(function()
     use 'folke/lua-dev.nvim'
     use 'andrejlevkovitch/vim-lua-format'
     use 'tamago324/compe-zsh'
+    -- use 'mfussenegger/nvim-dap'
 
     use {
         'glepnir/galaxyline.nvim',
@@ -86,7 +87,7 @@ return require("packer").startup(function()
                     tags = true,
                     treesitter = true,
                     vsnip = true,
-		    zsh = true
+                    zsh = true
                 }
             }
         end

@@ -81,6 +81,27 @@ plugins=(git zsh-autosuggestions cargo)
 
 source $ZSH/oh-my-zsh.sh
 
+() {
+  local LC_ALL="" LC_CTYPE="en_US.UTF-8"
+  SEGMENT_SEPARATOR=
+}
+
+# Begin a segment
+# Takes two arguments, background and foreground. Both can be omitted,
+# rendering default background/foreground.
+prompt_segment() {
+  local bg fg
+  # [[ -n $1 ]] && bg="$BG[237]" || bg="%k"
+  [[ -n $2 ]] && fg="$FG[254]" || fg="%f"
+  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
+    echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
+  else
+    echo -n "%{$bg%}%{$fg%}"
+  fi
+  CURRENT_BG=$1
+  [[ -n $3 ]] && echo -n $3
+}
+
 # Change prompt for HOME dir
 prompt_dir () {
 	if [[ "$PWD" == "$HOME" ]]; then
@@ -91,6 +112,16 @@ prompt_dir () {
 }
 # Context: user@hostname (who am I and where am I)
 prompt_context() { }
+
+prompt_status() {
+  local -a symbols
+
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}"
+  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
+
+  [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
+}
 
 # TODO: Move to theme file ------->
 prompt_git() {
@@ -111,6 +142,7 @@ prompt_git() {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
     if [[ -n $dirty ]]; then
       prompt_segment yellow black
+      PL_BRANCH_CHAR=%{%F{yellow}%}''
     else
       prompt_segment green $CURRENT_FG
     fi

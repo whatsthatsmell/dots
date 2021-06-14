@@ -140,6 +140,9 @@ let g:coverage_show_uncovered = 1
 " nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 let g:test#runner_commands = ['Jest']
+" jank/vim-test and mfussenegger/nvim-dap
+"nnoremap <leader>dt :TestNearest -strategy=jest<CR>
+" try this stuff from https://github.com/David-Kunz/vim
 
 " floaterm maps etc.
 let g:floaterm_title = '  ($1/$2) '

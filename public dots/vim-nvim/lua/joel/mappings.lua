@@ -9,9 +9,13 @@ vim.api.nvim_set_keymap('n', '<Leader>w', ':up<CR>', {noremap = true})
 -- quit (or close window)
 vim.api.nvim_set_keymap('n', '<Leader>q', ':q<CR>',
                         {noremap = true, silent = true})
--- toggle hunk highlight
+-- toggle hunk line highlight
 vim.api.nvim_set_keymap('n', '<Leader>hh',
                         [[<Cmd>lua require'gitsigns'.toggle_linehl()<CR>]],
+                        {noremap = true, silent = true})
+-- toggle hunk line Num highlight
+vim.api.nvim_set_keymap('n', '<Leader>hn',
+                        [[<Cmd>lua require'gitsigns'.toggle_numhl()<CR>]],
                         {noremap = true, silent = true})
 -- use ZQ for :q! (quit & discard changes)
 -- Discard all changed buffers & quit
@@ -46,6 +50,14 @@ vim.api.nvim_set_keymap('n', '<space>d',
 vim.api.nvim_set_keymap('n', '<leader>gc',
                         [[<Cmd>lua require'telescope.builtin'.git_branches()<CR>]],
                         {noremap = true, silent = true})
+-- Trial DAP maps
+-- vim.cmd [[nnoremap <silent> <leader>dr :lua require'dap'.continue()<CR>]]
+-- vim.cmd [[nnoremap <leader>ds :lua require'dap'.stop()<CR>]]
+-- vim.cmd [[nnoremap <leader>da :lua require'joel.debugHelper'.attach()<CR>]]
+-- vim.cmd [[nnoremap <leader>dg :lua require'joel.debugHelper'.debugGql()<CR>]]
+-- vim.cmd [[nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>]]
+-- vim.cmd [[nnoremap <silent> <space>dh :lua require('dap.ui.variables').hover()<CR>]]
+
 vim.cmd([[
 au TextYankPost * lua vim.highlight.on_yank {on_visual = false}
 
