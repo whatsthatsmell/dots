@@ -141,6 +141,7 @@ return require("packer").startup(function()
     }
 
     require'lspconfig'.tsserver.setup {}
+    require'lspconfig'.graphql.setup {}
     require'lspconfig'.clangd.setup {}
     -- VimL (full circle!)
     require'lspconfig'.vimls.setup {}
