@@ -37,6 +37,7 @@ abt() {
 sc() {
   screencapture -x ~/Screenshots/$1
 }
+
 # --- gh cli goodness ---
 # select and go to gh issue on web
 ghi() {
@@ -104,7 +105,7 @@ nodes() {
 reddit() {
   local json
   local url
-  json=$(curl -s -A 'Reddit CLI' "https://www.reddit.com/r/$1/new.json?limit=10" | jq -r '.data.children| .[] | "\(.data.title)\t\(.data.permalink)"')
+  json=$(curl -s -A 'Reddit CLI' "https://www.reddit.com/r/$1/new.json?limit=10" | jq -r '.data.children| .[] | " \(.data.title)\t\(.data.permalink)"')
   url=$(echo "$json" | fzf --delimiter='\t' --with-nth=1 | cut -f2)
   if [[ -n $url ]]; then
     open "https://www.reddit.com$url"
@@ -116,6 +117,7 @@ csjq() {
   curl -s $1 | jq
 }
 
+# changing dirs conditionally
 # cdf - cd into the directory of the selected file
 cdf() {
   local file
@@ -130,6 +132,16 @@ cdg() {
   file=$(fd -H -g .git | fzf) && dir=$(dirname "$file") && cd "$dir"
 }
 
+# look up Git worktrees and CD to selected! This was the best idea ever - 
+td() {
+  local wtdir
+  wtdir=$(git worktree list | fzf | awk '{print $1}')
+  if [[ -n $wtdir ]]; then
+    cd "$wtdir"
+  fi
+}
+
+# [WIP] find vim-related help. Works but context is not helping. The query is not shown in preview. Only returns path. 
 fvh() {
   rg "$1" --ignore-case --files-with-matches --no-messages ~/notes/ ~/dotfiles/ ~/.vim/ ~/.config/nvim/ /usr/local/Caskroom/neovim-nightly/latest/nvim-osx64/share/nvim/runtime/doc/ ~/vim-dev/ | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=up:50% --multi --select-1 --exit-0
 }
@@ -225,7 +237,7 @@ fkill() {
   fi  
 }
 
-# TEMP TRIAL of f() and fm()
+# TEMP TRIAL of f() and fm() ---
 # Use fd and fzf to get the args to a command.
 # Works only with zsh
 # Examples:
@@ -233,11 +245,13 @@ fkill() {
 # f 'echo Selected:'
 # f 'echo Selected music:' --extention mp3
 # fm rm # To rm files in current directory
+# @TODO: I am not using this & I need to or remove
 f() {
   sels=( "${(@f)$(fd "${fd_default[@]}" "${@:2}"| fzf)}" )
   test -n "$sels" && print -z -- "$1 ${sels[@]:q:q}"
 }
 
+# @TODO: See above. Kill it? Use it?
 # Like f, but not recursive.
 fm() f "$@" --max-depth 1
 
@@ -264,7 +278,6 @@ ec () {
 # --- end trial
 
 # fgco - checkout git branch/tag, w/ preview showing commits between the tag/branch & HEAD
-
 fgco() {
   local tags branches target
   branches=$(
@@ -295,7 +308,6 @@ fgdb() {
         --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
               git branch -D $(awk '{print $2}' <<<"$target" )
 }
-
 
 # from the rga ripgrep-all README - integrating with FZF for PDF etc greppin'
 rgaf() {
