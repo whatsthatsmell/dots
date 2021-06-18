@@ -27,10 +27,30 @@ require('telescope').setup {
     }
 }
 
+-- github
 require('telescope').load_extension('gh')
 require('telescope').load_extension('fzy_native')
 
 local M = {}
+
+-- requires github extension
+function M.gh_issues()
+    local opts = {}
+    opts.prompt_title = ' Issues'
+    --opts.author = '@me'
+    require('telescope').extensions.gh.issues(opts)
+end
+
+-- @TODOUA: works for basic/default scenarios, file issue or PR
+-- Use my fzf-gh for now for PRs
+function M.gh_prs()
+    local opts = {}
+    opts.prompt_title = ' Pull Requests'
+    -- opts.author = 'joelpalmer' 
+    -- opts.search = 'is:open is:pr review-requested:@me'
+    require('telescope').extensions.gh.pull_request(opts)
+end
+-- end github functions
 
 function M.grep_prompt()
     require('telescope.builtin').grep_string {

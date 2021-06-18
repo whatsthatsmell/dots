@@ -226,17 +226,22 @@ nnoremap <silent> <space>e :lua require'joel.telescope'.find_files()<cr>
 nnoremap <silent> <space>g :lua require'joel.telescope'.grep_prompt()<cr>
 " find or create neovim configs
 nnoremap <silent> <leader>nc :lua require'joel.telescope'.nvim_config()<cr>
+" github issues
+nnoremap <silent> <leader>is :lua require'joel.telescope'.gh_issues()<cr>
+" github PRs - keep using my fzf-gh until I (or they) PR telescope
+"nnoremap <silent> <leader>pr :lua require'joel.telescope'.gh_prs()<cr>
+
 " slowness: https://github.com/nvim-telescope/telescope.nvim/issues/392
 nnoremap <silent> ,g :Telescope live_grep<cr>
 nnoremap <silent> ,k :Telescope keymaps<cr>
 nnoremap <silent> ,b :Telescope buffers<cr>
 nnoremap <silent> ,h :Telescope help_tags<cr>
 nnoremap <silent> <leader>fm :Telescope marks<cr>
-nnoremap <silent> <leader>is :Telescope gh issues<cr>
 " FZF mappings and config
 " ---> :PRS and :PRSR - fzf-gh.vim
-" PRs assigned awaiting my review
+" PRs assigned awaiting my review - @TODOUA: submit PR for this in telescope
 nnoremap <silent> <leader>pr :PRSR<CR>
+
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>bc :BCommits<CR>
 nnoremap <silent> <leader>bt :BTags<CR>
