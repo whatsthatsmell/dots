@@ -244,13 +244,14 @@ fm() f "$@" --max-depth 1
 # Deps - may not need these
 alias fz="fzf-noempty --bind 'tab:toggle,shift-tab:toggle+beginning-of-line+kill-line,ctrl-j:toggle+beginning-of-line+kill-line,ctrl-t:top' --color=light -1 -m"
 fzf-noempty () {
-local in="$(</dev/stdin)"
-test -z "$in" && (
-exit 130
-) || {
-  ec "$in" | fzf "$@"
+  local in="$(</dev/stdin)"
+  test -z "$in" && (
+  exit 130
+  ) || {
+    ec "$in" | fzf "$@"
+  }
 }
-}
+
 ec () {
   if [[ -n $ZSH_VERSION ]]
   then
@@ -259,6 +260,7 @@ ec () {
     echo -E -- "$@"
   fi
 }
+
 # --- end trial
 
 # fgco - checkout git branch/tag, w/ preview showing commits between the tag/branch & HEAD
@@ -276,7 +278,7 @@ fgco() {
         fzf --no-hscroll --no-multi -n 2 \
         --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
               git checkout $(awk '{print $2}' <<<"$target" )
-            }
+}
 
 # delete a branch, works like fgco!
 fgdb() {
@@ -292,7 +294,7 @@ fgdb() {
         fzf --no-hscroll --no-multi -n 2 \
         --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
               git branch -D $(awk '{print $2}' <<<"$target" )
-            }
+}
 
 
 # from the rga ripgrep-all README - integrating with FZF for PDF etc greppin'
@@ -309,5 +311,5 @@ rgaf() {
         # might want to convert to text and open the text file instead or as an option
               echo "opening $file" &&
                 open "$file"
-              }
+}
 

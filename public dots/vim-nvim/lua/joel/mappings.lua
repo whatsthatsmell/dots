@@ -80,7 +80,6 @@ set synmaxcol=1000
 " better vertsplit char
 set fillchars+=vert:│
 let g:codesmell_dark_enable_bold = 1
-" let g:rainbow_active = 1
 colorscheme codesmell_dark
 
 set runtimepath^=~/.vim

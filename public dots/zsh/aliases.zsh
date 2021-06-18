@@ -31,6 +31,7 @@ alias gijs='git init && echo "node_modules" >> .gitignore'
 alias glprs='git log -p --reverse --stat'
 alias glps='git log -p --stat'
 alias gt='git difftool --no-prompt' #delta
+alias gwtl='git worktree list'
 alias gyhc='git rev-parse HEAD | pbcopy'
 alias hack='history -75 | rg'
 alias jlc='jest --config=jest.local.js'

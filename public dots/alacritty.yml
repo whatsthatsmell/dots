@@ -72,7 +72,8 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  #startup_mode: Windowed
+  #   SimpleFullscreen allows Menu bar b/c it's not 'real' full screen
+  startup_mode: Windowed
 
   # Window title
   #title: Alacritty
@@ -809,6 +810,8 @@ key_bindings:
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
 
   # (macOS only)
+  # make <C-6> work in NVim (CTRL-^)
+  - { key: Key6,           mods: Control,                    chars: "\x1e"                 }
   #- { key: K,              mods: Command, mode: ~Vi|~Search, chars: "\x0c"                 }
   #- { key: K,              mods: Command, mode: ~Vi|~Search, action: ClearHistory          }
   - { key: Key9,           mods: Command,                    action: ResetFontSize         }
