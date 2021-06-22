@@ -83,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 
 () {
   local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-  SEGMENT_SEPARATOR=
+  SEGMENT_SEPARATOR=
 }
 
 # Begin a segment
