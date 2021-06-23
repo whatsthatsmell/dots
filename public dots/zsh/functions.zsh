@@ -101,11 +101,17 @@ nodes() {
   ps wup $(pgrep -x node)
 }
 
-# get 10 newest posts from @subreddit
+# get 12 newest or hottest posts from @subreddit & open selection in browser
+# ex: > reddit neovim new
+# @subreddit - Required (should default to `neovim` )
+# @filter - new(default) | hot | or any listing filter: https://www.reddit.com/dev/api/#GET_hot - Optional
 reddit() {
+  local filter=${2:-new}
   local json
   local url
-  json=$(curl -s -A 'Reddit CLI' "https://www.reddit.com/r/$1/new.json?limit=10" | jq -r '.data.children| .[] | " \(.data.title)\t\(.data.permalink)"')
+  # TODO: get a preview with `selftext`-->`\t\(.data.selftext[:30])`
+  # TODO: make `limit` a variable
+  json=$(curl -s -A 'Reddit Post Picker' "https://www.reddit.com/r/$1/$filter.json?limit=12" | jq -r '.data.children| .[] | " \(.data.title)\t\(.data.permalink)"')
   url=$(echo "$json" | fzf --delimiter='\t' --with-nth=1 | cut -f2)
   if [[ -n $url ]]; then
     open "https://www.reddit.com$url"
