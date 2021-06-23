@@ -111,6 +111,7 @@ reddit() {
   local url
   # TODO: get a preview with `selftext`-->`\t\(.data.selftext[:30])`
   # TODO: make `limit` a variable
+  # Note: Using SauceCodePro reddit icon in list items. Remove or replace as needed.
   json=$(curl -s -A 'Reddit Post Picker' "https://www.reddit.com/r/$1/$filter.json?limit=12" | jq -r '.data.children| .[] | " \(.data.title)\t\(.data.permalink)"')
   url=$(echo "$json" | fzf --delimiter='\t' --with-nth=1 | cut -f2)
   if [[ -n $url ]]; then
