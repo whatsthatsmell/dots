@@ -65,10 +65,13 @@ export BAT_THEME="ansi"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# use FZF with todoist cli
-source $(brew --prefix)/share/zsh/site-functions/_todoist_fzf
-# shell completion for todoist CLI
-# PROG=todoist source "$GOPATH/src/github.com/urfave/cli/autocomplete/zsh_autocomplete"
+# Load tab completion
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+#  compinit
+fi
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
@@ -222,7 +225,27 @@ bindkey "^F" fzf-cd-widget
 
 # use fd instead of rg for file search, rg author says so!
 export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_COMPLETION_OPTS='--border --info=inline'
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
 
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+# try out using `exa -T (exa's tree)` with fzf preview on cd **<tab>
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf "$@" --preview 'exa -aT -L=1 {}' ;;
+    *)            fzf "$@" ;;
+  esac
+}
 # Apply the command to CTRL-T
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='--height 64% --layout=reverse --border'
