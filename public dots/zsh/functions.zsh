@@ -92,7 +92,8 @@ tng() {
 
 # see environment variables
 envs() {
-  ps eww -o command | tr ' ' '\n'
+ # ps eww -o command | tr ' ' '\n'
+ printenv | fzf
 }
 
 # see node processes

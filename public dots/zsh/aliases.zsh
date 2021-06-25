@@ -33,9 +33,11 @@ alias glps='git log -p --stat'
 alias gt='git difftool --no-prompt' #delta
 alias gwtl='git worktree list'
 alias gyhc='git rev-parse HEAD | pbcopy'
+alias h='cd $HOME'
 alias hack='history -75 | rg'
 alias jlc='jest --config=jest.local.js'
 alias ldot='exa -ld .*'
+alias lg='lazygit'
 alias mp='multipass'
 alias mpl='multipass list'
 # not using multipass much, using `mps` in work-related alias
