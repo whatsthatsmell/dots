@@ -9,9 +9,9 @@ require('telescope').setup {
         },
         prompt_prefix = '❯ ',
         selection_caret = '❯ ',
-        prompt_position = 'top',
         sorting_strategy = 'ascending',
-        layout_defaults = {
+        layout_config = {
+            prompt_position = 'top',
             horizontal = {
                 width_padding = 0.04,
                 height_padding = 0.1,
@@ -37,7 +37,7 @@ local M = {}
 function M.gh_issues()
     local opts = {}
     opts.prompt_title = ' Issues'
-    --opts.author = '@me'
+    -- opts.author = '@me'
     require('telescope').extensions.gh.issues(opts)
 end
 

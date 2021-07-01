@@ -116,7 +116,15 @@ nnoremap <silent> ,\ :75vsp<CR><C-w><right>
 nnoremap <silent> ,- :22sp<CR><C-w><down>
 " Markdown-preview settings
 nmap <leader>md <Plug>MarkdownPreview
-" 
+" nvim-tree settings
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '.DS_Store' ]
+" let g:nvim_tree_gitignore = 1
+let g:nvim_tree_highlight_opened_files = 1
+let g:nvim_tree_auto_close = 0
+nnoremap <silent><C-p> :NvimTreeToggle<CR>
+nnoremap <silent><space>f :NvimTreeFindFile<CR>
+let g:nvim_tree_icons = { 'git': { 'unstaged': '±', 'staged': '', 'deleted': '✗' } }
+
 " ** Test and  coverage related **
 " Specify the path to `coverage.json` file relative to your current working directory.
 let g:coverage_json_report_path = 'coverage/coverage-final.json'
@@ -247,7 +255,6 @@ nnoremap <silent> <leader>bc :BCommits<CR>
 nnoremap <silent> <leader>bt :BTags<CR>
 nnoremap <silent> ,l :Lines<CR>
 nnoremap <silent> <leader>l :BLines<CR>
-nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>p :Files<CR>
 " 'grep' -- ripgrep!
 nnoremap <silent> <leader>rg :RG<CR>

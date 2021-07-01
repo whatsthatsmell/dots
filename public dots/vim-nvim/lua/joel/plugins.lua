@@ -48,7 +48,8 @@ return require("packer").startup(function()
     -- trying nvim-spectre
     -- use 'windwp/nvim-spectre' (not yet)
     -- use 'mfussenegger/nvim-dap'
-
+    -- trying nvim-tree
+    use 'kyazdani42/nvim-tree.lua'
     use {
         'glepnir/galaxyline.nvim',
         branch = 'main',
