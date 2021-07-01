@@ -153,13 +153,14 @@ let g:test#runner_commands = ['Jest']
 " try this stuff from https://github.com/David-Kunz/vim
 
 " floaterm maps etc.
+" Floaterm settings - more in mapping.lua, @TODOUA: move the rest there
 let g:floaterm_title = '  ($1/$2) '
 highlight Floaterm guibg=black
 " vft to open in main nvim
 nnoremap   <silent>   <leader>tn    :FloatermNew --width=0.7 --height=0.7<CR>
-tnoremap   <silent>   <leader>tn    <C-\><C-n>:FloatermNew<CR>
-nnoremap   <silent>   <leader>tp    :FloatermPrev<CR>
-tnoremap   <silent>   <leader>tp    <C-\><C-n>:FloatermPrev<CR>
+tnoremap   <silent>   <leader>tn    <C-\><C-n>:FloatermNew --width=0.7 --height=0.7<CR>
+" nnoremap   <silent>   <leader>tp    :FloatermPrev<CR>
+" tnoremap   <silent>   <leader>tp    <C-\><C-n>:FloatermPrev<CR>
 tnoremap   <silent>   <leader>tk    <C-\><C-n>:FloatermKill<CR>
 nnoremap   <silent>   <leader>t   :FloatermToggle<CR>
 tnoremap   <silent>   <leader>t   <C-\><C-n>:FloatermToggle<CR>

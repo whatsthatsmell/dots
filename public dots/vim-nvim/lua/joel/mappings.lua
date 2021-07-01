@@ -50,6 +50,14 @@ vim.api.nvim_set_keymap('n', '<space>d',
 vim.api.nvim_set_keymap('n', '<leader>gc',
                         [[<Cmd>lua require'telescope.builtin'.git_branches()<CR>]],
                         {noremap = true, silent = true})
+
+-- Floaterm settings - more in init.lua that need to move here
+-- -- in normal mode, <leader><right|left> are next/prev buffer.
+vim.api.nvim_set_keymap('t', ',<right>', '<C-\\><C-n>:FloatermNext<CR>',
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('t', ',<left>', '<C-\\><C-n>:FloatermPrev<CR>',
+                        {noremap = true, silent = true})
+
 -- Trial DAP maps
 -- vim.cmd [[nnoremap <silent> <leader>dr :lua require'dap'.continue()<CR>]]
 -- vim.cmd [[nnoremap <leader>ds :lua require'dap'.stop()<CR>]]
