@@ -111,7 +111,7 @@ nnoremap <silent> <leader>gb :Git blame<Return>
 nmap <leader>gp :Gpush origin
 " splitsville
 " - small vertical split to the right & go to it
-nnoremap <silent> ,\ :75vsp<CR><C-w><right>
+" nnoremap <silent> ,\ :75vsp<CR><C-w><right>
 " split - larger top
 nnoremap <silent> ,- :22sp<CR><C-w><down>
 " Markdown-preview settings
@@ -164,7 +164,7 @@ tnoremap   <silent>   <leader>tn    <C-\><C-n>:FloatermNew --width=0.7 --height=
 tnoremap   <silent>   <leader>tk    <C-\><C-n>:FloatermKill<CR>
 nnoremap   <silent>   <leader>t   :FloatermToggle<CR>
 tnoremap   <silent>   <leader>t   <C-\><C-n>:FloatermToggle<CR>
-" **Term settings**
+" ** Built-in Term settings**
 " open new neovim terminal: zsh in vsplit or split
 " command! -nargs=* T split | terminal <args>
 " nmap <silent> <leader>t :T<cr>
@@ -178,6 +178,13 @@ nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
 nmap <silent> <leader>gf :vs <cfile><CR>
 au TermOpen,TermEnter * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . '   '. bufnr('%'), ':t')
+" nvim-toggleterm - remove floaterm?
+" -- add second term - TODO: need to look at ToggleTerm API
+nnoremap <silent> ,t :ToggleTerm 2<CR>
+" -- close all toggleterms
+nnoremap <silent> ,\ :ToggleTermCloseAll<CR>
+" -- open all toggleterms - TODO: hack a toggleall - see repo issues
+nnoremap <silent> <space>\ :ToggleTermOpenAll<CR>
 
 " - not sure why I have this & <del> set? hmmm
 if has('nvim')

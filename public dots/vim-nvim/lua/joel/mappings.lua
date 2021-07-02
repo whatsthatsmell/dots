@@ -31,6 +31,7 @@ vim.api.nvim_set_keymap('n', '<Leader><right>', ':bn<CR>',
 -- go to prev buffer
 vim.api.nvim_set_keymap('n', '<Leader><left>', ':bp<CR>',
                         {noremap = true, silent = true})
+-- need bd! for toggleterm - todo
 -- delete current buffer - don't close split
 vim.api.nvim_set_keymap('n', ',d', ':b#<bar>bd#<CR>',
                         {noremap = false, silent = true})
