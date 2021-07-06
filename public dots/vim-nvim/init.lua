@@ -173,7 +173,7 @@ nmap <silent> <leader>tv :VT<cr>
 " open existing terminal (or any) buffer in vert right split: @[N]
 command! -nargs=* VRSB vertical rightbelow sb<args>
 nnoremap <leader>br :VRSB
-" delete terminal buffer - :q is fine in split
+" delete terminal buffer - :q is fine to close in split
 nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
 nmap <silent> <leader>gf :vs <cfile><CR>

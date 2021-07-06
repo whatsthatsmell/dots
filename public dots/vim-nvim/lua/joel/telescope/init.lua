@@ -109,9 +109,8 @@ function M.find_notes()
         prompt_title = ' Find Notes',
         shorten_path = false,
         cwd = '~/notes/',
-        width = .25,
         layout_strategy = 'horizontal',
-        layout_config = {preview_width = 0.65}
+        layout_config = {preview_width = 0.65, width = .75}
     }
 end
 
@@ -121,9 +120,8 @@ function M.browse_notes()
         prompt_prefix = ' ﮷ ',
         shorten_path = false,
         cwd = '~/notes/',
-        width = .25,
         layout_strategy = 'horizontal',
-        layout_config = {preview_width = 0.65}
+        layout_config = {preview_width = 0.65, width = .75}
     }
 end
 
@@ -135,9 +133,8 @@ function M.find_files()
             '~/.oh-my-zsh/custom/', '~/.config/nvim', '~/.config/alacritty'
         },
         cwd = '~/.config/nvim/',
-        width = .25,
         layout_strategy = 'horizontal',
-        layout_config = {preview_width = 0.65}
+        layout_config = {preview_width = 0.65, width = .75}
     }
 end
 
@@ -146,9 +143,8 @@ function M.nvim_config()
         prompt_title = ' NVim Config Browse',
         shorten_path = false,
         cwd = '~/.config/nvim/',
-        width = .25,
         layout_strategy = 'horizontal',
-        layout_config = {preview_width = 0.65}
+        layout_config = {preview_width = 0.65, width = .75}
     }
 end
 
@@ -157,9 +153,8 @@ function M.file_explorer()
         prompt_title = ' File Browser',
         shorten_path = false,
         cwd = '~',
-        width = .25,
         layout_strategy = 'horizontal',
-        layout_config = {preview_width = 0.65}
+        layout_config = {preview_width = 0.65, width = .75}
     }
 end
 
