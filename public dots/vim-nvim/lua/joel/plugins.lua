@@ -46,6 +46,8 @@ return require("packer").startup(function()
     -- trying lspkind-nvim
     use 'onsails/lspkind-nvim'
     use 'ray-x/lsp_signature.nvim'
+    -- @TODUA: move other TS plugs here
+    use 'nvim-treesitter/nvim-treesitter-refactor'
     -- trying nvim-spectre
     -- use 'windwp/nvim-spectre' (not yet)
     -- use 'mfussenegger/nvim-dap'

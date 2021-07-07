@@ -59,6 +59,7 @@ vnoremap ; :
 " Mostly handled by `compe` 🌟
 " thesaurus completion @TODO: Remove?
 set thesaurus+=~/.vim/thesaurus/thesaurii.txt
+set spellfile=~/.config/nvim/spell/en.utf-8.add
 inoremap <C-t> <C-x><C-t>
 " line completion - use more!
 inoremap <C-l> <C-x><C-l>

@@ -51,6 +51,22 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
         extended_mode = true, -- Highlight also non-parentheses delimiters
         max_file_lines = 1000
+    },
+    refactor = {
+        smart_rename = {enable = true, keymaps = {smart_rename = "grr"}},
+        highlight_definitions = {enable = true},
+        navigation = {
+            enable = true,
+            keymaps = {
+                goto_definition_lsp_fallback = "gnd",
+                -- list_definitions = "gnD",
+                -- list_definitions_toc = "gO",
+                -- @TODOUA: figure out if I need the 2 below
+                goto_next_usage = "<a-*>", -- is this redundant?
+                goto_previous_usage = "<a-#>" -- also this one?
+            }
+        }
+        -- highlight_current_scope = {enable = true}
     }
 }
 

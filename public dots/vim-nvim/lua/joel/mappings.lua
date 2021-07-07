@@ -4,6 +4,10 @@
 vim.api.nvim_set_keymap('n', '<Leader>\\',
                         ':set hlsearch! cursorline! cursorcolumn!<CR>',
                         {noremap = true, silent = true})
+-- turn off hlsearch, cursorline & cursorcolumn - @TODUA: fix these 2
+vim.api.nvim_set_keymap('n', '<Leader>/',
+                        ':set nohlsearch nocursorline nocursorcolumn<CR>',
+                        {noremap = true, silent = true})
 -- write only if changed
 vim.api.nvim_set_keymap('n', '<Leader>w', ':up<CR>', {noremap = true})
 -- quit (or close window)
