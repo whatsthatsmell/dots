@@ -46,6 +46,16 @@ ghi() {
   gh issue view $item --web
 }
 
+# rerun a Github workflow
+ghrr() {
+  local runid
+  runid=$(gh run list | fzf | cut -f7)
+  if [[ -n $runid ]]
+  then
+    gh run rerun $runid
+  fi
+}
+
 # select from all PRs and view in vim
 ghprl() {
   local prid
