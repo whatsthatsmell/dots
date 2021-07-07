@@ -43,7 +43,8 @@ return require("packer").startup(function()
     use 'folke/lua-dev.nvim'
     use 'andrejlevkovitch/vim-lua-format'
     use 'tamago324/compe-zsh'
-    -- trying lsp_signature
+    -- trying lspkind-nvim
+    use 'onsails/lspkind-nvim'
     use 'ray-x/lsp_signature.nvim'
     -- trying nvim-spectre
     -- use 'windwp/nvim-spectre' (not yet)
@@ -149,10 +150,37 @@ return require("packer").startup(function()
         default = true
     }
 
+    require('lspkind').init({
+        with_text = true,
+
+        symbol_map = {
+            Text = '',
+            Method = 'ƒ',
+            Function = 'ﬦ',
+            Constructor = '',
+            Variable = '',
+            Class = '',
+            Interface = 'ﰮ',
+            Module = '',
+            Property = '',
+            Unit = '',
+            Value = '',
+            Enum = '了',
+            Keyword = '',
+            Snippet = '﬌',
+            Color = '',
+            File = '',
+            Folder = '',
+            EnumMember = '',
+            Constant = '',
+            Struct = ''
+        }
+    })
+
     -- nvim-toggleterm trial to see about replacing floaterm
     require("toggleterm").setup {
         -- size can be a number or function which is passed the current terminal
-	size = 53,
+        size = 53,
         function(term)
             if term.direction == "horizontal" then
                 return 15
@@ -184,7 +212,6 @@ return require("packer").startup(function()
             highlights = {border = "Normal", background = "Normal"}
         }
     }
-
 
     -- search/replace visual b/c inccommand preview doesn't show all (PRs in flight on Neovim)
     -- require('spectre').setup()

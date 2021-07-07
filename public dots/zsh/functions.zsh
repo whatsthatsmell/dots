@@ -66,6 +66,16 @@ ghprl() {
   fi
 }
 
+# select from all PRs and comment (mainly used for dependabot)
+ghprc() {
+  local prid
+  prid=$(gh pr list -L100 | fzf | cut -f1)
+  if [[ -n $prid ]]
+  then
+    gh pr comment $prid -e 
+  fi
+}
+
 # select from PRs needing my review and view in vim
 ghprr() {
   local prid
