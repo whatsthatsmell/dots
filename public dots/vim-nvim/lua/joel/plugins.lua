@@ -98,7 +98,8 @@ return require("packer").startup(function()
                     tags = true,
                     treesitter = true,
                     vsnip = true,
-                    zsh = true
+                    zsh = true,
+                    gql_schema = true
                 }
             }
         end

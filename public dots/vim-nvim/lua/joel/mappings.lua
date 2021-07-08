@@ -62,6 +62,10 @@ vim.api.nvim_set_keymap('t', ',<right>', '<C-\\><C-n>:FloatermNext<CR>',
                         {noremap = true, silent = true})
 vim.api.nvim_set_keymap('t', ',<left>', '<C-\\><C-n>:FloatermPrev<CR>',
                         {noremap = true, silent = true})
+-- Telescope oldfiles
+vim.api.nvim_set_keymap('n', '<space>o',
+                        [[<Cmd>lua require'telescope.builtin'.oldfiles()<CR>]],
+                        {noremap = true, silent = true})
 
 -- Trial DAP maps
 -- vim.cmd [[nnoremap <silent> <leader>dr :lua require'dap'.continue()<CR>]]

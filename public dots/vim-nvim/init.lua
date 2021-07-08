@@ -14,7 +14,7 @@ require("joel.mappings")
 require("joel.completion")
 
 -- utils
---require("joel.utils")
+-- require("joel.utils")
 -- mappings galore
 -- see mappings.lua
 -- @TODUA: finish refactoring mappings to Lua
