@@ -54,7 +54,7 @@ end
 
 function M.grep_prompt()
     require('telescope.builtin').grep_string {
-        shorten_path = true,
+        path_display = {"shorten"},
         search = vim.fn.input('Rg ')
     }
 end
@@ -100,14 +100,14 @@ function M.grep_notes()
     }
     opts.prompt_prefix = '   '
     opts.prompt_title = ' Grep Notes'
-    opts.shorten_path = true
+    opts.path_display = {"shorten"}
     require'telescope.builtin'.live_grep(opts)
 end
 
 function M.find_notes()
     require('telescope.builtin').find_files {
         prompt_title = ' Find Notes',
-        shorten_path = false,
+        path_display = {"shorten"},
         cwd = '~/notes/',
         layout_strategy = 'horizontal',
         layout_config = {preview_width = 0.65, width = .75}
@@ -118,7 +118,7 @@ function M.browse_notes()
     require('telescope.builtin').file_browser {
         prompt_title = ' Browse Notes',
         prompt_prefix = ' ﮷ ',
-        shorten_path = false,
+        path_display = {"shorten"},
         cwd = '~/notes/',
         layout_strategy = 'horizontal',
         layout_config = {preview_width = 0.65, width = .75}
@@ -128,7 +128,7 @@ end
 function M.find_files()
     require('telescope.builtin').find_files {
         prompt_title = ' NVim & Term Config Find',
-        shorten_path = false,
+        path_display = {"shorten"},
         search_dirs = {
             '~/.oh-my-zsh/custom/', '~/.config/nvim', '~/.config/alacritty'
         },
@@ -141,7 +141,7 @@ end
 function M.nvim_config()
     require('telescope.builtin').file_browser {
         prompt_title = ' NVim Config Browse',
-        shorten_path = false,
+        path_display = {"shorten"},
         cwd = '~/.config/nvim/',
         layout_strategy = 'horizontal',
         layout_config = {preview_width = 0.65, width = .75}
@@ -151,7 +151,7 @@ end
 function M.file_explorer()
     require('telescope.builtin').file_browser {
         prompt_title = ' File Browser',
-        shorten_path = false,
+        path_display = {"shorten"},
         cwd = '~',
         layout_strategy = 'horizontal',
         layout_config = {preview_width = 0.65, width = .75}
