@@ -55,6 +55,8 @@ return require("packer").startup(function()
     use 'kyazdani42/nvim-tree.lua'
     -- trying nvim-toggleterm to possibly replace floaterm
     use 'akinsho/nvim-toggleterm.lua'
+    -- trying out ts-utils to see if it does add value
+    use 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
     use {
         'glepnir/galaxyline.nvim',
@@ -69,7 +71,7 @@ return require("packer").startup(function()
         config = 'vim.cmd[[ALEEnable]]'
     }
 
-    -- @TODUA: move to completion.lua
+    -- compe!
     use {
         'hrsh7th/nvim-compe',
         requires = {{'hrsh7th/vim-vsnip'}},
@@ -220,7 +222,7 @@ return require("packer").startup(function()
     -- require('spectre').setup()
 
     require'lspconfig'.tsserver.setup({
-        on_attach = function()
+        on_attach = function(client)
             -- signature completion - not in scope for compe
             require'lsp_signature'.on_attach({
                 bind = true, -- This is mandatory, otherwise border config won't get registered.
@@ -244,6 +246,31 @@ return require("packer").startup(function()
                 },
                 extra_trigger_chars = {} -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
             })
+
+            local ts_utils = require("nvim-lsp-ts-utils")
+
+            -- defaults
+            ts_utils.setup {
+                debug = false,
+                disable_commands = false,
+                enable_import_on_completion = false,
+                import_all_timeout = 5000, -- ms
+
+                -- eslint
+                eslint_enable_code_actions = true,
+                eslint_enable_disable_comments = true,
+                eslint_bin = "eslint",
+                eslint_config_fallback = nil,
+                eslint_enable_diagnostics = false,
+
+                -- TODO: try out update imports on file move
+                update_imports_on_move = false,
+                require_confirmation_on_move = false,
+                watch_dir = nil
+            }
+
+            -- required to fix code action ranges
+            ts_utils.setup_client(client)
         end
     })
     require'lspconfig'.graphql.setup {}
