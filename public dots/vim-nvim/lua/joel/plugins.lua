@@ -101,7 +101,7 @@ return require("packer").startup(function()
                     treesitter = true,
                     vsnip = true,
                     zsh = true,
-                    gql_schema = true
+                    -- gql_schema = true
                 }
             }
         end

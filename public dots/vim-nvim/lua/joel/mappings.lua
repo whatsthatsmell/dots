@@ -1,3 +1,4 @@
+-- LUA ONLY, NO vim.cmd([[]]) in this file! nvim_set_keymap only!
 -- ** Mappings galore & commands & options FOR NOW **
 -- toggle search highlights with cursorline & cursorcolumn
 -- See augroup nvim-incsearch-cursorline for symmetry
@@ -42,6 +43,7 @@ vim.api.nvim_set_keymap('n', ',d', ':b#<bar>bd#<CR>',
 -- delete current buffer - will close split - :q to close split
 vim.api.nvim_set_keymap('n', '<Leader>x', ':bd<CR>',
                         {noremap = true, silent = true})
+-- TELESCOPE maps  --
 -- open available commands & run it
 vim.api.nvim_set_keymap('n', ',c',
                         [[<Cmd>lua require'telescope.builtin'.commands()<CR>]],
@@ -55,6 +57,68 @@ vim.api.nvim_set_keymap('n', '<space>d',
 vim.api.nvim_set_keymap('n', '<leader>gc',
                         [[<Cmd>lua require'telescope.builtin'.git_branches()<CR>]],
                         {noremap = true, silent = true})
+-- Telescope oldfiles
+vim.api.nvim_set_keymap('n', '<space>o',
+                        [[<Cmd>lua require'telescope.builtin'.oldfiles()<CR>]],
+                        {noremap = true, silent = true})
+-- live grep slowness: https://github.com/nvim-telescope/telescope.nvim/issues/392
+vim.api.nvim_set_keymap('n', ',g',
+                        [[<Cmd>lua require'telescope.builtin'.live_grep()<CR>]],
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', ',k',
+                        [[<Cmd>lua require'telescope.builtin'.keymaps()<CR>]],
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', ',b',
+                        [[<Cmd>lua require'telescope.builtin'.buffers()<CR>]],
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', ',h',
+                        [[<Cmd>lua require'telescope.builtin'.help_tags()<CR>]],
+                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>fm',
+                        [[<Cmd>lua require'telescope.builtin'.marks()<CR>]],
+                        {noremap = true, silent = true})
+-- grep word under cursor
+vim.api.nvim_set_keymap('n', '<leader>g',
+                        [[<Cmd>lua require'telescope.builtin'.grep_string()<CR>]],
+                        {noremap = true, silent = true})
+-- find files with gitfiles & fallback on find_files
+vim.api.nvim_set_keymap('n', ',<space>',
+                        [[<Cmd>lua require'joel.telescope'.project_files()<CR>]],
+                        {noremap = true, silent = true})
+-- browse, explore and create notes
+vim.api.nvim_set_keymap('n', ',n',
+                        [[<Cmd>lua require'joel.telescope'.browse_notes()<CR>]],
+                        {noremap = true, silent = true})
+-- find notes
+vim.api.nvim_set_keymap('n', '<leader>n',
+                        [[<Cmd>lua require'joel.telescope'.find_notes()<CR>]],
+                        {noremap = true, silent = true})
+-- search notes
+vim.api.nvim_set_keymap('n', '<space>n',
+                        [[<Cmd>lua require'joel.telescope'.grep_notes()<CR>]],
+                        {noremap = true, silent = true})
+-- Explore files starting at $HOME
+vim.api.nvim_set_keymap('n', ',e',
+                        [[<Cmd>lua require'joel.telescope'.file_explorer()<CR>]],
+                        {noremap = true, silent = true})
+-- Find files in popular dirs
+vim.api.nvim_set_keymap('n', '<space>e',
+                        [[<Cmd>lua require'joel.telescope'.find_files()<CR>]],
+                        {noremap = true, silent = true})
+-- greg for a string
+vim.api.nvim_set_keymap('n', '<space>g',
+                        [[<Cmd>lua require'joel.telescope'.grep_prompt()<CR>]],
+                        {noremap = true, silent = true})
+-- find or create neovim configs
+vim.api.nvim_set_keymap('n', '<leader>nc',
+                        [[<Cmd>lua require'joel.telescope'.nvim_config()<CR>]],
+                        {noremap = true, silent = true})
+-- github issues
+vim.api.nvim_set_keymap('n', '<leader>is',
+                        [[<Cmd>lua require'joel.telescope'.gh_issues()<CR>]],
+                        {noremap = true, silent = true})
+-- github PRs - keep using my fzf-gh until I (or they) PR telescope
+-- @TODUA: "nnoremap <silent> <leader>pr :lua require'joel.telescope'.gh_prs()<cr>
 
 -- Floaterm settings - more in init.lua that need to move here
 -- -- in normal mode, <leader><right|left> are next/prev buffer.
@@ -62,84 +126,34 @@ vim.api.nvim_set_keymap('t', ',<right>', '<C-\\><C-n>:FloatermNext<CR>',
                         {noremap = true, silent = true})
 vim.api.nvim_set_keymap('t', ',<left>', '<C-\\><C-n>:FloatermPrev<CR>',
                         {noremap = true, silent = true})
--- Telescope oldfiles
-vim.api.nvim_set_keymap('n', '<space>o',
-                        [[<Cmd>lua require'telescope.builtin'.oldfiles()<CR>]],
-                        {noremap = true, silent = true})
 
--- Trial DAP maps
--- vim.cmd [[nnoremap <silent> <leader>dr :lua require'dap'.continue()<CR>]]
--- vim.cmd [[nnoremap <leader>ds :lua require'dap'.stop()<CR>]]
--- vim.cmd [[nnoremap <leader>da :lua require'joel.debugHelper'.attach()<CR>]]
--- vim.cmd [[nnoremap <leader>dg :lua require'joel.debugHelper'.debugGql()<CR>]]
--- vim.cmd [[nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>]]
--- vim.cmd [[nnoremap <silent> <space>dh :lua require('dap.ui.variables').hover()<CR>]]
+-- open file in directory of current file
+vim.api.nvim_set_keymap('n', '<leader>e', ':e %:h/',
+                        {noremap = false, silent = false})
+vim.api.nvim_set_keymap('n', '<leader>v', ':vs %:h/',
+                        {noremap = false, silent = false})
 
-vim.cmd([[
-au TextYankPost * lua vim.highlight.on_yank {on_visual = false}
+-- open quickfix / close
+vim.api.nvim_set_keymap('n', '<leader>co', ':cope<cr>',
+                        {noremap = false, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>cl', ':cclose<cr>',
+                        {noremap = false, silent = true})
+-- open location list - close manually
+vim.api.nvim_set_keymap('n', '<leader>lo', ':lope<cr>',
+                        {noremap = false, silent = true})
+-- sessions
+-- new session
+vim.api.nvim_set_keymap('n', '<leader>ss', ':mksession ~/vim-sessions/',
+                        {noremap = false, silent = false})
+-- overwrite current session (this is probably not idiomatic)
+vim.api.nvim_set_keymap('n', '<leader>os',
+                        ':wa<Bar>exe "mksession! " . v:this_session',
+                        {noremap = false, silent = false})
+-- save some strokes (best mapping ever)
+vim.api.nvim_set_keymap('v', ';', ':', {noremap = true})
+vim.api.nvim_set_keymap('n', ';', ':', {noremap = true})
 
-" header files should treated like .c files
-autocmd BufRead,BufNewFile *.h set filetype=c
+-- no Help when I fat finger F1
+vim.api.nvim_set_keymap('n', '<F1>', '<Esc>', {noremap = false})
+vim.api.nvim_set_keymap('i', '<F1>', '<Esc>', {noremap = false})
 
-" turn on cursorline, cursorcolumn when searching, sync with hlsearch
-augroup nvim-incsearch-cursorline
-	autocmd!
-	autocmd CmdlineEnter /,\? :set cursorline cursorcolumn hlsearch
-augroup END
-
-" Options in VimL form
-set t_Co=256
-set termguicolors
-set bg=dark
-" syntax highlight only to 1K instead of default 3K
-set synmaxcol=1000
-" THEME stuff
-" better vertsplit char
-set fillchars+=vert:│
-let g:codesmell_dark_enable_bold = 1
-colorscheme codesmell_dark
-
-set runtimepath^=~/.vim
-let &packpath=&runtimepath
-set hidden
-set completeopt=menu,menuone,preview,noselect,noinsert
-set dictionary+=/usr/share/dict/words
-set wildignore+=*/node_modules/*,*/coverage/*
-set guicursor=
-set clipboard=unnamedplus
-set noshowcmd
-set splitbelow
-set splitright
-set updatetime=2500
-" @TODUA: move under ~/.config/neovim/
-set undodir=~/.vim/undodir
-set undofile
-set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-set grepformat=%f:%l:%c:%m,%f:%l:%m
-
-" global vars in Vim form **
-" netrw settings
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_winsize = 27
-let g:netrw_list_hide= netrw_gitignore#Hide()
-
-]])
-
--- Options **
--- window scope
-vim.wo.number = true
-vim.wo.relativenumber = true
--- global scope
-vim.o.inccommand = 'split'
-vim.o.incsearch = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.scrolloff = 1
--- buffer scope
-vim.bo.tabstop = 2
-vim.bo.shiftwidth = 2
-
--- Global Vim vars **
-vim.g.fzf_gh_website = 1
-vim.g.matchup_matchparen_deferred = 1

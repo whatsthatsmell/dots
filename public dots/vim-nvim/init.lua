@@ -7,29 +7,23 @@ require("joel.config")
 -- telescope
 require("joel.telescope")
 
--- mappings, options, globals
+-- mappings
 require("joel.mappings")
 
--- compe
+-- completion
 require("joel.completion")
+
+-- settings(options)
+require("joel.settings")
 
 -- utils
 -- require("joel.utils")
 -- mappings galore
 -- see mappings.lua
--- @TODUA: finish refactoring mappings to Lua
+-- @TODUA: finish refactoring & migrating below to mappings/settings to Lua
 vim.cmd([[
 " expands to dir of current file in cmd mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-" open file in directory of current file
-nmap <leader>e :e %:h/
-nmap <leader>v :vs %:h/
-
-" sessions
-nmap <leader>ss :mksession ~/vim-sessions/
-nmap <leader>os :wa<Bar>exe "mksession! " . v:this_session
-nmap <silent><leader>ls :mksession! ~/vim-sessions/latest.vim<cr>
 
 " paste last thing yanked(not system copied), not deleted
 nmap ,p "0p
@@ -39,11 +33,6 @@ nmap ,P "0P
 nnoremap _ "_
 " REPLACE: delete inner word & replace with last yanked (including system)
 nmap ,r "_diwhp
-" open quickfix / close
-nmap <silent><leader>co :cope<CR>
-nmap <silent><leader>cl :cclose<CR>
-" open location list - close manually
-nmap <silent><leader>lo :lope<CR>
 " vim-surround maps
 " surround word under cursor w/ backticks
 nmap <leader>` ysiW`
@@ -52,14 +41,10 @@ nmap <leader>` ysiW`
 vmap D y'>p
 " Join lines and restore cursor location
 nnoremap J mjJ`j
-" save some strokes (best mapping ever)
-nnoremap ; :
-vnoremap ; :
 " -- completion maps --
 " Mostly handled by `compe` 🌟
 " thesaurus completion @TODO: Remove?
-set thesaurus+=~/.vim/thesaurus/thesaurii.txt
-set spellfile=~/.config/nvim/spell/en.utf-8.add
+" set thesaurus+=~/.vim/thesaurus/thesaurii.txt
 inoremap <C-t> <C-x><C-t>
 " line completion - use more!
 inoremap <C-l> <C-x><C-l>
@@ -71,15 +56,11 @@ inoremap <C-s> <C-x><C-s>
 inoremap <C-v> <C-x><C-v>
 " -- end completion maps --
 
-filetype plugin indent on    " required
 " auto exit insert mode
 au CursorHoldI * stopinsert
 au FileType text set colorcolumn=100 autoindent linebreak
 au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
 
-" When editing a file, always jump to the last known cursor position
-" no help when I fat finger F1
-nmap <F1> <Esc>
 " yank all in buffer
 nmap <silent><leader>a :%y<cr>
 " yank the rest of the line
@@ -224,36 +205,9 @@ nnoremap <Leader>do :DiffOrig<cr>
 nnoremap <silent> <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
 " diff 2 or more windows/splits, end with \dc or just :diffoff to keep file2
 nnoremap <leader>dw :windo diffthis<cr>
-" telescope time
-" 'grep' word under cursor
-nnoremap <silent> <leader>g :Telescope grep_string<cr>
-" -- find files with gitfiles & fallback on find_files
-nnoremap <silent> ,<space> :lua require'joel.telescope'.project_files()<cr>
-" browse, explore and create notes
-nnoremap <silent> ,n :lua require'joel.telescope'.browse_notes()<cr>
-" find notes
-nnoremap <silent> <leader>n :lua require'joel.telescope'.find_notes()<cr>
-" search notes
-nnoremap <silent> <space>n :lua require'joel.telescope'.grep_notes()<cr>
-" Explore files starting at $HOME
-nnoremap <silent> ,e :lua require'joel.telescope'.file_explorer()<cr>
-" Find files in popular dirs
-nnoremap <silent> <space>e :lua require'joel.telescope'.find_files()<cr>
-" greg for a string
-nnoremap <silent> <space>g :lua require'joel.telescope'.grep_prompt()<cr>
-" find or create neovim configs
-nnoremap <silent> <leader>nc :lua require'joel.telescope'.nvim_config()<cr>
-" github issues
-nnoremap <silent> <leader>is :lua require'joel.telescope'.gh_issues()<cr>
-" github PRs - keep using my fzf-gh until I (or they) PR telescope
-"nnoremap <silent> <leader>pr :lua require'joel.telescope'.gh_prs()<cr>
 
-" slowness: https://github.com/nvim-telescope/telescope.nvim/issues/392
-nnoremap <silent> ,g :Telescope live_grep<cr>
-nnoremap <silent> ,k :Telescope keymaps<cr>
-nnoremap <silent> ,b :Telescope buffers<cr>
-nnoremap <silent> ,h :Telescope help_tags<cr>
-nnoremap <silent> <leader>fm :Telescope marks<cr>
+" ------------------------------------------------------------- "
+" --- NOT Migrating below to actual Lua. It is deprecated ---
 " FZF mappings and config
 " ---> :PRS and :PRSR - fzf-gh.vim
 " PRs assigned awaiting my review - @TODOUA: submit PR for this in telescope
@@ -271,8 +225,8 @@ let g:fzf_layout = { 'window': { 'width': 0.99, 'height': 0.8 } }
 let g:fzf_preview_window = 'right:61%'
 let $FZF_DEFAULT_OPTS='--reverse --multi'
 
+" @TODUA: make a Lua version of this & the map
 nnoremap <silent>gx :call OpenURLUnderCursor()<CR>
-
 function! OpenURLUnderCursor()
   let l:uri = expand('<cWORD>')
   silent exec "!open '" . l:uri . "'"

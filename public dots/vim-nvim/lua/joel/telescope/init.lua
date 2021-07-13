@@ -118,7 +118,6 @@ function M.browse_notes()
     require('telescope.builtin').file_browser {
         prompt_title = ' Browse Notes',
         prompt_prefix = ' ﮷ ',
-        path_display = {"shorten"},
         cwd = '~/notes/',
         layout_strategy = 'horizontal',
         layout_config = {preview_width = 0.65, width = .75}
@@ -141,7 +140,6 @@ end
 function M.nvim_config()
     require('telescope.builtin').file_browser {
         prompt_title = ' NVim Config Browse',
-        path_display = {"shorten"},
         cwd = '~/.config/nvim/',
         layout_strategy = 'horizontal',
         layout_config = {preview_width = 0.65, width = .75}
