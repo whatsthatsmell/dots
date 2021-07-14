@@ -36,7 +36,7 @@ vim.api.nvim_set_keymap('n', '<Leader><right>', ':bn<CR>',
 -- go to prev buffer
 vim.api.nvim_set_keymap('n', '<Leader><left>', ':bp<CR>',
                         {noremap = true, silent = true})
--- need bd! for toggleterm - todo
+-- needed bd! for toggleterm - todo?
 -- delete current buffer - don't close split
 vim.api.nvim_set_keymap('n', ',d', ':b#<bar>bd#<CR>',
                         {noremap = false, silent = true})
@@ -119,13 +119,6 @@ vim.api.nvim_set_keymap('n', '<leader>is',
                         {noremap = true, silent = true})
 -- github PRs - keep using my fzf-gh until I (or they) PR telescope
 -- @TODUA: "nnoremap <silent> <leader>pr :lua require'joel.telescope'.gh_prs()<cr>
-
--- Floaterm settings - more in init.lua that need to move here
--- -- in normal mode, <leader><right|left> are next/prev buffer.
-vim.api.nvim_set_keymap('t', ',<right>', '<C-\\><C-n>:FloatermNext<CR>',
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('t', ',<left>', '<C-\\><C-n>:FloatermPrev<CR>',
-                        {noremap = true, silent = true})
 
 -- open file in directory of current file
 vim.api.nvim_set_keymap('n', '<leader>e', ':e %:h/',

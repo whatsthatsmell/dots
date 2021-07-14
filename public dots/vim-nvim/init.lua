@@ -132,20 +132,7 @@ nmap <silent> <leader>T :TestFile<CR>
 let g:test#runner_commands = ['Jest']
 " jank/vim-test and mfussenegger/nvim-dap
 "nnoremap <leader>dt :TestNearest -strategy=jest<CR>
-" try this stuff from https://github.com/David-Kunz/vim
-
-" floaterm maps etc.
-" Floaterm settings - more in mapping.lua, @TODOUA: move the rest there
-let g:floaterm_title = '  ($1/$2) '
-highlight Floaterm guibg=black
-" vft to open in main nvim
-nnoremap   <silent>   <leader>tn    :FloatermNew --width=0.7 --height=0.7<CR>
-tnoremap   <silent>   <leader>tn    <C-\><C-n>:FloatermNew --width=0.7 --height=0.7<CR>
-" nnoremap   <silent>   <leader>tp    :FloatermPrev<CR>
-" tnoremap   <silent>   <leader>tp    <C-\><C-n>:FloatermPrev<CR>
-tnoremap   <silent>   <leader>tk    <C-\><C-n>:FloatermKill<CR>
-nnoremap   <silent>   <leader>t   :FloatermToggle<CR>
-tnoremap   <silent>   <leader>t   <C-\><C-n>:FloatermToggle<CR>
+" @TODUA: replace any desired features from floaterm or toggleterm here
 " ** Built-in Term settings**
 " open new neovim terminal: zsh in vsplit or split
 " command! -nargs=* T split | terminal <args>
@@ -160,13 +147,7 @@ nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
 nmap <silent> <leader>gf :vs <cfile><CR>
 au TermOpen,TermEnter * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . '   '. bufnr('%'), ':t')
-" nvim-toggleterm - remove floaterm?
-" -- add second term - TODO: need to look at ToggleTerm API
-nnoremap <silent> ,t :ToggleTerm 2<CR>
-" -- close all toggleterms
-nnoremap <silent> ,\ :ToggleTermCloseAll<CR>
-" -- open all toggleterms - TODO: hack a toggleall - see repo issues
-nnoremap <silent> <space>\ :ToggleTermOpenAll<CR>
+
 
 " - not sure why I have this & <del> set? hmmm
 if has('nvim')
@@ -207,24 +188,6 @@ nnoremap <silent> <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
 nnoremap <leader>dw :windo diffthis<cr>
 
 " ------------------------------------------------------------- "
-" --- NOT Migrating below to actual Lua. It is deprecated ---
-" FZF mappings and config
-" ---> :PRS and :PRSR - fzf-gh.vim
-" PRs assigned awaiting my review - @TODOUA: submit PR for this in telescope
-nnoremap <silent> <leader>pr :PRSR<CR>
-
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>bc :BCommits<CR>
-nnoremap <silent> <leader>bt :BTags<CR>
-nnoremap <silent> ,l :Lines<CR>
-nnoremap <silent> <leader>l :BLines<CR>
-nnoremap <leader>p :Files<CR>
-" 'grep' -- ripgrep!
-nnoremap <silent> <leader>rg :RG<CR>
-let g:fzf_layout = { 'window': { 'width': 0.99, 'height': 0.8 } }
-let g:fzf_preview_window = 'right:61%'
-let $FZF_DEFAULT_OPTS='--reverse --multi'
-
 " @TODUA: make a Lua version of this & the map
 nnoremap <silent>gx :call OpenURLUnderCursor()<CR>
 function! OpenURLUnderCursor()
@@ -232,16 +195,4 @@ function! OpenURLUnderCursor()
   silent exec "!open '" . l:uri . "'"
   :redraw!
 endfunction
-
-" fzf-checkout settings
-" ripgrep with FZF only used as selector
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 ]])
