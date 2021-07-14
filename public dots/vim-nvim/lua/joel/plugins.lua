@@ -107,7 +107,7 @@ return require("packer").startup(function()
 
     -- Local plugins
     use '~/vim-dev/plugins/codesmell_dark.vim'
-    use '~/vim-dev/plugins/fzf-gh.vim'
+    -- use '~/vim-dev/plugins/fzf-gh.vim'
 
     -- some setups
     use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}

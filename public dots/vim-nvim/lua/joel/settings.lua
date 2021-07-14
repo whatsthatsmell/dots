@@ -77,5 +77,5 @@ vim.bo.tabstop = 2
 vim.bo.shiftwidth = 2
 
 -- Global Vim vars that are on a solo mission **
-vim.g.fzf_gh_website = 1
+-- vim.g.fzf_gh_website = 1
 vim.g.matchup_matchparen_deferred = 1

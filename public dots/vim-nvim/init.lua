@@ -132,6 +132,7 @@ nmap <silent> <leader>T :TestFile<CR>
 let g:test#runner_commands = ['Jest']
 " jank/vim-test and mfussenegger/nvim-dap
 "nnoremap <leader>dt :TestNearest -strategy=jest<CR>
+
 " @TODUA: replace any desired features from floaterm or toggleterm here
 " ** Built-in Term settings**
 " open new neovim terminal: zsh in vsplit or split
@@ -146,8 +147,9 @@ nnoremap <leader>br :VRSB
 nnoremap <silent> <leader>tx :bd!<CR>
 " open file under cursor in vert split - not term specific but...
 nmap <silent> <leader>gf :vs <cfile><CR>
-au TermOpen,TermEnter * setlocal nonu nornu | execute 'keepalt' 'file' fnamemodify(getcwd() . '   '. bufnr('%'), ':t')
 
+" handle darkening terminal buffers & highlighting active term buffer
+au TermOpen,TermEnter * setlocal nonu nornu winhighlight=Normal:DarkenedTerm,NormalNC:DarkenedTermNC | execute 'keepalt' 'file' fnamemodify(getcwd() . '   '. bufnr('%'), ':t')
 
 " - not sure why I have this & <del> set? hmmm
 if has('nvim')

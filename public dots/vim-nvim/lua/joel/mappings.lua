@@ -150,3 +150,8 @@ vim.api.nvim_set_keymap('n', ';', ':', {noremap = true})
 vim.api.nvim_set_keymap('n', '<F1>', '<Esc>', {noremap = false})
 vim.api.nvim_set_keymap('i', '<F1>', '<Esc>', {noremap = false})
 
+-- open 2 vertically split terminals
+-- nnoremap <silent> ,\ :60vsp <bar>terminal<cr>:sp<bar>terminal<cr>
+vim.api.nvim_set_keymap('n', ',\\',
+                        [[<Cmd>60vsp <bar>terminal<CR>:sp<bar>terminal<CR>]],
+                        {noremap = true, silent = true})
