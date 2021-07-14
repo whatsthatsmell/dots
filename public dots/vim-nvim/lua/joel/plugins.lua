@@ -54,6 +54,7 @@ return require("packer").startup(function()
     -- use 'akinsho/nvim-toggleterm.lua'
     -- trying out ts-utils to see if it does add value
     use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+    use 'simrat39/rust-tools.nvim'
     -- @TODUA: try 'https://github.com/simrat39/rust-tools.nvim'
 
     use {
@@ -98,7 +99,7 @@ return require("packer").startup(function()
                     tags = true,
                     treesitter = true,
                     vsnip = true,
-                    zsh = true,
+                    zsh = true
                     -- gql_schema = true
                 }
             }
@@ -259,4 +260,6 @@ return require("packer").startup(function()
             }
         }
     })
+    -- rust-tools config: https://github.com/simrat39/rust-tools.nvim
+    require('rust-tools').setup {}
 end)
