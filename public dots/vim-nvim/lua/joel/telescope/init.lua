@@ -63,13 +63,21 @@ M.project_files = function()
     local _, ret, stderr = utils.get_os_command_output({
         'git', 'rev-parse', '--is-inside-work-tree'
     })
+
     local gopts = {}
+    local fopts = {}
+
     gopts.prompt_title = ' Git Files'
     gopts.prompt_prefix = '  '
+
+    fopts.hidden = true
+    -- @TODOUA: see if TJ's stuff from his 16-Jul-2021 stream helps here
+    fopts.file_ignore_patterns = { ".vim/", ".local/", ".cache/", "Downloads/", ".git/", "Dropbox/.*", "Library/.*", ".rustup/.*", "Movies/", ".cargo/" }
+
     if ret == 0 then
         require'telescope.builtin'.git_files(gopts)
     else
-        require'telescope.builtin'.find_files()
+        require'telescope.builtin'.find_files(fopts)
     end
 end
 
