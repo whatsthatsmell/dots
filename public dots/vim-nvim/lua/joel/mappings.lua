@@ -44,6 +44,10 @@ vim.api.nvim_set_keymap('n', ',d', ':b#<bar>bd#<CR>',
 vim.api.nvim_set_keymap('n', '<Leader>x', ':bd<CR>',
                         {noremap = true, silent = true})
 -- TELESCOPE maps  --
+-- find files with names that contain cursor word
+vim.api.nvim_set_keymap('n', ',f',
+                        [[<Cmd>lua require'telescope.builtin'.find_files({find_command={'fd', vim.fn.expand('<cword>')}})<CR>]],
+                        {noremap = true, silent = true})
 -- open available commands & run it
 vim.api.nvim_set_keymap('n', ',c',
                         [[<Cmd>lua require'telescope.builtin'.commands()<CR>]],
@@ -56,6 +60,10 @@ vim.api.nvim_set_keymap('n', '<space>d',
 -- git_branches
 vim.api.nvim_set_keymap('n', '<leader>gc',
                         [[<Cmd>lua require'telescope.builtin'.git_branches()<CR>]],
+                        {noremap = true, silent = true})
+-- git_status - <tab> to toggle staging
+vim.api.nvim_set_keymap('n', 'gs',
+                        [[<Cmd>lua require'telescope.builtin'.git_status()<CR>]],
                         {noremap = true, silent = true})
 -- Telescope oldfiles
 vim.api.nvim_set_keymap('n', '<space>o',

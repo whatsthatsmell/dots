@@ -28,7 +28,8 @@ return require("packer").startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'neovim/nvim-lspconfig'
-    use 'nvim-telescope/telescope.nvim'
+    -- using local telescope branch, see below
+    -- use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-github.nvim'
     use 'nvim-telescope/telescope-fzy-native.nvim'
     use 'andymass/vim-matchup'
@@ -108,6 +109,7 @@ return require("packer").startup(function()
 
     -- Local plugins
     use '~/vim-dev/plugins/codesmell_dark.vim'
+    use '~/vim-dev/plugins/telescope.nvim'
     -- use '~/vim-dev/plugins/fzf-gh.vim'
 
     -- some setups
