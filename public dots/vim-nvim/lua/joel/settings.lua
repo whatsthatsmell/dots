@@ -1,4 +1,4 @@
-vim.cmd([[
+vim.cmd [[
 au TextYankPost * lua vim.highlight.on_yank {on_visual = false}
 
 " header files should treated like .c files
@@ -36,7 +36,7 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 27
 let g:netrw_list_hide= netrw_gitignore#Hide()
 
-]])
+]]
 
 -- Trial DAP maps
 -- vim.cmd [[nnoremap <silent> <leader>dr :lua require'dap'.continue()<CR>]]
@@ -48,21 +48,21 @@ let g:netrw_list_hide= netrw_gitignore#Hide()
 
 -- THEME stuff
 -- better vertsplit char (cheating here to keep theme stuff together)
-vim.cmd('set fillchars+=vert:│')
+vim.cmd "set fillchars+=vert:│"
 vim.g.codesmell_dark_enable_bold = 1
-vim.cmd('colorscheme codesmell_dark')
+vim.cmd "colorscheme codesmell_dark"
 -- set bg=dark ← that is the default
 
-vim.cmd('set spellfile=~/.config/nvim/spell/en.utf-8.add')
-vim.cmd('filetype plugin indent on')
+vim.cmd "set spellfile=~/.config/nvim/spell/en.utf-8.add"
+vim.cmd "filetype plugin indent on"
 
--- Options **
+-- Options/Settings **
 -- Window scope
 vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- Global scope
-vim.o.inccommand = 'split'
+vim.o.inccommand = "split"
 vim.o.incsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true

@@ -1,27 +1,27 @@
 -- *** Neovim Config Luatized *** --
-require("joel.plugins")
+require "joel.plugins"
 
 -- treesitter & lsp
-require("joel.config")
+require "joel.config"
 
 -- telescope
-require("joel.telescope")
+require "joel.telescope"
 
 -- mappings
-require("joel.mappings")
+require "joel.mappings"
 
 -- completion
-require("joel.completion")
+require "joel.completion"
 
 -- settings(options)
-require("joel.settings")
+require "joel.settings"
 
 -- utils
 -- require("joel.utils")
 -- mappings galore
 -- see mappings.lua
--- @TODUA: finish refactoring & migrating below to mappings/settings to Lua
-vim.cmd([[
+-- @TODUA: finish refactoring & migrating below to mappings/settings to Lua!
+vim.cmd [[
 " expands to dir of current file in cmd mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -197,4 +197,4 @@ function! OpenURLUnderCursor()
   silent exec "!open '" . l:uri . "'"
   :redraw!
 endfunction
-]])
+]]

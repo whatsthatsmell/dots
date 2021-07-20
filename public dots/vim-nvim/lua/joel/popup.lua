@@ -1,6 +1,7 @@
 -- For now, use 'nvim-lua/popup.nvim': usage → lua require('popup').create('hello', {line = 2, col = 23, border = {}, padding = {}})
 -- 'joel.popup' IIF I want to have my own popup configs
 -- this module is not referenced
+
 -- local popup = {}
 
 -- local api = vim.api
@@ -25,8 +26,6 @@
 
 --    api.nvim_buf_set_lines(bufnr, 0, -1, true, lines)
 
-
-
 --    api.nvim_buf_set_option(bufnr, 'tabstop', ts)
 
 --    local opts1 = vim.deepcopy(opts or {})
@@ -36,7 +35,6 @@
 --    local win_id = api.nvim_open_win(bufnr, false, opts1)
 
 --    if opts1.style == 'minimal' then
-
 
 --       api.nvim_win_set_option(win_id, 'signcolumn', 'no')
 --    end
