@@ -1,9 +1,6 @@
 -- *** Neovim Config Luatized *** --
 require "joel.plugins"
 
--- treesitter & lsp
-require "joel.config"
-
 -- telescope
 require "joel.telescope"
 
@@ -15,6 +12,9 @@ require "joel.completion"
 
 -- settings(options)
 require "joel.settings"
+
+-- treesitter & lsp
+require "joel.config"
 
 -- utils
 -- require("joel.utils")

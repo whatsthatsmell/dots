@@ -17,10 +17,6 @@ Plug 'mbbill/undotree'
 Plug 'ruanyl/coverage.vim'
 Plug 'moll/vim-node'
 Plug 'rust-lang/rust.vim'
-" Plug 'junegunn/vim-peekaboo'
-Plug 'chrisbra/Colorizer'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
 call plug#end()
 ]]
 
@@ -41,23 +37,22 @@ return require("packer").startup(function()
   use "nvim-lua/popup.nvim"
   use "nvim-lua/lsp-status.nvim"
   use "folke/lua-dev.nvim"
-  use "andrejlevkovitch/vim-lua-format"
   use "tamago324/compe-zsh"
-  -- trying lspkind-nvim
   use "onsails/lspkind-nvim"
   use "ray-x/lsp_signature.nvim"
   -- @TODUA: move other TS plugs here
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  }
   use "nvim-treesitter/nvim-treesitter-refactor"
-  -- trying nvim-spectre
-  -- use 'windwp/nvim-spectre' (not yet)
-  -- use 'mfussenegger/nvim-dap'
-  -- trying nvim-tree
+  use "nvim-treesitter/playground"
   use "kyazdani42/nvim-tree.lua"
   -- trying out ts-utils to see if it does add value
   use "jose-elias-alvarez/nvim-lsp-ts-utils"
-  use "simrat39/rust-tools.nvim"
   -- @TODUA: try 'https://github.com/simrat39/rust-tools.nvim'
-
+  use "simrat39/rust-tools.nvim"
+  use "norcalli/nvim-colorizer.lua"
   use {
     "glepnir/galaxyline.nvim",
     branch = "main",
