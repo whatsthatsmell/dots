@@ -15,7 +15,6 @@ set termguicolors
 " syntax highlight only to 1K instead of default 3K
 set synmaxcol=1000
 
-set runtimepath^=~/.vim
 let &packpath=&runtimepath
 set completeopt=menu,menuone,preview,noselect,noinsert
 set dictionary+=/usr/share/dict/words
@@ -23,8 +22,7 @@ set wildignore+=*/node_modules/*,*/coverage/*
 set guicursor=
 set clipboard=unnamedplus
 set updatetime=2500
-" @TODUA: move under ~/.config/neovim/
-set undodir=~/.vim/undodir
+set undodir=~/.config/nvim/undodir
 set undofile
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m,%f:%l:%m

@@ -43,7 +43,7 @@ vmap D y'>p
 nnoremap J mjJ`j
 " -- completion maps --
 " Mostly handled by `compe` 🌟
-" thesaurus completion @TODO: Remove?
+" thesaurus @TODO: Remove? only thing left in ~/.vim
 " set thesaurus+=~/.vim/thesaurus/thesaurii.txt
 inoremap <C-t> <C-x><C-t>
 " line completion - use more!

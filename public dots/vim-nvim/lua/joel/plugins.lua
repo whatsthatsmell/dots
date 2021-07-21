@@ -1,28 +1,21 @@
--- @TODUA: migrate the rest of legacy plugin config
-vim.cmd [[
-call plug#begin('~/.vim/plugged')
-" Plugins
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-abolish'
-Plug 'pbrisbin/vim-mkdir'
-Plug 'vim-test/vim-test'
-Plug 'mbbill/undotree'
-Plug 'ruanyl/coverage.vim'
-Plug 'moll/vim-node'
-Plug 'rust-lang/rust.vim'
-call plug#end()
-]]
-
+-- Plugins Plugins Plugins
 return require("packer").startup(function()
   -- Packer can manage itself
   -- probably don't need this or vim-peekaboo
+  use "editorconfig/editorconfig-vim"
+  use "tpope/vim-surround"
+  use "tpope/vim-fugitive"
+  use "tpope/vim-repeat"
+  use "tpope/vim-commentary"
+  use "tpope/vim-eunuch"
+  use "tpope/vim-unimpaired"
+  use "tpope/vim-abolish"
+  use "pbrisbin/vim-mkdir"
+  use "vim-test/vim-test"
+  use "mbbill/undotree"
+  use "ruanyl/coverage.vim"
+  use "moll/vim-node"
+  use "rust-lang/rust.vim"
   use "tversteeg/registers.nvim"
   use "wbthomason/packer.nvim"
   use "neovim/nvim-lspconfig"
@@ -149,7 +142,13 @@ return require("packer").startup(function()
   }
 
   require("nvim-web-devicons").setup {
-    override = { zsh = { icon = "", color = "#428850", name = "Zsh" } },
+    override = {
+      zsh = { icon = "", color = "#428850", name = "Zsh" },
+      lua = { icon = "", color = "#4E99DF", name = "Lua" },
+      md = { icon = "", color = "#6BD02B", name = "Md" },
+      MD = { icon = "", color = "#6BD02B", name = "MD" },
+      [".gitignore"] = { icon = "", color = "#F14E32", name = "GitIgnore" },
+    },
     default = true,
   }
 
@@ -189,7 +188,7 @@ return require("packer").startup(function()
       require("lsp_signature").on_attach {
         bind = true, -- This is mandatory, otherwise border config won't get registered.
         -- If you want to hook lspsaga or other signature handler, pls set to false
-        doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
+        doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated)
         -- set to 0 if you DO NOT want any API comments be shown
         -- This setting only take effect in insert mode, it does not affect signature help in normal
         -- mode, 10 by default
