@@ -48,7 +48,7 @@ vim.api.nvim_set_keymap("n", "<Leader><left>", ":bp<CR>", { noremap = true, sile
 vim.api.nvim_set_keymap("n", ",d", ":b#<bar>bd#<CR>", { noremap = false, silent = true })
 -- delete current buffer - will close split - :q to close split
 vim.api.nvim_set_keymap("n", "<Leader>x", ":bd<CR>", { noremap = true, silent = true })
--- TELESCOPE maps  --
+-- TELESCOPE keymaps  --
 -- find files with names that contain cursor word
 vim.api.nvim_set_keymap(
   "n",

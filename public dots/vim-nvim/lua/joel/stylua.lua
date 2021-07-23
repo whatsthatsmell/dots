@@ -20,7 +20,7 @@ local stylua_finder = function(path)
         break
       end
 
-      local stylua_path = Path:new { dir, "stylua.toml" }
+      local stylua_path = Path:new { dir, ".stylua.toml" }
       if stylua_path:exists() then
         cached_configs[path] = stylua_path:absolute()
         break

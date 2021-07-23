@@ -185,6 +185,7 @@ return require("packer").startup(function()
   require("lspconfig").tsserver.setup {
     on_attach = function(client)
       -- signature completion - not in scope for compe
+      -- @TODOUA: check on or try with rust-analyzer
       require("lsp_signature").on_attach {
         bind = true, -- This is mandatory, otherwise border config won't get registered.
         -- If you want to hook lspsaga or other signature handler, pls set to false

@@ -34,8 +34,9 @@ require("telescope").setup {
   },
 }
 
--- github
+-- github CLI
 require("telescope").load_extension "gh"
+
 require("telescope").load_extension "fzy_native"
 
 local M = {}
@@ -91,7 +92,7 @@ M.project_files = function()
     "Library/.*",
     ".rustup/.*",
     "Movies/",
-    ".cargo/",
+    ".cargo/registry/",
   }
 
   if ret == 0 then
