@@ -33,7 +33,6 @@ return require("packer").startup(function()
   use "tamago324/compe-zsh"
   use "onsails/lspkind-nvim"
   use "ray-x/lsp_signature.nvim"
-  -- @TODUA: move other TS plugs here
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
