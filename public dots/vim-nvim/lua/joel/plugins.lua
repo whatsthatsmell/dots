@@ -77,7 +77,9 @@ return require("packer").startup(function()
         max_abbr_width = 100,
         max_kind_width = 100,
         max_menu_width = 100,
-        documentation = true,
+        documentation = {
+          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        },
         source = {
           buffer = true,
           calc = true,

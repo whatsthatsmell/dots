@@ -1,5 +1,6 @@
 setlocal textwidth=120
 setlocal shiftwidth=2
+setlocal colorcolumn=121
 setlocal formatoptions-=o
 " source the file - 
 nmap <silent><localleader>1 :luafile%<cr>

@@ -1,5 +1,6 @@
--- LUA ONLY, NO vim.cmd([[]]) in this file! nvim_set_keymap only!
--- ** Mappings galore & commands & options FOR NOW **
+-- ** Key Mappings **
+-- @TODUA: Should plugin specific maps go in lua modules for the given plugin?
+
 -- toggle search highlights with cursorline & cursorcolumn
 -- See augroup nvim-incsearch-cursorline for symmetry
 vim.api.nvim_set_keymap(

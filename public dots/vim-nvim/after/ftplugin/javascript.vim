@@ -1,6 +1,6 @@
 setlocal linebreak
 setlocal exrc
-set colorcolumn=81
+setlocal colorcolumn=81
 " treesitter folding
 setlocal foldmethod=expr
 setlocal foldexpr=nvim_treesitter#foldexpr()
