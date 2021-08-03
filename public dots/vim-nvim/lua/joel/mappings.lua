@@ -71,6 +71,13 @@ vim.api.nvim_set_keymap(
   [[<Cmd>lua require'telescope.builtin'.lsp_workspace_diagnostics()<CR>]],
   { noremap = true, silent = true }
 )
+-- show LSP implementations
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>ti",
+  [[<Cmd>lua require'telescope.builtin'.lsp_implementations()<CR>]],
+  { noremap = true, silent = true }
+)
 -- commands - Lua API in the works: https://github.com/neovim/neovim/pull/12378
 -- git_branches
 vim.api.nvim_set_keymap(

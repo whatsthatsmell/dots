@@ -32,7 +32,7 @@ nmap ,P "0P
 " DELETE: with y,d or c{motion} & it wont replace "0
 nnoremap _ "_
 " REPLACE: delete inner word & replace with last yanked (including system)
-nmap ,r "_diwhp
+nnoremap ,r "_diwhp
 " vim-surround maps
 " surround word under cursor w/ backticks
 nmap <leader>` ysiW`
