@@ -28,6 +28,11 @@ rdf() {
   rustup doc $1 || (echo "Searching..." && open "https://doc.rust-lang.org/std/?search=$query")
 }
 
+# search the cargo docs
+cargodocs() {
+  open "https://doc.rust-lang.org/cargo/index.html?search=$1"
+}
+
 # set Active Browser Tab: @titleText → finds tab with title that contains the text
 abt() {
   osascript ~/dotfiles/osascripts/tabact.scpt $1

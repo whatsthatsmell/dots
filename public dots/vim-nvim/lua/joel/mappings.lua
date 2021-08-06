@@ -16,6 +16,11 @@ vim.api.nvim_set_keymap(
   ":set nohlsearch nocursorline nocursorcolumn<CR>",
   { noremap = true, silent = true }
 )
+
+-- The greatest neovim command ever (other than :Telescope)
+-- https://github.com/nvim-treesitter/playground#show-treesitter-and-syntax-highlight-groups-under-the-cursor
+vim.api.nvim_set_keymap("n", ",t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
+
 -- write only if changed
 vim.api.nvim_set_keymap("n", "<Leader>w", ":up<CR>", { noremap = true })
 -- quit (or close window)
@@ -27,6 +32,7 @@ vim.api.nvim_set_keymap(
   [[<Cmd>lua require'gitsigns'.toggle_linehl()<CR>]],
   { noremap = true, silent = true }
 )
+
 -- toggle hunk line Num highlight
 vim.api.nvim_set_keymap(
   "n",
