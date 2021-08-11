@@ -46,6 +46,7 @@ return require("packer").startup(function()
   -- @TODUA: try 'https://github.com/simrat39/rust-tools.nvim'
   use "simrat39/rust-tools.nvim"
   use "norcalli/nvim-colorizer.lua"
+  use "nvim-lua/plenary.nvim"
   use {
     "glepnir/galaxyline.nvim",
     branch = "main",

@@ -21,7 +21,7 @@ set dictionary+=/usr/share/dict/words
 set wildignore+=*/node_modules/*,*/coverage/*
 set guicursor=
 set clipboard=unnamedplus
-set updatetime=2500
+set updatetime=2000
 set undodir=~/.config/nvim/undodir
 set undofile
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case

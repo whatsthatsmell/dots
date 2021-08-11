@@ -22,6 +22,7 @@ let g:ale_linters = {
 \  'javascript': glob('.eslintrc*', '.;') != '' ? [ 'eslint', 'tsserver' ] : [ 'standard', 'tsserver' ],
 \}
 
+" rainbow color HLs
 hi rainbowcol1 guifg=#4B4DA4
 hi rainbowcol2 guifg=#C7C84A
 hi rainbowcol3 guifg=#8182EB
