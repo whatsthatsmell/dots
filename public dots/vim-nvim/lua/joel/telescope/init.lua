@@ -19,7 +19,7 @@ require("telescope").setup {
     sorting_strategy = "ascending",
     color_devicons = true,
     layout_config = {
-      prompt_position = "top",
+      prompt_position = "bottom",
       horizontal = {
         width_padding = 0.04,
         height_padding = 0.1,
