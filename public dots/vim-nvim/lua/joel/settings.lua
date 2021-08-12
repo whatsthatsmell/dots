@@ -45,11 +45,8 @@ let g:netrw_list_hide= netrw_gitignore#Hide()
 -- vim.cmd [[nnoremap <silent> <space>dh :lua require('dap.ui.variables').hover()<CR>]]
 
 -- THEME stuff
--- better vertsplit char (cheating here to keep theme stuff together)
 vim.cmd "set fillchars+=vert:│"
-vim.g.codesmell_dark_enable_bold = 1
 vim.cmd "colorscheme codesmell_dark"
--- set bg=dark ← that is the default
 
 vim.cmd "set spellfile=~/.config/nvim/spell/en.utf-8.add"
 vim.cmd "filetype plugin indent on"
