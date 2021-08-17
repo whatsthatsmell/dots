@@ -63,8 +63,8 @@ au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=m
 
 " yank all in buffer
 nmap <silent><leader>a :%y<cr>
-" yank the rest of the line
-nmap Y y$
+" yank rest of the line - now builtin https://github.com/neovim/neovim/pull/13268
+"nmap Y y$
 " Move between Vimdows
 nmap <up> <C-w><up>
 nmap <down> <C-w><down>
