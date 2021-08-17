@@ -22,9 +22,6 @@ require "joel.config"
 -- see mappings.lua
 -- @TODUA: finish refactoring & migrating below to mappings/settings to Lua!
 vim.cmd [[
-" expands to dir of current file in cmd mode
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
 " paste last thing yanked(not system copied), not deleted
 nmap ,p "0p
 nmap ,P "0P

@@ -27,13 +27,6 @@ set undofile
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m,%f:%l:%m
 
-" global vars in Vim form **
-" netrw settings
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_winsize = 27
-let g:netrw_list_hide= netrw_gitignore#Hide()
-
 ]]
 
 -- Trial DAP maps

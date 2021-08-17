@@ -247,3 +247,6 @@ vim.api.nvim_set_keymap(
 )
 -- Colorizer Toggle
 vim.api.nvim_set_keymap("n", "<space>c", [[<Cmd>ColorizerToggle<CR>]], { noremap = true, silent = true })
+
+-- expands to dir of current file in cmd mode
+vim.api.nvim_set_keymap("c", "%%", [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], { noremap = true, expr = true })
