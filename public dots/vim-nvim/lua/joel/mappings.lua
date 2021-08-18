@@ -19,7 +19,7 @@ vim.api.nvim_set_keymap(
 
 -- The greatest neovim command ever (other than :Telescope)
 -- https://github.com/nvim-treesitter/playground#show-treesitter-and-syntax-highlight-groups-under-the-cursor
-vim.api.nvim_set_keymap("n", ",t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<space>t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
 
 -- write only if changed
 vim.api.nvim_set_keymap("n", "<Leader>w", ":up<CR>", { noremap = true })
@@ -52,31 +52,11 @@ vim.api.nvim_set_keymap("n", "<Leader><right>", ":bn<CR>", { noremap = true, sil
 vim.api.nvim_set_keymap("n", "<Leader><left>", ":bp<CR>", { noremap = true, silent = true })
 -- needed bd! for toggleterm - todo?
 -- delete current buffer - don't close split
-vim.api.nvim_set_keymap("n", ",d", ":b#<bar>bd#<CR>", { noremap = false, silent = true })
+vim.api.nvim_set_keymap("n", "<space>d", ":b#<bar>bd#<CR>", { noremap = false, silent = true })
 -- delete current buffer - will close split - :q to close split
 vim.api.nvim_set_keymap("n", "<Leader>x", ":bd<CR>", { noremap = true, silent = true })
+
 -- TELESCOPE keymaps  --
--- find files with names that contain cursor word
-vim.api.nvim_set_keymap(
-  "n",
-  ",f",
-  [[<Cmd>lua require'telescope.builtin'.find_files({find_command={'fd', vim.fn.expand('<cword>')}})<CR>]],
-  { noremap = true, silent = true }
-)
--- open available commands & run it
-vim.api.nvim_set_keymap(
-  "n",
-  ",c",
-  [[<Cmd>lua require'telescope.builtin'.commands()<CR>]],
-  { noremap = true, silent = true }
-)
--- show LSP diagnostics for all open buffers
-vim.api.nvim_set_keymap(
-  "n",
-  "<space>d",
-  [[<Cmd>lua require'telescope.builtin'.lsp_workspace_diagnostics()<CR>]],
-  { noremap = true, silent = true }
-)
 -- show LSP implementations
 vim.api.nvim_set_keymap(
   "n",
@@ -99,10 +79,32 @@ vim.api.nvim_set_keymap(
   [[<Cmd>lua require'telescope.builtin'.git_status()<CR>]],
   { noremap = true, silent = true }
 )
+-- ** the Telescope comma maps **
+-- find files with names that contain cursor word
+vim.api.nvim_set_keymap(
+  "n",
+  ",f",
+  [[<Cmd>lua require'telescope.builtin'.find_files({find_command={'fd', vim.fn.expand('<cword>')}})<CR>]],
+  { noremap = true, silent = true }
+)
+-- show LSP diagnostics for all open buffers
+vim.api.nvim_set_keymap(
+  "n",
+  ",d",
+  [[<Cmd>lua require'telescope.builtin'.lsp_workspace_diagnostics()<CR>]],
+  { noremap = true, silent = true }
+)
+-- open available commands & run it
+vim.api.nvim_set_keymap(
+  "n",
+  ",c",
+  [[<Cmd>lua require'telescope.builtin'.commands()<CR>]],
+  { noremap = true, silent = true }
+)
 -- Telescope oldfiles
 vim.api.nvim_set_keymap(
   "n",
-  "<space>o",
+  ",o",
   [[<Cmd>lua require'telescope.builtin'.oldfiles()<CR>]],
   { noremap = true, silent = true }
 )
@@ -133,15 +135,8 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
   "n",
-  "<leader>fm",
+  ",m",
   [[<Cmd>lua require'telescope.builtin'.marks()<CR>]],
-  { noremap = true, silent = true }
-)
--- grep word under cursor
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>g",
-  [[<Cmd>lua require'telescope.builtin'.grep_string()<CR>]],
   { noremap = true, silent = true }
 )
 -- find files with gitfiles & fallback on find_files
@@ -158,6 +153,22 @@ vim.api.nvim_set_keymap(
   [[<Cmd>lua require'joel.telescope'.browse_notes()<CR>]],
   { noremap = true, silent = true }
 )
+-- Explore files starting at $HOME
+vim.api.nvim_set_keymap(
+  "n",
+  ",e",
+  [[<Cmd>lua require'joel.telescope'.file_explorer()<CR>]],
+  { noremap = true, silent = true }
+)
+-- End Telescope comma maps
+
+-- grep word under cursor
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>g",
+  [[<Cmd>lua require'telescope.builtin'.grep_string()<CR>]],
+  { noremap = true, silent = true }
+)
 -- find notes
 vim.api.nvim_set_keymap(
   "n",
@@ -170,13 +181,6 @@ vim.api.nvim_set_keymap(
   "n",
   "<space>n",
   [[<Cmd>lua require'joel.telescope'.grep_notes()<CR>]],
-  { noremap = true, silent = true }
-)
--- Explore files starting at $HOME
-vim.api.nvim_set_keymap(
-  "n",
-  ",e",
-  [[<Cmd>lua require'joel.telescope'.file_explorer()<CR>]],
   { noremap = true, silent = true }
 )
 -- Find files in popular dirs
@@ -207,6 +211,8 @@ vim.api.nvim_set_keymap(
   [[<Cmd>lua require'joel.telescope'.gh_issues()<CR>]],
   { noremap = true, silent = true }
 )
+-- End Telescope maps
+
 -- github PRs - keep using my fzf-gh until I (or they) PR telescope
 -- @TODUA: "nnoremap <silent> <leader>pr :lua require'joel.telescope'.gh_prs()<cr>
 

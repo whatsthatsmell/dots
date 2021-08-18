@@ -158,13 +158,13 @@ command! -nargs=* NCD call chansend(b:terminal_job_id, "yp\<cr>")
 nmap <silent><leader>D :NCD<cr>
 " -- change lcd to term dir (copied from above :NCD)
 nmap <silent><leader>F :lcd<c-r>+<cr>
-" --- 
+" ---
 " end term settings ***
 
 " change dir for window to file's dir
-nnoremap <silent><leader>cd :lcd %:p:h<cr> 
+nnoremap <silent><leader>cd :lcd %:p:h<cr>
 " change dir for window to file's git working dir
-nnoremap <silent><leader>gd :Glcd<cr> 
+nnoremap <silent><leader>gd :Glcd<cr>
 
 " Delete to Esc from (almost) all the things
 nnoremap <Del> <Esc>
