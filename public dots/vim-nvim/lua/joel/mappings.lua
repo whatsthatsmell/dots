@@ -1,5 +1,4 @@
 -- ** Key Mappings **
--- @TODUA: Should plugin specific maps go in lua modules for the given plugin?
 
 -- toggle search highlights with cursorline & cursorcolumn
 -- See augroup nvim-incsearch-cursorline for symmetry
@@ -9,6 +8,7 @@ vim.api.nvim_set_keymap(
   ":set hlsearch! cursorline! cursorcolumn!<CR>",
   { noremap = true, silent = true }
 )
+
 -- turn off hlsearch, cursorline & cursorcolumn - @TODUA: fix these 2
 vim.api.nvim_set_keymap(
   "n",
@@ -18,13 +18,14 @@ vim.api.nvim_set_keymap(
 )
 
 -- The greatest neovim command ever (other than :Telescope)
--- https://github.com/nvim-treesitter/playground#show-treesitter-and-syntax-highlight-groups-under-the-cursor
 vim.api.nvim_set_keymap("n", "<space>t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
 
 -- write only if changed
 vim.api.nvim_set_keymap("n", "<Leader>w", ":up<CR>", { noremap = true })
 -- quit (or close window)
 vim.api.nvim_set_keymap("n", "<Leader>q", ":q<CR>", { noremap = true, silent = true })
+
+-- GitSigns maps
 -- toggle hunk line highlight
 vim.api.nvim_set_keymap(
   "n",
@@ -32,7 +33,6 @@ vim.api.nvim_set_keymap(
   [[<Cmd>lua require'gitsigns'.toggle_linehl()<CR>]],
   { noremap = true, silent = true }
 )
-
 -- toggle hunk line Num highlight
 vim.api.nvim_set_keymap(
   "n",
@@ -40,6 +40,7 @@ vim.api.nvim_set_keymap(
   [[<Cmd>lua require'gitsigns'.toggle_numhl()<CR>]],
   { noremap = true, silent = true }
 )
+
 -- use ZQ for :q! (quit & discard changes)
 -- Discard all changed buffers & quit
 vim.api.nvim_set_keymap("n", "<Leader>Q", ":qall!<CR>", { noremap = true, silent = true })
@@ -64,6 +65,7 @@ vim.api.nvim_set_keymap(
   [[<Cmd>lua require'telescope.builtin'.lsp_implementations()<CR>]],
   { noremap = true, silent = true }
 )
+
 -- commands - Lua API in the works: https://github.com/neovim/neovim/pull/12378
 -- git_branches
 vim.api.nvim_set_keymap(
@@ -98,7 +100,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
   "n",
   ",c",
-  [[<Cmd>lua require'telescope.builtin'.commands()<CR>]],
+  [[<Cmd>lua require'telescope.builtin'.commands({results_title='Commands Results'})<CR>]],
   { noremap = true, silent = true }
 )
 -- Telescope oldfiles
@@ -118,25 +120,25 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
   "n",
   ",k",
-  [[<Cmd>lua require'telescope.builtin'.keymaps()<CR>]],
+  [[<Cmd>lua require'telescope.builtin'.keymaps({results_title='Key Maps Results'})<CR>]],
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
   "n",
   ",b",
-  [[<Cmd>lua require'telescope.builtin'.buffers()<CR>]],
+  [[<Cmd>lua require'telescope.builtin'.buffers({results_title='Buffers'})<CR>]],
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
   "n",
   ",h",
-  [[<Cmd>lua require'telescope.builtin'.help_tags()<CR>]],
+  [[<Cmd>lua require'telescope.builtin'.help_tags({results_title='Help Results'})<CR>]],
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
   "n",
   ",m",
-  [[<Cmd>lua require'telescope.builtin'.marks()<CR>]],
+  [[<Cmd>lua require'telescope.builtin'.marks({results_title='Marks Results'})<CR>]],
   { noremap = true, silent = true }
 )
 -- find files with gitfiles & fallback on find_files
@@ -183,7 +185,7 @@ vim.api.nvim_set_keymap(
   [[<Cmd>lua require'joel.telescope'.grep_notes()<CR>]],
   { noremap = true, silent = true }
 )
--- Find files in popular dirs
+-- Find files in config dirs
 vim.api.nvim_set_keymap(
   "n",
   "<space>e",

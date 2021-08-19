@@ -80,6 +80,7 @@ M.project_files = function()
 
   gopts.prompt_title = " Git Files"
   gopts.prompt_prefix = "  "
+  gopts.results_title = "Project Files Results"
 
   fopts.hidden = true
   -- @TODOUA: see if TJ's stuff from his 16-Jul-2021 stream helps here
@@ -162,6 +163,7 @@ end
 function M.find_files()
   require("telescope.builtin").find_files {
     prompt_title = " NVim & Term Config Find",
+    results_title = "Config Files Results",
     path_display = { "shorten" },
     search_dirs = {
       "~/.oh-my-zsh/custom/",

@@ -32,7 +32,7 @@ local stylua_finder = function(path)
 end
 
 local stylua = {}
-
+-- @TODUA: it appears that GitSigns loses its place when this happens.
 stylua.format = function(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
 

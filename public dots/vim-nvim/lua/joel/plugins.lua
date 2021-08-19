@@ -183,7 +183,6 @@ return require("packer").startup(function()
   }
 
   -- search/replace visual b/c inccommand preview doesn't show all (PRs in flight on Neovim)
-  -- require('spectre').setup()
 
   require("lspconfig").tsserver.setup {
     on_attach = function(client)
@@ -233,7 +232,6 @@ return require("packer").startup(function()
         require_confirmation_on_move = false,
         watch_dir = nil,
       }
-
       -- required to fix code action ranges
       ts_utils.setup_client(client)
     end,
