@@ -22,7 +22,8 @@ return require("packer").startup(function()
   -- using local telescope branch, see below
   -- use 'nvim-telescope/telescope.nvim'
   use "nvim-telescope/telescope-github.nvim"
-  use "nvim-telescope/telescope-fzy-native.nvim"
+  -- use "nvim-telescope/telescope-fzy-native.nvim"
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
   use "andymass/vim-matchup"
   use "windwp/nvim-autopairs"
   use "nvim-lua/lsp_extensions.nvim"

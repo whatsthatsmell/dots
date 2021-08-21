@@ -3,6 +3,14 @@
 local actions = require "telescope.actions"
 local utils = require "telescope.utils"
 require("telescope").setup {
+  extensions = {
+    fzf = {
+      fuzzy = true, -- false will only do exact matching
+      override_generic_sorter = false,
+      override_file_sorter = true,
+      case_mode = "smart_case", -- this is default
+    },
+  },
   defaults = {
     vimgrep_arguments = {
       "rg",
@@ -34,12 +42,13 @@ require("telescope").setup {
     mappings = { n = { ["<Del>"] = actions.close } },
   },
 }
+require("telescope").load_extension "fzf"
+-- require("telescope").load_extension "fzy_native"
 
 -- github CLI
 require("telescope").load_extension "gh"
 
-require("telescope").load_extension "fzy_native"
-
+-- my telescopic customizations
 local M = {}
 
 -- requires github extension
