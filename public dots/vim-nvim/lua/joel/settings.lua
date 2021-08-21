@@ -1,6 +1,15 @@
-vim.cmd [[
-au TextYankPost * lua vim.highlight.on_yank {on_visual = false}
+-- Highlight on yank
+vim.api.nvim_exec(
+  [[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]],
+  false
+)
 
+vim.cmd [[
 " header files should treated like .c files
 autocmd BufRead,BufNewFile *.h set filetype=c
 

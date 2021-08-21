@@ -110,6 +110,7 @@ require("nvim-treesitter.configs").setup {
     },
   },
 }
+require "joel.treesitter"
 
 -- colorizer
 require("colorizer").setup {
