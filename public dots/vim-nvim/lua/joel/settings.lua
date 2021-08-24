@@ -1,3 +1,25 @@
+-- auto exit insert mode
+vim.api.nvim_exec(
+  [[
+  augroup AutoExitInsertMode
+    autocmd!
+    autocmd CursorHoldI * stopinsert
+  augroup end
+]],
+  false
+)
+
+-- set markdown FTs
+vim.api.nvim_exec(
+  [[
+  augroup SetMarkdownFt
+    autocmd!
+    autocmd BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
+  augroup end
+]],
+  false
+)
+
 -- Highlight on yank
 vim.api.nvim_exec(
   [[
@@ -9,6 +31,7 @@ vim.api.nvim_exec(
   false
 )
 
+-- @TODOUA: Break these commands out into nvim_exec blocks
 vim.cmd [[
 " header files should treated like .c files
 autocmd BufRead,BufNewFile *.h set filetype=c

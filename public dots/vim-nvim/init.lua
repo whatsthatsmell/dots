@@ -42,11 +42,6 @@ inoremap <C-s> <C-x><C-s>
 inoremap <C-v> <C-x><C-v>
 " -- end completion maps --
 
-" auto exit insert mode
-au CursorHoldI * stopinsert
-au FileType text set colorcolumn=100 autoindent linebreak
-au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
-
 " yank all in buffer
 nmap <silent><leader>a :%y<cr>
 " yank rest of the line - now builtin https://github.com/neovim/neovim/pull/13268
