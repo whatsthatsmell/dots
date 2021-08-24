@@ -16,23 +16,12 @@ require "joel.settings"
 -- treesitter & lsp
 require "joel.config"
 
--- utils
 -- require("joel.utils")
--- mappings galore
+
+-- ** Mappings galore
 -- see mappings.lua
 -- @TODUA: finish refactoring & migrating below to mappings/settings to Lua!
 vim.cmd [[
-" paste last thing yanked(not system copied), not deleted
-nmap ,p "0p
-nmap ,P "0P
-
-" DELETE: with y,d or c{motion} & it wont replace "0
-nnoremap _ "_
-" REPLACE: delete inner word & replace with last yanked (including system)
-nnoremap ,r "_diwhp
-" vim-surround maps
-" surround word under cursor w/ backticks
-nmap <leader>` ysiW`
 " Duplicate a selection
 " Visual mode: D
 vmap D y'>p

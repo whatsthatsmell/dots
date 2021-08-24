@@ -1,5 +1,13 @@
 -- ** Key Mappings **
-
+-- surround word under cursor w/ backticks (required vim-surround)
+vim.api.nvim_set_keymap("n", "<leader>`", "ysiW`", { noremap = false })
+-- REPLACE: delete inner word & replace with last yanked (including system)
+vim.api.nvim_set_keymap("n", ",r", '"_diwhp', { noremap = true })
+-- DELETE: with y,d or c{motion} & it wont replace "0
+vim.api.nvim_set_keymap("n", "_", '"_', { noremap = true })
+-- paste last thing yanked(not system copied), not deleted
+vim.api.nvim_set_keymap("n", ",p", '"0p', { noremap = true })
+vim.api.nvim_set_keymap("n", ",P", '"0P', { noremap = true })
 -- toggle search highlights with cursorline & cursorcolumn
 -- See augroup nvim-incsearch-cursorline for symmetry
 vim.api.nvim_set_keymap(
