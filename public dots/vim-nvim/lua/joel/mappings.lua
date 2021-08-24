@@ -17,9 +17,17 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true }
 )
 
--- treesitter maps that are not in setup config - for TS node 'units'
-vim.api.nvim_set_keymap("v", "u", ':lua require"joel.treesitter".select()<CR>', { noremap = true })
-vim.api.nvim_set_keymap("o", "u", ':lua require"joel.treesitter".select()<CR>', { noremap = true })
+-- Treesitter Unit maps that are not in setup config - for TS node 'units'
+-- Credit: https://github.com/David-Kunz/treesitter-unit
+-- See /lua/joel/treesitter/ for more info
+-- these maps are a bit confusing. We will see if they're correct &/or useful
+vim.api.nvim_set_keymap("x", "iu", ':lua require"joel.treesitter".select()<CR>', { noremap = true })
+vim.api.nvim_set_keymap("x", "au", ':lua require"joel.treesitter".select(true)<CR>', { noremap = true })
+vim.api.nvim_set_keymap("o", "iu", ':<c-u>lua require"joel.treesitter".select()<CR>', { noremap = true })
+vim.api.nvim_set_keymap("o", "au", ':<c-u>lua require"joel.treesitter".select(true)<CR>', { noremap = true })
+-- For reference, no maps
+-- :lua require"joel.treesitter".enable_highlighting()
+-- :lua require"joel.treesitter".disable_highlighting()
 
 -- turn off hlsearch, cursorline & cursorcolumn - @TODUA: fix these 2
 vim.api.nvim_set_keymap(

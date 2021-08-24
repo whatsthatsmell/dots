@@ -16,7 +16,8 @@ require "joel.settings"
 -- treesitter & lsp
 require "joel.config"
 
--- require("joel.utils")
+-- globals like P()
+require "joel.globals"
 
 -- ** Mappings galore
 -- see mappings.lua
