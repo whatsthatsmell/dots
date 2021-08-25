@@ -1,5 +1,13 @@
 -- lua-dev for Neovim
-local luadev = require("lua-dev").setup {}
+local luadev = require("lua-dev").setup {
+  -- was either this or keep local nvim-lspconfig & suppress error
+  -- for sumneko_lua here:
+  -- https://github.com/neovim/nvim-lspconfig/blob/62b9e1a27dd0c9556964b5c7a7bc144091cf9709/lua/lspconfig/util.lua#L233
+  -- @TODOUA: watch for related changes in lua-dev and nvim-lspconfig
+  lspconfig = {
+    enabled = false,
+  },
+}
 
 local lspconfig = require "lspconfig"
 lspconfig.sumneko_lua.setup(luadev)

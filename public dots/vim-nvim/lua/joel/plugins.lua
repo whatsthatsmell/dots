@@ -16,7 +16,6 @@ return require("packer").startup(function()
   use "ruanyl/coverage.vim"
   use "moll/vim-node"
   use "rust-lang/rust.vim"
-  use "tversteeg/registers.nvim"
   use "wbthomason/packer.nvim"
   use "neovim/nvim-lspconfig"
   -- using local telescope branch, see below
@@ -31,6 +30,7 @@ return require("packer").startup(function()
   use "nvim-lua/popup.nvim"
   use "nvim-lua/lsp-status.nvim"
   use "folke/lua-dev.nvim"
+  -- @TODOUA: don't forget to switch this out when nvim-cmp comes in
   use "tamago324/compe-zsh"
   use "onsails/lspkind-nvim"
   use "ray-x/lsp_signature.nvim"
