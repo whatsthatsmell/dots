@@ -12,6 +12,9 @@ local luadev = require("lua-dev").setup {
         diagnostics = {
           globals = { "use" },
         },
+        workspace = {
+          preloadFileSize = 350,
+        },
       },
     },
   },
