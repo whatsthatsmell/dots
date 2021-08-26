@@ -7,6 +7,13 @@ local luadev = require("lua-dev").setup {
       "-E",
       "/Users/joel/vim-dev/sources/lua-language-server/main.lua",
     },
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "use" },
+        },
+      },
+    },
   },
 }
 lspconfig.sumneko_lua.setup(luadev)
@@ -117,7 +124,9 @@ require("nvim-treesitter.configs").setup {
     },
   },
 }
-require "joel.treesitter"
+
+-- only using https://github.com/David-Kunz/treesitter-unit for now
+-- require "joel.treesitter"
 
 -- colorizer
 require("colorizer").setup {

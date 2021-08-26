@@ -41,6 +41,7 @@ return require("packer").startup(function()
   use "nvim-treesitter/nvim-treesitter-refactor"
   use "nvim-treesitter/playground"
   use "nvim-treesitter/nvim-treesitter-textobjects"
+  use "David-Kunz/treesitter-unit"
   use "kyazdani42/nvim-tree.lua"
   -- trying out ts-utils to see if it does add value
   use "jose-elias-alvarez/nvim-lsp-ts-utils"
