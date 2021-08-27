@@ -22,7 +22,7 @@ vim.api.nvim_set_keymap("x", "iu", ':lua require"treesitter-unit".select()<CR>',
 vim.api.nvim_set_keymap("x", "au", ':lua require"treesitter-unit".select(true)<CR>', { noremap = true })
 vim.api.nvim_set_keymap("o", "iu", ':<c-u>lua require"treesitter-unit".select()<CR>', { noremap = true })
 vim.api.nvim_set_keymap("o", "au", ':<c-u>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
--- For reference, no maps
+-- For reference, no map:
 -- :lua require"treesitter-unit".toggle_highlighting(higroup?)
 
 -- turn off hlsearch, cursorline & cursorcolumn - @TODUA: fix these 2
@@ -123,10 +123,10 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
   "n",
   ",o",
-  [[<Cmd>lua require'telescope.builtin'.oldfiles()<CR>]],
+  [[<Cmd>lua require'telescope.builtin'.oldfiles({results_title='Recent-ish Files'})<CR>]],
   { noremap = true, silent = true }
 )
--- live grep slowness: https://github.com/nvim-telescope/telescope.nvim/issues/392
+
 vim.api.nvim_set_keymap(
   "n",
   ",g",

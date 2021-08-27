@@ -5,8 +5,7 @@ setlocal colorcolumn=81
 setlocal foldmethod=expr
 setlocal foldexpr=nvim_treesitter#foldexpr()
 setlocal foldnestmax=3
-setlocal foldlevel=2
-" setlocal omnifunc=v:lua.vim.lsp.omnifunc
+setlocal foldlevel=1
 " ale settings
 let g:ale_disable_lsp = 1
 let g:ale_completion_enabled = 0

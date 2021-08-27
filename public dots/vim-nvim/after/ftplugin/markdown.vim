@@ -17,4 +17,8 @@ nmap <buffer><silent><localleader>rn :Rename<space>
 " add selected as todoist text
 nmap <buffer><localleader>1 :!todoist add "" -N ""<left><left><left><left><left><left><left>
 
-
+augroup PersistMarkdownFolds
+	autocmd!
+  autocmd BufWinLeave *.md mkview
+  autocmd BufWinEnter *.md silent! loadview
+augroup end
