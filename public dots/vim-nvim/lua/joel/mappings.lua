@@ -1,4 +1,12 @@
 -- ** Key Mappings **
+-- open zoxide list
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>z",
+  ":lua require'telescope'.extensions.zoxide.list{results_title='Z Directories', prompt_title='Z Prompt'}<CR>",
+  { noremap = true, silent = true }
+)
+
 -- surround word under cursor w/ backticks (required vim-surround)
 vim.api.nvim_set_keymap("n", "<leader>`", "ysiW`", { noremap = false })
 -- REPLACE: delete inner word & replace with last yanked (including system)

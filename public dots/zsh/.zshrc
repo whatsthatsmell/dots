@@ -260,4 +260,8 @@ fi
 bindkey '^P' fzf-file-widget
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
+# alias for making lls
 alias luamake=/Users/joel/vim-dev/sources/lua-language-server/3rd/luamake/luamake
+
+# kick-off zoxide
+eval "$(zoxide init zsh)"
