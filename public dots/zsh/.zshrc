@@ -6,12 +6,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/joel/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# @TODO: Switch to my custom theme
-ZSH_THEME="agnoster"
+ZSH_THEME="code-smell"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7"
 # Bat Theme
 export BAT_THEME="ansi"
@@ -84,94 +79,7 @@ plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-() {
-  local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-  SEGMENT_SEPARATOR=
-}
-
-# Begin a segment
-# Takes two arguments, background and foreground. Both can be omitted,
-# rendering default background/foreground.
-prompt_segment() {
-  local bg fg
-  # [[ -n $1 ]] && bg="$BG[237]" || bg="%k"
-  [[ -n $2 ]] && fg="$FG[254]" || fg="%f"
-  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
-    echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
-  else
-    echo -n "%{$bg%}%{$fg%}"
-  fi
-  CURRENT_BG=$1
-  [[ -n $3 ]] && echo -n $3
-}
-
-# Change prompt for HOME dir
-prompt_dir () {
-	if [[ "$PWD" == "$HOME" ]]; then
-		prompt_segment blue $CURRENT_FG ''
-	else
-		prompt_segment blue $CURRENT_FG '%2~'
-	fi
-}
-# Context: user@hostname (who am I and where am I)
-prompt_context() { }
-
-prompt_status() {
-  local -a symbols
-
-  [[ $RETVAL -ne 0 ]] && symbols+=" %{%F{red}%}"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
-
-  [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
-}
-
 # TODO: Move to theme file ------->
-prompt_git() {
-  (( $+commands[git] )) || return
-  if [[ "$(git config --get oh-my-zsh.hide-status 2>/dev/null)" = 1 ]]; then
-    return
-  fi
-  local PL_BRANCH_CHAR
-  () {
-    local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-    PL_BRANCH_CHAR=$''         # 
-  }
-  local ref dirty mode repo_path
-
-   if [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]]; then
-    repo_path=$(git rev-parse --git-dir 2>/dev/null)
-    dirty=$(parse_git_dirty)
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
-    if [[ -n $dirty ]]; then
-      prompt_segment yellow black
-      PL_BRANCH_CHAR=%{%F{yellow}%}''
-    else
-      prompt_segment green $CURRENT_FG
-    fi
-
-    if [[ -e "${repo_path}/BISECT_LOG" ]]; then
-      mode=" <B>"
-    elif [[ -e "${repo_path}/MERGE_HEAD" ]]; then
-      mode=" >M<"
-    elif [[ -e "${repo_path}/rebase" || -e "${repo_path}/rebase-apply" || -e "${repo_path}/rebase-merge" || -e "${repo_path}/../.dotest" ]]; then
-      mode=" >R>"
-    fi
-
-    setopt promptsubst
-    autoload -Uz vcs_info
-
-    zstyle ':vcs_info:*' enable git
-    zstyle ':vcs_info:*' get-revision true
-    zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr '✚'
-    zstyle ':vcs_info:*' unstagedstr '±'
-    zstyle ':vcs_info:*' formats ' %u%c'
-    zstyle ':vcs_info:*' actionformats ' %u%c'
-    vcs_info
-    echo -n "${ref/refs\/heads\//$PL_BRANCH_CHAR }${vcs_info_msg_0_%% }${mode}"
-  fi
-}
 # TODO: Save locally & source: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/git.zsh
 # Move this to functions file
 # Formats string for current git commit short SHA
