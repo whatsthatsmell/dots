@@ -1,13 +1,13 @@
 ![Neovim](https://img.shields.io/badge/editor-Neovim-green?logo=neovim&style=plastic)
 ## Public version of Code Smell dotfiles
-Current Setup (Last Updated 06-Aug-2021 or more recently. I always forget to update this. Look at the GitHub dates 😃): 
+Current Setup (Last Updated 08-Sep-2021 or more recently. I always forget to update this. Look at the GitHub dates 😃): 
 - [Neovim](https://neovim.io/)
 	- Theme: [codesmell_dark](https://github.com/whatsthatsmell/codesmell_dark.vim)
 	- Config: Lua
 	- Package Management: Packer
 	- Notable Plugins: `Telescope 🔭`, `gitsigns` and `nvim-compe`
 - [Alacritty](https://github.com/alacritty/alacritty) and an [iTerm Hotkey Window](https://www.iterm2.com/)
-    - Theme: Custom, see alacritty and iTerm configs
+    - Zsh Theme: [code-smell.zsh-theme](https://github.com/whatsthatsmell/dots/blob/master/public%20dots/zsh/code-smell.zsh-theme)
 - Zsh  
     - [Oh My Zsh](https://ohmyz.sh/) - _Phasing it out_
 
