@@ -21,15 +21,37 @@ local luadev = require("lua-dev").setup {
 }
 lspconfig.sumneko_lua.setup(luadev)
 
--- Trying nvim-DAP
--- local dap = require('dap')
--- dap.adapters.node2 = {
---     type = 'executable',
---     command = 'node',
---     args = {
---         vim.fn.expand "~/vim-dev/debug/vscode-node-debug2/out/src/nodeDebug.js"
---     }
--- }
+-- GitSigns
+require("gitsigns").setup {
+  signs = {
+    add = {
+      hl = "DiffAdd",
+      text = "│",
+      numhl = "GitSignsAddNr",
+    },
+    change = {
+      hl = "DiffChange",
+      text = "│",
+      numhl = "GitSignsChangeNr",
+    },
+    delete = {
+      hl = "DiffDelete",
+      text = "_",
+      numhl = "GitSignsDeleteNr",
+    },
+    topdelete = {
+      hl = "DiffDelete",
+      text = "‾",
+      numhl = "GitSignsDeleteNr",
+    },
+    changedelete = {
+      hl = "DiffChange",
+      text = "~",
+      numhl = "GitSignsChangeNr",
+    },
+  },
+  numhl = true,
+}
 
 -- nvim-treesitter
 require("nvim-treesitter.configs").setup {

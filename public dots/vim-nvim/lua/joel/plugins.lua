@@ -1,7 +1,5 @@
 -- Plugins Plugins Plugins
 return require("packer").startup(function()
-  -- Packer can manage itself
-  -- probably don't need this or vim-peekaboo
   use "editorconfig/editorconfig-vim"
   use "tpope/vim-surround"
   use "tpope/vim-fugitive"
@@ -24,7 +22,6 @@ return require("packer").startup(function()
   use "nvim-telescope/telescope-github.nvim"
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
   use "jvgrootveld/telescope-zoxide"
-
   use "andymass/vim-matchup"
   use "windwp/nvim-autopairs"
   use "nvim-lua/lsp_extensions.nvim"
@@ -32,7 +29,7 @@ return require("packer").startup(function()
   use "nvim-lua/popup.nvim"
   use "nvim-lua/lsp-status.nvim"
   use "folke/lua-dev.nvim"
-  -- @TODOUA: don't forget to switch this out when nvim-cmp comes in
+  -- @TODOUA:  finish switching this out to nvim-cmp
   use "tamago324/compe-zsh"
   use "onsails/lspkind-nvim"
   use "ray-x/lsp_signature.nvim"
@@ -45,9 +42,7 @@ return require("packer").startup(function()
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "David-Kunz/treesitter-unit"
   use "kyazdani42/nvim-tree.lua"
-  -- trying out ts-utils to see if it does add value
   use "jose-elias-alvarez/nvim-lsp-ts-utils"
-  -- @TODUA: try 'https://github.com/simrat39/rust-tools.nvim'
   use "simrat39/rust-tools.nvim"
   use "norcalli/nvim-colorizer.lua"
   use "nvim-lua/plenary.nvim"
@@ -66,7 +61,11 @@ return require("packer").startup(function()
     config = "vim.cmd[[ALEEnable]]",
   }
 
-  -- compe!
+  use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
+
+  -- @TODOUA: get setups out and over to config
+
+  -- compe! @TODOUA: finish migrating to nvim-cmp
   use {
     "hrsh7th/nvim-compe",
     requires = { { "hrsh7th/vim-vsnip" } },
@@ -109,43 +108,9 @@ return require("packer").startup(function()
   use "~/vim-dev/plugins/telescope.nvim"
   -- use '~/vim-dev/plugins/fzf-gh.vim'
 
-  -- some setups
-  use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
-
   use {
     "lewis6991/gitsigns.nvim",
     requires = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("gitsigns").setup {
-        signs = {
-          add = {
-            hl = "DiffAdd",
-            text = "│",
-            numhl = "GitSignsAddNr",
-          },
-          change = {
-            hl = "DiffChange",
-            text = "│",
-            numhl = "GitSignsChangeNr",
-          },
-          delete = {
-            hl = "DiffDelete",
-            text = "_",
-            numhl = "GitSignsDeleteNr",
-          },
-          topdelete = {
-            hl = "DiffDelete",
-            text = "‾",
-            numhl = "GitSignsDeleteNr",
-          },
-          changedelete = {
-            hl = "DiffChange",
-            text = "~",
-            numhl = "GitSignsChangeNr",
-          },
-        },
-      }
-    end,
   }
 
   require("nvim-web-devicons").setup {
