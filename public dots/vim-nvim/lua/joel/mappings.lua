@@ -90,6 +90,14 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true }
 )
 
+-- show LSP definitions
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>td",
+  [[<Cmd>lua require'telescope.builtin'.lsp_definitions({layout_config = { preview_width = 0.50, width = 0.92 }, path_display = { "shorten" }, results_title='Definitions'})<CR>]],
+  { noremap = true, silent = true }
+)
+
 -- commands - Lua API in the works: https://github.com/neovim/neovim/pull/12378
 -- git_branches
 vim.api.nvim_set_keymap(

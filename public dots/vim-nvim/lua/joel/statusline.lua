@@ -280,9 +280,14 @@ gls.right[4] = {
 
 gls.right[5] = {
   BufferNumber = {
-    provider = "BufferNumber",
+    -- provider = "BufferNumber",
+    -- Custom provider fixes (overrides): /lua/galaxyline/provider_buffer.lua#L36
+    -- https://git.io/Ju7Xa - not sure why they return the index not bufnr?
+    provider = function()
+      return vim.api.nvim_win_get_buf(0)
+    end,
     icon = "﬘ ",
-    highlight = { colors.green, colors.bg },
+    highlight = { colors.dodgerblue, colors.bg },
   },
 }
 
@@ -359,9 +364,14 @@ gls.short_line_left[2] = {
 
 gls.short_line_right[1] = {
   BufferNumber = {
-    provider = "BufferNumber",
+    -- provider = "BufferNumber",
+    -- Custom provider fixes (overrides): /lua/galaxyline/provider_buffer.lua#L36
+    -- https://git.io/Ju7Xa - not sure why they return the index not bufnr?
+    provider = function()
+      return vim.api.nvim_win_get_buf(0)
+    end,
     icon = "﬘ ",
-    highlight = { colors.green, colors.bg },
+    highlight = { colors.dodgerblue, colors.bg },
   },
 }
 
