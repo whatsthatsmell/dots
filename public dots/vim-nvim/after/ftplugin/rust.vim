@@ -9,9 +9,9 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 " Show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
-sign define LspDiagnosticsSignHint text=ⓗ  texthl=LspDiagnosticsSignHint linehl= numhl=
-sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsSignWarning linehl= numhl=
-sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl= numhl=
+sign define DiagnosticSignHint text=ⓗ  texthl=DiagnosticSignHint linehl= numhl=
+sign define DiagnosticSignWarning text= texthl=DiagnosticSignWarning linehl= numhl=
+sign define DiagnosticSignError text=! texthl=DiagnosticSignError linehl= numhl=
 " my snippets
 iabbrev <buffer> w18 #![warn(rust_2018_idioms)]
 " this is pd and ppd with rust-analyzer Magic Completions

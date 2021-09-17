@@ -162,6 +162,21 @@ require("colorizer").setup {
 -- require zoxide for telescope
 require("telescope").load_extension "zoxide"
 
+-- LSP signs default
+vim.fn.sign_define(
+  "DiagnosticSignError",
+  { texthl = "DiagnosticSignError", text = "", numhl = "DiagnosticSignError" }
+)
+vim.fn.sign_define(
+  "DiagnosticSignWarning",
+  { texthl = "DiagnosticSignWarning", text = "", numhl = "DiagnosticSignWarning" }
+)
+vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticSignHint" })
+vim.fn.sign_define(
+  "DiagnosticSignInformation",
+  { texthl = "DiagnosticSignInformation", text = "", numhl = "DiagnosticSignInformation" }
+)
+
 -- LSP Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = false,
@@ -170,13 +185,13 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   update_in_insert = false,
 })
 
--- Send diagnostics to quickfix list - get rid of this?
+-- Send diagnostics to quickfix list
 do
   local method = "textDocument/publishDiagnostics"
   local default_handler = vim.lsp.handlers[method]
   vim.lsp.handlers[method] = function(err, method, result, client_id, bufnr, config)
     default_handler(err, method, result, client_id, bufnr, config)
-    local diagnostics = vim.lsp.diagnostic.get_all()
+    local diagnostics = vim.diagnostic.get()
     local qflist = {}
     for bufnr, diagnostic in pairs(diagnostics) do
       for _, d in ipairs(diagnostic) do
@@ -187,6 +202,6 @@ do
         table.insert(qflist, d)
       end
     end
-    vim.lsp.util.set_qflist(qflist)
+    vim.fn.setqflist(qflist)
   end
 end

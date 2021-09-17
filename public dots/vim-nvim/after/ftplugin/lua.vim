@@ -7,7 +7,10 @@ nmap <silent><localleader>1 :luafile%<cr>
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_error = ""
-let g:ale_sign_warning = ""
+let g:ale_sign_warning = "裂"
+sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
+sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
+sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
 " @TODUA: use stylua in projects like telescope etc.
 " format with https://github.com/andrejlevkovitch/vim-lua-format
 " @TODUA: make silent and remove plugin
