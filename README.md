@@ -1,6 +1,6 @@
 ![Neovim](https://img.shields.io/badge/editor-Neovim-green?logo=neovim&style=plastic)
 ## Public version of Code Smell dotfiles
-Current Setup (Last Updated 08-Sep-2021 or more recently. I always forget to update this. Look at the GitHub dates 😃): 
+Current Setup (Last Updated 20-Sep-2021 or more recently. I always forget to update this. Look at the GitHub dates 😃): 
 - [Neovim](https://neovim.io/)
 	- Theme: [codesmell_dark](https://github.com/whatsthatsmell/codesmell_dark.vim)
 	- Config: Lua
