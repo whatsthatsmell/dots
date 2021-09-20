@@ -47,7 +47,7 @@ return require("packer").startup(function()
   use "norcalli/nvim-colorizer.lua"
   use "nvim-lua/plenary.nvim"
   use {
-    "glepnir/galaxyline.nvim",
+    "NTBBloodbath/galaxyline.nvim",
     branch = "main",
     config = function()
       require "joel.statusline"
