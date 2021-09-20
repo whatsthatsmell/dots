@@ -46,14 +46,7 @@ return require("packer").startup(function()
   use "simrat39/rust-tools.nvim"
   use "norcalli/nvim-colorizer.lua"
   use "nvim-lua/plenary.nvim"
-  use {
-    "NTBBloodbath/galaxyline.nvim",
-    branch = "main",
-    config = function()
-      require "joel.statusline"
-    end,
-    requires = { "kyazdani42/nvim-web-devicons" },
-  }
+  use "kyazdani42/nvim-web-devicons"
   use {
     "w0rp/ale",
     ft = { "javascript", "lua" },
@@ -102,10 +95,17 @@ return require("packer").startup(function()
       }
     end,
   }
-
   -- Local plugins
   use "~/vim-dev/plugins/codesmell_dark.vim"
   use "~/vim-dev/plugins/telescope.nvim"
+  use {
+    "~/vim-dev/plugins/galaxyline.nvim",
+    -- branch = "main",
+    config = function()
+      require "joel.statusline"
+    end,
+    requires = { "kyazdani42/nvim-web-devicons" },
+  }
   -- use '~/vim-dev/plugins/fzf-gh.vim'
 
   use {
