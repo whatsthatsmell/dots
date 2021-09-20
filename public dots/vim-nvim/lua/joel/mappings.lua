@@ -142,7 +142,12 @@ vim.api.nvim_set_keymap(
   [[<Cmd>lua require'telescope.builtin'.oldfiles({results_title='Recent-ish Files'})<CR>]],
   { noremap = true, silent = true }
 )
-
+vim.api.nvim_set_keymap(
+  "n",
+  ",l",
+  [[<Cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>]],
+  { noremap = true, silent = true }
+)
 vim.api.nvim_set_keymap(
   "n",
   ",g",
