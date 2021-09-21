@@ -294,5 +294,14 @@ vim.api.nvim_set_keymap(
 -- Colorizer Toggle
 vim.api.nvim_set_keymap("n", "<space>c", [[<Cmd>ColorizerToggle<CR>]], { noremap = true, silent = true })
 
+-- yank all in buffer
+vim.api.nvim_set_keymap("n", "<leader>a", ":%y<cr>", { noremap = false, silent = true })
+
 -- expands to dir of current file in cmd mode
 vim.api.nvim_set_keymap("c", "%%", [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], { noremap = true, expr = true })
+
+-- Move between Vimdows
+vim.api.nvim_set_keymap("n", "<up>", "<C-w><up>", { noremap = false })
+vim.api.nvim_set_keymap("n", "<down>", "<C-w><down>", { noremap = false })
+vim.api.nvim_set_keymap("n", "<left>", "<C-w><left>", { noremap = false })
+vim.api.nvim_set_keymap("n", "<right>", "<C-w><right>", { noremap = false })

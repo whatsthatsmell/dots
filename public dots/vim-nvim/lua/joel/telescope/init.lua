@@ -136,7 +136,6 @@ function M.grep_notes()
   -- opts.file_ignore_patterns = { 'thesaurus/'}
   opts.search_dirs = {
     "~/notes/",
-    "~/.vim/",
     "~/dotfiles",
     "config/nvim",
     "~/vim-dev",

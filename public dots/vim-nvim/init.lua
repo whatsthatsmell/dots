@@ -43,15 +43,6 @@ inoremap <C-s> <C-x><C-s>
 inoremap <C-v> <C-x><C-v>
 " -- end completion maps --
 
-" yank all in buffer
-nmap <silent><leader>a :%y<cr>
-" yank rest of the line - now builtin https://github.com/neovim/neovim/pull/13268
-"nmap Y y$
-" Move between Vimdows
-nmap <up> <C-w><up>
-nmap <down> <C-w><down>
-nmap <left> <C-w><left>
-nmap <right> <C-w><right>
 " back in jumplist
 nmap <silent> <leader><bs> <C-o>
 " forward in jumplist
