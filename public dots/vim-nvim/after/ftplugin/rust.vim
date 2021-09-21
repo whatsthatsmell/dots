@@ -8,7 +8,7 @@ setlocal foldlevel=1
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 " Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
+autocmd CursorHold * silent! lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
 sign define DiagnosticSignHint text=ⓗ  texthl=DiagnosticSignHint linehl= numhl=
 sign define DiagnosticSignWarning text= texthl=DiagnosticSignWarning linehl= numhl=
 sign define DiagnosticSignError text=! texthl=DiagnosticSignError linehl= numhl=

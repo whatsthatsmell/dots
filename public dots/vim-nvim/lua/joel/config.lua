@@ -185,6 +185,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   update_in_insert = false,
 })
 
+local pop_opts = { border = "rounded", max_width = 80 }
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, pop_opts)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, pop_opts)
+
 -- Send diagnostics to quickfix list
 do
   local method = "textDocument/publishDiagnostics"
