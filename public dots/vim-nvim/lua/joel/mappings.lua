@@ -41,7 +41,7 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true }
 )
 
--- The greatest neovim command ever (other than :Telescope)
+-- one of the greatest commands ever
 vim.api.nvim_set_keymap("n", "<space>t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
 
 -- write only if changed
@@ -142,6 +142,7 @@ vim.api.nvim_set_keymap(
   [[<Cmd>lua require'telescope.builtin'.oldfiles({results_title='Recent-ish Files'})<CR>]],
   { noremap = true, silent = true }
 )
+-- Telescopic version of FZF's :Lines
 vim.api.nvim_set_keymap(
   "n",
   ",l",
