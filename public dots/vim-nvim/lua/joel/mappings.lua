@@ -305,3 +305,10 @@ vim.api.nvim_set_keymap("n", "<up>", "<C-w><up>", { noremap = false })
 vim.api.nvim_set_keymap("n", "<down>", "<C-w><down>", { noremap = false })
 vim.api.nvim_set_keymap("n", "<left>", "<C-w><left>", { noremap = false })
 vim.api.nvim_set_keymap("n", "<right>", "<C-w><right>", { noremap = false })
+
+-- Replace word under cursor in File (case-sensitive)
+-- nmap <leader>sr :%s/<C-R><C-W>//gI<left><left><left>
+vim.api.nvim_set_keymap("n", "<leader>sr", ":%s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
+-- Replace word under cursor on Line (case-sensitive)
+-- nmap <leader>sl :s/<C-R><C-W>//gI<left><left><left>
+vim.api.nvim_set_keymap("n", "<leader>sl", ":s/<C-R><C-W>//gI<left><left><left>", { noremap = false })

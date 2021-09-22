@@ -51,10 +51,7 @@ nmap <silent> <leader><space> <C-i>
 " handled by unimpaired for now
 " open latest `todo` file, set by `T mark
 nnoremap <silent> <leader>to :sp \| norm `T<cr>
-" Replace word under cursor in File (case-sensitive)
-nmap <leader>sr :%s/<C-R><C-W>//gI<left><left><left>
-" Replace word under cursor on Line (case-sensitive)
-nmap <leader>sl :s/<C-R><C-W>//gI<left><left><left>
+
 " undotree
 nnoremap <silent><leader>u :UndotreeToggle<CR>
 let g:undotree_HelpLine = 0
