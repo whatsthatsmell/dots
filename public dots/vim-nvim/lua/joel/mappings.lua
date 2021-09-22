@@ -312,3 +312,6 @@ vim.api.nvim_set_keymap("n", "<leader>sr", ":%s/<C-R><C-W>//gI<left><left><left>
 -- Replace word under cursor on Line (case-sensitive)
 -- nmap <leader>sl :s/<C-R><C-W>//gI<left><left><left>
 vim.api.nvim_set_keymap("n", "<leader>sl", ":s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
+
+-- run packer sync
+vim.api.nvim_set_keymap("n", "<leader>ps", [[<Cmd>PackerSync<CR>]], { noremap = true, silent = true })
