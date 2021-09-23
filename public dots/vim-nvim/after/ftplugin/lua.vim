@@ -13,7 +13,7 @@ let g:ale_sign_warning = "裂"
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 " Show diagnostic popup on cursor hold but don't steal cursor
-autocmd CursorHold * silent! lua vim.diagnostic.show_line_diagnostics({focusable = false})
+autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
 
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>

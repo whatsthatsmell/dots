@@ -81,6 +81,10 @@ vim.api.nvim_set_keymap("n", "<space>d", ":b#<bar>bd#<CR>", { noremap = false, s
 -- delete current buffer - will close split - :q to close split
 vim.api.nvim_set_keymap("n", "<Leader>x", ":bd<CR>", { noremap = true, silent = true })
 
+-- Fugitive maps
+vim.api.nvim_set_keymap("n", "<leader>gb", ":Git blame<Return>", { noremap = true, silent = false })
+vim.api.nvim_set_keymap("n", "<leader>gp", ":G push origin ", { noremap = false })
+
 -- TELESCOPE keymaps  --
 -- show LSP implementations
 vim.api.nvim_set_keymap(
@@ -104,6 +108,13 @@ vim.api.nvim_set_keymap(
   "n",
   "<leader>gc",
   [[<Cmd>lua require'telescope.builtin'.git_branches()<CR>]],
+  { noremap = true, silent = true }
+)
+-- git_commits (log)
+vim.api.nvim_set_keymap(
+  "n",
+  "gl",
+  [[<Cmd>lua require'telescope.builtin'.git_commits()<CR>]],
   { noremap = true, silent = true }
 )
 -- git_status - <tab> to toggle staging
@@ -306,7 +317,7 @@ vim.api.nvim_set_keymap("n", "<down>", "<C-w><down>", { noremap = false })
 vim.api.nvim_set_keymap("n", "<left>", "<C-w><left>", { noremap = false })
 vim.api.nvim_set_keymap("n", "<right>", "<C-w><right>", { noremap = false })
 
--- Replace word under cursor in File (case-sensitive)
+-- Replace word under cursor in Buffer (case-sensitive)
 -- nmap <leader>sr :%s/<C-R><C-W>//gI<left><left><left>
 vim.api.nvim_set_keymap("n", "<leader>sr", ":%s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
 -- Replace word under cursor on Line (case-sensitive)

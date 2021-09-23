@@ -58,9 +58,6 @@ let g:undotree_HelpLine = 0
 let g:undotree_WindowLayout = 2
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 6
-" Fugitive maps
-nnoremap <silent> <leader>gb :Git blame<Return>
-nmap <leader>gp :Gpush origin
 " splitsville
 " - small vertical split to the right & go to it
 " nnoremap <silent> ,\ :75vsp<CR><C-w><right>
