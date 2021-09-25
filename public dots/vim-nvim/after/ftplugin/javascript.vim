@@ -41,6 +41,7 @@ sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
 sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
 sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
 nnoremap <silent><buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent><buffer> grn   <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>

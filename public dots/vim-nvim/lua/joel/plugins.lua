@@ -41,7 +41,6 @@ return require("packer").startup(function()
   use "nvim-treesitter/playground"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "David-Kunz/treesitter-unit"
-  use "kyazdani42/nvim-tree.lua"
   use "jose-elias-alvarez/nvim-lsp-ts-utils"
   use "simrat39/rust-tools.nvim"
   use "norcalli/nvim-colorizer.lua"

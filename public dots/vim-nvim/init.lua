@@ -58,21 +58,9 @@ let g:undotree_HelpLine = 0
 let g:undotree_WindowLayout = 2
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 6
-" splitsville
-" - small vertical split to the right & go to it
-" nnoremap <silent> ,\ :75vsp<CR><C-w><right>
-" split - larger top
-nnoremap <silent> ,- :22sp<CR><C-w><down>
+
 " Markdown-preview settings
 nmap <leader>md <Plug>MarkdownPreview
-" nvim-tree settings
-let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '.DS_Store' ]
-" let g:nvim_tree_gitignore = 1
-let g:nvim_tree_highlight_opened_files = 1
-let g:nvim_tree_auto_close = 0
-nnoremap <silent><C-p> :NvimTreeToggle<CR>
-nnoremap <silent><space>f :NvimTreeFindFile<CR>
-let g:nvim_tree_icons = { 'git': { 'unstaged': '±', 'staged': '', 'deleted': '✗' } }
 
 " ** Test and  coverage related **
 " Specify the path to `coverage.json` file relative to your current working directory.
@@ -130,11 +118,6 @@ nmap <silent><leader>D :NCD<cr>
 nmap <silent><leader>F :lcd<c-r>+<cr>
 " ---
 " end term settings ***
-
-" change dir for window to file's dir
-nnoremap <silent><leader>cd :lcd %:p:h<cr>
-" change dir for window to file's git working dir
-nnoremap <silent><leader>gd :Glcd<cr>
 
 " Delete to Esc from (almost) all the things
 nnoremap <Del> <Esc>

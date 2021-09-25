@@ -77,7 +77,7 @@ vim.api.nvim_set_keymap("n", "<Leader><right>", ":bn<CR>", { noremap = true, sil
 vim.api.nvim_set_keymap("n", "<Leader><left>", ":bp<CR>", { noremap = true, silent = true })
 -- needed bd! for toggleterm - todo?
 -- delete current buffer - don't close split
-vim.api.nvim_set_keymap("n", "<space>d", ":b#<bar>bd#<CR>", { noremap = false, silent = true })
+vim.api.nvim_set_keymap("n", "<space>db", ":b#<bar>bd#<CR>", { noremap = false, silent = true })
 -- delete current buffer - will close split - :q to close split
 vim.api.nvim_set_keymap("n", "<Leader>x", ":bd<CR>", { noremap = true, silent = true })
 
@@ -295,13 +295,14 @@ vim.api.nvim_set_keymap("n", "<F1>", "<Esc>", { noremap = false })
 vim.api.nvim_set_keymap("i", "<F1>", "<Esc>", { noremap = false })
 
 -- open 2 vertically split terminals
--- nnoremap <silent> ,\ :60vsp <bar>terminal<cr>:sp<bar>terminal<cr>
 vim.api.nvim_set_keymap(
   "n",
   ",\\",
-  [[<Cmd>60vsp <bar>terminal<CR>:sp<bar>terminal<CR>]],
+  [[<Cmd>60vsp <bar>terminal<CR>:set winfixheight<CR>:sp<bar>terminal<CR>]],
   { noremap = true, silent = true }
 )
+-- open split below, slightly smaller
+vim.api.nvim_set_keymap("n", ",-", ":23sp<CR><C-w><down>", { noremap = true, silent = true })
 -- Colorizer Toggle
 vim.api.nvim_set_keymap("n", "<space>c", [[<Cmd>ColorizerToggle<CR>]], { noremap = true, silent = true })
 
@@ -326,3 +327,8 @@ vim.api.nvim_set_keymap("n", "<leader>sl", ":s/<C-R><C-W>//gI<left><left><left>"
 
 -- run packer sync
 vim.api.nvim_set_keymap("n", "<leader>ps", [[<Cmd>PackerSync<CR>]], { noremap = true, silent = true })
+
+-- change dir for window to file's dir
+vim.api.nvim_set_keymap("n", "<leader>cd", ":lcd %:p:h<cr>", { noremap = true, silent = true })
+-- change dir for window to file's git working dir
+vim.api.nvim_set_keymap("n", "<leader>gd", ":Glcd<cr>", { noremap = true, silent = true })
