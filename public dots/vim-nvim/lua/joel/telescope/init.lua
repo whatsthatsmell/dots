@@ -1,4 +1,3 @@
--- @TODOUA: Move Telescope keymaps into this module?!?
 -- telescope - customized pickers
 local actions = require "telescope.actions"
 local utils = require "telescope.utils"

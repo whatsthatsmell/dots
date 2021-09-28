@@ -332,3 +332,10 @@ vim.api.nvim_set_keymap("n", "<leader>ps", [[<Cmd>PackerSync<CR>]], { noremap = 
 vim.api.nvim_set_keymap("n", "<leader>cd", ":lcd %:p:h<cr>", { noremap = true, silent = true })
 -- change dir for window to file's git working dir
 vim.api.nvim_set_keymap("n", "<leader>gd", ":Glcd<cr>", { noremap = true, silent = true })
+-- toggle fold column
+vim.api.nvim_set_keymap(
+  "n",
+  ",tf",
+  ":lua require'joel.settings'.toggleFoldCol()<CR>",
+  { noremap = true, silent = true }
+)

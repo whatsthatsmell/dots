@@ -99,3 +99,23 @@ vim.bo.shiftwidth = 2
 -- Global Vim vars that are on a solo mission **
 -- vim.g.fzf_gh_website = 1
 vim.g.matchup_matchparen_deferred = 1
+
+-- Oww, we need the func, we gotta have that func
+local M = {}
+local toBool = {
+  ["1"] = true,
+  ["0"] = false,
+}
+-- Note: `foldcolumn` is not a boolean. You can set other values.
+-- I only want to toggle between these two values though.
+-- There's probably a better way.
+function M.toggleFoldCol()
+  if toBool[vim.opt.foldcolumn:get()] then
+    vim.opt.foldcolumn = "0"
+  else
+    vim.opt.foldcolumn = "1"
+  end
+  vim.api.nvim_echo({ { "foldcolumn is set to " .. vim.opt.foldcolumn:get() } }, false, {})
+end
+
+return M
