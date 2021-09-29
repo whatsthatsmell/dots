@@ -339,3 +339,6 @@ vim.api.nvim_set_keymap(
   ":lua require'joel.settings'.toggleFoldCol()<CR>",
   { noremap = true, silent = true }
 )
+
+-- toggle IndentBlankline with set line! - both off by default
+vim.api.nvim_set_keymap("n", ",ti", ":IndentBlanklineToggle<CR>:set list!<CR>", { noremap = true, silent = true })

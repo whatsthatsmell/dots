@@ -65,7 +65,7 @@ require("nvim-treesitter.configs").setup {
       node_decremental = "grm",
     },
   },
-  indent = { enable = true, disable = { "javascript" } },
+  indent = { enable = true },
   matchup = { enable = true },
   autopairs = { enable = true },
   playground = {

@@ -47,6 +47,7 @@ return require("packer").startup {
     use "norcalli/nvim-colorizer.lua"
     use "nvim-lua/plenary.nvim"
     use "kyazdani42/nvim-web-devicons"
+    use "lukas-reineke/indent-blankline.nvim"
     use {
       "w0rp/ale",
       ft = { "javascript", "lua" },

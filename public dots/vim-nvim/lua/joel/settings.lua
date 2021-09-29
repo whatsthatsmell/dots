@@ -101,6 +101,21 @@ vim.bo.shiftwidth = 2
 -- vim.g.fzf_gh_website = 1
 vim.g.matchup_matchparen_deferred = 1
 
+-- indent-blankline settings
+vim.opt.list = false
+vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "eol:↴"
+vim.opt.listchars:append "trail:"
+-- @TODOUA: make indent lines lighter
+require("indent_blankline").setup {
+  show_end_of_line = true,
+  space_char_blankline = " ",
+  buftype_exclude = { "terminal", "help", "telescope" },
+  show_current_context = true,
+  use_treesitter = true,
+  enabled = false,
+}
+
 -- Oww, we need the func, we gotta have that func
 local M = {}
 local toBool = {
