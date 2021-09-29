@@ -1,3 +1,4 @@
+-- Neovim Settings - Lua
 -- auto exit insert mode
 vim.api.nvim_exec(
   [[

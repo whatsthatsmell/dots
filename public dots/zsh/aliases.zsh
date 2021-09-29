@@ -1,4 +1,4 @@
-# Custom Aliases
+# Custom ZSH Aliases
 alias -s txt=nvim
 alias -s vim=nvim
 alias -s zsh=nvim

@@ -129,6 +129,7 @@ end
 --     }
 -- end
 -- @TODOUA: work HOME dot files into one of these
+-- @TODOUA: break up notes and configs
 function M.grep_notes()
   local opts = {}
   opts.hidden = true
@@ -136,10 +137,9 @@ function M.grep_notes()
   opts.search_dirs = {
     "~/notes/",
     "~/dotfiles",
-    "config/nvim",
     "~/vim-dev",
     "~/.oh-my-zsh/custom",
-    "~/.config/alacritty",
+    "~/.config",
   }
   opts.prompt_prefix = "   "
   opts.prompt_title = " Grep Notes"

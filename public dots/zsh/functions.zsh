@@ -1,3 +1,5 @@
+# ZSH Functions
+
 # get trackpad battery %
 tpb() {
   BATTLVL=$(ioreg -r -l -n AppleHSBluetoothDevice | rg '"BatteryPercent" = |^  \|   "Bluetooth Product Name" = ' | sed 's/  |   "Bluetooth Product Name" = "Magic Trackpad 2"/  \| Trackpad:/' | sed 's/  |   |       "BatteryPercent" = / /')
