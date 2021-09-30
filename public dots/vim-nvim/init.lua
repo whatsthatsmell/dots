@@ -29,16 +29,12 @@ vmap D y'>p
 " Join lines and restore cursor location
 nnoremap J mjJ`j
 " -- completion maps --
-" Mostly handled by `compe` 🌟
-" thesaurus @TODO: Remove? only thing left in ~/.vim
-" set thesaurus+=~/.vim/thesaurus/thesaurii.txt
+" Mostly handled by `nvim-cmp` 🌟
 inoremap <C-t> <C-x><C-t>
 " line completion - use more!
 inoremap <C-l> <C-x><C-l>
-" check for spelling completion (compe?)
+" check for spelling completion (cmp)
 inoremap <C-s> <C-x><C-s>
-" file path completion (compe!)
-" inoremap <C-f> <C-x><C-f>
 " Vim command-line completion
 inoremap <C-v> <C-x><C-v>
 " -- end completion maps --

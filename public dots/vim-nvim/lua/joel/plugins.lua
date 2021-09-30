@@ -1,4 +1,4 @@
--- Plugins Plugins Plugins
+-- Plugins via Packer
 return require("packer").startup {
   function()
     use "editorconfig/editorconfig-vim"
@@ -30,8 +30,6 @@ return require("packer").startup {
     use "nvim-lua/popup.nvim"
     use "nvim-lua/lsp-status.nvim"
     use "folke/lua-dev.nvim"
-    -- @TODOUA:  finish switching this out to nvim-cmp
-    use "tamago324/compe-zsh"
     use "onsails/lspkind-nvim"
     use "ray-x/lsp_signature.nvim"
     use {
@@ -57,45 +55,26 @@ return require("packer").startup {
 
     use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
 
-    -- @TODOUA: get setups out and over to config
-
-    -- compe! @TODOUA: finish migrating to nvim-cmp
+    -- nvim-cmp
     use {
-      "hrsh7th/nvim-compe",
-      requires = { { "hrsh7th/vim-vsnip" } },
+      "hrsh7th/nvim-cmp",
+      requires = {
+        { "hrsh7th/cmp-buffer" },
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-path" },
+        { "hrsh7th/cmp-nvim-lua" },
+        { "ray-x/cmp-treesitter" },
+        { "hrsh7th/nvim-cmp" },
+        { "hrsh7th/cmp-vsnip" },
+        { "hrsh7th/vim-vsnip" },
+        { "Saecki/crates.nvim" },
+        { "f3fora/cmp-spell" },
+      },
       config = function()
-        require("compe").setup {
-          enabled = true,
-          autocomplete = true,
-          debug = false,
-          min_length = 1,
-          preselect = "enable",
-          throttle_time = 80,
-          source_timeout = 200,
-          incomplete_delay = 400,
-          max_abbr_width = 100,
-          max_kind_width = 100,
-          max_menu_width = 100,
-          documentation = {
-            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-          },
-          source = {
-            buffer = true,
-            calc = true,
-            nvim_lsp = true,
-            nvim_lua = true,
-            path = true,
-            snippets_nvim = true,
-            spell = true,
-            tags = true,
-            treesitter = true,
-            vsnip = true,
-            zsh = true,
-            -- gql_schema = true
-          },
-        }
+        require "joel.completion"
       end,
     }
+
     -- Local plugins
     use "~/vim-dev/plugins/codesmell_dark.vim"
     use "~/vim-dev/plugins/telescope.nvim"
@@ -156,8 +135,6 @@ return require("packer").startup {
 
     require("lspconfig").tsserver.setup {
       on_attach = function(client)
-        -- signature completion - not in scope for compe
-        -- @TODOUA: check on or try with rust-analyzer
         require("lsp_signature").on_attach {
           bind = true, -- This is mandatory, otherwise border config won't get registered.
           -- If you want to hook lspsaga or other signature handler, pls set to false
@@ -218,6 +195,7 @@ return require("packer").startup {
     -- snippet support
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     -- Enable rust_analyzer
     nvim_lsp.rust_analyzer.setup {

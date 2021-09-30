@@ -25,7 +25,6 @@ iabbrev <buffer> #i #[ignore]<c-o>o<left>
 " -- end my snippets
 let g:completion_enable_auto_paren = 1
 " open the braces ***
-" working with nvim-autopairs and compe!
 " inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " wrap selection in Some(*)
 vmap ,sm cSome(<c-r>"<esc>

@@ -28,7 +28,7 @@ hi rainbowcol3 guifg=#8182EB
 hi rainbowcol4 guifg=#BCCEA3
 hi rainbowcol6 guifg=#1B9C36
 
-" this stopped working via compe/nvim-autopairs. So, it's back
+" open braces
 inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " lsp mappings and all the goodness
 " Enable type inlay hints
