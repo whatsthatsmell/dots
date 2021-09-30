@@ -1,3 +1,5 @@
+-- Thank you CantoroMC
+-- https://github.com/CantoroMC/dotfiles/blob/e2ae91b725f09cdd66d93d97f4b995d48f620e3d/neovim/.config/nvim/lua/mc/packer/nvim-cmp/zsh.lua#L1
 local cmp = require "cmp"
 local Job = require "plenary.job"
 local source = {}
@@ -18,13 +20,6 @@ source.is_available = function()
     return false
   end
 end
-
--- function source:get_keyword_pattern()
---   return '\\S\\+$'
--- end
-
--- source.get_trigger_characters = function()
--- end
 
 function source:_collect(input)
   local results = {}
