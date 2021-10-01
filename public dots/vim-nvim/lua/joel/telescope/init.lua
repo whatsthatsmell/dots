@@ -53,6 +53,13 @@ require("telescope").load_extension "repo"
 -- my telescopic customizations
 local M = {}
 
+-- requires rep extension
+function M.repo_list()
+  local opts = {}
+  opts.prompt_title = " Repos"
+  require("telescope").extensions.repo.list(opts)
+end
+
 -- requires github extension
 function M.gh_issues()
   local opts = {}
