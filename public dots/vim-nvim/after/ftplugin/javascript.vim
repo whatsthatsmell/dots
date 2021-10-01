@@ -70,7 +70,8 @@ nmap <buffer><leader>f <Plug>(ale_fix)
 nnoremap <buffer><silent> <leader>rn :ALERename<Return>
 " let g:ale_completion_enabled = 0
 " let g:ale_completion_autoimport = 1
-
+" snippets for JS - TODO: change autoselect next completion?
+let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/javascript/')
 " abbreviations - see maps below for wrapping with these
 inoreabbrev Ccl console.log()<Left><Left><Esc>
 inoreabbrev Cclj console.log(JSON.stringify())<Left><Left><left><Esc>

@@ -100,7 +100,6 @@ vim.bo.shiftwidth = 2
 -- Global Vim vars that are on a solo mission **
 -- vim.g.fzf_gh_website = 1
 vim.g.matchup_matchparen_deferred = 1
-
 -- indent-blankline settings
 vim.opt.list = false
 vim.opt.listchars:append "space:⋅"
