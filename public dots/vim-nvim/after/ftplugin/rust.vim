@@ -9,6 +9,25 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 " Show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
+" Setup cmp sources for Rust
+autocmd FileType rust lua require'cmp'.setup.buffer {
+\   sources = {
+\     { name = 'nvim_lsp' },
+\     { name = 'treesitter' },
+\     { name = 'vsnip' },
+\     {
+\      name = 'buffer',
+\      opts = {
+\        get_bufnrs = function()
+\          return vim.api.nvim_list_bufs()
+\        end,
+\      },
+\    },
+\    { name = 'path' },
+\   },
+\ }
+
+"Signs
 sign define DiagnosticSignHint text=ⓗ  texthl=DiagnosticSignHint linehl= numhl=
 sign define DiagnosticSignWarning text= texthl=DiagnosticSignWarning linehl= numhl=
 sign define DiagnosticSignError text=! texthl=DiagnosticSignError linehl= numhl=
@@ -22,7 +41,10 @@ iabbrev <buffer> #t #[test]<c-o>o<left>
 iabbrev <buffer> #p #[should_panic(expected = "")]<left><left><left>
 iabbrev <buffer> #b #[bench]<c-o>o<left>
 iabbrev <buffer> #i #[ignore]<c-o>o<left>
-" -- end my snippets
+
+" snippets for Rust - TODO: change autoselect next completion?
+let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
+" -- end snippets
 let g:completion_enable_auto_paren = 1
 " open the braces ***
 " inoremap <buffer> {<cr> {<cr>}<c-o><s-o>

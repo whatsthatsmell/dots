@@ -22,3 +22,22 @@ augroup PersistMarkdownFolds
   autocmd BufWinLeave *.md mkview
   autocmd BufWinEnter *.md silent! loadview
 augroup end
+
+autocmd FileType markdown lua require'cmp'.setup.buffer {
+\   sources = {
+\     { name = 'vsnip' },
+\     { name = 'spell' },
+\     {
+\      name = 'buffer',
+\      opts = {
+\        get_bufnrs = function()
+\          return vim.api.nvim_list_bufs()
+\        end,
+\      },
+\    },
+\    { name = 'path' },
+\   },
+\ }
+
+" snippets for markdown - TODO: change autoselect next completion?
+let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')

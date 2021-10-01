@@ -37,6 +37,25 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 " Show diagnostic popup on cursor hold but don't steal cursor
 autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
 " autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
+" Setup cmp source buffer configuration (nvim-lua source only enables in Lua filetype)
+autocmd FileType javascript lua require'cmp'.setup.buffer {
+\   sources = {
+\     { name = 'nvim_lsp' },
+\     { name = 'treesitter' },
+\     { name = 'vsnip' },
+\     {
+\      name = 'buffer',
+\      opts = {
+\        get_bufnrs = function()
+\          return vim.api.nvim_list_bufs()
+\        end,
+\      },
+\    },
+\    { name = 'path' },
+\   },
+\ }
+
+"Signs
 sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
 sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
 sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=

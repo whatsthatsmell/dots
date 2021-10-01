@@ -14,6 +14,27 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 " Show diagnostic popup on cursor hold but don't steal cursor
 autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
+" Setup cmp source buffer configuration (nvim-lua source only enables in Lua filetype)
+autocmd FileType lua lua require'cmp'.setup.buffer {
+\   sources = {
+\     { name = 'nvim_lua' },
+\     { name = 'nvim_lsp' },
+\     { name = 'treesitter' },
+\     { name = 'vsnip' },
+\     {
+\      name = 'buffer',
+\      opts = {
+\        get_bufnrs = function()
+\          return vim.api.nvim_list_bufs()
+\        end,
+\      },
+\    },
+\    { name = 'path' },
+\   },
+\ }
+
+" snippets for Lua - TODO: change autoselect next completion?
+let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
 
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>

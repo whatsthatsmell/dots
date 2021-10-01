@@ -3,7 +3,6 @@ local cmp = require "cmp"
 
 local lspkind = require "lspkind"
 
-cmp.register_source("zsh", require "joel.completion.zsh")
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -25,12 +24,9 @@ cmp.setup {
   sources = {
     -- 'crates' is lazy loaded
     { name = "nvim_lsp" },
-    { name = "nvim_lua" },
     { name = "treesitter" },
-    { name = "zsh" },
-    { name = "path" },
-    { name = "spell" },
     { name = "vsnip" },
+    { name = "path" },
     {
       name = "buffer",
       opts = {
@@ -39,6 +35,7 @@ cmp.setup {
         end,
       },
     },
+    { name = "spell" },
   },
   formatting = {
     format = function(entry, vim_item)
@@ -51,6 +48,7 @@ cmp.setup {
         buffer = "﬘",
         zsh = "",
         vsnip = "",
+        spell = "暈",
       })[entry.source.name]
 
       return vim_item
