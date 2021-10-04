@@ -7,7 +7,6 @@ autocmd FileType vim lua require'cmp'.setup.buffer {
 \   sources = {
 \     { name = 'nvim_lsp' },
 \     { name = 'treesitter' },
-" \     { name = 'vsnip' },
 \     {
 \      name = 'buffer',
 \      opts = {
