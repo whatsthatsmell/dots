@@ -7,6 +7,12 @@ tpb() {
   echo $BATTRPT%
 }
 
+# CD into {dir} and then exal
+cde() {
+  cd $1
+  exal
+}
+
 # create new rust proj, move in to it & open main/lib & toml
 cn() {
   cargo new $1

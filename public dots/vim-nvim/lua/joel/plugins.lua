@@ -78,7 +78,7 @@ return require("packer").startup {
     -- Local plugins
     use "~/vim-dev/plugins/codesmell_dark.vim"
     use "~/vim-dev/plugins/telescope.nvim"
-    -- local to support worktrees
+    -- local - updated to support worktrees
     use "~/vim-dev/plugins/telescope-repo.nvim"
 
     use {
