@@ -82,6 +82,8 @@ return require("packer").startup {
     use "~/vim-dev/plugins/telescope.nvim"
     -- local - updated to support worktrees
     use "~/vim-dev/plugins/telescope-repo.nvim"
+    -- WIP: shows all pickers (builtin, custom and extensions)
+    use "~/vim-dev/plugins/telescope-picker-picker.nvim"
 
     use {
       "~/vim-dev/plugins/galaxyline.nvim",

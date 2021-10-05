@@ -50,6 +50,8 @@ require("telescope").load_extension "gh"
 -- trying out telescope-repo
 require("telescope").load_extension "repo"
 
+-- test my picker-picker extension
+require("telescope").load_extension "picker_picker"
 -- my telescopic customizations
 local M = {}
 
@@ -177,7 +179,7 @@ function M.browse_notes()
   }
 end
 
-function M.find_files()
+function M.find_configs()
   require("telescope.builtin").find_files {
     prompt_title = " NVim & Term Config Find",
     results_title = "Config Files Results",

@@ -247,7 +247,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
   "n",
   "<space>e",
-  [[<Cmd>lua require'joel.telescope'.find_files()<CR>]],
+  [[<Cmd>lua require'joel.telescope'.find_configs()<CR>]],
   { noremap = true, silent = true }
 )
 -- greg for a string
