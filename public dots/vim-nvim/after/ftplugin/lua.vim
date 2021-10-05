@@ -39,18 +39,7 @@ let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-
+"signs defined
 sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
 sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
 sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
-" @TODUA: use stylua in projects like telescope etc.
-" format with https://github.com/andrejlevkovitch/vim-lua-format
-" @TODUA: make silent and remove plugin
-" nnoremap <buffer><leader>f :call LuaFormat()<cr>
-" nmap <buffer><leader>f <Plug>(ale_fix)
-" let g:ale_disable_lsp = 1
-" let g:ale_completion_enabled = 0
-" let g:ale_fixers = {
-" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-" \   'lua': ['stylua']
-" \}

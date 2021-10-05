@@ -42,7 +42,9 @@ return require("packer").startup {
     use "David-Kunz/treesitter-unit"
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
     use "simrat39/rust-tools.nvim"
-    use "norcalli/nvim-colorizer.lua"
+    -- use "norcalli/nvim-colorizer.lua"
+    -- back to OG Colorizer since above dies horribly
+    use "chrisbra/Colorizer"
     use "nvim-lua/plenary.nvim"
     use "kyazdani42/nvim-web-devicons"
     use "lukas-reineke/indent-blankline.nvim"

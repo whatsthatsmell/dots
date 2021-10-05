@@ -97,9 +97,14 @@ vim.o.showcmd = false
 vim.bo.tabstop = 2
 vim.bo.shiftwidth = 2
 
--- Global Vim vars that are on a solo mission **
+-- Global Vim vars that are on a solo-ish mission **
 -- vim.g.fzf_gh_website = 1
 vim.g.matchup_matchparen_deferred = 1
+-- * Colorizer *
+-- auto color fts
+vim.g.colorizer_auto_filetype = "yaml,zsh,zsh-theme,lua,vim,json"
+-- keep colorizing on bufleave
+vim.g.colorizer_disable_bufleave = 1
 -- indent-blankline settings
 vim.opt.list = false
 vim.opt.listchars:append "space:⋅"

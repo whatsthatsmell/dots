@@ -33,6 +33,7 @@ end
 
 local stylua = {}
 -- @TODUA: it appears that GitSigns loses its place when this happens.
+-- is this still happening??
 stylua.format = function(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
 

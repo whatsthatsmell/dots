@@ -84,11 +84,7 @@ highlight clear ALEWarningSign
 let g:ale_sign_error = ""
 let g:ale_sign_warning = ""
 nmap <buffer><leader>f <Plug>(ale_fix)
-" nmap <buffer><silent> <leader>d <Plug>(ale_go_to_definition)
-" nnoremap <buffer><silent> <leader>r :ALEFindReferences -relative<Return>
 nnoremap <buffer><silent> <leader>rn :ALERename<Return>
-" let g:ale_completion_enabled = 0
-" let g:ale_completion_autoimport = 1
 " snippets for JS - TODO: change autoselect next completion?
 let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/javascript/')
 " abbreviations - see maps below for wrapping with these

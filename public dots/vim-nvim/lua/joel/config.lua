@@ -153,12 +153,6 @@ require("nvim-treesitter.configs").setup {
 -- only using https://github.com/David-Kunz/treesitter-unit for now
 -- require "joel.treesitter"
 
--- colorizer
-require("colorizer").setup {
-  "vim",
-  "lua",
-}
-
 -- require zoxide for telescope
 require("telescope").load_extension "zoxide"
 

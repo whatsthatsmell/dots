@@ -351,3 +351,6 @@ vim.api.nvim_set_keymap(
 
 -- toggle IndentBlankline with set line! - both off by default
 vim.api.nvim_set_keymap("n", ",ti", ":IndentBlanklineToggle<CR>:set list!<CR>", { noremap = true, silent = true })
+
+-- toggle colorizer: will be toggled on by default for appropriate fts
+vim.api.nvim_set_keymap("n", ",ct", ":ColorToggle<CR>", { noremap = false, silent = true })
