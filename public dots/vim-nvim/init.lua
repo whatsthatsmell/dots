@@ -1,7 +1,7 @@
 -- *** Neovim Config Luatized *** --
 require "joel.plugins"
 
--- telescope
+-- telescope 🔭
 require "joel.telescope"
 
 -- mappings

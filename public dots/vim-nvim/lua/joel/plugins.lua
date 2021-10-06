@@ -83,6 +83,7 @@ return require("packer").startup {
     -- local - updated to support worktrees
     use "~/vim-dev/plugins/telescope-repo.nvim"
     -- WIP: shows all pickers (builtin, custom and extensions)
+    -- ... and do some default or even specified action
     use "~/vim-dev/plugins/telescope-picker-picker.nvim"
 
     use {
@@ -145,7 +146,7 @@ return require("packer").startup {
         require("lsp_signature").on_attach {
           bind = true, -- This is mandatory, otherwise border config won't get registered.
           -- If you want to hook lspsaga or other signature handler, pls set to false
-          doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated)
+          doc_lines = 2, -- will show 2 lines of comment/doc(if there are more than 2 lines in doc, will be truncated)
           -- set to 0 if you DO NOT want any API comments be shown
           -- This setting only take effect in insert mode, it does not affect signature help in normal
           -- mode, 10 by default
@@ -182,7 +183,7 @@ return require("packer").startup {
           eslint_enable_diagnostics = false,
 
           -- TODO: try out update imports on file move
-          update_imports_on_move = false,
+          update_imports_on_move = true,
           require_confirmation_on_move = false,
           watch_dir = nil,
         }
@@ -207,7 +208,9 @@ return require("packer").startup {
     -- Enable rust_analyzer
     nvim_lsp.rust_analyzer.setup {
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach = function()
+        print "Shhh, I am hiding the loop message 🦀⚙"
+      end,
       settings = {
         ["rust-analyzer"] = {
           cargo = { loadOutDirsFromCheck = true },
@@ -216,6 +219,7 @@ return require("packer").startup {
       },
     }
     -- rust-tools config: https://github.com/simrat39/rust-tools.nvim
+    -- You want this if you're a Rust developer.
     require("rust-tools").setup {}
   end,
   config = {

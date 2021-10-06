@@ -8,7 +8,7 @@ setlocal foldlevel=1
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 " Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
+autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
 " Setup cmp sources for Rust
 autocmd FileType rust lua require'cmp'.setup.buffer {
 \   sources = {
@@ -54,7 +54,7 @@ vmap ,sm cSome(<c-r>"<esc>
 nnoremap <silent><buffer>,f :Rg<Space>fn<Space><CR>
 " surround (W)ord with angle brackets
 nmap <localleader>ab ysiW>
-" mappings
+" mappings share these across languages
 nnoremap <silent><buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 " moving back and forth between declaration and impls

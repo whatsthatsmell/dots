@@ -1,6 +1,7 @@
-setlocal linebreak
-setlocal exrc
-setlocal colorcolumn=81
+vim.opt_local.linebreak = true
+vim.opt_local.colorcolumn = "81"
+vim.api.nvim_exec(
+  [[
 " treesitter folding
 setlocal foldmethod=expr
 setlocal foldexpr=nvim_treesitter#foldexpr()
@@ -36,29 +37,13 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 " Show diagnostic popup on cursor hold but don't steal cursor
 autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
-" autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
-" Setup cmp source buffer configuration (nvim-lua source only enables in Lua filetype)
-autocmd FileType javascript lua require'cmp'.setup.buffer {
-\   sources = {
-\     { name = 'nvim_lsp' },
-\     { name = 'treesitter' },
-\     { name = 'vsnip' },
-\     {
-\      name = 'buffer',
-\      opts = {
-\        get_bufnrs = function()
-\          return vim.api.nvim_list_bufs()
-\        end,
-\      },
-\    },
-\    { name = 'path' },
-\   },
-\ }
 
 "Signs
 sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
 sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
 sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
+
+" TODO: share these across languages
 nnoremap <silent><buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent><buffer> grn   <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
@@ -69,7 +54,7 @@ nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> gr    <cmd>lua require'telescope.builtin'.lsp_references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> ge    <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <silent><localleader>=  <cmd>lua vim.lsp.buf.formatting()<CR>
 " Goto previous/next diagnostic warning/error
@@ -101,3 +86,25 @@ vmap <silent><localleader>1 :w !node -p<cr>
 vmap ,js cJSON.stringify(<c-r>"<esc>
 " wrap selection in console.log
 vmap ,cl cconsole.log(<c-r>"<esc>
+]],
+  false
+)
+
+-- Setup cmp source buffer configuration (nvim-lua source only enables in Lua filetype)
+local cmp = require "cmp"
+cmp.setup.buffer {
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "treesitter" },
+    { name = "vsnip" },
+    {
+      name = "buffer",
+      opts = {
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end,
+      },
+    },
+    { name = "path" },
+  },
+}
