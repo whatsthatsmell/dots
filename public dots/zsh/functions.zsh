@@ -7,10 +7,18 @@ tpb() {
   echo $BATTRPT%
 }
 
-# CD into {dir} and then exal
+# zd - use zoxide & FZF to find and go to directory
+# Not sure why zoxide query -i with FZF doesn't CD
+zd() {
+  local dir
+  dir=$(zoxide query -l | fzf )
+  cde $dir
+}
+
+# CD into {dir} and then exag
 cde() {
   cd $1
-  exal
+  exag
 }
 
 # create new rust proj, move in to it & open main/lib & toml
