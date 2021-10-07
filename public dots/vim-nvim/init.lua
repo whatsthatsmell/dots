@@ -55,9 +55,6 @@ let g:undotree_WindowLayout = 2
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 6
 
-" Markdown-preview settings
-nmap <leader>md <Plug>MarkdownPreview
-
 " ** Test and  coverage related **
 " Specify the path to `coverage.json` file relative to your current working directory.
 let g:coverage_json_report_path = 'coverage/coverage-final.json'

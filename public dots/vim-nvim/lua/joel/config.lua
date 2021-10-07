@@ -133,7 +133,7 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   on_attach = function()
-    print "Shhh, I am hiding the loop message 🦀⚙"
+    print "Shhh, Sometimes, I hide the loop message 🦀⚙"
   end,
   settings = {
     ["rust-analyzer"] = {

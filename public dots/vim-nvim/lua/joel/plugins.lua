@@ -9,7 +9,13 @@ return require("packer").startup {
     use "tpope/vim-surround"
     use "tpope/vim-fugitive"
     use "tpope/vim-repeat"
-    use "tpope/vim-commentary"
+    -- use "tpope/vim-commentary"
+    use {
+      "numToStr/Comment.nvim",
+      config = function()
+        require("Comment").setup()
+      end,
+    }
     use "tpope/vim-eunuch"
     use "tpope/vim-unimpaired"
     use "tpope/vim-abolish"

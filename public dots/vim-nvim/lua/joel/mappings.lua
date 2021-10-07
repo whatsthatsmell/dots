@@ -356,11 +356,4 @@ vim.api.nvim_set_keymap("n", ",ti", ":IndentBlanklineToggle<CR>:set list!<CR>", 
 vim.api.nvim_set_keymap("n", ",ct", ":ColorToggle<CR>", { noremap = false, silent = true })
 
 -- markdown preview
--- with `glow`
-vim.api.nvim_set_keymap(
-  "n",
-  ",md",
-  [[<Cmd>lua require'joel.settings'.markdown_preview({fname=vim.api.nvim_buf_get_name(0)})<CR>]],
-  { noremap = true, silent = true }
-)
--- with browser
+vim.api.nvim_set_keymap("n", ",md", "<Plug>MarkdownPreview", { noremap = false })
