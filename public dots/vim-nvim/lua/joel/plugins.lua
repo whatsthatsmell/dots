@@ -1,6 +1,10 @@
+-- allows `hererocks` to install on Mac
+-- https://github.com/wbthomason/packer.nvim/issues/180#issuecomment-871634199
+-- Still some weirdness that needs further testing around rock installs (which, env, version)
+-- vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
 -- Plugins via Packer
 return require("packer").startup {
-  function(use)
+  function(use, use_rocks)
     use "editorconfig/editorconfig-vim"
     use "tpope/vim-surround"
     use "tpope/vim-fugitive"
@@ -77,15 +81,6 @@ return require("packer").startup {
       end,
     }
 
-    -- Local plugins
-    use "~/vim-dev/plugins/codesmell_dark.vim"
-    use "~/vim-dev/plugins/telescope.nvim"
-    -- local - updated to support worktrees
-    use "~/vim-dev/plugins/telescope-repo.nvim"
-    -- WIP: shows all pickers (builtin, custom and extensions)
-    -- ... and do some default or even specified action
-    use "~/vim-dev/plugins/telescope-picker-picker.nvim"
-
     use {
       "~/vim-dev/plugins/galaxyline.nvim",
       -- branch = "main",
@@ -100,6 +95,19 @@ return require("packer").startup {
       "lewis6991/gitsigns.nvim",
       requires = { "nvim-lua/plenary.nvim" },
     }
+
+    -- Local plugins
+    use "~/vim-dev/plugins/codesmell_dark.vim"
+    use "~/vim-dev/plugins/telescope.nvim"
+    -- local - updated to support worktrees
+    use "~/vim-dev/plugins/telescope-repo.nvim"
+    -- WIP: shows all pickers (builtin, custom and extensions)
+    -- ... and do some default or even specified action
+    use "~/vim-dev/plugins/telescope-picker-picker.nvim"
+
+    -- Lua Rocks 🎸
+    -- don't forget env setting at top if uncommenting
+    -- use_rocks "rapidjson"
   end,
   config = {
     display = {
