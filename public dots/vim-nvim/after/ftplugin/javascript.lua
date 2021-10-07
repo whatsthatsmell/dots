@@ -72,12 +72,7 @@ nmap <buffer><leader>f <Plug>(ale_fix)
 nnoremap <buffer><silent> <leader>rn :ALERename<Return>
 " snippets for JS - TODO: change autoselect next completion?
 let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/javascript/')
-" abbreviations - see maps below for wrapping with these
-inoreabbrev Ccl console.log()<Left><Left><Esc>
-inoreabbrev Cclj console.log(JSON.stringify())<Left><Left><left><Esc>
 
-" sync syntax on large-ish file
-nmap <silent><localleader>st :syntax sync fromstart<cr>
 " retab - fix existing after expandtab
 nmap <silent>,rt :retab<cr>
 " execute visual selection in node REPL
