@@ -129,7 +129,8 @@ local toBool = {
 -- Note: `foldcolumn` is not a boolean. You can set other values.
 -- I only want to toggle between these two values though.
 -- There's probably a better way.
-function M.toggleFoldCol()
+-- @TODOUA: 🐍 case
+function M.toggle_fold_col()
   if toBool[vim.opt.foldcolumn:get()] then
     vim.opt.foldcolumn = "0"
   else
@@ -137,5 +138,4 @@ function M.toggleFoldCol()
   end
   vim.api.nvim_echo({ { "foldcolumn is set to " .. vim.opt.foldcolumn:get() } }, false, {})
 end
-
 return M
