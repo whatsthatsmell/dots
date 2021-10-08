@@ -85,7 +85,7 @@ vmap ,cl cconsole.log(<c-r>"<esc>
   false
 )
 
--- Setup cmp source buffer configuration (nvim-lua source only enables in Lua filetype)
+-- Setup cmp source buffer configuration
 local cmp = require "cmp"
 cmp.setup.buffer {
   sources = {
