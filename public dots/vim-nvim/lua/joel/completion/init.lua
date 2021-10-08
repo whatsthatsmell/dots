@@ -14,6 +14,8 @@ cmp.setup {
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<CR>"] = cmp.mapping.confirm { select = true },
+    -- Right is for ghost_text to behave like terminal
+    ["<Right>"] = cmp.mapping.confirm { select = true },
     ["<C-e>"] = cmp.mapping.close(),
     ["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
     ["<Up>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
