@@ -1,11 +1,12 @@
 vim.opt_local.textwidth = 120
 vim.opt_local.shiftwidth = 2
 vim.opt_local.colorcolumn = "121"
+vim.opt_local.spell = false
 vim.api.nvim_exec(
   [[
 
 setlocal formatoptions-=o
-" source the file - 
+" source the file -
 nmap <silent><localleader>1 :luafile%<cr>
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign

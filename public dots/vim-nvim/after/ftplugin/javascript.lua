@@ -1,5 +1,6 @@
 vim.opt_local.linebreak = true
 vim.opt_local.colorcolumn = "81"
+vim.opt_local.spell = false
 vim.api.nvim_exec(
   [[
 " treesitter folding

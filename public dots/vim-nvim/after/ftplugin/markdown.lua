@@ -1,9 +1,11 @@
 vim.opt_local.colorcolumn = "101"
 vim.opt.autoindent = true
 vim.opt.linebreak = true
+-- @TODOUA:
+-- spell is not staying local for some reason
+-- have to set nospell in other fts that are opened after a markdown
 vim.opt_local.spell = true
 vim.conceallevel = 2
-
 vim.api.nvim_exec(
   [[
 " arrows
