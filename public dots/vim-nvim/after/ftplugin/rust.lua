@@ -77,8 +77,8 @@ noremap <silent><localleader>cr :Crun<cr>
 vim.api.nvim_exec(
   [[
 augroup RustLineDiagnostics
-  autocmd!
-autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
+   autocmd!
+   autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
 augroup end
 ]],
   false
