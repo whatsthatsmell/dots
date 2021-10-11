@@ -33,9 +33,6 @@ hi rainbowcol6 guifg=#1B9C36
 " open braces
 inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " lsp mappings and all the goodness
-" Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 " Show diagnostic popup on cursor hold but don't steal cursor
 autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
 

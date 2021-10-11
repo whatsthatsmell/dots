@@ -132,9 +132,6 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make
 -- Enable rust_analyzer
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
-  on_attach = function()
-    print "Shhh, Sometimes, I hide the loop message 🦀⚙"
-  end,
   settings = {
     ["rust-analyzer"] = {
       cargo = { loadOutDirsFromCheck = true },

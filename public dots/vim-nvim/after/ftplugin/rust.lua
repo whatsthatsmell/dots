@@ -1,31 +1,11 @@
+vim.api.nvim_exec(
+  [[
 setlocal shortmess+=c
 " treesitter folding
 setlocal foldmethod=expr
 setlocal foldexpr=nvim_treesitter#foldexpr()
 setlocal foldnestmax=3
 setlocal foldlevel=1
-" Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
-" Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
-" Setup cmp sources for Rust
-autocmd FileType rust lua require'cmp'.setup.buffer {
-\   sources = {
-\     { name = 'nvim_lsp' },
-\     { name = 'treesitter' },
-\     { name = 'vsnip' },
-\     {
-\      name = 'buffer',
-\      opts = {
-\        get_bufnrs = function()
-\          return vim.api.nvim_list_bufs()
-\        end,
-\      },
-\    },
-\    { name = 'path' },
-\   },
-\ }
 
 "Signs
 sign define DiagnosticSignHint text=ⓗ  texthl=DiagnosticSignHint linehl= numhl=
@@ -73,16 +53,12 @@ nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 " lua vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-" Don't need ALE for Rust anymore but still use some features 
+" Don't need ALE for Rust anymore but still use some features
 " and mappings out of habit from other languages.
 let g:ale_completion_enabled = 0
-let g:ale_linters = {
-\ 'rust': ['analyzer'],
-\}
+let g:ale_linters = { 'rust': ['analyzer'], }
 
-let g:ale_fixers = {
- \   'rust': ['rustfmt'],
-\}
+let g:ale_fixers = { 'rust': ['rustfmt'], }
 
 " rustfmt/vim-rust settings
 let g:rustfmt_autosave = 1
@@ -92,3 +68,51 @@ noremap <silent><localleader>cb :Cbuild<cr>
 noremap <silent><localleader>cc :Ccheck<cr>
 noremap <silent><localleader>ct :Ctest<cr>
 noremap <silent><localleader>cr :Crun<cr>
+
+]],
+  false
+)
+
+-- Show diagnostic popup on cursor hold
+vim.api.nvim_exec(
+  [[
+augroup RustLineDiagnostics
+  autocmd!
+autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
+augroup end
+]],
+  false
+)
+
+-- Setup cmp source buffer configuration
+local cmp = require "cmp"
+cmp.setup.buffer {
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "treesitter" },
+    { name = "vsnip" },
+    {
+      name = "buffer",
+      opts = {
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end,
+      },
+    },
+    { name = "path" },
+  },
+}
+
+-- ** Letting rust-tools handle the below:
+-- Get error at first to to RA loading and: https://github.com/neovim/neovim/pull/15926
+-- @TODOUA: 11-Oct-2021 ← revist
+-- Enable type inlay hints
+-- vim.api.nvim_exec(
+--   [[
+-- augroup RustInlayHints
+--   autocmd!
+--   autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '=>', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+-- augroup end
+-- ]],
+--   false
+-- )

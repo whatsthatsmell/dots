@@ -138,4 +138,11 @@ function M.toggle_fold_col()
   end
   vim.api.nvim_echo({ { "foldcolumn is set to " .. vim.opt.foldcolumn:get() } }, false, {})
 end
+
+-- not a 'setting' - need a new module
+-- function M.open_url()
+--   local uri = vim.fn.exp("<cWORD")
+--   -- vim.api.nvim_
+-- end
+
 return M
