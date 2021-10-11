@@ -52,6 +52,7 @@ require("telescope").load_extension "repo"
 
 -- test my picker-picker extension
 require("telescope").load_extension "picker_picker"
+
 -- my telescopic customizations
 local M = {}
 

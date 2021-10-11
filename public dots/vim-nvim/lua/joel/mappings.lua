@@ -95,6 +95,14 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true }
 )
 
+-- telescope notify history
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>nh",
+  [[<Cmd>lua require('telescope').extensions.notify.notify({results_title='Notification History', prompt_title='Search Messages'})<CR>]],
+  { noremap = true, silent = true }
+)
+
 -- show LSP implementations
 vim.api.nvim_set_keymap(
   "n",
