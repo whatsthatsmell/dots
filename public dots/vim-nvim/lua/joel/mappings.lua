@@ -365,3 +365,6 @@ vim.api.nvim_set_keymap("n", ",ct", ":ColorToggle<CR>", { noremap = false, silen
 
 -- markdown preview
 vim.api.nvim_set_keymap("n", ",md", "<Plug>MarkdownPreview", { noremap = false })
+
+-- open URI link under cursor in browser or terminal
+vim.api.nvim_set_keymap("n", "gx", ":lua require'joel.settings'.open_uri()<CR>", { noremap = true, silent = true })

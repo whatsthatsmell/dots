@@ -131,13 +131,4 @@ nnoremap <Leader>do :DiffOrig<cr>
 nnoremap <silent> <leader>dc :bd<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>
 " diff 2 or more windows/splits, end with \dc or just :diffoff to keep file2
 nnoremap <leader>dw :windo diffthis<cr>
-
-" ------------------------------------------------------------- "
-" @TODUA: make a Lua version of this & the map
-nnoremap <silent>gx :call OpenURLUnderCursor()<CR>
-function! OpenURLUnderCursor()
-  let l:uri = expand('<cWORD>')
-  silent exec "!open '" . l:uri . "'"
-  :redraw!
-endfunction
 ]]

@@ -140,9 +140,15 @@ function M.toggle_fold_col()
 end
 
 -- not a 'setting' - need a new module
--- function M.open_url()
---   local uri = vim.fn.exp("<cWORD")
---   -- vim.api.nvim_
--- end
-
+-- open URI under cursor
+function M.open_uri()
+  local Job = require "plenary.job"
+  local uri = vim.fn.expand "<cWORD>"
+  local j = Job
+    :new({
+      "open",
+      uri,
+    })
+    :sync()
+end
 return M
