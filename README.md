@@ -1,4 +1,4 @@
-![Neovim](https://img.shields.io/badge/editor-Neovim-green?logo=neovim&style=plastic)
+![Neovim version](https://img.shields.io/badge/Neovim-0.6.x-57A143?style=plastic&logo=neovim)
 ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=plastic&logo=lua&logoColor=white)
 ## Public version of Code Smell dotfiles
 Current Setup (Last Updated 30-Sep-2021 or more recently. I always forget to update this. Look at the GitHub dates 😃): 
