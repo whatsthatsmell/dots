@@ -1,3 +1,4 @@
+-- markdown ftplugin
 vim.opt_local.colorcolumn = "101"
 vim.opt.autoindent = true
 vim.opt.linebreak = true
@@ -16,14 +17,6 @@ iabbrev VV ↓
 
 " eunuch map
 nmap <buffer><silent><localleader>rn :Rename<space>
-
-" add task to todoist
-" Using: https://github.com/sachaos/todoist
-" !todoist add "{title text}" -N "{project name}"
-" @TODOUA: Make this a plenary job!
-" @TODOUA: check latest source for new features like 'Description'
-" @TODOUA: Widen reach beyond markdown
-nmap <buffer><localleader>t :!todoist add "" -N "" -d "today"<left><left><left><left><left><left><left><left><left><left><left><left>
 
 " snippets for markdown
 let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
@@ -56,6 +49,15 @@ match matchURL /http[s]\?:\/\/[[:alnum:]%\/_#.-]*/
 hi matchURL guifg=Blue
 ]],
   false
+)
+
+-- add current line as task to todoist - markdown files only (for now)
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "<localleader>t",
+  [[<Cmd>lua require'joel.funcs'.create_task()<CR>]],
+  { noremap = false }
 )
 
 -- Setup cmp setup buffer configuration - 👻 text off for markdown
