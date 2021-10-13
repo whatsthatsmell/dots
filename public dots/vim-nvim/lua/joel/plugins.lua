@@ -9,6 +9,8 @@ return require("packer").startup {
     use "tpope/vim-surround"
     use "tpope/vim-fugitive"
     use "tpope/vim-repeat"
+    use "antoinemadec/FixCursorHold.nvim"
+
     use {
       "numToStr/Comment.nvim",
       config = function()

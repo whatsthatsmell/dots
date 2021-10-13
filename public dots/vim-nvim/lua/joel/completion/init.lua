@@ -16,9 +16,13 @@ cmp.setup {
     ["<CR>"] = cmp.mapping.confirm { select = true },
     -- Right is for ghost_text to behave like terminal
     ["<Right>"] = cmp.mapping.confirm { select = true },
-    ["<C-e>"] = cmp.mapping.close(),
-    ["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
-    ["<Up>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+    -- Don't insert if I explicitly exit
+    -- Start completion with C-Space to have it truly clean-up
+    ["<C-e>"] = cmp.mapping.abort(),
+    -- Insert instead of Select so you don't go away at `stopinsert` after `CursorHoldI`
+    -- @TODOUA: I want to be able to `Select` without `stopinsert` killing it (& keep `stopinsert`)
+    ["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+    ["<Up>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
   },
   experimental = {
     ghost_text = true,
