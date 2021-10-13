@@ -1,86 +1,66 @@
+local key_map = vim.api.nvim_set_keymap
 -- ** Key Mappings **
-
 -- surround word under cursor w/ backticks (required vim-surround)
-vim.api.nvim_set_keymap("n", "<leader>`", "ysiW`", { noremap = false })
+key_map("n", "<leader>`", "ysiW`", { noremap = false })
 -- REPLACE: delete inner word & replace with last yanked (including system)
-vim.api.nvim_set_keymap("n", ",r", '"_diwhp', { noremap = true })
+key_map("n", ",r", '"_diwhp', { noremap = true })
 -- DELETE: with y,d or c{motion} & it wont replace "0
-vim.api.nvim_set_keymap("n", "_", '"_', { noremap = true })
+key_map("n", "_", '"_', { noremap = true })
 -- paste last thing yanked(not system copied), not deleted
-vim.api.nvim_set_keymap("n", ",p", '"0p', { noremap = true })
-vim.api.nvim_set_keymap("n", ",P", '"0P', { noremap = true })
+key_map("n", ",p", '"0p', { noremap = true })
+key_map("n", ",P", '"0P', { noremap = true })
 -- toggle search highlights with cursorline & cursorcolumn
 -- See augroup nvim-incsearch-cursorline for symmetry
-vim.api.nvim_set_keymap(
-  "n",
-  "<Leader>\\",
-  ":set hlsearch! cursorline! cursorcolumn!<CR>",
-  { noremap = true, silent = true }
-)
+key_map("n", "<Leader>\\", ":set hlsearch! cursorline! cursorcolumn!<CR>", { noremap = true, silent = true })
 
 -- treesitter-unit maps
-vim.api.nvim_set_keymap("x", "iu", ':lua require"treesitter-unit".select()<CR>', { noremap = true })
-vim.api.nvim_set_keymap("x", "au", ':lua require"treesitter-unit".select(true)<CR>', { noremap = true })
-vim.api.nvim_set_keymap("o", "iu", ':<c-u>lua require"treesitter-unit".select()<CR>', { noremap = true })
-vim.api.nvim_set_keymap("o", "au", ':<c-u>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
+key_map("x", "iu", ':lua require"treesitter-unit".select()<CR>', { noremap = true })
+key_map("x", "au", ':lua require"treesitter-unit".select(true)<CR>', { noremap = true })
+key_map("o", "iu", ':<c-u>lua require"treesitter-unit".select()<CR>', { noremap = true })
+key_map("o", "au", ':<c-u>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
 -- For reference, no map:
 -- :lua require"treesitter-unit".toggle_highlighting(higroup?)
 
 -- turn off hlsearch, cursorline & cursorcolumn - @TODUA: fix these 2
-vim.api.nvim_set_keymap(
-  "n",
-  "<Leader>/",
-  ":set nohlsearch nocursorline nocursorcolumn<CR>",
-  { noremap = true, silent = true }
-)
+key_map("n", "<Leader>/", ":set nohlsearch nocursorline nocursorcolumn<CR>", { noremap = true, silent = true })
 
 -- one of the greatest commands ever
-vim.api.nvim_set_keymap("n", "<space>t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
+key_map("n", "<space>t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
 
 -- write only if changed
-vim.api.nvim_set_keymap("n", "<Leader>w", ":up<CR>", { noremap = true })
+key_map("n", "<Leader>w", ":up<CR>", { noremap = true })
 -- quit (or close window)
-vim.api.nvim_set_keymap("n", "<Leader>q", ":q<CR>", { noremap = true, silent = true })
+key_map("n", "<Leader>q", ":q<CR>", { noremap = true, silent = true })
 
 -- GitSigns maps
 -- toggle hunk line highlight
-vim.api.nvim_set_keymap(
-  "n",
-  "<Leader>hh",
-  [[<Cmd>lua require'gitsigns'.toggle_linehl()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "<Leader>hh", [[<Cmd>lua require'gitsigns'.toggle_linehl()<CR>]], { noremap = true, silent = true })
 -- toggle hunk line Num highlight
-vim.api.nvim_set_keymap(
-  "n",
-  "<Leader>hn",
-  [[<Cmd>lua require'gitsigns'.toggle_numhl()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "<Leader>hn", [[<Cmd>lua require'gitsigns'.toggle_numhl()<CR>]], { noremap = true, silent = true })
 
 -- use ZQ for :q! (quit & discard changes)
 -- Discard all changed buffers & quit
-vim.api.nvim_set_keymap("n", "<Leader>Q", ":qall!<CR>", { noremap = true, silent = true })
+key_map("n", "<Leader>Q", ":qall!<CR>", { noremap = true, silent = true })
 -- write all and quit
-vim.api.nvim_set_keymap("n", "<Leader>W", ":wqall<CR>", { noremap = true, silent = true })
+key_map("n", "<Leader>W", ":wqall<CR>", { noremap = true, silent = true })
 -- Buffer stuff - <C-6> is toggle current and alt(last viewed)
 -- go to next buffer
-vim.api.nvim_set_keymap("n", "<Leader><right>", ":bn<CR>", { noremap = true, silent = true })
+key_map("n", "<Leader><right>", ":bn<CR>", { noremap = true, silent = true })
 -- go to prev buffer
-vim.api.nvim_set_keymap("n", "<Leader><left>", ":bp<CR>", { noremap = true, silent = true })
+key_map("n", "<Leader><left>", ":bp<CR>", { noremap = true, silent = true })
 -- needed bd! for toggleterm - todo?
 -- delete current buffer - don't close split
-vim.api.nvim_set_keymap("n", "<space>db", ":b#<bar>bd#<CR>", { noremap = false, silent = true })
+key_map("n", "<space>db", ":b#<bar>bd#<CR>", { noremap = false, silent = true })
 -- delete current buffer - will close split - :q to close split
-vim.api.nvim_set_keymap("n", "<Leader>x", ":bd<CR>", { noremap = true, silent = true })
+key_map("n", "<Leader>x", ":bd<CR>", { noremap = true, silent = true })
 
 -- Fugitive maps
-vim.api.nvim_set_keymap("n", "<leader>gb", ":Git blame<Return>", { noremap = true, silent = false })
-vim.api.nvim_set_keymap("n", "<leader>gp", ":G push origin ", { noremap = false })
+key_map("n", "<leader>gb", ":Git blame<Return>", { noremap = true, silent = false })
+key_map("n", "<leader>gp", ":G push origin ", { noremap = false })
 
 -- TELESCOPE keymaps  --
 -- open zoxide list
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   "<leader>z",
   ":lua require'telescope'.extensions.zoxide.list{results_title='Z Directories', prompt_title='Z Prompt'}<CR>",
@@ -88,15 +68,10 @@ vim.api.nvim_set_keymap(
 )
 
 -- telescope-repo
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>rl",
-  [[<Cmd>lua require'joel.telescope'.repo_list()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "<leader>rl", [[<Cmd>lua require'joel.telescope'.repo_list()<CR>]], { noremap = true, silent = true })
 
 -- telescope notify history
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   "<leader>nh",
   [[<Cmd>lua require('telescope').extensions.notify.notify({results_title='Notification History', prompt_title='Search Messages'})<CR>]],
@@ -104,7 +79,7 @@ vim.api.nvim_set_keymap(
 )
 
 -- show LSP implementations
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   "<leader>ti",
   [[<Cmd>lua require'telescope.builtin'.lsp_implementations()<CR>]],
@@ -112,7 +87,7 @@ vim.api.nvim_set_keymap(
 )
 
 -- show LSP definitions
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   "<leader>td",
   [[<Cmd>lua require'telescope.builtin'.lsp_definitions({layout_config = { preview_width = 0.50, width = 0.92 }, path_display = { "shorten" }, results_title='Definitions'})<CR>]],
@@ -121,250 +96,175 @@ vim.api.nvim_set_keymap(
 
 -- commands - Lua API in the works: https://github.com/neovim/neovim/pull/12378
 -- git_branches
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   "<leader>gc",
   [[<Cmd>lua require'telescope.builtin'.git_branches()<CR>]],
   { noremap = true, silent = true }
 )
 -- git_commits (log)
-vim.api.nvim_set_keymap(
-  "n",
-  "gl",
-  [[<Cmd>lua require'telescope.builtin'.git_commits()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "gl", [[<Cmd>lua require'telescope.builtin'.git_commits()<CR>]], { noremap = true, silent = true })
 -- git_status - <tab> to toggle staging
-vim.api.nvim_set_keymap(
-  "n",
-  "gs",
-  [[<Cmd>lua require'telescope.builtin'.git_status()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "gs", [[<Cmd>lua require'telescope.builtin'.git_status()<CR>]], { noremap = true, silent = true })
 -- ** the Telescope comma maps **
 -- find files with names that contain cursor word
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   ",f",
   [[<Cmd>lua require'telescope.builtin'.find_files({find_command={'fd', vim.fn.expand('<cword>')}})<CR>]],
   { noremap = true, silent = true }
 )
 -- show LSP diagnostics for all open buffers
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   ",d",
   [[<Cmd>lua require'telescope.builtin'.lsp_workspace_diagnostics()<CR>]],
   { noremap = true, silent = true }
 )
 -- open available commands & run it
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   ",c",
   [[<Cmd>lua require'telescope.builtin'.commands({results_title='Commands Results'})<CR>]],
   { noremap = true, silent = true }
 )
 -- Telescope oldfiles
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   ",o",
   [[<Cmd>lua require'telescope.builtin'.oldfiles({results_title='Recent-ish Files'})<CR>]],
   { noremap = true, silent = true }
 )
 -- Telescopic version of FZF's :Lines
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   ",l",
   [[<Cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<CR>]],
   { noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
-  "n",
-  ",g",
-  [[<Cmd>lua require'telescope.builtin'.live_grep()<CR>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
+key_map("n", ",g", [[<Cmd>lua require'telescope.builtin'.live_grep()<CR>]], { noremap = true, silent = true })
+key_map(
   "n",
   ",k",
   [[<Cmd>lua require'telescope.builtin'.keymaps({results_title='Key Maps Results'})<CR>]],
   { noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   ",b",
   [[<Cmd>lua require'telescope.builtin'.buffers({results_title='Buffers'})<CR>]],
   { noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   ",h",
   [[<Cmd>lua require'telescope.builtin'.help_tags({results_title='Help Results'})<CR>]],
   { noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   ",m",
   [[<Cmd>lua require'telescope.builtin'.marks({results_title='Marks Results'})<CR>]],
   { noremap = true, silent = true }
 )
 -- find files with gitfiles & fallback on find_files
-vim.api.nvim_set_keymap(
-  "n",
-  ",<space>",
-  [[<Cmd>lua require'joel.telescope'.project_files()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", ",<space>", [[<Cmd>lua require'joel.telescope'.project_files()<CR>]], { noremap = true, silent = true })
 -- browse, explore and create notes
-vim.api.nvim_set_keymap(
-  "n",
-  ",n",
-  [[<Cmd>lua require'joel.telescope'.browse_notes()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", ",n", [[<Cmd>lua require'joel.telescope'.browse_notes()<CR>]], { noremap = true, silent = true })
 -- Explore files starting at $HOME
-vim.api.nvim_set_keymap(
-  "n",
-  ",e",
-  [[<Cmd>lua require'joel.telescope'.file_explorer()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", ",e", [[<Cmd>lua require'joel.telescope'.file_explorer()<CR>]], { noremap = true, silent = true })
 -- End Telescope comma maps
 
 -- grep word under cursor
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>g",
-  [[<Cmd>lua require'telescope.builtin'.grep_string()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "<leader>g", [[<Cmd>lua require'telescope.builtin'.grep_string()<CR>]], { noremap = true, silent = true })
 -- find notes
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>n",
-  [[<Cmd>lua require'joel.telescope'.find_notes()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "<leader>n", [[<Cmd>lua require'joel.telescope'.find_notes()<CR>]], { noremap = true, silent = true })
 -- search notes
-vim.api.nvim_set_keymap(
-  "n",
-  "<space>n",
-  [[<Cmd>lua require'joel.telescope'.grep_notes()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "<space>n", [[<Cmd>lua require'joel.telescope'.grep_notes()<CR>]], { noremap = true, silent = true })
 -- Find files in config dirs
-vim.api.nvim_set_keymap(
-  "n",
-  "<space>e",
-  [[<Cmd>lua require'joel.telescope'.find_configs()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "<space>e", [[<Cmd>lua require'joel.telescope'.find_configs()<CR>]], { noremap = true, silent = true })
 -- greg for a string
-vim.api.nvim_set_keymap(
-  "n",
-  "<space>g",
-  [[<Cmd>lua require'joel.telescope'.grep_prompt()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "<space>g", [[<Cmd>lua require'joel.telescope'.grep_prompt()<CR>]], { noremap = true, silent = true })
 -- find or create neovim configs
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>nc",
-  [[<Cmd>lua require'joel.telescope'.nvim_config()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "<leader>nc", [[<Cmd>lua require'joel.telescope'.nvim_config()<CR>]], { noremap = true, silent = true })
 -- github issues
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>is",
-  [[<Cmd>lua require'joel.telescope'.gh_issues()<CR>]],
-  { noremap = true, silent = true }
-)
+key_map("n", "<leader>is", [[<Cmd>lua require'joel.telescope'.gh_issues()<CR>]], { noremap = true, silent = true })
 -- End Telescope maps
 
 -- github PRs - keep using my fzf-gh until I (or they) PR telescope
 -- @TODUA: "nnoremap <silent> <leader>pr :lua require'joel.telescope'.gh_prs()<cr>
 
 -- open file in directory of current file
-vim.api.nvim_set_keymap("n", "<leader>e", ":e %:h/", { noremap = false, silent = false })
-vim.api.nvim_set_keymap("n", "<leader>v", ":vs %:h/", { noremap = false, silent = false })
+key_map("n", "<leader>e", ":e %:h/", { noremap = false, silent = false })
+key_map("n", "<leader>v", ":vs %:h/", { noremap = false, silent = false })
 
 -- open quickfix / close
-vim.api.nvim_set_keymap("n", "<leader>co", ":cope<cr>", { noremap = false, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>cl", ":cclose<cr>", { noremap = false, silent = true })
+key_map("n", "<leader>co", ":cope<cr>", { noremap = false, silent = true })
+key_map("n", "<leader>cl", ":cclose<cr>", { noremap = false, silent = true })
 -- open location list - close manually
-vim.api.nvim_set_keymap("n", "<leader>lo", ":lope<cr>", { noremap = false, silent = true })
+key_map("n", "<leader>lo", ":lope<cr>", { noremap = false, silent = true })
 -- sessions
 -- new session
-vim.api.nvim_set_keymap("n", "<leader>ss", ":mksession ~/vim-sessions/", { noremap = false, silent = false })
+key_map("n", "<leader>ss", ":mksession ~/vim-sessions/", { noremap = false, silent = false })
 -- overwrite current session (this is probably not idiomatic)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>os",
-  ':wa<Bar>exe "mksession! " . v:this_session',
-  { noremap = false, silent = false }
-)
+key_map("n", "<leader>os", ':wa<Bar>exe "mksession! " . v:this_session', { noremap = false, silent = false })
 -- save some strokes (best mapping ever)
-vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
-vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
+key_map("v", ";", ":", { noremap = true })
+key_map("n", ";", ":", { noremap = true })
 
 -- no Help when I fat finger F1
-vim.api.nvim_set_keymap("n", "<F1>", "<Esc>", { noremap = false })
-vim.api.nvim_set_keymap("i", "<F1>", "<Esc>", { noremap = false })
+key_map("n", "<F1>", "<Esc>", { noremap = false })
+key_map("i", "<F1>", "<Esc>", { noremap = false })
 
 -- open 2 vertically split terminals
-vim.api.nvim_set_keymap(
+key_map(
   "n",
   ",\\",
   [[<Cmd>60vsp <bar>terminal<CR>:set winfixheight<CR>:sp<bar>terminal<CR>]],
   { noremap = true, silent = true }
 )
 -- open split below, slightly smaller
-vim.api.nvim_set_keymap("n", ",-", ":23sp<CR><C-w><down>", { noremap = true, silent = true })
+key_map("n", ",-", ":23sp<CR><C-w><down>", { noremap = true, silent = true })
 -- Colorizer Toggle
-vim.api.nvim_set_keymap("n", "<space>c", [[<Cmd>ColorizerToggle<CR>]], { noremap = true, silent = true })
+key_map("n", "<space>c", [[<Cmd>ColorizerToggle<CR>]], { noremap = true, silent = true })
 
 -- yank all in buffer
-vim.api.nvim_set_keymap("n", "<leader>a", ":%y<cr>", { noremap = false, silent = true })
+key_map("n", "<leader>a", ":%y<cr>", { noremap = false, silent = true })
 
 -- expands to dir of current file in cmd mode
-vim.api.nvim_set_keymap("c", "%%", [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], { noremap = true, expr = true })
+key_map("c", "%%", [[getcmdtype() == ':' ? expand('%:h').'/' : '%%']], { noremap = true, expr = true })
 
 -- Move between Vimdows
-vim.api.nvim_set_keymap("n", "<up>", "<C-w><up>", { noremap = false })
-vim.api.nvim_set_keymap("n", "<down>", "<C-w><down>", { noremap = false })
-vim.api.nvim_set_keymap("n", "<left>", "<C-w><left>", { noremap = false })
-vim.api.nvim_set_keymap("n", "<right>", "<C-w><right>", { noremap = false })
+key_map("n", "<up>", "<C-w><up>", { noremap = false })
+key_map("n", "<down>", "<C-w><down>", { noremap = false })
+key_map("n", "<left>", "<C-w><left>", { noremap = false })
+key_map("n", "<right>", "<C-w><right>", { noremap = false })
 
 -- Replace word under cursor in Buffer (case-sensitive)
 -- nmap <leader>sr :%s/<C-R><C-W>//gI<left><left><left>
-vim.api.nvim_set_keymap("n", "<leader>sr", ":%s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
+key_map("n", "<leader>sr", ":%s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
 -- Replace word under cursor on Line (case-sensitive)
 -- nmap <leader>sl :s/<C-R><C-W>//gI<left><left><left>
-vim.api.nvim_set_keymap("n", "<leader>sl", ":s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
+key_map("n", "<leader>sl", ":s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
 
 -- run packer sync
-vim.api.nvim_set_keymap("n", "<leader>ps", [[<Cmd>PackerSync<CR>]], { noremap = true, silent = true })
+key_map("n", "<leader>ps", [[<Cmd>PackerSync<CR>]], { noremap = true, silent = true })
 
 -- change dir for window to file's dir
-vim.api.nvim_set_keymap("n", "<leader>cd", ":lcd %:p:h<cr>", { noremap = true, silent = true })
+key_map("n", "<leader>cd", ":lcd %:p:h<cr>", { noremap = true, silent = true })
 -- change dir for window to file's git working dir
-vim.api.nvim_set_keymap("n", "<leader>gd", ":Glcd<cr>", { noremap = true, silent = true })
+key_map("n", "<leader>gd", ":Glcd<cr>", { noremap = true, silent = true })
 -- toggle foldcolumn
-vim.api.nvim_set_keymap(
-  "n",
-  ",tf",
-  ":lua require'joel.settings'.toggle_fold_col()<CR>",
-  { noremap = true, silent = true }
-)
+key_map("n", ",tf", ":lua require'joel.settings'.toggle_fold_col()<CR>", { noremap = true, silent = true })
 
 -- toggle IndentBlankline with set line! - both off by default
-vim.api.nvim_set_keymap("n", ",ti", ":IndentBlanklineToggle<CR>:set list!<CR>", { noremap = true, silent = true })
+key_map("n", ",ti", ":IndentBlanklineToggle<CR>:set list!<CR>", { noremap = true, silent = true })
 
 -- toggle colorizer: will be toggled on by default for appropriate fts
-vim.api.nvim_set_keymap("n", ",ct", ":ColorToggle<CR>", { noremap = false, silent = true })
+key_map("n", ",ct", ":ColorToggle<CR>", { noremap = false, silent = true })
 
 -- markdown preview
-vim.api.nvim_set_keymap("n", ",md", "<Plug>MarkdownPreview", { noremap = false })
+key_map("n", ",md", "<Plug>MarkdownPreview", { noremap = false })
 
 -- open URI link under cursor in browser or terminal
-vim.api.nvim_set_keymap("n", "gx", ":lua require'joel.settings'.open_uri()<CR>", { noremap = true, silent = true })
+key_map("n", "gx", ":lua require'joel.settings'.open_uri()<CR>", { noremap = true, silent = true })
