@@ -17,8 +17,13 @@ iabbrev VV ↓
 " eunuch map
 nmap <buffer><silent><localleader>rn :Rename<space>
 
-" add selected as todoist text
-nmap <buffer><localleader>1 :!todoist add "" -N ""<left><left><left><left><left><left><left>
+" add task to todoist
+" Using: https://github.com/sachaos/todoist
+" !todoist add "{title text}" -N "{project name}"
+" @TODOUA: Make this a plenary job!
+" @TODOUA: check latest source for new features like 'Description'
+" @TODOUA: Widen reach beyond markdown
+nmap <buffer><localleader>t :!todoist add "" -N "" -d "today"<left><left><left><left><left><left><left><left><left><left><left><left>
 
 " snippets for markdown
 let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
@@ -33,7 +38,22 @@ augroup PersistMarkdownFolds
   autocmd BufWinLeave *.md mkview
   autocmd BufWinEnter *.md silent! loadview
 augroup end
+]],
+  false
+)
 
+-- match and highlight URLs
+-- @TODOUA:
+-- -- Pure Luafication(Nvim API)
+-- -- Work in @NoSpell
+-- -- Peruse the Treesitter MD grammars for future possibilities
+-- -- Only using in markdown for now. Don't want this in theme (for now)
+-- -- -- Although, it leaks out to buffers opened after the MD file(Kind of like it for now)
+vim.api.nvim_exec(
+  [[
+match matchURL /http[s]\?:\/\/[[:alnum:]%\/_#.-]*/
+
+hi matchURL guifg=Blue
 ]],
   false
 )

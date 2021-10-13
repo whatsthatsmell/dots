@@ -34,7 +34,7 @@ vim.api.nvim_exec(
 
 -- @TODOUA: Break these commands out into nvim_exec blocks
 vim.cmd [[
-" header files should treated like .c files
+" header files should be treated like .c files
 autocmd BufRead,BufNewFile *.h set filetype=c
 
 " turn on cursorline, cursorcolumn when searching, sync with hlsearch
@@ -49,7 +49,6 @@ set termguicolors
 set synmaxcol=1000
 
 let &packpath=&runtimepath
-set completeopt=menu,menuone,preview,noselect,noinsert
 set dictionary+=/usr/share/dict/words
 set wildignore+=*/node_modules/*,*/coverage/*
 set guicursor=
@@ -82,6 +81,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- Global scope
+vim.o.completeopt = "menu,menuone,preview,noselect,noinsert"
 vim.o.inccommand = "split"
 vim.o.incsearch = true
 vim.o.ignorecase = true
