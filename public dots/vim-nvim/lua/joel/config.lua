@@ -114,7 +114,7 @@ require("lspconfig").tsserver.setup {
   end,
 }
 
--- other lsps
+-- more lsps
 require("lspconfig").graphql.setup {}
 require("lspconfig").clangd.setup {}
 -- VimL (full circle!)
@@ -128,6 +128,23 @@ local nvim_lsp = require "lspconfig"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- Trying `eslint` lang server setup through lspconfig
+-- *Watch the conversations linked within the below for changes that are coming*
+-- https://github.com/neovim/nvim-lspconfig/pull/1273
+-- https://github.com/williamboman/nvim-lsp-installer/blob/main/lua/nvim-lsp-installer/servers/eslint/README.md
+-- Watch for dynamic registration in core: https://github.com/neovim/nvim-lspconfig/pull/1299#discussion_r727598342
+-- https://github.com/neovim/nvim-lspconfig/pull/1299#issuecomment-942214556
+nvim_lsp.eslint.setup {
+  on_attach = function(client)
+    -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
+    -- the resolved capabilities of the eslint server ourselves!
+    client.resolved_capabilities.document_formatting = true
+  end,
+  settings = {
+    format = { enable = true },
+  },
+}
 
 -- Enable rust_analyzer
 nvim_lsp.rust_analyzer.setup {

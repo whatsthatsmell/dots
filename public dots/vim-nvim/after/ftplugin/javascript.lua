@@ -8,20 +8,23 @@ setlocal foldmethod=expr
 setlocal foldexpr=nvim_treesitter#foldexpr()
 setlocal foldnestmax=3
 setlocal foldlevel=1
-" ale settings
-let g:ale_disable_lsp = 1
-let g:ale_completion_enabled = 0
-let g:ale_javascript_tsserver_executable = 'typescript-language-server'
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\  'javascript': glob('.eslintrc*', '.;') != '' ? [ 'eslint' ] : [ 'standard' ],
-\   'yaml': ['prettier'],
-\   'json': ['jq'],
-\}
-
-let g:ale_linters = {
-\  'javascript': glob('.eslintrc*', '.;') != '' ? [ 'eslint', 'tsserver' ] : [ 'standard', 'tsserver' ],
-\}
+" With ALE mostly out: @TODOUA: I need to update the signs for eslint lsp
+" @TODOUA: rip out tsserver as a fixed (maybe)
+" @TODOUA: figure out json and yaml fixing. Probably Ale still for now
+" Ale settings
+"let g:ale_disable_lsp = 1
+"let g:ale_completion_enabled = 0
+"let g:ale_javascript_tsserver_executable = 'typescript-language-server'
+"let g:ale_fixers = {
+"\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+"\  'javascript': glob('.eslintrc*', '.;') != '' ? [ 'eslint' ] : [ 'standard' ],
+"\   'yaml': ['prettier'],
+"\   'json': ['jq'],
+"\}
+"
+"let g:ale_linters = {
+"\  'javascript': glob('.eslintrc*', '.;') != '' ? [ 'eslint', 'tsserver' ] : [ 'standard', 'tsserver' ],
+"\}
 
 " rainbow color HLs
 hi rainbowcol1 guifg=#4B4DA4
@@ -54,20 +57,21 @@ nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> ge    <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
-nnoremap <silent><localleader>=  <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent><localleader>f  <cmd>lua vim.lsp.buf.formatting()<CR>
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " ale maps etc.
 " nmap <buffer><silent><localleader>n <Plug>(ale_next_wrap)
-nmap <buffer><silent><localleader>p <Plug>(ale_previous_wrap)
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-let g:ale_sign_error = ""
-let g:ale_sign_warning = ""
-nmap <buffer><leader>f <Plug>(ale_fix)
-nnoremap <buffer><silent> <leader>rn :ALERename<Return>
+"nmap <buffer><silent><localleader>p <Plug>(ale_previous_wrap)
+"highlight clear ALEErrorSign
+"highlight clear ALEWarningSign
+"let g:ale_sign_error = ""
+"let g:ale_sign_warning = ""
+"nmap <buffer><leader>f <Plug>(ale_fix)
+"nnoremap <buffer><silent> <leader>rn :ALERename<Return>
+
 " snippets for JS - TODO: change autoselect next completion?
 let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/javascript/')
 
