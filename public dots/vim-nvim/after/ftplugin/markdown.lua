@@ -56,7 +56,7 @@ vim.api.nvim_buf_set_keymap(
   0,
   "n",
   "<localleader>t",
-  [[<Cmd>lua require'joel.funcs'.create_task()<CR>]],
+  [[<Cmd>lua require'joel.funcs'.create_todoist_task()<CR>]],
   { noremap = false }
 )
 

@@ -1,6 +1,13 @@
 require("notify").setup {
   timeout = 3000,
   stages = "fade",
+  icons = {
+    ERROR = "",
+    WARN = "",
+    INFO = "",
+    DEBUG = "",
+    TRACE = "✎",
+  },
 }
 
 local log = require("plenary.log").new {
