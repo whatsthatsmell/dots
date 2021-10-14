@@ -13,6 +13,7 @@ local M = {}
 function M.create_task()
   local current_line = vim.api.nvim_get_current_line()
   local content = utils.get_os_command_output({ "todoist", "add", current_line, "-N", "Neovim", "-d", "today" }, "~")
+  -- @TODOUA: use `notify`
   P("Task Created: " .. current_line)
   return content
 end
