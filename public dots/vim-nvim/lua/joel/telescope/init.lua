@@ -11,6 +11,10 @@ require("telescope").setup {
     },
   },
   defaults = {
+    preview = {
+      timeout = 500,
+      msg_bg_fillchar = "",
+    },
     vimgrep_arguments = {
       "rg",
       "--color=never",
