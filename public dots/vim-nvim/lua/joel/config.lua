@@ -98,8 +98,9 @@ require("lspconfig").tsserver.setup {
       import_all_timeout = 5000, -- ms
 
       -- eslint
-      eslint_enable_code_actions = true,
-      eslint_enable_disable_comments = true,
+      -- using eslint lsp directly now, see below
+      eslint_enable_code_actions = false,
+      eslint_enable_disable_comments = false,
       eslint_bin = "eslint",
       eslint_config_fallback = nil,
       eslint_enable_diagnostics = false,
@@ -111,6 +112,8 @@ require("lspconfig").tsserver.setup {
     }
     -- required to fix code action ranges
     ts_utils.setup_client(client)
+    -- disable tsserver formatting
+    client.resolved_capabilities.document_formatting = false
   end,
 }
 

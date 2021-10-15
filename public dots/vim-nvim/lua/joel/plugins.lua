@@ -62,7 +62,7 @@ return require("packer").startup {
     use "rcarriga/nvim-notify"
     use {
       "w0rp/ale",
-      ft = { "javascript", "lua" },
+      ft = { "lua" },
       cmd = "ALEEnable",
       config = "vim.cmd[[ALEEnable]]",
     }
