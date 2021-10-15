@@ -8,7 +8,7 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent><localleader>=  <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent><localleader>f  <cmd>lua vim.lsp.buf.formatting()<CR>
 
 " monofile
 " run
@@ -19,14 +19,3 @@ nnoremap <buffer><silent><localleader>cc :make %:r<cr>
 " open the braces
 " inoremap <buffer> {<cr> {<cr>}<c-o>O<tab>
 inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
-
-" let g:ale_linters = {
-" \  'c': ['clangd']
-" \}
-
-let g:ale_completion_enabled = 0
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'c': ['clangtidy'],
-\}
-

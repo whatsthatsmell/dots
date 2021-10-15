@@ -8,10 +8,6 @@ vim.api.nvim_exec(
 setlocal formatoptions-=o
 " source the file -
 nmap <silent><localleader>1 :luafile%<cr>
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-let g:ale_sign_error = ""
-let g:ale_sign_warning = "裂"
 " lsp mappings and all the goodness
 " Show diagnostic popup on cursor hold but don't steal cursor
 autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})

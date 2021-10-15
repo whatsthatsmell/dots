@@ -60,13 +60,6 @@ return require("packer").startup {
     use "kyazdani42/nvim-web-devicons"
     use "lukas-reineke/indent-blankline.nvim"
     use "rcarriga/nvim-notify"
-    use {
-      "w0rp/ale",
-      ft = { "lua" },
-      cmd = "ALEEnable",
-      config = "vim.cmd[[ALEEnable]]",
-    }
-
     use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
 
     -- nvim-cmp
