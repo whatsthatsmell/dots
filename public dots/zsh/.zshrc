@@ -171,5 +171,8 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 # alias for making lls
 alias luamake=/Users/joel/vim-dev/sources/lua-language-server/3rd/luamake/luamake
 
+# nnn stuff
+export NNN_PLUG="z:autojump;"
+export NNN_FIFO="/tmp/nnn.fifo"
 # kick-off zoxide
 eval "$(zoxide init zsh)"
