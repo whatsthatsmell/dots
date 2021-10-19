@@ -440,8 +440,16 @@
     "body": "console.log(${0})"
   },
   "console.log with JSON.stringify": {
-    "prefix": "cljs",
+    "prefix": "clj",
     "body": "console.log(JSON.stringify(${0}))"
+  },
+  "console.debug": {
+    "prefix": "cdb",
+    "body": "console.debug(${0})"
+  },
+  "console.debug with JSON.stringify": {
+    "prefix": "cdbj",
+    "body": "console.debug(JSON.stringify(${0}))"
   },
   "console.log a variable": {
     "prefix": "cv",

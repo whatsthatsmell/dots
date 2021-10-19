@@ -60,6 +60,15 @@ vmap ,cl cconsole.log(<c-r>"<esc>
   false
 )
 
+vim.api.nvim_exec(
+  [[
+match matchDebug /\.debug/
+
+hi matchDebug guifg=Red
+]],
+  false
+)
+
 -- Setup cmp source buffer configuration
 local cmp = require "cmp"
 cmp.setup.buffer {
