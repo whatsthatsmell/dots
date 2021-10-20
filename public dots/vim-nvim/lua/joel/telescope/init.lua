@@ -43,6 +43,7 @@ require("telescope").setup {
       },
     },
     mappings = { n = { ["<Del>"] = actions.close } },
+    dynamic_preview_title = true,
   },
 }
 require("telescope").load_extension "fzf"

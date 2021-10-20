@@ -43,15 +43,47 @@ key_map("n", "<Leader>hn", [[<Cmd>lua require'gitsigns'.toggle_numhl()<CR>]], { 
 key_map("n", "<Leader>Q", ":qall!<CR>", { noremap = true, silent = true })
 -- write all and quit
 key_map("n", "<Leader>W", ":wqall<CR>", { noremap = true, silent = true })
--- Buffer stuff - <C-6> is toggle current and alt(last viewed)
--- go to next buffer
-key_map("n", "<Leader><right>", ":bn<CR>", { noremap = true, silent = true })
--- go to prev buffer
-key_map("n", "<Leader><left>", ":bp<CR>", { noremap = true, silent = true })
--- needed bd! for toggleterm - todo?
--- delete current buffer - don't close split
-key_map("n", "<space>db", ":b#<bar>bd#<CR>", { noremap = false, silent = true })
--- delete current buffer - will close split - :q to close split
+
+-- @TODOUA: figure out the semantics of <space> vs <leader>
+--- ',' comma seems to have a pattern as a leader
+
+-- *Buffer Stuff****
+--- <C-6> is toggle current and alt(last viewed)
+--- Go to next buffer - Skip Terminal buffers
+key_map(
+  "n",
+  "<Leader><right>",
+  "[[<Cmd>lua require'joel.buffers'.goto_next_buffer()<CR>]]",
+  { noremap = true, silent = true }
+)
+-- go to prev buffer - skip terminal buffers
+key_map(
+  "n",
+  "<Leader><left>",
+  [[<Cmd>lua require'joel.buffers'.goto_prev_buffer()<CR>]],
+  { noremap = true, silent = true }
+)
+
+-- delete current buffer - don't close split/window
+-- Mnemonic: 'delete buffer' - db
+key_map(
+  "n",
+  "<space>db",
+  [[<Cmd>lua require'joel.buffers'.close_current_buffer()<CR>]],
+  { noremap = false, silent = true }
+)
+
+-- Unload buffer: terminal or modified unwritten - :q is fine to close in split
+-- use :bd![N] for a buffer other than current
+-- Mnemonic: 'terminal close' - tx
+key_map(
+  "n",
+  "<leader>tx",
+  [[<Cmd>lua require'joel.buffers'.unload_current_buffer()<CR>]],
+  { noremap = true, silent = true }
+)
+
+-- Close current buffer - WILL close split - :q to close split
 key_map("n", "<Leader>x", ":bd<CR>", { noremap = true, silent = true })
 
 -- Fugitive maps
@@ -152,7 +184,7 @@ key_map(
 key_map(
   "n",
   ",b",
-  [[<Cmd>lua require'telescope.builtin'.buffers({results_title='Buffers'})<CR>]],
+  [[<Cmd>lua require'telescope.builtin'.buffers({prompt_title = 'Find Buffer', results_title='Buffers', layout_strategy = 'vertical', layout_config = { width = 0.40, height = 0.55 }})<CR>]],
   { noremap = true, silent = true }
 )
 key_map(
