@@ -20,7 +20,7 @@ hi rainbowcol6 guifg=#1B9C36
 inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " lsp mappings and all the goodness
 " Show diagnostic popup on cursor hold but don't steal cursor
-autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
+autocmd CursorHold * lua vim.diagnostic.open_float(0, {focusable = false})
 
 "Signs
 sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=

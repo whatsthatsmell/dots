@@ -71,7 +71,7 @@ vim.api.nvim_exec(
   [[
 augroup RustLineDiagnostics
    autocmd!
-   autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
+   autocmd CursorHold * lua vim.diagnostic.open_float(0, {focusable = false})
 augroup end
 ]],
   false

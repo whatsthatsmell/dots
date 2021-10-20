@@ -10,7 +10,7 @@ setlocal formatoptions-=o
 nmap <silent><localleader>1 :luafile%<cr>
 " lsp mappings and all the goodness
 " Show diagnostic popup on cursor hold but don't steal cursor
-autocmd CursorHold * lua vim.diagnostic.show_line_diagnostics({focusable = false})
+autocmd CursorHold * lua vim.diagnostic.open_float(0, {focusable = false})
 
 " snippets for Lua - TODO: change autoselect next completion?
 let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
