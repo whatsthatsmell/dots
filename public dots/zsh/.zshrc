@@ -94,7 +94,7 @@ RPROMPT='$FG[238]$(git_prompt_short_sha_with_icon)%{$reset_color%}'
 # User configuration
 export MANPAGER='nvim +Man!'
 export BAT_PAGER="less -R"
-export DELTA_PAGER="less -R"
+export DELTA_PAGER="less -RS"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
