@@ -19,7 +19,11 @@ local luadev = require("lua-dev").setup {
     },
   },
 }
+
 lspconfig.sumneko_lua.setup(luadev)
+
+-- Stabilize: https://github.com/luukvbaal/stabilize.nvim
+require("joel.stabilize").setup()
 
 -- nvim-web-devicons
 require("nvim-web-devicons").setup {
