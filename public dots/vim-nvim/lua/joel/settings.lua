@@ -1,4 +1,4 @@
--- Neovim Settings - Lua
+-- Neovim Settings & Options - Lua
 -- auto exit insert mode
 vim.api.nvim_exec(
   [[
@@ -77,6 +77,7 @@ vim.cmd "filetype plugin indent on"
 
 -- Options/Settings **
 -- Window scope
+-- @TODOUA: I really should just be using `opt` in here
 vim.wo.number = true
 vim.wo.relativenumber = true
 
@@ -91,10 +92,10 @@ vim.o.hidden = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.showcmd = false
-
--- Buffer scope
-vim.bo.tabstop = 2
-vim.bo.shiftwidth = 2
+-- @TODOUA: consider using the global `cursorhold_updatetime` from FixCursorHold
+vim.o.updatetime = 3000
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 
 -- Global Vim vars that are on a solo-ish mission **
 -- vim.g.fzf_gh_website = 1

@@ -2,19 +2,28 @@ vim.opt_local.textwidth = 120
 vim.opt_local.shiftwidth = 2
 vim.opt_local.colorcolumn = "121"
 vim.opt_local.spell = false
+
+-- Show diagnostic float on CursorHold but don't steal cursor
 vim.api.nvim_exec(
   [[
+  augroup ShowDiagnosticFloat
+    autocmd!
+    autocmd CursorHold * lua vim.diagnostic.open_float(0, {focusable = false, scope = 'line', source = 'always'})
+  augroup end
+]],
+  false
+)
 
+vim.api.nvim_exec(
+  [[
 setlocal formatoptions-=o
 " source the file -
 nmap <silent><localleader>1 :luafile%<cr>
-" lsp mappings and all the goodness
-" Show diagnostic popup on cursor hold but don't steal cursor
-autocmd CursorHold * lua vim.diagnostic.open_float(0, {focusable = false})
 
 " snippets for Lua - TODO: change autoselect next completion?
 let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
 
+" lsp mappings and all the goodness
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>

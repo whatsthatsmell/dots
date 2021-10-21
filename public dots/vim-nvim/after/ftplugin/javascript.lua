@@ -1,6 +1,18 @@
 vim.opt_local.linebreak = true
 vim.opt_local.colorcolumn = "81"
 vim.opt_local.spell = false
+
+-- Show diagnostic float on CursorHold but don't steal cursor
+vim.api.nvim_exec(
+  [[
+  augroup ShowDiagnosticFloat
+    autocmd!
+    autocmd CursorHold * lua vim.diagnostic.open_float(0, {focusable = false, scope = 'line', source = 'always'})
+  augroup end
+]],
+  false
+)
+
 vim.api.nvim_exec(
   [[
 " treesitter folding
@@ -19,8 +31,6 @@ hi rainbowcol6 guifg=#1B9C36
 " open braces
 inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " lsp mappings and all the goodness
-" Show diagnostic popup on cursor hold but don't steal cursor
-autocmd CursorHold * lua vim.diagnostic.open_float(0, {focusable = false})
 
 "Signs
 sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
