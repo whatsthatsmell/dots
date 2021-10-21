@@ -1,5 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 # -- run to get rid of large old sys logs
 # sudo rm /private/var/log/asl/*.asl
 

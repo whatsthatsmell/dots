@@ -7,6 +7,11 @@ vim.opt.linebreak = true
 -- have to set nospell in other fts that are opened after a markdown
 vim.opt_local.spell = true
 vim.conceallevel = 2
+
+-- Markdown Preview in browser
+-- For Glow, just type :Glow, I almost never use the :MarkdownPreview keymap, I type it.
+vim.api.nvim_buf_set_keymap(0, "n", ",md", "<Plug>MarkdownPreview", { noremap = false })
+
 vim.api.nvim_exec(
   [[
 " arrows

@@ -295,8 +295,5 @@ key_map("n", ",ti", ":IndentBlanklineToggle<CR>:set list!<CR>", { noremap = true
 -- toggle colorizer: will be toggled on by default for appropriate fts
 key_map("n", ",ct", ":ColorToggle<CR>", { noremap = false, silent = true })
 
--- markdown preview
-key_map("n", ",md", "<Plug>MarkdownPreview", { noremap = false })
-
 -- open URI link under cursor in browser or terminal
 key_map("n", "gx", ":lua require'joel.settings'.open_uri()<CR>", { noremap = true, silent = true })

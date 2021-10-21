@@ -119,8 +119,7 @@ inoremap <Del> <Esc>`^
 tnoremap <Del> <C-\><C-n>
 " yank current file path
 nnoremap <leader>fp :!ls %:p <bar> pbcopy<cr>
-" diff since last save
-" -- quicky
+" diff since last write
 nnoremap <leader>c :w !diff % -<CR>
 " full featured diff
 command! DiffOrig let g:diffline = line('.') | vert new | set bt=nofile | r # | 0d_ | diffthis | :exe "norm! ".g:diffline."G" | wincmd p | diffthis | wincmd p

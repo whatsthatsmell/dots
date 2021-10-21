@@ -1,4 +1,13 @@
 -- Neovim Settings & Options - Lua
+
+-- go to last location when opening a buffer
+vim.cmd [[
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+]]
+
+-- windows to close with "q" - thanks folke
+vim.cmd [[autocmd FileType help,qf,fugitive,fugitiveblame nnoremap <buffer><silent> q :close<CR>]]
+
 -- auto exit insert mode
 vim.api.nvim_exec(
   [[
@@ -15,7 +24,7 @@ vim.api.nvim_exec(
   [[
   augroup SetMarkdownFt
     autocmd!
-    autocmd BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
+    autocmd BufNewFile,BufFilePre,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
   augroup end
 ]],
   false
@@ -105,6 +114,10 @@ vim.g.matchup_matchparen_deferred = 1
 vim.g.colorizer_auto_filetype = "yaml,zsh,zsh-theme,lua,vim,json"
 -- keep colorizing on bufleave
 vim.g.colorizer_disable_bufleave = 1
+
+-- *Trying `Glow` integration for markdown preview
+vim.g.glow_binary_path = "/usr/local/bin"
+
 -- indent-blankline settings
 vim.opt.list = false
 vim.opt.listchars:append "space:⋅"
