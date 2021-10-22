@@ -9,3 +9,8 @@ inoreabbrev mdl []()
 iabbrev syntac syntax
 iabbrev zfz fzf
 iabbrev lpdb lilypad-db
+iabbrev T$ 
+iabbrev TT$ 
+iabbrev B$ ﬘
+iabbrev :-) 
+iabbrev :D 

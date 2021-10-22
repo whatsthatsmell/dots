@@ -5,8 +5,8 @@ vim.cmd [[
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
 ]]
 
--- windows to close with "q" - thanks folke
-vim.cmd [[autocmd FileType help,qf,fugitive,fugitiveblame nnoremap <buffer><silent> q :close<CR>]]
+-- vimdows to close with 'q'
+vim.cmd [[autocmd FileType help,qf,fugitive,fugitiveblame,netrw nnoremap <buffer><silent> q :close<CR>]]
 
 -- auto exit insert mode
 vim.api.nvim_exec(

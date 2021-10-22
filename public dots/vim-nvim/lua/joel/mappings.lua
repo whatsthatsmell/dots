@@ -205,6 +205,8 @@ key_map("n", ",<space>", [[<Cmd>lua require'joel.telescope'.project_files()<CR>]
 key_map("n", ",n", [[<Cmd>lua require'joel.telescope'.browse_notes()<CR>]], { noremap = true, silent = true })
 -- Explore files starting at $HOME
 key_map("n", ",e", [[<Cmd>lua require'joel.telescope'.file_explorer()<CR>]], { noremap = true, silent = true })
+-- Browse files from cwd - File Browser
+key_map("n", ",fb", [[<Cmd>lua require'telescope.builtin'.file_browser()<CR>]], { noremap = true, silent = true })
 -- End Telescope comma maps
 
 -- grep word under cursor
@@ -221,6 +223,8 @@ key_map("n", "<space>g", [[<Cmd>lua require'joel.telescope'.grep_prompt()<CR>]],
 key_map("n", "<leader>nc", [[<Cmd>lua require'joel.telescope'.nvim_config()<CR>]], { noremap = true, silent = true })
 -- github issues
 key_map("n", "<leader>is", [[<Cmd>lua require'joel.telescope'.gh_issues()<CR>]], { noremap = true, silent = true })
+-- grep the Neovim source code with word under cursor → cword - just z to Neovim source for other actions
+key_map("n", "<leader>ns", [[<Cmd>lua require'joel.telescope'.grep_nvim_src()<CR>]], { noremap = true, silent = true })
 -- End Telescope maps
 
 -- github PRs - keep using my fzf-gh until I (or they) PR telescope

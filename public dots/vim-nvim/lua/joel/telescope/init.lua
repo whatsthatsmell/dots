@@ -94,6 +94,17 @@ function M.grep_prompt()
   }
 end
 
+-- grep Neovim source using cword
+function M.grep_nvim_src()
+  require("telescope.builtin").grep_string {
+    results_title = "Neovim Source Code",
+    path_display = { "shorten" },
+    search_dirs = {
+      "~/vim-dev/sources/neovim/runtime/lua/vim/",
+      "~/vim-dev/sources/neovim/src/nvim/",
+    },
+  }
+end
 M.project_files = function()
   local _, ret, stderr = utils.get_os_command_output {
     "git",
