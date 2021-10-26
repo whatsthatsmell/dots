@@ -13,6 +13,13 @@ key_map("n", ",P", '"0P', { noremap = true })
 -- See augroup nvim-incsearch-cursorline for symmetry
 key_map("n", "<Leader>\\", ":set hlsearch! cursorline! cursorcolumn!<CR>", { noremap = true, silent = true })
 
+-- Yank Current File Name
+-- nnoremap <leader>fp :!ls %:p <bar> pbcopy<cr>
+key_map("n", "<leader>fp", ":lua require('joel.funcs').yank_current_file_name()<CR>", {
+  noremap = true,
+  silent = true,
+})
+
 -- treesitter-unit maps
 key_map("x", "iu", ':lua require"treesitter-unit".select()<CR>', { noremap = true })
 key_map("x", "au", ':lua require"treesitter-unit".select(true)<CR>', { noremap = true })

@@ -1,4 +1,6 @@
 local utils = require "joel.utils"
+local Job = require "plenary.job"
+
 -- add current line as task to todoist
 -- Using: https://github.com/sachaos/todoist
 -- @TODOUA: check latest source for new features like 'Description'
@@ -24,5 +26,24 @@ function M.create_todoist_task()
 
   require "notify"("Task Added: " .. current_line, "info", { title = "Todoist" })
   return content
+end
+
+-- @TODOUA: is this a util? Should it be made into one?
+function M.yank_current_file_name()
+  local file_name = vim.api.nvim_buf_get_name(0)
+  local input_pipe = vim.loop.new_pipe(false)
+
+  local yanker = Job:new {
+    writer = input_pipe,
+    command = "pbcopy",
+  }
+
+  -- @TODOUA: This works perfectly but double-check if it could be better(less)
+  yanker:start()
+  input_pipe:write(file_name)
+  input_pipe:close()
+  yanker:shutdown()
+
+  require "notify"("Yanked: " .. file_name, "info", { title = "File Name Yanker", timeout = 1000 })
 end
 return M

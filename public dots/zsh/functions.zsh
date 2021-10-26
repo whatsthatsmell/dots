@@ -59,7 +59,7 @@ sc() {
   screencapture -x ~/Screenshots/$1
 }
 
-# --- gh cli goodness ---
+# --- Github CLI goodness ---
 # select and go to gh issue on web
 ghi() {
   local item
@@ -67,7 +67,7 @@ ghi() {
   gh issue view $item --web
 }
 
-# rerun a Github workflow
+# Rerun a Github workflow
 ghrr() {
   local runid
   runid=$(gh run list | fzf | cut -f7)
