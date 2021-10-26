@@ -2,6 +2,19 @@ vim.opt_local.linebreak = true
 vim.opt_local.colorcolumn = "81"
 vim.opt_local.spell = false
 
+-- ** Test and coverage related - Jest **
+-- these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+-- Test running keymaps for JavaScript and Jest
+-- @TODOUA: I don't always want the `-i`
+-- @TODOUA: Figure out what to do with globals in settings → Lua
+-- https://github.com/vim-test/vim-test
+vim.api.nvim_buf_set_keymap(0, "n", "t<C-n>", ":TestNearest<CR>", { noremap = false, silent = true })
+vim.api.nvim_buf_set_keymap(0, "n", "t<C-f>", ":TestFile<CR>", { noremap = false, silent = true })
+vim.api.nvim_buf_set_keymap(0, "n", "t<C-s>", ":TestSuite -i<CR>", { noremap = false, silent = true })
+vim.api.nvim_buf_set_keymap(0, "n", "t<C-l>", ":TestLast<CR>", { noremap = false, silent = true })
+vim.api.nvim_buf_set_keymap(0, "n", "t<C-g>", ":TestVisit<CR>", { noremap = false, silent = true })
+-- End of Test stuff
+
 -- Show diagnostic float on CursorHold but don't steal cursor
 vim.api.nvim_exec(
   [[

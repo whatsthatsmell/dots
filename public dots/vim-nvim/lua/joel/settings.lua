@@ -121,6 +121,34 @@ vim.g.colorizer_disable_bufleave = 1
 -- *Trying `Glow` integration for markdown preview
 vim.g.glow_binary_path = "/usr/local/bin"
 
+-- vim-test settings (JavaScript only)
+-- https://github.com/vim-test/vim-test
+-- @TODOUA: Need to figure out how to setlocal in ftplugin
+-- -- I really don't want these globals
+vim.g.coverage_sign_uncovered = ""
+-- Specify the path to `coverage.json` file relative to your current working directory.
+vim.g.coverage_json_report_path = "coverage/coverage-final.json"
+-- @TODOUA: if we have to keep these global then finish Luatizing
+vim.api.nvim_exec(
+  [[
+" Define the symbol display for covered lines
+let g:coverage_sign_covered = ''
+
+" Define the interval time of updating the coverage lines
+let g:coverage_interval = 3000
+
+" Do not display signs on covered lines
+let g:coverage_show_covered = 0
+
+" Display signs on uncovered lines
+let g:coverage_show_uncovered = 1
+
+let g:test#runner_commands = ['Jest']
+]],
+  false
+)
+-- * End of vim-test settings * --
+
 -- indent-blankline settings
 vim.opt.list = false
 vim.opt.listchars:append "space:⋅"

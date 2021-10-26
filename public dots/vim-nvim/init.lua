@@ -55,32 +55,6 @@ let g:undotree_WindowLayout = 2
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 6
 
-" ** Test and  coverage related **
-" Specify the path to `coverage.json` file relative to your current working directory.
-let g:coverage_json_report_path = 'coverage/coverage-final.json'
-
-" Define the symbol display for covered lines
-let g:coverage_sign_covered = ''
-
-" Define the symbol display for uncovered lines
-let g:coverage_sign_uncovered = ''
-
-" Define the interval time of updating the coverage lines
-let g:coverage_interval = 3000
-
-" Do not display signs on covered lines
-let g:coverage_show_covered = 0
-
-" Display signs on uncovered lines
-let g:coverage_show_uncovered = 1
-
-" using lowercase t for term:// split now
-" nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-let g:test#runner_commands = ['Jest']
-" jank/vim-test and mfussenegger/nvim-dap
-"nnoremap <leader>dt :TestNearest -strategy=jest<CR>
-
 " ** Built-in Term settings**
 " open new neovim terminal: zsh in vsplit or split
 " command! -nargs=* T split | terminal <args>
