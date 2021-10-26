@@ -28,13 +28,9 @@ vim.cmd [[
 vmap D y'>p
 " Join lines and restore cursor location
 nnoremap J mjJ`j
-" -- completion maps --
-" Mostly handled by `nvim-cmp` 🌟
-inoremap <C-t> <C-x><C-t>
+" -- completion maps (not cmp) --
 " line completion - use more!
 inoremap <C-l> <C-x><C-l>
-" check for spelling completion (cmp)
-inoremap <C-s> <C-x><C-s>
 " Vim command-line completion
 inoremap <C-v> <C-x><C-v>
 " -- end completion maps --
@@ -56,19 +52,12 @@ let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 6
 
 " ** Built-in Term settings**
-" open new neovim terminal: zsh in vsplit or split
-" command! -nargs=* T split | terminal <args>
-" nmap <silent> <leader>t :T<cr>
+" open new neovim terminal in vsplit or split
+command! -nargs=* T split | terminal <args>
+nmap <silent> <leader>t :T<cr>
 command! -nargs=* VT vsplit | terminal <args>
 nmap <silent> <leader>tv :VT<cr>
-" open existing terminal (or any) buffer in vert right split: @[N]
-command! -nargs=* VRSB vertical rightbelow sb<args>
-nnoremap <leader>br :VRSB
 
-" - not sure why I have this & <del> set? hmmm
-if has('nvim')
-	tmap <C-o> <C-\><C-n>
-endif
 " -- this all needs to become one function call --
 " -- yank path out of terminal
 command! -nargs=* NCD call chansend(b:terminal_job_id, "yp\<cr>")
