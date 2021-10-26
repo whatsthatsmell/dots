@@ -102,14 +102,15 @@ return require("packer").startup {
       requires = { "nvim-lua/plenary.nvim" },
     }
 
+    -- load repos
+    use "cljoly/telescope-repo.nvim"
+
     -- Local plugins
     use "~/vim-dev/plugins/codesmell_dark.vim"
     use "~/vim-dev/plugins/telescope.nvim"
     -- local - updated to support worktrees
-    use "~/vim-dev/plugins/telescope-repo.nvim"
-    -- WIP: shows all pickers (builtin, custom and extensions)
-    -- ... and do some default or even specified action
-    use "~/vim-dev/plugins/telescope-picker-picker.nvim"
+    -- loading the plugin, the author fixed the worktree issue
+    -- use "~/vim-dev/plugins/telescope-repo.nvim"
 
     -- Lua Rocks 🎸
     -- don't forget env setting at top if uncommenting

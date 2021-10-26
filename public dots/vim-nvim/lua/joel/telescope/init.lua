@@ -52,16 +52,13 @@ require("telescope").load_extension "fzf"
 -- github CLI
 require("telescope").load_extension "gh"
 
--- trying out telescope-repo
+-- telescope-repo
 require("telescope").load_extension "repo"
-
--- test my picker-picker extension
-require("telescope").load_extension "picker_picker"
 
 -- my telescopic customizations
 local M = {}
 
--- requires rep extension
+-- requires repo extension
 function M.repo_list()
   local opts = {}
   opts.prompt_title = " Repos"
