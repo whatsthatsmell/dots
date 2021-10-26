@@ -8,6 +8,9 @@ vim.cmd [[
 -- vimdows to close with 'q'
 vim.cmd [[autocmd FileType help,qf,fugitive,fugitiveblame,netrw nnoremap <buffer><silent> q :close<CR>]]
 
+-- handle darkening terminal buffers & highlighting active term buffer
+vim.cmd [[au TermOpen,TermEnter * setlocal nonu nornu winhighlight=Normal:DarkenedTerm,NormalNC:DarkenedTermNC | execute 'keepalt' 'file' fnamemodify(getcwd() . '   '. bufnr('%'), ':t')]]
+
 -- auto exit insert mode
 vim.api.nvim_exec(
   [[

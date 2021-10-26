@@ -10,7 +10,12 @@ return require("packer").startup {
     use "tpope/vim-fugitive"
     use "tpope/vim-repeat"
     use "antoinemadec/FixCursorHold.nvim"
-
+    use {
+      "lewis6991/spellsitter.nvim",
+      config = function()
+        require("spellsitter").setup()
+      end,
+    }
     use {
       "numToStr/Comment.nvim",
       config = function()

@@ -20,6 +20,9 @@ key_map("n", "<leader>fp", ":lua require('joel.funcs').yank_current_file_name()<
   silent = true,
 })
 
+-- Open File Name under cursor in vert split
+key_map("n", "<leader>gf", ":vs <cfile><CR>", { noremap = false, silent = true })
+
 -- treesitter-unit maps
 key_map("x", "iu", ':lua require"treesitter-unit".select()<CR>', { noremap = true })
 key_map("x", "au", ':lua require"treesitter-unit".select(true)<CR>', { noremap = true })
