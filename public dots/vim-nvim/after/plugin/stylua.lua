@@ -7,7 +7,7 @@ if vim.fn.executable "stylua" == 0 then
   return
 end
 
--- @TODUA: figure out how to not lose last edit position or alt
+-- @TODOUA: figure out how to not lose last edit position or alt
 vim.cmd [[
   augroup StyluaAuto
     autocmd BufWritePre *.lua :lua require("joel.stylua").format()

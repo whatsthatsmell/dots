@@ -32,7 +32,7 @@ local stylua_finder = function(path)
 end
 
 local stylua = {}
--- @TODUA: it appears that GitSigns loses its place when this happens.
+-- @TODOUA: it appears that GitSigns loses its place when this happens.
 -- is this still happening??
 stylua.format = function(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
@@ -68,7 +68,7 @@ stylua.format = function(bufnr)
   -- not using Luasnip 'yet'
   vim.api.nvim_buf_clear_namespace(bufnr, -1, 0, -1)
   -- Luasnip_current_nodes[bufnr] = nil
-  -- @TODUA: setup Luasnip
+  -- @TODOUA: setup Luasnip
 end
 
 return stylua

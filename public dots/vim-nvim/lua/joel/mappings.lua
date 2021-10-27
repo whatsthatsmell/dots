@@ -31,7 +31,7 @@ key_map("o", "au", ':<c-u>lua require"treesitter-unit".select(true)<CR>', { nore
 -- For reference, no map:
 -- :lua require"treesitter-unit".toggle_highlighting(higroup?)
 
--- turn off hlsearch, cursorline & cursorcolumn - @TODUA: fix these 2
+-- turn off hlsearch, cursorline & cursorcolumn - @TODOUA: fix these 2
 key_map("n", "<Leader>/", ":set nohlsearch nocursorline nocursorcolumn<CR>", { noremap = true, silent = true })
 
 -- one of the greatest commands ever
@@ -101,6 +101,9 @@ key_map("n", "<leader>gb", ":Git blame<Return>", { noremap = true, silent = fals
 key_map("n", "<leader>gp", ":G push origin ", { noremap = false })
 
 -- TELESCOPE keymaps  --
+-- Search through your Neovim related todos
+key_map("n", "<leader>st", ":lua require'joel.telescope'.search_todos()<CR>", { noremap = true, silent = true })
+
 -- open zoxide list
 key_map(
   "n",
@@ -238,7 +241,7 @@ key_map("n", "<leader>ns", [[<Cmd>lua require'joel.telescope'.grep_nvim_src()<CR
 -- End Telescope maps
 
 -- github PRs - keep using my fzf-gh until I (or they) PR telescope
--- @TODUA: "nnoremap <silent> <leader>pr :lua require'joel.telescope'.gh_prs()<cr>
+-- @TODOUA: "nnoremap <silent> <leader>pr :lua require'joel.telescope'.gh_prs()<cr>
 
 -- open file in directory of current file
 key_map("n", "<leader>e", ":e %:h/", { noremap = false, silent = false })

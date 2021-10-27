@@ -5,7 +5,7 @@ require("telescope").setup {
   extensions = {
     fzf = {
       fuzzy = true, -- false will only do exact matching
-      override_generic_sorter = false,
+      override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = "smart_case", -- this is default
     },
@@ -46,8 +46,9 @@ require("telescope").setup {
     dynamic_preview_title = true,
   },
 }
+
+-- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-fzf-nativenvim
 require("telescope").load_extension "fzf"
--- require("telescope").load_extension "fzy_native"
 
 -- github CLI
 require("telescope").load_extension "gh"
@@ -88,6 +89,17 @@ function M.grep_prompt()
   require("telescope.builtin").grep_string {
     path_display = { "shorten" },
     search = vim.fn.input "Rg ",
+  }
+end
+
+-- search Neovim related todos
+function M.search_todos()
+  require("telescope.builtin").grep_string {
+    prompt_title = " Search TODOUAs",
+    prompt_prefix = " ",
+    results_title = "Neovim TODOUAs",
+    path_display = { "shorten" },
+    search = "TODOUA",
   }
 end
 
