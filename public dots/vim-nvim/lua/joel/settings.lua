@@ -108,6 +108,8 @@ vim.o.showcmd = false
 vim.o.updatetime = 3000
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.pumblend = 5
+vim.cmd [[hi PmenuSel blend=0]]
 
 -- Global Vim vars that are on a solo-ish mission **
 -- vim.g.fzf_gh_website = 1
