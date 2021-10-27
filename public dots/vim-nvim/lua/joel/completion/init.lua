@@ -1,6 +1,19 @@
 -- Setup nvim-cmp
 local cmp = require "cmp"
 
+-- try cmp-cmdline completion for /search
+-- @TODOUA: try ':' later
+-- cmdline_buffer src for space handling in cmd search '/'...
+-- -- it's a temp solution from: https://github.com/hrsh7th/nvim-cmp/issues/417
+-- -- I have mixed feelings about cmdline_buffer in its current form. Watching above for fleshed out src.
+cmp.register_source("cmdline_buffer", require("cmp_buffer").new())
+cmp.setup.cmdline("/", {
+  sources = cmp.config.sources {
+    -- { name = "cmdline_buffer", opts = { keyword_pattern = [=[[^[:blank:]].*]=] } },
+    { name = "buffer" },
+  },
+})
+
 local lspkind = require "lspkind"
 
 cmp.setup {
@@ -16,6 +29,7 @@ cmp.setup {
     ["<CR>"] = cmp.mapping.confirm { select = true },
     -- Right is for ghost_text to behave like terminal
     ["<Right>"] = cmp.mapping.confirm { select = true },
+    -- Don't insert if I explicitly exit
     -- Don't insert if I explicitly exit
     -- Start completion manually with C-Space to have it truly clean-up
     ["<C-e>"] = cmp.mapping.abort(),
@@ -64,10 +78,3 @@ cmp.setup {
     end,
   },
 }
--- try cmp-cmdline completion for /search
--- @TODOUA: try ':' later
-cmp.setup.cmdline("/", {
-  sources = {
-    { name = "buffer" },
-  },
-})
