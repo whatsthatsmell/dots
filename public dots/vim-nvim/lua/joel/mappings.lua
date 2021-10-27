@@ -224,6 +224,14 @@ key_map("n", ",fb", [[<Cmd>lua require'telescope.builtin'.file_browser()<CR>]], 
 
 -- grep word under cursor
 key_map("n", "<leader>g", [[<Cmd>lua require'telescope.builtin'.grep_string()<CR>]], { noremap = true, silent = true })
+-- grep word under cursor - case-sensitive (exact word) - made for use with Replace All - see <leader>ra
+key_map(
+  "n",
+  "<leader>G",
+  [[<Cmd>lua require'telescope.builtin'.grep_string({word_match='-w'})<CR>]],
+  { noremap = true, silent = true }
+)
+
 -- find notes
 key_map("n", "<leader>n", [[<Cmd>lua require'joel.telescope'.find_notes()<CR>]], { noremap = true, silent = true })
 -- search notes
@@ -290,11 +298,26 @@ key_map("n", "<left>", "<C-w><left>", { noremap = false })
 key_map("n", "<right>", "<C-w><right>", { noremap = false })
 
 -- Replace word under cursor in Buffer (case-sensitive)
--- nmap <leader>sr :%s/<C-R><C-W>//gI<left><left><left>
 key_map("n", "<leader>sr", ":%s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
 -- Replace word under cursor on Line (case-sensitive)
--- nmap <leader>sl :s/<C-R><C-W>//gI<left><left><left>
 key_map("n", "<leader>sl", ":s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
+-- ** Project-wide renaming with Telescope (optional) ** --
+-- Replace <cword> in all files listed in quickfix list:
+-- Step 0: Skip steps 1 & 2 if you populate your quickfix list another way
+-- Step 1. Use Telescope's grep_string({word_match='-w'}) - <leader>Q below
+-- Step 2. In Telescope `Normal` mode, type <C-Q> (default for sending all to qf)
+-- Step 3. Run this mapping, fill in new word and press <CR> (!Don't do this without VCS!!)
+-- Mnemonic: Replace All - case-sensitive - ignore errors about files not having the word
+-- -- (you will get LSP errors if you jack something up, that's a good thing)
+-- With Telescope you can also only send selected files to the qf. See  Telescope docs.
+-- There are plugins or combinations of plugins that can do this. But, this is the 'magic'
+-- This can also be leveraged to open your multi-selected files in Telescope (for now: https://git.io/telescope807)
+key_map(
+  "n",
+  "<leader>ra",
+  ":cfdo %s/<C-R><C-W>//geI<bar>update<left><left><left><left><left><left><left><left><left><left><left>",
+  { noremap = false }
+)
 
 -- run packer sync
 key_map("n", "<leader>ps", [[<Cmd>PackerSync<CR>]], { noremap = true, silent = true })
