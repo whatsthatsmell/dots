@@ -27,3 +27,5 @@ The Neovim command that you need if you love to work on your configs (you know y
 -- https://github.com/nvim-treesitter/playground#show-treesitter-and-syntax-highlight-groups-under-the-cursor
 vim.api.nvim_set_keymap("n", ",t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
 ```
+
+https://git.io/CodeSmell
