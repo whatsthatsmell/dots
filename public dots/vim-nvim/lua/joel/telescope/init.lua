@@ -1,4 +1,4 @@
--- telescope - customized pickers
+-- Telescope 🔭- setup and customized pickers
 local actions = require "telescope.actions"
 local utils = require "telescope.utils"
 require("telescope").setup {

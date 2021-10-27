@@ -6,7 +6,7 @@ require "joel.plugins"
 -- plugins config/setup
 require "joel.config"
 
--- telescope 🔭
+-- Telescope 🔭
 require "joel.telescope"
 
 -- mappings
