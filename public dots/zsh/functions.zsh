@@ -161,6 +161,11 @@ reddit() {
   fi
 }
 
+# Shorten Github URL with vanity (url, vanity code) - saves to clipboard!
+ghurl() {
+  curl -i -s https://git.io -F "url=$1" -F "code=$2" | rg "Location" | cut -f 2 -d " " | pbcopy
+}
+
 # get JSON response from route and make it pretty
 csjq() {
   curl -s $1 | jq
