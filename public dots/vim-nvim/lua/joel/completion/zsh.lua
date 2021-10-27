@@ -1,4 +1,6 @@
--- Thank you CantoroMC
+-- Now using cmp-zsh: https://github.com/tamago324/cmp-zsh!
+
+-- Thank you CantoroMC for the below solution I was using
 -- https://github.com/CantoroMC/dotfiles/blob/e2ae91b725f09cdd66d93d97f4b995d48f620e3d/neovim/.config/nvim/lua/mc/packer/nvim-cmp/zsh.lua#L1
 local cmp = require "cmp"
 local Job = require "plenary.job"

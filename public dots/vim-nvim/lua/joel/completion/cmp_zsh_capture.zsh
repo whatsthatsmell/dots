@@ -1,3 +1,4 @@
+# Now using cmp-zsh: https://github.com/tamago324/cmp-zsh!
 #!/usr/bin/env zsh
 
 zmodload zsh/zpty || { echo 'error: missing module zsh/zpty' >&2; exit 1 }
