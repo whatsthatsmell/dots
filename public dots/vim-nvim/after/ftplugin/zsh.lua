@@ -1,5 +1,5 @@
 local cmp = require "cmp"
-cmp.register_source("zsh", require "joel.completion.zsh")
+-- cmp.register_source("zsh", require "joel.completion.zsh")
 cmp.setup.buffer {
   sources = {
     { name = "vsnip" },
