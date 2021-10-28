@@ -182,16 +182,4 @@ function M.toggle_fold_col()
   vim.api.nvim_echo({ { "foldcolumn is set to " .. vim.opt.foldcolumn:get() } }, false, {})
 end
 
--- not a 'setting' - need a new module
--- open URI under cursor
-function M.open_uri()
-  local Job = require "plenary.job"
-  local uri = vim.fn.expand "<cWORD>"
-  local j = Job
-    :new({
-      "open",
-      uri,
-    })
-    :sync()
-end
 return M
