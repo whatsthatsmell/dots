@@ -13,6 +13,9 @@ alias arec='asciinema rec'
 alias c='cargo'
 alias cfg='cd ~/.config'
 alias cfg='cd ~/.config'
+# hardcoding for notification banners to start
+# TODO: move to functions with options for preset locations
+alias ck='cliclick "c:2550,1430"'
 alias cnv='cd ~/.config/nvim'
 alias cov='open coverage/index.html'
 alias cpnotes='cp -R  ~/notes/ ~/Dropbox/notes'
