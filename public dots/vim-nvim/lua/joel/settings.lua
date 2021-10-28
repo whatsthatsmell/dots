@@ -120,9 +120,6 @@ vim.g.colorizer_auto_filetype = "yaml,zsh,zsh-theme,lua,vim,json"
 -- keep colorizing on bufleave
 vim.g.colorizer_disable_bufleave = 1
 
--- *Trying `Glow` integration for markdown preview
-vim.g.glow_binary_path = "/usr/local/bin"
-
 -- vim-test settings (JavaScript only)
 -- https://github.com/vim-test/vim-test
 -- @TODOUA: Need to figure out how to setlocal in ftplugin

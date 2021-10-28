@@ -10,6 +10,7 @@ return require("packer").startup {
     use "tpope/vim-fugitive"
     use "tpope/vim-repeat"
     use "antoinemadec/FixCursorHold.nvim"
+    use "ellisonleao/glow.nvim"
     use {
       "lewis6991/spellsitter.nvim",
       config = function()
