@@ -18,6 +18,7 @@ local colors = {
   red1 = "#e06c75",
   red2 = "#be5046",
   yellow = "#e5c07b",
+  light_grey = "#99a0ab",
   gray1 = "#5c6370",
   gray2 = "#2c323d",
   gray3 = "#3e4452",
@@ -26,6 +27,8 @@ local colors = {
   middlegrey = "#8791A5",
   dodgerblue = "#1e90ff",
   brightgreen = "#96e362",
+  neovim_green = "#54A23D",
+  neovim_blue = "#3791D4",
 }
 
 -- Local helper functions
@@ -48,14 +51,22 @@ end
 
 local mode_color = function()
   local mode_colors = {
-    [110] = colors.brightgreen,
-    [105] = colors.blue,
-    [99] = colors.green,
-    [116] = colors.blue,
-    [118] = colors.dodgerblue,
+    -- normal
+    [110] = colors.light_grey,
+    -- insert
+    [105] = colors.neovim_green,
+    -- command
+    [99] = colors.yellow,
+    -- Terminal
+    [116] = colors.brightgreen,
+    -- visual mode
+    [118] = colors.neovim_blue,
+    -- visual-block
     [22] = colors.dodgerblue,
-    [86] = colors.dodgerblue,
-    [82] = colors.red1,
+    -- visual-line
+    [86] = colors.blue,
+    -- replace
+    [82] = colors.red2,
     [115] = colors.red1,
     [83] = colors.red1,
   }

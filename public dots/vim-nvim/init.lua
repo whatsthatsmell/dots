@@ -70,6 +70,7 @@ nmap <silent><leader>F :lcd<c-r>+<cr>
 " end term settings ***
 
 " Delete to Esc from (almost) all the things
+" Note: <Esc> does not exit terminal mode by default
 nnoremap <Del> <Esc>
 vnoremap <Del> <Esc>gV
 onoremap <Del> <Esc>
