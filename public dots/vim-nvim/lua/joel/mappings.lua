@@ -277,7 +277,7 @@ key_map("i", "<F1>", "<Esc>", { noremap = false })
 key_map(
   "n",
   ",\\",
-  [[<Cmd>60vsp <bar>terminal<CR>:set winfixheight<CR>:sp<bar>terminal<CR>]],
+  [[<Cmd>70vsp <bar>terminal<CR>:set winfixheight<CR>:sp<bar>terminal<CR>]],
   { noremap = true, silent = true }
 )
 -- open split below, slightly smaller
