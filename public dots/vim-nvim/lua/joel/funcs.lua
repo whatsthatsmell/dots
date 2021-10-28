@@ -1,6 +1,9 @@
 local utils = require "joel.utils"
 local Job = require "plenary.job"
 
+-- Functions I need/want
+-- @TODOUA: run cliclick from Vim quickly
+
 -- add current line as task to todoist
 -- Using: https://github.com/sachaos/todoist
 -- @TODOUA: check latest source for new features like 'Description'
