@@ -16,6 +16,7 @@ alias cfg='cd ~/.config'
 # hardcoding for notification banners to start
 # TODO: move to functions with options for preset locations
 alias ck='cliclick "c:2525,30"'
+alias ckb='cliclick "c:2005,95"'
 alias cnv='cd ~/.config/nvim'
 alias cov='open coverage/index.html'
 alias cpnotes='cp -R  ~/notes/ ~/Dropbox/notes'
@@ -42,7 +43,6 @@ alias glps='git log -p --stat'
 alias gt='git difftool --no-prompt' #delta
 alias gwtl='git worktree list'
 alias gyhc='git rev-parse HEAD | pbcopy'
-alias h='cd $HOME'
 alias hack='history -75 | rg'
 alias jlc='jest --config=jest.local.js'
 alias ldot='exa -ld .*'

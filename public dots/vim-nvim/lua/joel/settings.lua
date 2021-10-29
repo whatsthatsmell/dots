@@ -163,7 +163,7 @@ require("indent_blankline").setup {
   enabled = false,
 }
 
--- Oww, we need the func, we gotta have that func
+-- boolify!
 local M = {}
 local toBool = {
   ["1"] = true,
@@ -171,15 +171,18 @@ local toBool = {
 }
 -- Note: `foldcolumn` is not a boolean. You can set other values.
 -- I only want to toggle between these two values though.
--- There's probably a better way.
--- @TODOUA: 🐍 case
 function M.toggle_fold_col()
-  if toBool[vim.opt.foldcolumn:get()] then
+  if toBool[vim.api.nvim_win_get_option(0, "foldcolumn")] then
     vim.opt.foldcolumn = "0"
   else
     vim.opt.foldcolumn = "1"
   end
-  vim.api.nvim_echo({ { "foldcolumn is set to " .. vim.opt.foldcolumn:get() } }, false, {})
+
+  require "notify"(
+    "foldcolumn is set to " .. vim.api.nvim_win_get_option(0, "foldcolumn"),
+    "info",
+    { title = "Window Option Toggled:" }
+  )
 end
 
 return M
