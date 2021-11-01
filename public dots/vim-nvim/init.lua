@@ -9,7 +9,7 @@ require "joel.config"
 -- Telescope 🔭
 require "joel.telescope"
 
--- mappings
+-- mappings (telescope-related maps loaded via telescope mod)
 require "joel.mappings"
 
 -- completion
