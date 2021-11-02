@@ -3,7 +3,8 @@ P = function(v)
   return v
 end
 
-PN = function(v)
+-- Debug Notification
+DN = function(v)
   require "notify"(vim.inspect(v), "debug", { title = "Debug Output" })
   return v
 end

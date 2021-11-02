@@ -41,20 +41,8 @@ augroup end
 )
 
 -- match and highlight URLs
--- @TODOUA:
--- -- Pure Luafication(Nvim API)
--- -- Work in @NoSpell
--- -- Peruse the Treesitter MD grammars for future possibilities
--- -- Only using in markdown for now. Don't want this in theme (for now)
--- -- -- Although, it leaks out to buffers opened after the MD file(Kind of like it for now)
-vim.api.nvim_exec(
-  [[
-match matchURL /http[s]\?:\/\/[[:alnum:]%\/_#.-]*/
-
-hi matchURL guifg=Blue
-]],
-  false
-)
+vim.fn.matchadd("matchURL", [[http[s]\?:\/\/[[:alnum:]%\/_#.-]*]])
+vim.cmd "hi matchURL guifg=Blue"
 
 -- add current line as task to todoist - markdown files only (for now)
 vim.api.nvim_buf_set_keymap(

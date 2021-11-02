@@ -35,6 +35,10 @@ sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numh
   false
 )
 
+-- HL @TODOUAs
+vim.fn.matchadd("Todoua", [[@TODOUA:]])
+vim.cmd "hi Todoua guifg=#3791D4"
+
 -- Setup cmp source buffer configuration (nvim-lua source only enables in Lua filetype)
 local cmp = require "cmp"
 cmp.setup.buffer {
