@@ -3,6 +3,11 @@ P = function(v)
   return v
 end
 
+PN = function(v)
+  require "notify"(vim.inspect(v), "debug", { title = "Debug Output" })
+  return v
+end
+
 RELOAD = function(...)
   return require("plenary.reload").reload_module(...)
 end
