@@ -1,24 +1,8 @@
 -- Setup nvim-cmp
 local cmp = require "cmp"
 
--- cmp in cmdline is a WIP - I mostly use telescope to navigate anyway
-cmp.setup.cmdline("/", {
-  sources = cmp.config.sources {
-    { name = "buffer" },
-  },
-})
-
--- Use cmdline & path source for ':'.
-cmp.setup.cmdline(":", {
-  sources = cmp.config.sources({
-    { name = "path" },
-  }, {
-    { name = "cmdline" },
-  }),
-})
-
 local lspkind = require "lspkind"
-
+-- @TODOUA: Try cmdline again later
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -31,17 +15,15 @@ cmp.setup {
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<CR>"] = cmp.mapping {
       i = cmp.mapping.confirm { select = true },
-      c = cmp.mapping.confirm { select = false },
     },
     ["<Right>"] = cmp.mapping {
       i = cmp.mapping.confirm { select = true },
-      c = cmp.mapping.confirm { select = false },
     },
     ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
     ["<C-e>"] = cmp.mapping.abort(),
-    ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
-    ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
+    ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { "i" }),
+    ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { "i" }),
   },
   experimental = {
     ghost_text = true,
