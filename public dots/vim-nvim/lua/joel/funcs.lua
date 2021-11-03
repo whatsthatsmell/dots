@@ -49,4 +49,15 @@ function M.yank_current_file_name()
 
   require "notify"("Yanked: " .. file_name, "info", { title = "File Name Yanker", timeout = 1000 })
 end
+
+-- clear nvim-notify notifications history
+function M.clear_notification_history()
+  local choice = vim.fn.confirm("Clear Notification History?", "&Yes\n&No\n&Cancel")
+  if choice == 1 then
+    R "notify"
+    print "Notification History Cleared"
+  else
+    print "Notification History Remains"
+  end
+end
 return M

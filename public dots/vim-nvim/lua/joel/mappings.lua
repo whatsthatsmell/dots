@@ -24,6 +24,14 @@ key_map("n", "<leader>fp", ":lua require('joel.funcs').yank_current_file_name()<
   silent = true,
 })
 
+-- clear nvim-notify notifications history
+key_map(
+  "n",
+  "<leader>cn",
+  ":lua require('joel.funcs').clear_notification_history()<CR>",
+  { noremap = true, silent = true }
+)
+
 -- Open File Name under cursor in vert split
 key_map("n", "<leader>gf", ":vs <cfile><CR>", { noremap = false, silent = true })
 
