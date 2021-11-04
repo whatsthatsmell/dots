@@ -8,8 +8,25 @@ vim.cmd [[
 -- vimdows to close with 'q'
 vim.cmd [[autocmd FileType help,qf,fugitive,fugitiveblame,netrw nnoremap <buffer><silent> q :close<CR>]]
 
--- handle darkening terminal buffers & highlighting active term buffer
-vim.cmd [[au TermOpen,TermEnter * setlocal nonu nornu winhighlight=Normal:DarkenedTerm,NormalNC:DarkenedTermNC | execute 'keepalt' 'file' fnamemodify(getcwd() . '   '. bufnr('%'), ':t')]]
+-- @TODOUA: try to get a lot of this buffer switching logic moved somewhere better
+-- handle darkening terminal buffers & highlighting active term buffer, set default isSplit = 0. Will be set as needed
+vim.cmd [[au TermOpen,TermEnter * let b:isSplit=0 | setlocal nonu nornu winhighlight=Normal:DarkenedTerm,NormalNC:DarkenedTermNC | execute 'keepalt' 'file' fnamemodify(getcwd() . '   '. bufnr('%'), ':t')]]
+
+-- when leaving terminal buffer in split, unlist it (if specified in b:isSplit)
+vim.cmd [[
+	augroup UnlistSplitTerms
+	  autocmd!
+    autocmd BufLeave * if &buftype == 'terminal' && b:isSplit  | setlocal nobuflisted | endif
+  augroup end
+]]
+
+-- if buftype is terminal and isSplit then turn off bn/bp maps & alert
+vim.cmd [[
+	augroup UnsetBufTermSwitchMaps
+	  autocmd!
+    autocmd BufEnter * if &buftype == 'terminal' && b:isSplit  | nnoremap <buffer><silent><localleader><left> :echom 'No buffer switching (bn/bp maps) in this split terminal! See isSplit or buflisted.'<CR> | nnoremap <buffer><silent><localleader><right> :echom 'No buffer switching (bn/bp maps) in this split terminal! Toggle isSplit or set buflisted.'<CR> | endif
+  augroup end
+]]
 
 -- auto exit insert mode
 vim.api.nvim_exec(

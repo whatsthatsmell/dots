@@ -1,3 +1,4 @@
+-- @TODOUA: probably gut this or even rm it. May move some to utils
 -- Based on johann2357/nvim-smartbufs: https://git.io/J6dTY - Updated using current 20-Oct-2021 Lua API
 local M = {}
 
@@ -38,7 +39,8 @@ end
 -- @treturn nil
 local function open_buf_id(buf_id)
   -- TODO: find a better way to do this
-  vim.api.nvim_command(string.format("buffer %d", buf_id))
+  -- vim.api.nvim_command(string.format("buffer %d", buf_id))
+  vim.api.nvim_win_set_buf(0, buf_id)
 end
 
 --- Find buffer in buffer table.

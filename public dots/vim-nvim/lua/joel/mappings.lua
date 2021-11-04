@@ -71,20 +71,10 @@ key_map("n", "<Leader>W", ":wqall<CR>", { noremap = true, silent = true })
 
 -- *Buffer Stuff****
 --- <C-6> is toggle current and alt(last viewed)
---- Go to next buffer - Skip Terminal buffers
-key_map(
-  "n",
-  "<Leader><right>",
-  "[[<Cmd>lua require'joel.buffers'.goto_next_buffer()<CR>]]",
-  { noremap = true, silent = true }
-)
--- go to prev buffer - skip terminal buffers
-key_map(
-  "n",
-  "<Leader><left>",
-  [[<Cmd>lua require'joel.buffers'.goto_prev_buffer()<CR>]],
-  { noremap = true, silent = true }
-)
+--- Go to next buffer - Skip Terminal buffers in specified splits (settings aug: UnlistSplitTerms )
+key_map("n", "<Leader><right>", [[<Cmd>bnext<CR>]], { noremap = true, silent = true })
+-- go to previous buffer - skip terminal buffers in splits (settings aug: UnlistSplitTerms )
+key_map("n", "<Leader><left>", [[<Cmd>bprevious<CR>]], { noremap = true, silent = true })
 
 -- delete current buffer - don't close split/window
 -- Mnemonic: 'delete buffer' - db
@@ -138,7 +128,7 @@ key_map("i", "<F1>", "<Esc>", { noremap = false })
 key_map(
   "n",
   ",\\",
-  [[<Cmd>70vsp <bar>terminal<CR>:set winfixheight<CR>:sp<bar>terminal<CR>]],
+  [[<Cmd>70vsp <bar>terminal<CR>:set winfixheight<CR>:let b:isSplit=1<CR>:sp<bar>terminal<CR>:let b:isSplit=1<CR>]],
   { noremap = true, silent = true }
 )
 -- open split below, slightly smaller
