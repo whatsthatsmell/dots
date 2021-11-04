@@ -133,8 +133,6 @@ key_map(
 )
 -- open split below, slightly smaller
 key_map("n", ",-", ":23sp<CR><C-w><down>", { noremap = true, silent = true })
--- Colorizer Toggle
-key_map("n", "<space>c", [[<Cmd>ColorizerToggle<CR>]], { noremap = true, silent = true })
 
 -- yank all in buffer
 key_map("n", "<leader>a", ":%y<cr>", { noremap = false, silent = true })
