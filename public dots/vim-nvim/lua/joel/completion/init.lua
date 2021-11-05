@@ -2,7 +2,7 @@
 local cmp = require "cmp"
 
 local lspkind = require "lspkind"
--- @TODOUA: Try cmdline again later
+-- @TODOUA: Try cmdline again soon, lots of updates since last tried
 cmp.setup {
   snippet = {
     expand = function(args)

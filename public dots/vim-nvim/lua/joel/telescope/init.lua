@@ -51,6 +51,9 @@ require("telescope").setup {
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-fzf-nativenvim
 require("telescope").load_extension "fzf"
 
+-- require zoxide for telescope
+require("telescope").load_extension "zoxide"
+
 -- github CLI
 require("telescope").load_extension "gh"
 

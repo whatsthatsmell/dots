@@ -21,9 +21,9 @@ require "joel.settings"
 -- globals like P()
 require "joel.globals"
 
--- ** Mappings galore
--- see mappings.lua
--- @TODOUA: finish refactoring & migrating below to mappings/settings to Lua!
+-- ** Key Mappings
+-- see mappings.lua and telescope/mappings
+-- @TODOUA: Finish refactoring & migrating below to mappings/settings to Lua!
 vim.cmd [[
 " Duplicate a selection
 " Visual mode: D
