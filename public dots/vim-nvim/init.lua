@@ -31,14 +31,10 @@ vmap D y'>p
 " Join lines and restore cursor location
 nnoremap J mjJ`j
 
-" back in jumplist
+" back in jumplist - great for after 'jumping to definition'
 nmap <silent> <leader><bs> <C-o>
 " forward in jumplist
 nmap <silent> <leader><space> <C-i>
-" Add empty line(s)
-" handled by unimpaired for now
-" open latest `todo` file, set by `T mark
-nnoremap <silent> <leader>to :sp \| norm `T<cr>
 
 " undotree
 nnoremap <silent><leader>u :UndotreeToggle<CR>
