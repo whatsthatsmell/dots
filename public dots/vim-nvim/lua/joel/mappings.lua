@@ -55,10 +55,12 @@ key_map("n", "<Leader>w", ":up<CR>", { noremap = true })
 key_map("n", "<Leader>q", ":q<CR>", { noremap = true, silent = true })
 
 -- GitSigns maps
--- toggle hunk line highlight
+-- toggle hunk line highlight - staying with the leader + h + one-letter identifier for Hunks (not ,t*)
 key_map("n", "<Leader>hh", [[<Cmd>lua require'gitsigns'.toggle_linehl()<CR>]], { noremap = true, silent = true })
 -- toggle hunk line Num highlight
 key_map("n", "<Leader>hn", [[<Cmd>lua require'gitsigns'.toggle_numhl()<CR>]], { noremap = true, silent = true })
+-- toogle Virtual current line blame → <leader>hb for Full line blame
+key_map("n", ",tb", [[<Cmd>lua require'gitsigns'.toggle_current_line_blame()<CR>]], { noremap = true, silent = true })
 
 -- use ZQ for :q! (quit & discard changes)
 -- Discard all changed buffers & quit
@@ -101,6 +103,7 @@ key_map("n", "<Leader>x", ":bd<CR>", { noremap = true, silent = true })
 -- Fugitive maps
 key_map("n", "<leader>gb", ":Git blame<Return>", { noremap = true, silent = false })
 key_map("n", "<leader>gp", ":G push origin ", { noremap = false })
+-- :Gvdiffsplit*
 
 -- open file in directory of current file
 key_map("n", "<leader>e", ":e %:h/", { noremap = false, silent = false })
@@ -175,11 +178,9 @@ key_map("n", "<leader>ps", [[<Cmd>PackerSync<CR>]], { noremap = true, silent = t
 key_map("n", "<leader>cd", ":lcd %:p:h<cr>", { noremap = true, silent = true })
 -- change dir for window to file's git working dir
 key_map("n", "<leader>gd", ":Glcd<cr>", { noremap = true, silent = true })
--- toggle foldcolumn
+-- toggle foldcolumn - Toggles are usually leader ,t + one-letter identifier
 key_map("n", ",tf", ":lua require'joel.settings'.toggle_fold_col()<CR>", { noremap = true, silent = true })
-
 -- toggle IndentBlankline with set line! - both off by default
 key_map("n", ",ti", ":IndentBlanklineToggle<CR>:set list!<CR>", { noremap = true, silent = true })
-
 -- toggle colorizer: will be toggled on by default for appropriate fts
-key_map("n", ",ct", ":ColorToggle<CR>", { noremap = false, silent = true })
+key_map("n", ",tc", ":ColorToggle<CR>", { noremap = false, silent = true })

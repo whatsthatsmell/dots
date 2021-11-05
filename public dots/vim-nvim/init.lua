@@ -18,7 +18,7 @@ require "joel.completion"
 -- settings(options)
 require "joel.settings"
 
--- globals like P()
+-- globals like P() & DN()
 require "joel.globals"
 
 -- ** Key Mappings

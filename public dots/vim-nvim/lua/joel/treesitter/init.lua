@@ -42,9 +42,10 @@ require("nvim-treesitter.configs").setup {
       enable = true,
       keymaps = {
         goto_definition_lsp_fallback = "gnd",
+        -- use telescope for these lists
         -- list_definitions = "gnD",
         -- list_definitions_toc = "gO",
-        -- @TODOUA: figure out if I need the 2 below
+        -- @TODOUA: figure out if I need both below
         goto_next_usage = "<a-*>", -- is this redundant?
         goto_previous_usage = "<a-#>", -- also this one?
       },
