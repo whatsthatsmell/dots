@@ -30,12 +30,6 @@ vim.cmd [[
 vmap D y'>p
 " Join lines and restore cursor location
 nnoremap J mjJ`j
-" -- completion maps (not cmp) --
-" line completion - use more!
-inoremap <C-l> <C-x><C-l>
-" Vim command-line completion
-inoremap <C-v> <C-x><C-v>
-" -- end completion maps --
 
 " back in jumplist
 nmap <silent> <leader><bs> <C-o>

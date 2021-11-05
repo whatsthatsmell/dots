@@ -1,3 +1,12 @@
+-- completion maps (not cmp) --
+-- line completion - use more!
+-- inoremap <C-l> <C-x><C-l>
+vim.api.nvim_set_keymap("i", "<c-l>", "<c-x><c-l>", { noremap = true })
+-- Vim command-line completion
+-- inoremap <C-v> <C-x><C-v>
+vim.api.nvim_set_keymap("i", "<c-v>", "<c-x><c-v>", { noremap = true })
+-- end non-cmp completion maps --
+
 -- Setup nvim-cmp
 local cmp = require "cmp"
 
