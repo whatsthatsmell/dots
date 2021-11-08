@@ -184,3 +184,12 @@ key_map("n", ",tf", ":lua require'joel.settings'.toggle_fold_col()<CR>", { norem
 key_map("n", ",ti", ":IndentBlanklineToggle<CR>:set list!<CR>", { noremap = true, silent = true })
 -- toggle colorizer: will be toggled on by default for appropriate fts
 key_map("n", ",tc", ":ColorToggle<CR>", { noremap = false, silent = true })
+
+-- Use <Del> to Esc from (almost) all the things
+-- Note: <Esc> does not exit terminal mode by default
+key_map("n", "<Del>", "<Esc>", { noremap = true })
+key_map("v", "<Del>", "<Esc>gV", { noremap = true })
+key_map("o", "<Del>", "<Esc>", { noremap = true })
+key_map("c", "<Del>", "<C-C><Esc>", { noremap = true })
+key_map("i", "<Del>", "<Esc>`^", { noremap = true })
+key_map("t", "<Del>", "<C-\\><C-n>", { noremap = true })

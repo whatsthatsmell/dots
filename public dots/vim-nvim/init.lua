@@ -36,13 +36,6 @@ nmap <silent> <leader><bs> <C-o>
 " forward in jumplist
 nmap <silent> <leader><space> <C-i>
 
-" undotree
-nnoremap <silent><leader>u :UndotreeToggle<CR>
-let g:undotree_HelpLine = 0
-let g:undotree_WindowLayout = 2
-let g:undotree_ShortIndicators = 1
-let g:undotree_DiffpanelHeight = 6
-
 " ** Built-in Term settings**
 " open new neovim terminal in vsplit or split
 command! -nargs=* T split | terminal <args>
@@ -59,14 +52,6 @@ nmap <silent><leader>F :lcd<c-r>+<cr>
 " ---
 " end term settings ***
 
-" Delete to Esc from (almost) all the things
-" Note: <Esc> does not exit terminal mode by default
-nnoremap <Del> <Esc>
-vnoremap <Del> <Esc>gV
-onoremap <Del> <Esc>
-cnoremap <Del> <C-C><Esc>
-inoremap <Del> <Esc>`^
-tnoremap <Del> <C-\><C-n>
 " diff since last write
 nnoremap <leader>c :w !diff % -<CR>
 " full featured diff
