@@ -127,6 +127,10 @@ key_map("n", ";", ":", { noremap = true })
 key_map("n", "<F1>", "<Esc>", { noremap = false })
 key_map("i", "<F1>", "<Esc>", { noremap = false })
 
+-- open split below, slightly smaller
+key_map("n", ",-", ":23sp<CR><C-w><down>", { noremap = true, silent = true })
+
+-- ** Terminal open maps** - see <leader>tx for close terminal
 -- open 2 vertically split terminals
 key_map(
   "n",
@@ -134,8 +138,12 @@ key_map(
   [[<Cmd>70vsp <bar>terminal<CR>:set winfixheight<CR>:let b:isSplit=1<CR>:sp<bar>terminal<CR>:let b:isSplit=1<CR>]],
   { noremap = true, silent = true }
 )
--- open split below, slightly smaller
-key_map("n", ",-", ":23sp<CR><C-w><down>", { noremap = true, silent = true })
+
+-- open new Neovim Terminal in vsplit or split
+key_map("n", "<leader>tv", [[<Cmd>vsp <bar>terminal<CR>]], { noremap = false, silent = true })
+
+key_map("n", "<leader>t", [[<Cmd>sp <bar>terminal<CR>]], { noremap = false, silent = true })
+-- ** end Terminal open maps
 
 -- yank all in buffer
 key_map("n", "<leader>a", ":%y<cr>", { noremap = false, silent = true })
@@ -212,3 +220,22 @@ key_map(
   [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']],
   { noremap = false, expr = true }
 )
+
+-- Back in jumplist - great for after 'jumping to definition'
+-- these makes since with my keyboard → Kinesis Advantage 2
+key_map("n", "<leader><bs>", "<C-o>", {
+  noremap = false,
+  silent = true,
+})
+
+-- Forward in jumplist
+key_map("n", "<leader><space>", "<C-i>", {
+  noremap = false,
+  silent = true,
+})
+
+-- quick diff since last write
+key_map("n", "<leader>c", ":w !diff % -<cr>", { noremap = true })
+
+-- Join lines and restore cursor location
+key_map("n", "J", "mjJ`j", { noremap = true })
