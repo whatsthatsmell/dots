@@ -91,7 +91,7 @@ end
 
 function M.grep_prompt()
   require("telescope.builtin").grep_string {
-    path_display = { "shorten" },
+    path_display = { "smart" },
     search = vim.fn.input "Rg ",
   }
 end
@@ -102,7 +102,7 @@ function M.search_todos()
     prompt_title = " Search TODOUAs",
     prompt_prefix = " ",
     results_title = "Neovim TODOUAs",
-    path_display = { "shorten" },
+    path_display = { "smart" },
     search = "TODOUA",
   }
 end
@@ -111,7 +111,7 @@ end
 function M.grep_nvim_src()
   require("telescope.builtin").grep_string {
     results_title = "Neovim Source Code",
-    path_display = { "shorten" },
+    path_display = { "smart" },
     search_dirs = {
       "~/vim-dev/sources/neovim/runtime/lua/vim/",
       "~/vim-dev/sources/neovim/src/nvim/",
@@ -185,14 +185,14 @@ function M.grep_notes()
   }
   opts.prompt_prefix = "   "
   opts.prompt_title = " Grep Notes"
-  opts.path_display = { "shorten" }
+  opts.path_display = { "smart" }
   require("telescope.builtin").live_grep(opts)
 end
 
 function M.find_notes()
   require("telescope.builtin").find_files {
     prompt_title = " Find Notes",
-    path_display = { "shorten" },
+    path_display = { "smart" },
     cwd = "~/notes/",
     layout_strategy = "horizontal",
     layout_config = { preview_width = 0.65, width = 0.75 },
@@ -213,7 +213,7 @@ function M.find_configs()
   require("telescope.builtin").find_files {
     prompt_title = " NVim & Term Config Find",
     results_title = "Config Files Results",
-    path_display = { "shorten" },
+    path_display = { "smart" },
     search_dirs = {
       "~/.oh-my-zsh/custom/",
       "~/.config/nvim",
@@ -237,7 +237,7 @@ end
 function M.file_explorer()
   require("telescope.builtin").file_browser {
     prompt_title = " File Browser",
-    path_display = { "shorten" },
+    path_display = { "smart" },
     cwd = "~",
     layout_strategy = "horizontal",
     layout_config = { preview_width = 0.65, width = 0.75 },

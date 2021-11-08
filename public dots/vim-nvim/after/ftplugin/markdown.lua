@@ -41,6 +41,7 @@ augroup end
 )
 
 -- match and highlight URLs
+-- @TODOUA: see if/how colorbuddy can clean this or similar up
 vim.fn.matchadd("matchURL", [[http[s]\?:\/\/[[:alnum:]%\/_#.-]*]])
 vim.cmd "hi matchURL guifg=Blue"
 
