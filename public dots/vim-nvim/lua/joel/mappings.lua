@@ -193,3 +193,22 @@ key_map("o", "<Del>", "<Esc>", { noremap = true })
 key_map("c", "<Del>", "<C-C><Esc>", { noremap = true })
 key_map("i", "<Del>", "<Esc>`^", { noremap = true })
 key_map("t", "<Del>", "<C-\\><C-n>", { noremap = true })
+
+-- vsnip jump through snippets with <Tab>
+key_map("i", "<Tab>", [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']], { noremap = false, expr = true })
+
+key_map("s", "<Tab>", [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']], { noremap = false, expr = true })
+
+key_map(
+  "i",
+  "<S-Tab>",
+  [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']],
+  { noremap = false, expr = true }
+)
+
+key_map(
+  "s",
+  "<S-Tab>",
+  [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']],
+  { noremap = false, expr = true }
+)

@@ -16,7 +16,10 @@ alias cfg='cd ~/.config'
 # hardcoding for notification banners to start
 # TODO: move to functions with options for preset locations
 alias ck='cliclick "c:2525,30"'
-alias ckb='cliclick "c:2005,95"'
+# click in window upper-right but closer to middle
+alias ckm='cliclick "c:2005,95"'
+# click bottom right in window
+alias ckr='cliclick "c:2525,1395"'
 alias cnv='cd ~/.config/nvim'
 alias cov='open coverage/index.html'
 alias cpnotes='cp -R  ~/notes/ ~/Dropbox/notes'
