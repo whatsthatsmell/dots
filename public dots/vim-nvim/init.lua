@@ -12,9 +12,6 @@ require "joel.telescope"
 -- mappings (telescope-related maps loaded via telescope mod)
 require "joel.mappings"
 
--- completion
-require "joel.completion"
-
 -- settings(options)
 require "joel.settings"
 

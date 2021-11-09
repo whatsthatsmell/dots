@@ -31,6 +31,11 @@ function M.create_todoist_task()
   return content
 end
 
+function M.notify_current_datetime()
+  local dt = vim.fn.strftime "%c"
+  require "notify"("Current Date Time: " .. dt, "info", { title = "Date & Time" })
+end
+
 -- @TODOUA: is this a util? Should it be made into one?
 function M.yank_current_file_name()
   local file_name = vim.api.nvim_buf_get_name(0)

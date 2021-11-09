@@ -67,6 +67,7 @@ return require("packer").startup {
     use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
 
     -- nvim-cmp
+    -- if we move away from cmp in the future, consider 'joel.completion requirement'
     use {
       "hrsh7th/nvim-cmp",
       requires = {

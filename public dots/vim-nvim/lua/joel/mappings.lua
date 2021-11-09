@@ -32,6 +32,14 @@ key_map(
   { noremap = true, silent = true }
 )
 
+-- current date time notify
+key_map(
+  "n",
+  "<leader>dt",
+  ":lua require('joel.funcs').notify_current_datetime()<CR>",
+  { noremap = true, silent = true }
+)
+
 -- Open File Name under cursor in vert split
 key_map("n", "<leader>gf", ":vs <cfile><CR>", { noremap = false, silent = true })
 
