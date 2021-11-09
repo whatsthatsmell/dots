@@ -18,7 +18,6 @@ key_map("n", "<Leader>\\", ":set hlsearch! cursorline! cursorcolumn!<CR>", { nor
 -- @TODOUA: do this up right with a plenary job
 key_map("n", ",ck", [[:!cliclick "c:2525,30"<CR>]], { noremap = true })
 -- Yank Current File Name
--- nnoremap <leader>fp :!ls %:p <bar> pbcopy<cr>
 key_map("n", "<leader>fp", ":lua require('joel.funcs').yank_current_file_name()<CR>", {
   noremap = true,
   silent = true,

@@ -2,7 +2,6 @@ vim.cmd [[packadd nvim-web-devicons]]
 local gl = require "galaxyline"
 local utils = require "joel.utils"
 local condition = require "galaxyline.condition"
-local diagnostic = require "galaxyline.providers.diagnostic"
 
 local gls = gl.section
 gl.short_line_list = { "packer" }
@@ -81,7 +80,7 @@ end
 
 local function file_readonly()
   if vim.bo.filetype == "help" then
-    return " ﬤ "
+    return "  "
   end
   if vim.bo.readonly == true then
     return "  "
@@ -119,22 +118,15 @@ local GetGitRoot = function()
   return get_basename(git_root)
 end
 
-local LspStatus = function()
-  if #vim.lsp.get_active_clients() > 0 then
-    return require("lsp-status").status()
-  end
-  return ""
-end
-
 local LspCheckDiagnostics = function()
   if
     #vim.lsp.get_active_clients() > 0
-    and diagnostic.get_diagnostic_error() == nil
-    and diagnostic.get_diagnostic_warn() == nil
-    and diagnostic.get_diagnostic_info() == nil
-    and require("lsp-status").status() == " "
+    and #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN }) == 0
+    and #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO }) == 0
+    and #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR }) == 0
+    and #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT }) == 0
   then
-    return " "
+    return "  "
   end
   return ""
 end
