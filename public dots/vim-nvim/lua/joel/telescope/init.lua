@@ -10,6 +10,11 @@ require("telescope").setup {
       override_file_sorter = true,
       case_mode = "smart_case", -- this is default
     },
+    bookmarks = {
+      selected_browser = "brave",
+
+      url_open_command = "open",
+    },
   },
   defaults = {
     preview = {
@@ -50,6 +55,9 @@ require("telescope").setup {
 
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-fzf-nativenvim
 require("telescope").load_extension "fzf"
+
+-- https://github.com/dhruvmanila/telescope-bookmarks.nvim
+require("telescope").load_extension "bookmarks"
 
 -- require zoxide for telescope
 require("telescope").load_extension "zoxide"

@@ -12,6 +12,8 @@ return require("packer").startup {
     use "antoinemadec/FixCursorHold.nvim"
     use "ellisonleao/glow.nvim"
     use "mogelbrod/vim-jsonpath"
+    use "dhruvmanila/telescope-bookmarks.nvim"
+
     use {
       "lewis6991/spellsitter.nvim",
       config = function()
