@@ -2,6 +2,13 @@
 local lspconfig = require "lspconfig"
 local luadev = require("lua-dev").setup {
   lspconfig = {
+    -- @TODOUA: Remove fix below once fixed in master
+    -- Added flag below to fix breaking change: https://github.com/neovim/neovim/pull/16252
+    -- mjlbach comment with workaround: https://github.com/neovim/neovim/issues/14090#issuecomment-964606381
+    -- Tracking: https://github.com/neovim/neovim/issues/16274
+    flags = {
+      allow_incremental_sync = false,
+    },
     cmd = {
       "/Users/joel/vim-dev/sources/lua-language-server/bin/macOS/lua-language-server",
       "-E",

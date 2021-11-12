@@ -65,10 +65,10 @@ stylua.format = function(bufnr)
 
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
   -- vim.api.nvim_buf_clear_namespace(bufnr, Luasnip_ns_id, 0, -1)
-  -- not using Luasnip 'yet'
+  -- not using Luasnip 'yet', like vsnip
   vim.api.nvim_buf_clear_namespace(bufnr, -1, 0, -1)
   -- Luasnip_current_nodes[bufnr] = nil
-  -- @TODOUA: setup Luasnip
+  -- @TODOUA: setup Luasnip? I like vsnip
 end
 
 return stylua

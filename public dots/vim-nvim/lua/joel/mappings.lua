@@ -1,5 +1,5 @@
 local key_map = vim.api.nvim_set_keymap
--- ** Key Mappings **
+-- ** Key Mappings ***
 -- *Telescope-related maps at telescope/mappings (for now)
 
 -- Surround word under cursor w/ backticks (required vim-surround)
