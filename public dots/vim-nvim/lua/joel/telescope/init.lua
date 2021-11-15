@@ -141,7 +141,6 @@ M.project_files = function()
   gopts.results_title = "Project Files Results"
 
   fopts.hidden = true
-  -- @TODOUA: see if TJ's stuff from his 16-Jul-2021 stream helps here
   fopts.file_ignore_patterns = {
     ".vim/",
     ".local/",
