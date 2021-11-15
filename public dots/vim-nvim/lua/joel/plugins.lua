@@ -15,6 +15,13 @@ return require("packer").startup {
     use "dhruvmanila/telescope-bookmarks.nvim"
 
     use {
+      "luukvbaal/stabilize.nvim",
+      config = function()
+        require("stabilize").setup()
+      end,
+    }
+
+    use {
       "lewis6991/spellsitter.nvim",
       config = function()
         require("spellsitter").setup()
