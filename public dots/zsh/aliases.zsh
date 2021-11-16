@@ -13,13 +13,37 @@ alias arec='asciinema rec'
 alias c='cargo'
 alias cfg='cd ~/.config'
 alias cfg='cd ~/.config'
-# hardcoding for notification banners to start
-# TODO: move to functions with options for preset locations
-alias ck='cliclick "c:2525,30"'
-# click in window upper-right but closer to middle
+# TODO: move cliclick aliases to functions with options for preset locations
+# ... and don't hardcode them, make them work with any size
+# cliclick aliases - like a phone pad - MacOS specific - 2560x1440
+# 7 8 9
+# 4 5 6
+# 1 2 3
+# click upper-right (should click notification banners)
+alias ck='cliclick "c:2525,30"' #legacy
+alias ck9='cliclick "c:2525,30"' #alfred: ctrl-alt-shift-n
+# click in window top-right but closer to middle
 alias ckm='cliclick "c:2005,95"'
+# click top middle - will hide menu
+alias ck8='cliclick "c:1300,95"'
+# like ck8 but just move with no click
+alias cm='cliclick "m:1300,95"' #alfred: ctrl-alt-shift-m
+# click top left
+alias ck7='cliclick "c:150,75"'
+# click middle right
+alias ck6='cliclick "c:2285,495"'
+# click middle middle
+alias ck5='cliclick "c:1200,680"'
+# click middle left
+alias ck4='cliclick "c:200,595"'
 # click bottom right in window
-alias ckr='cliclick "c:2525,1395"'
+alias ckr='cliclick "c:2525,1395"' #legacy
+alias ck3='cliclick "c:2525,1395"'
+# click bottom middle in window - dock will unhide
+alias ck2='cliclick "c:1200,2095"'
+# click bottom left in window
+alias ck1='cliclick "c:180,1895"'
+# -- end cliclick aliases
 alias cnv='cd ~/.config/nvim'
 alias cov='open coverage/index.html'
 alias cpnotes='cp -R  ~/notes/ ~/Dropbox/notes'
