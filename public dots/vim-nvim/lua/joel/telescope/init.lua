@@ -62,6 +62,9 @@ require("telescope").load_extension "bookmarks"
 -- require zoxide for telescope
 require("telescope").load_extension "zoxide"
 
+-- GitHub CLI
+require("telescope").load_extension "gh"
+
 -- telescope-repo
 require("telescope").load_extension "repo"
 
@@ -74,6 +77,20 @@ function M.repo_list()
   opts.prompt_title = " Repos"
   require("telescope").extensions.repo.list(opts)
 end
+
+-- requires GitHub extension
+function M.gh_issues()
+  local opts = {}
+  opts.prompt_title = " Issues"
+  require("telescope").extensions.gh.issues(opts)
+end
+
+function M.gh_prs()
+  local opts = {}
+  opts.prompt_title = " Pull Requests"
+  require("telescope").extensions.gh.pull_request(opts)
+end
+-- end github functions
 
 function M.grep_prompt()
   require("telescope.builtin").grep_string {
@@ -139,23 +156,6 @@ M.project_files = function()
   end
 end
 
--- find files in popular dirs
--- function M.find_files()
---     require('telescope.builtin').find_files {
---         prompt_title = ' Find Files',
---         shorten_path = false,
---         -- file_ignore_patterns = { "Dropbox/.*", "Library/.*", "code_smell/.*", ".rustup/.*", "Movies/" },
---         search_dirs = {
---             '~/.oh-my-zsh/custom/'
---         },
---         hidden = true,
---         cwd = '~',
---         width = .25,
---         layout_strategy = 'horizontal',
---         layout_config = {preview_width = 0.65}
---     }
--- end
--- @TODOUA: work HOME dot files into one of these
 -- @TODOUA: break up notes and configs
 function M.grep_notes()
   local opts = {}

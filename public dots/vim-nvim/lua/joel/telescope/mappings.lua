@@ -151,9 +151,9 @@ key_map("n", "<space>g", [[<Cmd>lua require'joel.telescope'.grep_prompt()<CR>]],
 key_map("n", "<leader>nc", [[<Cmd>lua require'joel.telescope'.nvim_config()<CR>]], { noremap = true, silent = true })
 
 -- Github issues
-key_map("n", "<leader>is", [[<Cmd>Octo issue list<CR>]], { noremap = true, silent = true })
+key_map("n", "<leader>is", [[<Cmd>lua require'joel.telescope'.gh_issues()<CR>]], { noremap = true, silent = true })
 -- github PRs
-key_map("n", "<leader>pr", [[<Cmd>Octo pr list<CR>]], { noremap = true, silent = true })
+key_map("n", "<leader>pr", [[<Cmd>lua require'joel.telescope'.gh_prs()<CR>]], { noremap = true, silent = true })
 
 -- grep the Neovim source code with word under cursor → cword - just z to Neovim source for other actions
 key_map("n", "<leader>ns", [[<Cmd>lua require'joel.telescope'.grep_nvim_src()<CR>]], { noremap = true, silent = true })
