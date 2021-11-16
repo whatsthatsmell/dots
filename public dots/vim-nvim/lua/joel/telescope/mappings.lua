@@ -59,6 +59,10 @@ key_map("n", "gl", [[<Cmd>lua require'telescope.builtin'.git_commits()<CR>]], { 
 -- git_status - <tab> to toggle staging
 key_map("n", "gs", [[<Cmd>lua require'telescope.builtin'.git_status()<CR>]], { noremap = true, silent = true })
 -- ** the Telescope comma maps **
+
+-- registers picker
+key_map("n", "<space>r", [[<Cmd>lua require'telescope.builtin'.registers()<CR>]], { noremap = true, silent = true })
+
 -- find files with names that contain cursor word
 key_map(
   "n",
@@ -154,6 +158,14 @@ key_map("n", "<leader>nc", [[<Cmd>lua require'joel.telescope'.nvim_config()<CR>]
 key_map("n", "<leader>is", [[<Cmd>lua require'joel.telescope'.gh_issues()<CR>]], { noremap = true, silent = true })
 -- github PRs
 key_map("n", "<leader>pr", [[<Cmd>lua require'joel.telescope'.gh_prs()<CR>]], { noremap = true, silent = true })
+
+-- neoclip
+key_map(
+  "n",
+  "<C-n>",
+  [[<Cmd>lua require('telescope').extensions.neoclip.plus()<CR>]],
+  { noremap = true, silent = true }
+)
 
 -- grep the Neovim source code with word under cursor → cword - just z to Neovim source for other actions
 key_map("n", "<leader>ns", [[<Cmd>lua require'joel.telescope'.grep_nvim_src()<CR>]], { noremap = true, silent = true })

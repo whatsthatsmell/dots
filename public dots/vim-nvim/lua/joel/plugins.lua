@@ -13,7 +13,12 @@ return require("packer").startup {
     use "ellisonleao/glow.nvim"
     use "mogelbrod/vim-jsonpath"
     use "dhruvmanila/telescope-bookmarks.nvim"
-
+    use {
+      "AckslD/nvim-neoclip.lua",
+      config = function()
+        require("neoclip").setup()
+      end,
+    }
     use {
       "luukvbaal/stabilize.nvim",
       config = function()

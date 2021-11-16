@@ -53,6 +53,7 @@ require("telescope").setup {
   },
 }
 
+-- extensions --
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-fzf-nativenvim
 require("telescope").load_extension "fzf"
 
@@ -67,6 +68,9 @@ require("telescope").load_extension "gh"
 
 -- telescope-repo
 require("telescope").load_extension "repo"
+
+-- neoclip
+require("telescope").load_extension "neoclip"
 
 -- my telescopic customizations
 local M = {}
