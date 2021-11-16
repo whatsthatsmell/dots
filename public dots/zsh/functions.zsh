@@ -77,6 +77,16 @@ ghrr() {
   fi
 }
 
+# select a PR and approve it after a short sleep
+ghprsa() {
+  local prid
+  prid=$(gh pr list -L100 | fzf | cut -f1)
+  if [[ -n $prid ]]
+  then
+    sleep 635 && gh pr review $prid --approve
+  fi
+}
+
 # select from all PRs and view in vim
 ghprl() {
   local prid

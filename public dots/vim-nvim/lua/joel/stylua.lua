@@ -1,3 +1,4 @@
+-- Credit: https://git.io/tjsstylua
 local Path = require "plenary.path"
 local Job = require "plenary.job"
 
@@ -20,7 +21,13 @@ local stylua_finder = function(path)
         break
       end
 
-      local stylua_path = Path:new { dir, ".stylua.toml" }
+      local stylua_path = Path:new { dir, "stylua.toml" }
+      if stylua_path:exists() then
+        cached_configs[path] = stylua_path:absolute()
+        break
+      end
+
+      stylua_path = Path:new { dir, ".stylua.toml" }
       if stylua_path:exists() then
         cached_configs[path] = stylua_path:absolute()
         break
@@ -32,8 +39,7 @@ local stylua_finder = function(path)
 end
 
 local stylua = {}
--- @TODOUA: it appears that GitSigns loses its place when this happens.
--- is this still happening??
+
 stylua.format = function(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
 
@@ -64,11 +70,11 @@ stylua.format = function(bufnr)
   end
 
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
-  -- vim.api.nvim_buf_clear_namespace(bufnr, Luasnip_ns_id, 0, -1)
-  -- not using Luasnip 'yet', like vsnip
-  vim.api.nvim_buf_clear_namespace(bufnr, -1, 0, -1)
+  -- pcall(vim.api.nvim_buf_clear_namespace, bufnr, Luasnip_ns_id, 0, -1)
+
+  -- Handle some weird snippet problems. Not everyone will necessarily have this problem.
+  -- Luasnip_current_nodes = Luasnip_current_nodes or {}
   -- Luasnip_current_nodes[bufnr] = nil
-  -- @TODOUA: setup Luasnip? I like vsnip
 end
 
 return stylua

@@ -17,9 +17,9 @@ key_map("n", "<Leader>\\", ":set hlsearch! cursorline! cursorcolumn!<CR>", { nor
 
 -- cliclick maps - MacOS specific - 2560x1440
 -- cliclick → CLICK system notification banner
-key_map("n", ",cn", ":lua require('joel.funcs').click_banner_notification()<CR>", { noremap = true })
+key_map("n", ",cn", ":lua require('joel.funcs').click_banner_notification()<CR>", { noremap = true, silent = true })
 -- cliclick -> MOVE pointer off top Mac sys menu - so the menu hides
-key_map("n", ",cm", ":lua require('joel.funcs').move_pointer_off_menu()<CR>", { noremap = true })
+key_map("n", ",cm", ":lua require('joel.funcs').move_pointer_off_menu()<CR>", { noremap = true, silent = true })
 
 -- Yank Current File Name
 key_map("n", "<leader>fp", ":lua require('joel.funcs').yank_current_file_name()<CR>", {

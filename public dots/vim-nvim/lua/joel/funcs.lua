@@ -66,15 +66,15 @@ end
 -- cliclick goodness
 -- click notification banner. MacOS specific - 2560x1440
 function M.click_banner_notification()
-  local content = utils.get_os_command_output({ "cliclick", "c:2525,30" }, "~")
-  return content
+  local _ = utils.get_os_command_output({ "cliclick", "c:2525,30" }, "~")
+  return _
 end
 
 -- cliclick -> move pointer off top Mac sys menu - MacOS specific - 2560x1440
 -- most annoying issue in Big Sur!!!!
 function M.move_pointer_off_menu()
-  local content = utils.get_os_command_output({ "cliclick", "m:1300,95" }, "~")
-  return content
+  local _ = utils.get_os_command_output({ "cliclick", "m:1300,95" }, "~")
+  return _
 end
 
 return M
