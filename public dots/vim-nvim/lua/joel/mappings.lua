@@ -16,11 +16,10 @@ key_map("n", ",P", '"0P', { noremap = true })
 key_map("n", "<Leader>\\", ":set hlsearch! cursorline! cursorcolumn!<CR>", { noremap = true, silent = true })
 
 -- cliclick maps - MacOS specific - 2560x1440
--- @TODOUA: do these cliclick commands up right with a plenary jobs
--- quick temp solution for running cliclick -> click system notification banner
-key_map("n", ",ck", [[:!cliclick "c:2525,30"<CR>]], { noremap = true })
--- quick temp solution for running cliclick -> move mouse off top Mac sys menu
-key_map("n", ",cm", [[:!cliclick "m:1300,95"<CR>]], { noremap = true })
+-- cliclick → CLICK system notification banner
+key_map("n", ",cn", ":lua require('joel.funcs').click_banner_notification()<CR>", { noremap = true })
+-- cliclick -> MOVE pointer off top Mac sys menu - so the menu hides
+key_map("n", ",cm", ":lua require('joel.funcs').move_pointer_off_menu()<CR>", { noremap = true })
 
 -- Yank Current File Name
 key_map("n", "<leader>fp", ":lua require('joel.funcs').yank_current_file_name()<CR>", {

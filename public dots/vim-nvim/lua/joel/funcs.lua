@@ -1,9 +1,6 @@
 local utils = require "joel.utils"
 local Job = require "plenary.job"
 
--- Functions I need/want
--- @TODOUA: run cliclick from Vim quickly
-
 -- add current line as task to todoist
 -- Using: https://github.com/sachaos/todoist
 -- @TODOUA: check latest source for new features like 'Description'
@@ -65,4 +62,19 @@ function M.clear_notification_history()
     print "Notification History Remains"
   end
 end
+
+-- cliclick goodness
+-- click notification banner. MacOS specific - 2560x1440
+function M.click_banner_notification()
+  local content = utils.get_os_command_output({ "cliclick", "c:2525,30" }, "~")
+  return content
+end
+
+-- cliclick -> move pointer off top Mac sys menu - MacOS specific - 2560x1440
+-- most annoying issue in Big Sur!!!!
+function M.move_pointer_off_menu()
+  local content = utils.get_os_command_output({ "cliclick", "m:1300,95" }, "~")
+  return content
+end
+
 return M
