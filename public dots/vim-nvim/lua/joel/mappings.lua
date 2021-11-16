@@ -14,9 +14,14 @@ key_map("n", ",P", '"0P', { noremap = true })
 -- toggle search highlights with cursorline & cursorcolumn
 -- See augroup nvim-incsearch-cursorline for symmetry
 key_map("n", "<Leader>\\", ":set hlsearch! cursorline! cursorcolumn!<CR>", { noremap = true, silent = true })
--- quick temp solution for running main cliclick cmd
--- @TODOUA: do this up right with a plenary job
+
+-- cliclick maps - MacOS specific - 2560x1440
+-- @TODOUA: do these cliclick commands up right with a plenary jobs
+-- quick temp solution for running cliclick -> click system notification banner
 key_map("n", ",ck", [[:!cliclick "c:2525,30"<CR>]], { noremap = true })
+-- quick temp solution for running cliclick -> move mouse off top Mac sys menu
+key_map("n", ",cm", [[:!cliclick "m:1300,95"<CR>]], { noremap = true })
+
 -- Yank Current File Name
 key_map("n", "<leader>fp", ":lua require('joel.funcs').yank_current_file_name()<CR>", {
   noremap = true,
