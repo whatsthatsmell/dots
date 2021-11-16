@@ -62,9 +62,6 @@ require("telescope").load_extension "bookmarks"
 -- require zoxide for telescope
 require("telescope").load_extension "zoxide"
 
--- github CLI
-require("telescope").load_extension "gh"
-
 -- telescope-repo
 require("telescope").load_extension "repo"
 
@@ -77,25 +74,6 @@ function M.repo_list()
   opts.prompt_title = " Repos"
   require("telescope").extensions.repo.list(opts)
 end
-
--- requires github extension
-function M.gh_issues()
-  local opts = {}
-  opts.prompt_title = " Issues"
-  -- opts.author = '@me'
-  require("telescope").extensions.gh.issues(opts)
-end
-
--- @TODOUA: works for basic/default scenarios, file issue or PR
--- Use my fzf-gh for now for PRs
-function M.gh_prs()
-  local opts = {}
-  opts.prompt_title = " Pull Requests"
-  -- opts.author = 'joelpalmer'
-  -- opts.search = 'is:open is:pr review-requested:@me'
-  require("telescope").extensions.gh.pull_request(opts)
-end
--- end github functions
 
 function M.grep_prompt()
   require("telescope.builtin").grep_string {

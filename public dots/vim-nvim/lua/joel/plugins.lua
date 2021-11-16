@@ -47,7 +47,15 @@ return require("packer").startup {
     -- Telescope plugins
     -- using local telescope branch, see below
     -- use 'nvim-telescope/telescope.nvim'
-    use "nvim-telescope/telescope-github.nvim"
+    -- use "nvim-telescope/telescope-github.nvim"
+
+    -- trying octo again, it has come a long way, it appears!
+    use {
+      "pwntester/octo.nvim",
+      config = function()
+        require("octo").setup()
+      end,
+    }
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use "jvgrootveld/telescope-zoxide"
     use "andymass/vim-matchup"
@@ -107,7 +115,6 @@ return require("packer").startup {
       end,
       requires = { "kyazdani42/nvim-web-devicons" },
     }
-    -- use '~/vim-dev/plugins/fzf-gh.vim'
 
     use {
       "lewis6991/gitsigns.nvim",
@@ -121,8 +128,6 @@ return require("packer").startup {
     use "~/vim-dev/plugins/codesmell_dark.vim"
     use "~/vim-dev/plugins/telescope.nvim"
     -- local - updated to support worktrees
-    -- loading the plugin, the author fixed the worktree issue
-    -- use "~/vim-dev/plugins/telescope-repo.nvim"
 
     -- Lua Rocks 🎸
     -- don't forget env setting at top if uncommenting
