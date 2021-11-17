@@ -193,6 +193,10 @@ require("gitsigns").setup {
     },
   },
   numhl = true,
+  keymaps = {
+    -- temp until this is impl'd: https://github.com/lewis6991/gitsigns.nvim/commit/5e49bb09f324580519d1ef41cb03bcb07536a239
+    ["n <leader>hb"] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
+  },
 }
 
 -- treesitter
