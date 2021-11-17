@@ -73,6 +73,9 @@ key_map("n", "<Leader>hn", [[<Cmd>lua require'gitsigns'.toggle_numhl()<CR>]], { 
 -- toogle Virtual current line blame → <leader>hb for Full line blame
 key_map("n", ",tb", [[<Cmd>lua require'gitsigns'.toggle_current_line_blame()<CR>]], { noremap = true, silent = true })
 
+-- toggle neoclip - https://github.com/AckslD/nvim-neoclip.lua#startstop
+key_map("n", ",tn", [[<Cmd>lua require('neoclip').toggle()<CR>]], { noremap = true, silent = true })
+
 -- use ZQ for :q! (quit & discard changes)
 -- Discard all changed buffers & quit
 key_map("n", "<Leader>Q", ":qall!<CR>", { noremap = true, silent = true })
@@ -82,7 +85,7 @@ key_map("n", "<Leader>W", ":wqall<CR>", { noremap = true, silent = true })
 -- @TODOUA: figure out the semantics of <space> vs <leader>
 --- ',' comma seems to have a pattern as a leader
 
--- *Buffer Stuff****
+--  **Buffer Stuff****
 --- <C-6> is toggle current and alt(last viewed)
 --- Go to next buffer - Skip Terminal buffers in specified splits (settings aug: UnlistSplitTerms )
 key_map("n", "<Leader><right>", [[<Cmd>bnext<CR>]], { noremap = true, silent = true })

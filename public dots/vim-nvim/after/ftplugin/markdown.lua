@@ -6,7 +6,7 @@ vim.opt.linebreak = true
 -- spell is not staying local for some reason
 -- have to set nospell in other fts that are opened after a markdown
 vim.opt_local.spell = true
-vim.conceallevel = 2
+vim.opt_local.conceallevel = 2
 
 -- Markdown Preview in browser
 -- For Glow, just type :Glow, I almost never use the :MarkdownPreview keymap, I type it.
