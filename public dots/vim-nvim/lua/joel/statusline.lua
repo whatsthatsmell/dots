@@ -18,6 +18,7 @@ local colors = {
   red2 = "#be5046",
   yellow = "#e5c07b",
   light_grey = "#99a0ab",
+  redish_white = "#FDEDD5",
   gray1 = "#5c6370",
   gray2 = "#2c323d",
   gray3 = "#3e4452",
@@ -312,7 +313,7 @@ gls.right[7] = {
       "GitBranch",
     },
     condition = condition.check_git_workspace,
-    highlight = { colors.middlegrey, colors.bg },
+    highlight = { colors.redish_white, colors.bg },
   },
 }
 
@@ -322,7 +323,7 @@ gls.right[8] = {
     condition = function()
       return utils.has_width_gt(50) and condition.check_git_workspace
     end,
-    highlight = { colors.fg, colors.bg },
+    highlight = { colors.neovim_green, colors.bg },
     separator = " ",
     separator_highlight = { colors.middlegrey, colors.bg },
   },

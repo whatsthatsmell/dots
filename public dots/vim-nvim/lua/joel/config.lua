@@ -22,7 +22,7 @@ local luadev = require("lua-dev").setup {
 
 lspconfig.sumneko_lua.setup(luadev)
 
--- nvim-web-devicons: https://www.nerdfonts.com/cheat-sheet
+-- nvim-web-devicons: https://www.nerdfonts.com/cheat-sheet →     
 require("nvim-web-devicons").setup {
   override = {
     zsh = { icon = "", color = "#428850", name = "Zsh" },
