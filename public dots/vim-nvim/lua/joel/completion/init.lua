@@ -10,7 +10,34 @@ vim.api.nvim_set_keymap("i", "<c-v>", "<c-x><c-v>", { noremap = true })
 -- Setup nvim-cmp
 local cmp = require "cmp"
 
+-- lspkind
 local lspkind = require "lspkind"
+lspkind.init {
+  with_text = true,
+  symbol_map = {
+    Text = "",
+    Method = "ƒ",
+    Function = "ﬦ",
+    Constructor = "",
+    Variable = "",
+    Class = "",
+    Interface = "ﰮ",
+    Module = "",
+    Property = "",
+    Unit = "",
+    Value = "",
+    Enum = "了",
+    Keyword = "",
+    Snippet = "﬌",
+    Color = "",
+    File = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "",
+    Struct = "",
+  },
+}
+
 -- @TODOUA: Try cmdline again soon, lots of updates since last tried
 cmp.setup {
   snippet = {
