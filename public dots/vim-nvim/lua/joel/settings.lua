@@ -122,7 +122,7 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.showcmd = false
 -- @TODOUA: consider using the global `cursorhold_updatetime` from FixCursorHold
-vim.o.updatetime = 3000
+vim.o.updatetime = 2000
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.pumblend = 5
