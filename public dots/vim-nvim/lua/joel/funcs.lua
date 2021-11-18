@@ -2,13 +2,12 @@ local utils = require "joel.utils"
 local Job = require "plenary.job"
 
 -- Create todoist task using currect selection (Neovim project and Neovim label)
--- Using: https://github.com/sachaos/todoist
--- @TODOUA: check latest source for new features like 'Description'
--- @TODOUA: Currently, the Neovim project is hardcoded, fix this
--- @TODOUA: ...Telescope integration for selecting projects and/or titles
--- @TODOUA: Support for label, priority, dates, etc. ??
--- -- Right now, the label 'Neovim' is hardcoded by its ID
--- -- Right now, priority 3 is hardcoded
+-- Using(for now): https://github.com/sachaos/todoist
+-- @TODOUA: possibly go directly to Todoist API to fill gaps in sachaos(as temp solve): https://developer.todoist.com/sync
+-- -- -- -- -- sections, description etc.
+-- -- -- -- -- sections possibly available all or in part in master: https://github.com/sachaos/todoist/pull/146
+-- @TODOUA: Scorched Earth: create a CLI or contrib to sachaos'
+-- @TODOUA: Currently, the Neovim project and label are hardcoded along with priority 3, Fix This
 
 local M = {}
 function M.create_todoist_task()
