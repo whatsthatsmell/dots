@@ -45,15 +45,6 @@ augroup end
 vim.fn.matchadd("matchURL", [[http[s]\?:\/\/[[:alnum:]%\/_#.-]*]])
 vim.cmd "hi matchURL guifg=Blue"
 
--- add current line as task to todoist - markdown files only (for now)
-vim.api.nvim_buf_set_keymap(
-  0,
-  "n",
-  "<localleader>t",
-  [[<Cmd>lua require'joel.funcs'.create_todoist_task()<CR>]],
-  { noremap = false }
-)
-
 -- Setup cmp setup buffer configuration - 👻 text off for markdown
 local cmp = require "cmp"
 cmp.setup.buffer {

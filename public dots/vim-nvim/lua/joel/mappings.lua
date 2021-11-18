@@ -27,6 +27,9 @@ key_map("n", "<leader>fp", ":lua require('joel.funcs').yank_current_file_name()<
   silent = true,
 })
 
+-- create task in todoist using current selection
+key_map("v", "<localleader>t", [[<Cmd>lua require'joel.funcs'.create_todoist_task()<CR>]], { noremap = false })
+
 -- clear nvim-notify notifications history
 key_map(
   "n",

@@ -1,31 +1,31 @@
 local utils = require "joel.utils"
 local Job = require "plenary.job"
 
--- add current line as task to todoist
+-- Create todoist task using currect selection (Neovim project and Neovim label)
 -- Using: https://github.com/sachaos/todoist
 -- @TODOUA: check latest source for new features like 'Description'
--- @TODOUA: Widen reach beyond markdown
 -- @TODOUA: Currently, the Neovim project is hardcoded, fix this
-
--- @TODOUA: Allow visual selection to be title? with...
 -- @TODOUA: ...Telescope integration for selecting projects and/or titles
-
 -- @TODOUA: Support for label, priority, dates, etc. ??
 -- -- Right now, the label 'Neovim' is hardcoded by its ID
 -- -- Right now, priority 3 is hardcoded
--- @TODOUA: Note to self: Maybe create a temp project like Inbox but only from here
--- -- -- This is already that. But, it might keep me up at night that it isn't really
 
 local M = {}
 function M.create_todoist_task()
-  local current_line = vim.trim(string.gsub(vim.api.nvim_get_current_line(), "-", ""))
-  local content = utils.get_os_command_output(
-    { "todoist", "add", current_line, "-N", "Neovim", "-d", "today", "-L", "2154624877", "-p", "3" },
+  local current_line = vim.fn.getline "."
+  local first_char = vim.fn.col "v"
+  local last_char = vim.fn.col "."
+  local selection = string.sub(current_line, first_char, last_char)
+
+  local ret_val = utils.get_os_command_output(
+    { "todoist", "add", selection, "-N", "Neovim", "-d", "today", "-L", "2154624877", "-p", "3" },
     "~"
   )
 
-  require "notify"("Task Added: " .. current_line, "info", { title = "Todoist" })
-  return content
+  require "notify"("Task Added: " .. selection, "info", { title = "Todoist" })
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "m", true)
+
+  return ret_val
 end
 
 function M.notify_current_datetime()
