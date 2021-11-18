@@ -21,7 +21,7 @@ iabbrev <buffer> #t #[test]<c-o>o<left>
 iabbrev <buffer> #p #[should_panic(expected = "")]<left><left><left>
 iabbrev <buffer> #b #[bench]<c-o>o<left>
 iabbrev <buffer> #i #[ignore]<c-o>o<left>
-
+" @TODOUA: Luatize these maps!
 " snippets for Rust - TODO: change autoselect next completion?
 let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
 " -- end snippets
@@ -51,7 +51,6 @@ nnoremap <silent><localleader>=  <cmd>lua vim.lsp.buf.formatting()<CR>
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-" lua vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 " rustfmt/vim-rust settings
 let g:rustfmt_autosave = 1

@@ -14,6 +14,102 @@ vim.api.nvim_exec(
   false
 )
 
+-- LSP buf maps
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "grn",
+  [[<cmd>lua vim.lsp.buf.rename()<CR>
+]],
+  { noremap = true }
+)
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "<c-]>",
+  [[<cmd>lua require'telescope.builtin'.lsp_definitions()<CR>
+]],
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "gr",
+  [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>
+]],
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(0, "n", "K", [[<cmd>lua vim.lsp.buf.hover()<CR>]], { noremap = true, silent = true })
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "<c-k>",
+  [[<cmd>lua vim.lsp.buf.signature_help()<CR>]],
+  { noremap = true, silent = true }
+)
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "gd",
+  [[<cmd>lua vim.lsp.buf.type_definition()<CR>]],
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(0, "n", "ga", [[<cmd>lua vim.lsp.buf.code_action()<CR>]], {
+  noremap = true,
+  silent = true,
+})
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "g0",
+  [[<cmd>lua vim.lsp.buf.document_symbol()<CR>]],
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "gW",
+  [[<cmd>lua vim.lsp.buf.workspace_symbol()<CR>]],
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(0, "n", "1gD", [[<cmd>lua vim.lsp.buf.definition()<CR>]], {
+  noremap = true,
+  silent = true,
+})
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "ge",
+  [[<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>]],
+  { noremap = true, silent = true }
+)
+
+-- Goto previous/next diagnostic warning/error
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "g[",
+  [[<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]],
+  { noremap = true, silent = true }
+)
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "g]",
+  [[<cmd>lua vim.lsp.diagnostic.goto_next()<CR>]],
+  { noremap = true, silent = true }
+)
+-- end of LSP buf maps
+
 vim.api.nvim_exec(
   [[
 setlocal formatoptions-=o
@@ -23,26 +119,12 @@ nmap <silent><localleader>1 :luafile%<cr>
 " snippets for Lua - TODO: change autoselect next completion?
 let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
 
-" lsp mappings and all the goodness
-" Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-
 "signs defined
 sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
 sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
 sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
 ]],
   false
-)
-
-vim.api.nvim_buf_set_keymap(
-  0,
-  "n",
-  "grn",
-  [[<cmd>lua vim.lsp.buf.rename()<CR>
-]],
-  { noremap = true }
 )
 
 -- HL @TODOUAs
