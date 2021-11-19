@@ -7,21 +7,29 @@ local Job = require "plenary.job"
 -- -- -- -- -- sections, description etc.
 -- -- -- -- -- sections possibly available all or in part in master: https://github.com/sachaos/todoist/pull/146
 -- @TODOUA: Scorched Earth: create a CLI or contrib to sachaos'
--- @TODOUA: Currently, the Neovim project and label are hardcoded along with priority 3, Fix This
-
+-- @TODOUA: Currently, priority is hardcoded to 3, Fix this & add picker for fields
 local M = {}
-function M.create_todoist_task()
+function M.create_todoist_task(opts)
+  opts = opts or {}
+  -- default: My 'Neovim' project & 'Neovim' label
+  local project_id = opts.proj_id or 2251750391
+  local label_id = opts.label_id or 2154624877
   local current_line = vim.fn.getline "."
   local first_char = vim.fn.col "v"
   local last_char = vim.fn.col "."
   local selection = string.sub(current_line, first_char, last_char)
 
+  local identifier = "Neovim"
+  if project_id ~= 2251750391 then
+    identifier = "Work"
+  end
+
   local ret_val = utils.get_os_command_output(
-    { "todoist", "add", selection, "-N", "Neovim", "-d", "today", "-L", "2154624877", "-p", "3" },
+    { "todoist", "add", selection, "-P", project_id, "-d", "today", "-L", label_id, "-p", "3" },
     "~"
   )
 
-  require "notify"("Task Added: " .. selection, "info", { title = "Todoist" })
+  require "notify"(identifier .. " Task Added: " .. selection, "info", { title = "Todoist" })
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "m", true)
 
   return ret_val
