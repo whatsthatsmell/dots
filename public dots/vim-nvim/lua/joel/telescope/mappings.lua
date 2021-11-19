@@ -108,9 +108,10 @@ key_map(
 key_map(
   "n",
   ",b",
-  [[<Cmd>lua require'telescope.builtin'.buffers({prompt_title = 'Find Buffer', results_title='Buffers', layout_strategy = 'vertical', layout_config = { width = 0.40, height = 0.55 }})<CR>]],
+  [[<Cmd>lua require'telescope.builtin'.buffers({prompt_title = '', results_title='﬘', winblend = 2, layout_strategy = 'vertical', layout_config = { width = 0.40, height = 0.55 }})<CR>]],
   { noremap = true, silent = true }
 )
+
 key_map(
   "n",
   ",h",
