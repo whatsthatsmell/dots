@@ -9,21 +9,21 @@ _Last Updated: 19-Nov-2021 or more recently._
   - However, a lot of API changes are coming out of Neovim on the 0.6 track (master). So, I'd recommend using [Neovim Nightly](https://github.com/neovim/neovim/releases/tag/nightly) to use all the goodness in these Dotfiles. Or, [building from source](https://github.com/neovim/neovim#install-from-source) - [Code Smell video instructions](https://youtu.be/wep2_b_QU7Q). It's unlikely that I am more than a day or 2 behind. 
   - The Neovim commit that I am on: `NVIM v0.6.0-dev+600-gf71be1f87`
 	- Theme: [codesmell_dark](https://github.com/whatsthatsmell/codesmell_dark.vim)
-	- Config: Lua
-	- Package Management: Packer
-	- Notable Plugins: `Telescope 🔭`, `gitsigns` and `nvim-cmp`
+	  - `Telescope`, `nvim-cmp`, `GitSigns`, many other plugins and builtins are colored from this theme using `Treesitter 🌲` 
+	- Config: [Lua](https://neovim.io/doc/user/lua.html)
+	- Package Management: [Packer](https://github.com/wbthomason/packer.nvim)
+	- Featuring: `Telescope 🔭`, `gitsigns`, `nvim-cmp`, `Treesitter` and all the LSP goodness
 - [Alacritty](https://github.com/alacritty/alacritty) and 2 [iTerm Hotkey Windows](https://www.iterm2.com/)
     - Zsh Theme: [code-smell.zsh-theme](https://github.com/whatsthatsmell/dots/blob/master/public%20dots/zsh/code-smell.zsh-theme)
 - Zsh  
-    - [Oh My Zsh](https://ohmyz.sh/) - _Phasing it out_
+    - [Oh My Zsh](https://ohmyz.sh/) - _For now_
 
 _I update my private Dotfiles on a regular basis. They're in a private repo. However, I try to keep these up-to-date. Use Git's history to look at files as they were in the past. If you are looking for a file that is not here anymore, please look through the Git history. [Call me out in the comments](https://www.youtube.com/CodeSmell) if you see something that isn't in this repo._
 
-The Neovim command that you need if you love to work on your configs (you know you do) is:
+The `gitsigns` map that will make your life better:
 ```lua
--- The greatest neovim command ever (other than :Telescope).
--- https://github.com/nvim-treesitter/playground#show-treesitter-and-syntax-highlight-groups-under-the-cursor
-vim.api.nvim_set_keymap("n", ",t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
+-- toogle virtual current line blame → <leader>hb for Full line blame
+key_map("n", ",tb", [[<Cmd>lua require'gitsigns'.toggle_current_line_blame()<CR>]], { noremap = true, silent = true })
 ```
 
 https://git.io/CodeSmell
