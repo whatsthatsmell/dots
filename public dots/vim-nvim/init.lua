@@ -1,6 +1,5 @@
 -- Always on bleeding edge Neovim from https://git.io/NeovimHEAD --
 
--- *** Neovim Config Luatized *** --
 -- plugins
 require "joel.plugins"
 

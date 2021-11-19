@@ -11,9 +11,13 @@ key_map("n", "_", '"_', { noremap = true })
 -- paste last thing yanked(not system copied), not deleted
 key_map("n", ",p", '"0p', { noremap = true })
 key_map("n", ",P", '"0P', { noremap = true })
--- toggle search highlights with cursorline & cursorcolumn
+
+-- toggle search highlights with cursorline & cursorcolumn: crosshairs
 -- See augroup nvim-incsearch-cursorline for symmetry
-key_map("n", "<Leader>\\", ":set hlsearch! cursorline! cursorcolumn!<CR>", { noremap = true, silent = true })
+key_map("n", "<Leader>\\", [[<Cmd>lua require'joel.settings'.toggle_crosshairs()<CR>]], {
+  noremap = true,
+  silent = true,
+})
 
 -- cliclick maps - MacOS specific - 2560x1440
 -- cliclick → CLICK system notification banner
@@ -56,9 +60,6 @@ key_map("o", "iu", ':<c-u>lua require"treesitter-unit".select()<CR>', { noremap 
 key_map("o", "au", ':<c-u>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
 -- For reference, no map:
 -- :lua require"treesitter-unit".toggle_highlighting(higroup?)
-
--- turn off hlsearch, cursorline & cursorcolumn - @TODOUA: fix these 2
-key_map("n", "<Leader>/", ":set nohlsearch nocursorline nocursorcolumn<CR>", { noremap = true, silent = true })
 
 -- one of the greatest commands ever
 key_map("n", "<space>t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
