@@ -169,19 +169,24 @@ let g:test#runner_commands = ['Jest']
 )
 -- * End of vim-test settings * --
 
--- indent-blankline settings
+-- indent-blankline (& list) settings
+-- https://github.com/lukas-reineke/indent-blankline.nvim
+-- g:indent_blankline_disable_with_nolist not working for me (19-Nov-2021)
 vim.opt.list = false
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 vim.opt.listchars:append "trail:"
--- @TODOUA: make indent lines lighter
 require("indent_blankline").setup {
-  show_end_of_line = true,
   space_char_blankline = " ",
   buftype_exclude = { "terminal", "help", "telescope" },
   show_current_context = true,
   use_treesitter = true,
   enabled = false,
+  -- in theme
+  char_highlight_list = {
+    "IndentBlanklineIndent1",
+    "IndentBlanklineIndent2",
+  },
 }
 
 local M = {}

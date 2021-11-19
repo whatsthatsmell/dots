@@ -53,13 +53,11 @@ key_map(
 -- Open File Name under cursor in vert split
 key_map("n", "<leader>gf", ":vs <cfile><CR>", { noremap = false, silent = true })
 
--- treesitter-unit maps
+-- treesitter-unit select maps
 key_map("x", "iu", ':lua require"treesitter-unit".select()<CR>', { noremap = true })
 key_map("x", "au", ':lua require"treesitter-unit".select(true)<CR>', { noremap = true })
 key_map("o", "iu", ':<c-u>lua require"treesitter-unit".select()<CR>', { noremap = true })
 key_map("o", "au", ':<c-u>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
--- For reference, no map:
--- :lua require"treesitter-unit".toggle_highlighting(higroup?)
 
 -- one of the greatest commands ever
 key_map("n", "<space>t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
@@ -206,10 +204,12 @@ key_map("n", "<leader>cd", ":lcd %:p:h<cr>", { noremap = true, silent = true })
 key_map("n", "<leader>gd", ":Glcd<cr>", { noremap = true, silent = true })
 -- toggle foldcolumn - Toggles are usually leader ,t + one-letter identifier
 key_map("n", ",tf", ":lua require'joel.settings'.toggle_fold_col()<CR>", { noremap = true, silent = true })
--- toggle IndentBlankline with set line! - both off by default
-key_map("n", ",ti", ":IndentBlanklineToggle<CR>:set list!<CR>", { noremap = true, silent = true })
 -- toggle colorizer: will be toggled on by default for appropriate fts
 key_map("n", ",tc", ":ColorToggle<CR>", { noremap = false, silent = true })
+-- toggle IndentBlankline → `:set list` manually as needed
+key_map("n", ",ti", ":IndentBlanklineToggle<CR>", { noremap = true, silent = true })
+-- toggle scope highlight
+key_map("n", ",th", ":lua require'treesitter-unit'.toggle_highlighting()<CR>", { noremap = true, silent = true })
 
 -- Use <Del> to Esc from (almost) all the things
 -- Note: <Esc> does not exit terminal mode by default
