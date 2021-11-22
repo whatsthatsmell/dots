@@ -129,6 +129,22 @@ vim.api.nvim_buf_set_keymap(
 )
 -- end of LSP buf maps
 
+-- define LSP signs
+vim.fn.sign_define("DiagnosticSignHint", {
+  text = "",
+  texthl = "DiagnosticSignHint",
+})
+
+vim.fn.sign_define("DiagnosticSignWarn", {
+  text = "",
+  texthl = "DiagnosticSignWarn",
+})
+
+vim.fn.sign_define("DiagnosticSignError", {
+  text = "",
+  texthl = "DiagnosticSignError",
+})
+
 vim.api.nvim_exec(
   [[
 " treesitter folding
@@ -146,11 +162,6 @@ hi rainbowcol6 guifg=#1B9C36
 
 " open braces
 inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
-
-"Signs
-sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
-sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
-sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
 
 " snippets for JS - TODO: change autoselect next completion?
 let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/javascript/')

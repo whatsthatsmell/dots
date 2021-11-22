@@ -7,10 +7,6 @@ setlocal foldexpr=nvim_treesitter#foldexpr()
 setlocal foldnestmax=3
 setlocal foldlevel=1
 
-"Signs
-sign define DiagnosticSignHint text=ⓗ  texthl=DiagnosticSignHint linehl= numhl=
-sign define DiagnosticSignWarning text= texthl=DiagnosticSignWarning linehl= numhl=
-sign define DiagnosticSignError text=! texthl=DiagnosticSignError linehl= numhl=
 " my snippets
 iabbrev <buffer> w18 #![warn(rust_2018_idioms)]
 " this is pd and ppd with rust-analyzer Magic Completions
@@ -64,6 +60,22 @@ noremap <silent><localleader>cr :Crun<cr>
 ]],
   false
 )
+
+-- define LSP signs
+vim.fn.sign_define("DiagnosticSignHint", {
+  text = "",
+  texthl = "DiagnosticSignHint",
+})
+
+vim.fn.sign_define("DiagnosticSignWarn", {
+  text = "",
+  texthl = "DiagnosticSignWarn",
+})
+
+vim.fn.sign_define("DiagnosticSignError", {
+  text = "",
+  texthl = "DiagnosticSignError",
+})
 
 -- Show diagnostic popup on cursor hold
 vim.api.nvim_exec(

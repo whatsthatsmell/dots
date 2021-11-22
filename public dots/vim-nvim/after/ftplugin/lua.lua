@@ -118,14 +118,25 @@ nmap <silent><localleader>1 :luafile%<cr>
 
 " snippets for Lua - TODO: change autoselect next completion?
 let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
-
-"signs defined
-sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=
-sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=
-sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=
 ]],
   false
 )
+
+-- define LSP signs
+vim.fn.sign_define("DiagnosticSignHint", {
+  text = "",
+  texthl = "DiagnosticSignHint",
+})
+
+vim.fn.sign_define("DiagnosticSignWarn", {
+  text = "",
+  texthl = "DiagnosticSignWarn",
+})
+
+vim.fn.sign_define("DiagnosticSignError", {
+  text = "",
+  texthl = "DiagnosticSignError",
+})
 
 -- HL @TODOUAs
 vim.fn.matchadd("Todoua", [[@TODOUA:]])
