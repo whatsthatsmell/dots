@@ -25,7 +25,7 @@ key_map("n", ",cn", ":lua require('joel.funcs').click_banner_notification()<CR>"
 -- cliclick -> MOVE pointer off top Mac sys menu - so the menu hides
 key_map("n", ",cm", ":lua require('joel.funcs').move_pointer_off_menu()<CR>", { noremap = true, silent = true })
 
--- toggle bool work - true/false
+-- toggle bool word - true/false
 key_map(
   "n",
   "gtb",
