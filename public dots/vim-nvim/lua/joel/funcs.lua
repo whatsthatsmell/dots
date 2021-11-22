@@ -83,5 +83,17 @@ function M.move_pointer_off_menu()
   local _ = utils.get_os_command_output({ "cliclick", "m:1300,95" }, "~")
   return _
 end
+-- end of cliclick goodness
+
+-- toggle boolean word - true/false
+function M.toggle_bool(args)
+  if args.word == "true" then
+    vim.cmd [[norm ciwfalse]]
+  elseif args.word == "false" then
+    vim.cmd [[norm ciwtrue]]
+  else
+    print "Word under cursor needs to be 'true' or 'false"
+  end
+end
 
 return M

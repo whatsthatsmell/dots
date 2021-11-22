@@ -25,6 +25,14 @@ key_map("n", ",cn", ":lua require('joel.funcs').click_banner_notification()<CR>"
 -- cliclick -> MOVE pointer off top Mac sys menu - so the menu hides
 key_map("n", ",cm", ":lua require('joel.funcs').move_pointer_off_menu()<CR>", { noremap = true, silent = true })
 
+-- toggle bool work - true/false
+key_map(
+  "n",
+  "gtb",
+  ":lua require('joel.funcs').toggle_bool({word=vim.fn.expand('<cword>')})<CR>",
+  { noremap = true, silent = true }
+)
+
 -- Yank Current File Name
 key_map("n", "<leader>fp", ":lua require('joel.funcs').yank_current_file_name()<CR>", {
   noremap = true,

@@ -50,7 +50,7 @@ require("telescope").setup {
     },
     mappings = { n = { ["<Del>"] = actions.close } },
     dynamic_preview_title = true,
-    winblend = 5,
+    winblend = 3,
   },
 }
 
