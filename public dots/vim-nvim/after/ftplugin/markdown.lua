@@ -53,7 +53,7 @@ cmp.setup.buffer {
     { name = "spell" },
     {
       name = "buffer",
-      opts = {
+      option = {
         get_bufnrs = function()
           -- @TODOUA: Trying out just populate from visible buffers. Keep?
           local bufs = {}

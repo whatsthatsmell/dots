@@ -7,7 +7,7 @@ autocmd FileType vim lua require'cmp'.setup.buffer {
 \     { name = 'treesitter' },
 \     {
 \      name = 'buffer',
-\      opts = {
+\      option = {
 \        get_bufnrs = function()
 \          return vim.api.nvim_list_bufs()
 \        end,
