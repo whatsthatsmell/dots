@@ -2,6 +2,7 @@ vim.opt_local.textwidth = 120
 vim.opt_local.shiftwidth = 2
 vim.opt_local.colorcolumn = "121"
 vim.opt_local.spell = false
+vim.opt_local.formatoptions = "jcrql"
 
 -- Show diagnostic float on CursorHold but don't steal cursor
 vim.api.nvim_exec(
@@ -101,6 +102,7 @@ vim.api.nvim_buf_set_keymap(
   [[<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]],
   { noremap = true, silent = true }
 )
+
 vim.api.nvim_buf_set_keymap(
   0,
   "n",
@@ -110,17 +112,12 @@ vim.api.nvim_buf_set_keymap(
 )
 -- end of LSP buf maps
 
-vim.api.nvim_exec(
-  [[
-setlocal formatoptions-=o
-" source the file -
-nmap <silent><localleader>1 :luafile%<cr>
+-- Other maps
+-- Source the file
+vim.api.nvim_buf_set_keymap(0, "n", "<localleader>1", [[<cmd>luafile%<CR>]], { noremap = false, silent = true })
 
-" snippets for Lua - TODO: change autoselect next completion?
-let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
-]],
-  false
-)
+-- snippets dir- vsnip. Need to try LuaSnip
+vim.b.vsnip_snippet_dir = vim.fn.expand "~/.config/nvim/snippets/"
 
 -- define LSP signs
 vim.fn.sign_define("DiagnosticSignHint", {

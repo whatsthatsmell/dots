@@ -2,7 +2,14 @@ vim.opt_local.linebreak = true
 vim.opt_local.colorcolumn = "81"
 vim.opt_local.spell = false
 
--- ** Test and coverage related - Jest **
+-- treesitter folding
+vim.opt_local.foldmethod = "expr"
+vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt_local.foldnestmax = 3
+vim.opt_local.foldlevel = 1
+
+-- ** Key Maps ** --
+-- *** Test and coverage related - Jest **
 -- these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
 -- Test running keymaps for JavaScript and Jest
 -- @TODOUA: I don't always want the `-i`
@@ -129,6 +136,20 @@ vim.api.nvim_buf_set_keymap(
 )
 -- end of LSP buf maps
 
+-- execute visual selection in node REPL
+vim.api.nvim_buf_set_keymap(0, "v", "<localleader>1", ":w !node -p<cr>", { noremap = false, silent = true })
+
+-- wrap selection in JSON.stringify(*)
+vim.api.nvim_buf_set_keymap(0, "v", ",js", [[cJSON.stringify(<c-r>"<esc>>]], { noremap = false })
+
+-- wrap selection in console.log
+vim.api.nvim_buf_set_keymap(0, "v", ",cl", [[cconsole.log(<c-r>"<esc>]], { noremap = false })
+
+-- end of key maps
+
+-- snippets dir- vsnip. Need to try LuaSnip
+vim.b.vsnip_snippet_dir = vim.fn.expand "~/.config/nvim/snippets/javascript/"
+
 -- define LSP signs
 vim.fn.sign_define("DiagnosticSignHint", {
   text = "",
@@ -147,33 +168,12 @@ vim.fn.sign_define("DiagnosticSignError", {
 
 vim.api.nvim_exec(
   [[
-" treesitter folding
-setlocal foldmethod=expr
-setlocal foldexpr=nvim_treesitter#foldexpr()
-setlocal foldnestmax=3
-setlocal foldlevel=1
-
 " rainbow color HLs
 hi rainbowcol1 guifg=#4B4DA4
 hi rainbowcol2 guifg=#C7C84A
 hi rainbowcol3 guifg=#8182EB
 hi rainbowcol4 guifg=#BCCEA3
 hi rainbowcol6 guifg=#1B9C36
-
-" open braces
-inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
-
-" snippets for JS - TODO: change autoselect next completion?
-let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/javascript/')
-
-" retab - fix existing after expandtab
-nmap <silent>,rt :retab<cr>
-" execute visual selection in node REPL
-vmap <silent><localleader>1 :w !node -p<cr>
-" wrap selection in JSON.stringify(*)
-vmap ,js cJSON.stringify(<c-r>"<esc>
-" wrap selection in console.log
-vmap ,cl cconsole.log(<c-r>"<esc>
 ]],
   false
 )
