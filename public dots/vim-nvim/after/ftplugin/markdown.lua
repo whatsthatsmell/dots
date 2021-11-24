@@ -40,10 +40,10 @@ augroup end
   false
 )
 
--- match and highlight URLs
--- @TODOUA: see if/how colorbuddy can clean this or similar up
+-- match and highlight hyperlinks
+-- -- standalone
 vim.fn.matchadd("matchURL", [[http[s]\?:\/\/[[:alnum:]%\/_#.-]*]])
-vim.cmd "hi matchURL guifg=Blue"
+vim.cmd "hi matchURL guifg=DodgerBlue"
 
 -- Setup cmp setup buffer configuration - 👻 text off for markdown
 local cmp = require "cmp"
