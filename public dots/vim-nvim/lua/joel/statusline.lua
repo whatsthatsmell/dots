@@ -242,7 +242,22 @@ gls.left[13] = {
   DiagnosticHint = {
     provider = { "DiagnosticHint" },
     icon = " ",
-    highlight = { colors.blue, colors.bg },
+    highlight = { colors.brightgreen, colors.bg },
+  },
+}
+gls.left[14] = {
+  Space = {
+    provider = function()
+      return " "
+    end,
+    highlight = { colors.section_bg, colors.bg },
+  },
+}
+gls.left[15] = {
+  DiagnosticInfo = {
+    provider = { "DiagnosticInfo" },
+    icon = " ",
+    highlight = { colors.dodgerblue, colors.bg },
   },
 }
 

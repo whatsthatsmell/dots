@@ -151,9 +151,9 @@ vim.api.nvim_buf_set_keymap(0, "v", ",cl", [[cconsole.log(<c-r>"<esc>]], { norem
 vim.b.vsnip_snippet_dir = vim.fn.expand "~/.config/nvim/snippets/javascript/"
 
 -- define LSP signs
-vim.fn.sign_define("DiagnosticSignHint", {
-  text = "",
-  texthl = "DiagnosticSignHint",
+vim.fn.sign_define("DiagnosticSignError", {
+  text = "",
+  texthl = "DiagnosticSignError",
 })
 
 vim.fn.sign_define("DiagnosticSignWarn", {
@@ -161,9 +161,9 @@ vim.fn.sign_define("DiagnosticSignWarn", {
   texthl = "DiagnosticSignWarn",
 })
 
-vim.fn.sign_define("DiagnosticSignError", {
-  text = "",
-  texthl = "DiagnosticSignError",
+vim.fn.sign_define("DiagnosticSignHint", {
+  text = "",
+  texthl = "DiagnosticSignHint",
 })
 
 vim.api.nvim_exec(

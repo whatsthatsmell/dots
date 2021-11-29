@@ -180,10 +180,7 @@ vim.fn.sign_define(
   { texthl = "DiagnosticSignWarning", text = "", numhl = "DiagnosticSignWarning" }
 )
 vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticSignHint" })
-vim.fn.sign_define(
-  "DiagnosticSignInformation",
-  { texthl = "DiagnosticSignInformation", text = "", numhl = "DiagnosticSignInformation" }
-)
+vim.fn.sign_define("DiagnosticSignInfo", { texthl = "DiagnosticSignInfo", text = "", numhl = "DiagnosticSignInfo" })
 
 -- LSP Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -191,6 +188,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   underline = true,
   signs = true,
   update_in_insert = false,
+  severity_sort = true,
 })
 
 local pop_opts = { border = "rounded", max_width = 80 }
