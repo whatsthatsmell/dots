@@ -1,52 +1,19 @@
+-- treesitter folding
+vim.opt_local.foldmethod = "expr"
+vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt_local.foldnestmax = 3
+vim.opt_local.foldlevel = 1
+
+-- @TODOUA: kill or refactor this exec block
 vim.api.nvim_exec(
   [[
 setlocal shortmess+=c
-" treesitter folding
-setlocal foldmethod=expr
-setlocal foldexpr=nvim_treesitter#foldexpr()
-setlocal foldnestmax=3
-setlocal foldlevel=1
-
-" my snippets
-iabbrev <buffer> w18 #![warn(rust_2018_idioms)]
-" this is pd and ppd with rust-analyzer Magic Completions
-" iabbrev <buffer> epl  eprintln!("{:#?}",);<left><left>
-iabbrev <buffer> pln  println!("{}", );<left><left>
-" -- testing
-iabbrev <buffer> #t #[test]<c-o>o<left>
-iabbrev <buffer> #p #[should_panic(expected = "")]<left><left><left>
-iabbrev <buffer> #b #[bench]<c-o>o<left>
-iabbrev <buffer> #i #[ignore]<c-o>o<left>
-" @TODOUA: Luatize these maps!
-" snippets for Rust - TODO: change autoselect next completion?
-let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
-" -- end snippets
-let g:completion_enable_auto_paren = 1
-" open the braces ***
-" inoremap <buffer> {<cr> {<cr>}<c-o><s-o>
 " wrap selection in Some(*)
 vmap ,sm cSome(<c-r>"<esc>
 " grep for functions and move function sig to top of window
 nnoremap <silent><buffer>,f :Rg<Space>fn<Space><CR>
 " surround (W)ord with angle brackets
 nmap <localleader>ab ysiW>
-" mappings share these across languages
-nnoremap <silent><buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-" moving back and forth between declaration and impls
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-	" Also use :Telescope lsp_implementations
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent><localleader>=  <cmd>lua vim.lsp.buf.formatting()<CR>
-" Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " rustfmt/vim-rust settings
 let g:rustfmt_autosave = 1
@@ -60,6 +27,103 @@ noremap <silent><localleader>cr :Crun<cr>
 ]],
   false
 )
+
+-- snippets dir- vsnip. Need to try LuaSnip
+vim.b.vsnip_snippet_dir = vim.fn.expand "~/.config/nvim/snippets/"
+
+-- Lsp maps
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "<localleader>=",
+  [[<cmd>lua vim.lsp.buf.formatting()<CR>
+]],
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "g0",
+  [[<cmd>lua vim.lsp.buf.document_symbol()<CR>]],
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "gW",
+  [[<cmd>lua vim.lsp.buf.workspace_symbol()<CR>]],
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "gr",
+  [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>
+]],
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "gD",
+  "<cmd>lua vim.lsp.buf.implementation()<CR>",
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(0, "n", "gd", [[<cmd>lua vim.lsp.buf.declaration()<CR>]], {
+  noremap = true,
+  silent = true,
+})
+
+vim.api.nvim_buf_set_keymap(0, "n", "K", [[<cmd>lua vim.lsp.buf.hover()<CR>]], { noremap = true, silent = true })
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "<c-]>",
+  [[<cmd>lua require'telescope.builtin'.lsp_definitions()<CR>
+]],
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "<c-k>",
+  [[<cmd>lua vim.lsp.buf.signature_help()<CR>]],
+  { noremap = true, silent = true }
+)
+
+vim.api.nvim_buf_set_keymap(0, "n", "1gD", [[<cmd>lua vim.lsp.buf.definition()<CR>]], {
+  noremap = true,
+  silent = true,
+})
+
+vim.api.nvim_buf_set_keymap(0, "n", "ga", [[<cmd>lua vim.lsp.buf.code_action()<CR>]], {
+  noremap = true,
+  silent = true,
+})
+
+-- Goto previous/next diagnostic warning/error
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "g[",
+  [[<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]],
+  { noremap = true, silent = true }
+)
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "g]",
+  [[<cmd>lua vim.lsp.diagnostic.goto_next()<CR>]],
+  { noremap = true, silent = true }
+)
+-- end of LSP buf maps
 
 -- define LSP signs
 vim.fn.sign_define("DiagnosticSignHint", {
