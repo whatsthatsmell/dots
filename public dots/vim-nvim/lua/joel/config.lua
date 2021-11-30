@@ -20,6 +20,7 @@ local luadev = require("lua-dev").setup {
   },
 }
 
+-- sumneko/lua-language-server 2.5.1
 lspconfig.sumneko_lua.setup(luadev)
 
 -- nvim-web-devicons: https://www.nerdfonts.com/cheat-sheet →     
@@ -104,12 +105,8 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- Trying `eslint` lang server setup through lspconfig
--- *Watch the conversations linked within the below for changes that are coming*
--- https://github.com/neovim/nvim-lspconfig/pull/1273
--- https://github.com/williamboman/nvim-lsp-installer/blob/main/lua/nvim-lsp-installer/servers/eslint/README.md
--- Watch for dynamic registration in core: https://github.com/neovim/nvim-lspconfig/pull/1299#discussion_r727598342
--- https://github.com/neovim/nvim-lspconfig/pull/1299#issuecomment-942214556
+-- `eslint` lang server setup through lspconfig
+-- vscode-langservers-extracted@3.0.2 → https://github.com/hrsh7th/vscode-langservers-extracted
 nvim_lsp.eslint.setup {
   on_attach = function(client)
     -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
@@ -122,6 +119,7 @@ nvim_lsp.eslint.setup {
 }
 
 -- Enable rust_analyzer
+-- rust-analyzer e217632b9 2021-11-30 dev
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
@@ -194,24 +192,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 local pop_opts = { border = "rounded", max_width = 80 }
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, pop_opts)
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, pop_opts)
-
--- Send diagnostics to quickfix list
-do
-  local method = "textDocument/publishDiagnostics"
-  local default_handler = vim.lsp.handlers[method]
-  vim.lsp.handlers[method] = function(err, method, result, client_id, bufnr, config)
-    default_handler(err, method, result, client_id, bufnr, config)
-    local diagnostics = vim.diagnostic.get()
-    local qflist = {}
-    for bufnr, diagnostic in pairs(diagnostics) do
-      for _, d in ipairs(diagnostic) do
-        d.bufnr = bufnr
-        d.lnum = d.range.start.line + 1
-        d.col = d.range.start.character + 1
-        d.text = d.message
-        table.insert(qflist, d)
-      end
-    end
-    vim.fn.setqflist(qflist)
-  end
-end

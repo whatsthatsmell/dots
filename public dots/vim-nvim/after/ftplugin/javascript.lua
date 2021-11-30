@@ -1,3 +1,4 @@
+-- typescript-language-server: 0.8.0
 vim.opt_local.linebreak = true
 vim.opt_local.colorcolumn = "81"
 vim.opt_local.spell = false

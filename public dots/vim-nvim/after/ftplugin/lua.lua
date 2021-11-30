@@ -1,3 +1,4 @@
+-- sumneko/lua-language-server 2.5.1
 vim.opt_local.textwidth = 120
 vim.opt_local.shiftwidth = 2
 vim.opt_local.colorcolumn = "121"
