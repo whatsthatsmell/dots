@@ -248,6 +248,7 @@ function M.find_notes()
   }
 end
 
+-- @TODOUA: file_browser builtin being deprecated (removed 2021-12-19), use: https://github.com/nvim-telescope/telescope-file-browser.nvim#setup-and-configuration
 function M.browse_notes()
   require("telescope.builtin").file_browser {
     prompt_title = " Browse Notes",
