@@ -27,7 +27,7 @@ function custom_actions._multiopen(prompt_bufnr, open_cmd)
     elseif open_cmd == "tabe" then
       actions.file_tab(prompt_bufnr)
     else
-      actions.file_edit(prompt_bufnr)
+      actions.select_default(prompt_bufnr)
     end
   end
 end
@@ -128,14 +128,14 @@ require("telescope").load_extension "bookmarks"
 -- require zoxide for telescope
 require("telescope").load_extension "zoxide"
 
--- GitHub CLI
-require("telescope").load_extension "gh"
-
 -- telescope-repo
 require("telescope").load_extension "repo"
 
 -- neoclip
 require("telescope").load_extension "neoclip"
+
+-- GitHub CLI
+require("telescope").load_extension "gh"
 
 -- my telescopic customizations
 local M = {}

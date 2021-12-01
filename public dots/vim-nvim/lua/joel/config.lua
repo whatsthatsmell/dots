@@ -34,13 +34,12 @@ require("nvim-web-devicons").setup {
   default = true,
 }
 
--- search/replace visual b/c inccommand preview doesn't show all (PRs in flight on Neovim)
+-- Search/Replace visual b/c inccommand preview doesn't show all (PRs in flight on Neovim)
 -- tsserver - JavaScript lsp config
 require("lspconfig").tsserver.setup {
   on_attach = function(client)
     require("lsp_signature").on_attach {
       bind = true, -- This is mandatory, otherwise border config won't get registered.
-      -- If you want to hook lspsaga or other signature handler, pls set to false
       doc_lines = 2, -- will show 2 lines of comment/doc(if there are more than 2 lines in doc, will be truncated)
       -- set to 0 if you DO NOT want any API comments be shown
       -- This setting only take effect in insert mode, it does not affect signature help in normal
