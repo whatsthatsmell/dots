@@ -12,13 +12,6 @@ return require("packer").startup {
     use "antoinemadec/FixCursorHold.nvim"
     use "ellisonleao/glow.nvim"
     use "mogelbrod/vim-jsonpath"
-    use "dhruvmanila/telescope-bookmarks.nvim"
-    use {
-      "AckslD/nvim-neoclip.lua",
-      config = function()
-        require("neoclip").setup()
-      end,
-    }
     use {
       "luukvbaal/stabilize.nvim",
       config = function()
@@ -49,12 +42,20 @@ return require("packer").startup {
     use "rust-lang/rust.vim"
     use "wbthomason/packer.nvim"
     use "neovim/nvim-lspconfig"
-    -- Telescope plugins
+    -- Telescope Plugins
     -- using local telescope branch, see below
     -- use 'nvim-telescope/telescope.nvim'
     -- using local telescope-github branch
     -- use "nvim-telescope/telescope-github.nvim"
+    use "cljoly/telescope-repo.nvim"
 
+    use "dhruvmanila/telescope-bookmarks.nvim"
+    use {
+      "AckslD/nvim-neoclip.lua",
+      config = function()
+        require("neoclip").setup()
+      end,
+    }
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use "jvgrootveld/telescope-zoxide"
     use "andymass/vim-matchup"
@@ -119,9 +120,6 @@ return require("packer").startup {
       "lewis6991/gitsigns.nvim",
       requires = { "nvim-lua/plenary.nvim" },
     }
-
-    -- load repos
-    use "cljoly/telescope-repo.nvim"
 
     -- Local plugins
     use "~/vim-dev/plugins/codesmell_dark.vim"

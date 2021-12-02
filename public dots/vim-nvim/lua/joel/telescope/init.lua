@@ -1,4 +1,4 @@
--- Telescope 🔭- setup and customized pickers
+-- Telescope 🔭 - setup and customized pickers
 require "joel.telescope.mappings"
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
@@ -118,23 +118,27 @@ require("telescope").setup {
   },
 }
 
--- extensions --
+-- 🔭 Extensions --
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-fzf-nativenvim
 require("telescope").load_extension "fzf"
 
 -- https://github.com/dhruvmanila/telescope-bookmarks.nvim
+-- <space>b
 require("telescope").load_extension "bookmarks"
 
--- require zoxide for telescope
+-- https://github.com/jvgrootveld/telescope-zoxide
+-- <leader>z
 require("telescope").load_extension "zoxide"
 
--- telescope-repo
+-- https://github.com/cljoly/telescope-repo.nvim
+-- <leader>rl
 require("telescope").load_extension "repo"
 
--- neoclip
+-- https://github.com/AckslD/nvim-neoclip.lua
+-- <C-n>
 require("telescope").load_extension "neoclip"
 
--- GitHub CLI
+-- GitHub CLI → local version
 require("telescope").load_extension "gh"
 
 -- my telescopic customizations
