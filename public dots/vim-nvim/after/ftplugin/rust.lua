@@ -34,6 +34,18 @@ noremap <silent><localleader>cr :Crun<cr>
 -- snippets dir- vsnip. Need to try LuaSnip
 vim.b.vsnip_snippet_dir = vim.fn.expand "~/.config/nvim/snippets/"
 
+-- rust-tools --
+-- Command:
+-- RustRunnables
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "<space>rr",
+  [[<cmd>lua require('rust-tools.runnables').runnables()<cr>
+]],
+  { noremap = true, silent = true }
+)
+
 -- Lsp maps
 vim.api.nvim_buf_set_keymap(
   0,
