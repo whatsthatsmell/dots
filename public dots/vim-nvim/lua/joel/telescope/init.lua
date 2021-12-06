@@ -197,6 +197,7 @@ function M.grep_nvim_src()
     },
   }
 end
+
 M.project_files = function()
   local _, ret, stderr = utils.get_os_command_output {
     "git",
@@ -207,9 +208,9 @@ M.project_files = function()
   local gopts = {}
   local fopts = {}
 
-  gopts.prompt_title = " Git Files"
+  gopts.prompt_title = " Find"
   gopts.prompt_prefix = "  "
-  gopts.results_title = "Project Files Results"
+  gopts.results_title = " Repo Files"
 
   fopts.hidden = true
   fopts.file_ignore_patterns = {
@@ -228,6 +229,7 @@ M.project_files = function()
   if ret == 0 then
     require("telescope.builtin").git_files(gopts)
   else
+    fopts.results_title = "CWD: " .. vim.fn.getcwd()
     require("telescope.builtin").find_files(fopts)
   end
 end
