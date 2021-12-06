@@ -131,7 +131,12 @@ key_map("n", ",n", [[<Cmd>lua require'joel.telescope'.browse_notes()<CR>]], { no
 -- Explore files starting at $HOME
 key_map("n", ",e", [[<Cmd>lua require'joel.telescope'.file_explorer()<CR>]], { noremap = true, silent = true })
 -- Browse files from cwd - File Browser
-key_map("n", ",fb", [[<Cmd>lua require'telescope.builtin'.file_browser()<CR>]], { noremap = true, silent = true })
+key_map(
+  "n",
+  ",fb",
+  [[<Cmd>lua require'telescope'.extensions.file_browser.file_browser()<CR>]],
+  { noremap = true, silent = true }
+)
 -- End Telescope comma maps
 
 -- grep word under cursor

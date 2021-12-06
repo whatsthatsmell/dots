@@ -119,6 +119,9 @@ require("telescope").setup {
 }
 
 -- 🔭 Extensions --
+-- https://github.com/nvim-telescope/telescope-file-browser.nvim
+require("telescope").load_extension "file_browser"
+
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-fzf-nativenvim
 require("telescope").load_extension "fzf"
 
@@ -257,9 +260,8 @@ function M.find_notes()
   }
 end
 
--- @TODOUA: file_browser builtin being deprecated (removed 2021-12-19), use: https://github.com/nvim-telescope/telescope-file-browser.nvim#setup-and-configuration
 function M.browse_notes()
-  require("telescope.builtin").file_browser {
+  require("telescope").extensions.file_browser.file_browser {
     prompt_title = " Browse Notes",
     prompt_prefix = " ﮷ ",
     cwd = "~/notes/",
@@ -285,7 +287,7 @@ function M.find_configs()
 end
 
 function M.nvim_config()
-  require("telescope.builtin").file_browser {
+  require("telescope").extensions.file_browser.file_browser {
     prompt_title = " NVim Config Browse",
     cwd = "~/.config/nvim/",
     layout_strategy = "horizontal",
@@ -294,7 +296,7 @@ function M.nvim_config()
 end
 
 function M.file_explorer()
-  require("telescope.builtin").file_browser {
+  require("telescope").extensions.file_browser.file_browser {
     prompt_title = " File Browser",
     path_display = { "smart" },
     cwd = "~",

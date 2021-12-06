@@ -3,6 +3,7 @@
 ### NeoNews:
 - [Neovim 0.6 has released](https://github.com/neovim/neovim/releases/tag/v0.6.0)
 - 🔭 [Telescope's `builtin.file_browser` will be removed December 19th](https://github.com/nvim-telescope/telescope.nvim/issues/1470#issuecomment-974147513)
+  - The switch from the builtin to the extension is done with the same commit adding this message
 ### RustyNews:
 - [Rust 1.57.0 Stable Released](https://blog.rust-lang.org/2021/12/02/Rust-1.57.0.html) *_you should use nightly though_
 # Public version of Code Smell dotfiles

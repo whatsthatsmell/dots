@@ -48,7 +48,7 @@ return require("packer").startup {
     -- using local telescope-github branch
     -- use "nvim-telescope/telescope-github.nvim"
     use "cljoly/telescope-repo.nvim"
-
+    use { "nvim-telescope/telescope-file-browser.nvim" }
     use "dhruvmanila/telescope-bookmarks.nvim"
     use {
       "AckslD/nvim-neoclip.lua",
