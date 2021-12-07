@@ -108,12 +108,11 @@ return require("packer").startup {
     }
 
     use {
-      "~/vim-dev/plugins/galaxyline.nvim",
-      -- branch = "main",
+      "nvim-lualine/lualine.nvim",
       config = function()
         require "joel.statusline"
       end,
-      requires = { "kyazdani42/nvim-web-devicons" },
+      requires = { "kyazdani42/nvim-web-devicons", opt = true },
     }
 
     use {

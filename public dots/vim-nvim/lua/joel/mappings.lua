@@ -12,7 +12,7 @@ key_map("n", "_", '"_', { noremap = true })
 key_map("n", ",p", '"0p', { noremap = true })
 key_map("n", ",P", '"0P', { noremap = true })
 
--- toggle search highlights with cursorline & cursorcolumn: crosshairs
+-- Toggle search highlights with cursorline & cursorcolumn: crosshairs
 -- See augroup nvim-incsearch-cursorline for symmetry
 key_map("n", "<Leader>\\", [[<Cmd>lua require'joel.settings'.toggle_crosshairs()<CR>]], {
   noremap = true,
@@ -39,7 +39,7 @@ key_map("n", "<leader>fp", ":lua require('joel.funcs').yank_current_file_name()<
   silent = true,
 })
 
--- create tasks in todoist using current Visual selection
+-- Create tasks in todoist using current Visual selection
 -- default: create task in 'Neovim' project with 'Neovim' label
 key_map("v", "<leader>t", [[<Cmd>lua require'joel.funcs'.create_todoist_task()<CR>]], { noremap = false })
 -- create work task in todoist

@@ -1,395 +1,68 @@
-vim.cmd [[packadd nvim-web-devicons]]
-local gl = require "galaxyline"
-local utils = require "joel.utils"
-local condition = require "galaxyline.condition"
-
-local gls = gl.section
-gl.short_line_list = { "packer" }
-
-local colors = {
-  bg = "#282c34",
-  fg = "#aab2bf",
-  section_bg = "#38393f",
-  blue = "#61afef",
-  green = "#98c379",
-  purple = "#c678dd",
-  orange = "#e5c07b",
-  red1 = "#e06c75",
-  red2 = "#be5046",
-  yellow = "#e5c07b",
-  light_grey = "#99a0ab",
-  redish_white = "#FDEDD5",
-  gray1 = "#5c6370",
-  gray2 = "#2c323d",
-  gray3 = "#3e4452",
-  darkgrey = "#5c6370",
-  grey = "#848586",
-  middlegrey = "#8791A5",
-  dodgerblue = "#1e90ff",
-  brightgreen = "#96e362",
-  neovim_green = "#54A23D",
-  neovim_blue = "#3791D4",
-}
-
--- Local helper functions
-local buffer_not_empty = function()
-  return not utils.is_buffer_empty()
+local function current_buffer_number()
+  return "﬘ " .. vim.api.nvim_get_current_buf()
 end
 
-local checkwidth = function()
-  return utils.has_width_gt(35) and buffer_not_empty()
-end
-
-local function has_value(tab, val)
-  for _, value in ipairs(tab) do
-    if value[1] == val then
-      return true
-    end
-  end
-  return false
-end
-
-local mode_color = function()
-  local mode_colors = {
-    -- normal
-    [110] = colors.light_grey,
-    -- insert
-    [105] = colors.neovim_green,
-    -- command
-    [99] = colors.yellow,
-    -- Terminal
-    [116] = colors.brightgreen,
-    -- visual mode
-    [118] = colors.neovim_blue,
-    -- visual-block
-    [22] = colors.dodgerblue,
-    -- visual-line
-    [86] = colors.blue,
-    -- replace
-    [82] = colors.red2,
-    [115] = colors.red1,
-    [83] = colors.red1,
-  }
-
-  local color = mode_colors[vim.fn.mode():byte()]
-  if color ~= nil then
-    return color
-  else
-    return colors.purple
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed,
+    }
   end
 end
 
-local function file_readonly()
-  if vim.bo.filetype == "help" then
-    return "  "
-  end
-  if vim.bo.readonly == true then
-    return "  "
-  end
-  return ""
+local function current_date()
+  return os.date "%x"
 end
 
-local function get_current_file_name()
-  local file = vim.fn.expand "%:p:."
-  if vim.fn.empty(file) == 1 then
-    return ""
-  end
-  if string.len(file_readonly()) ~= 0 then
-    return file .. file_readonly()
-  end
-  if vim.bo.modifiable then
-    if vim.bo.modified then
-      return file .. "  "
-    end
-  end
-  return file .. " "
+local function current_working_dir()
+  local cwd = string.sub(vim.fn.getcwd(), 12)
+  return "~" .. cwd
 end
+-- @TODOUA: keep tinkering with theme and section layouts!
+-- @TODOUA: roll my own status bar or try expressline
+-- https://github.com/nvim-lualine/lualine.nvim
+local custom_auto = require "lualine.themes.auto"
+custom_auto.terminal.a.bg = "#1e90ff"
+custom_auto.normal.a.bg = "#BCBCBC"
+custom_auto.insert.c.fg = "#85C867"
+custom_auto.command.a.bg = "#1e90ff"
+custom_auto.command.b.fg = "#1e90ff"
+custom_auto.replace.a.bg = "#C83434"
+custom_auto.visual.a.bg = "#725191"
+custom_auto.visual.b.fg = "#1e90ff"
 
-local function get_basename(file)
-  return file:match "^.+/(.+)$"
-end
-
-local GetGitRoot = function()
-  local git_dir = require("galaxyline.providers.vcs").get_git_dir()
-  if not git_dir then
-    return ""
-  end
-
-  local git_root = git_dir:gsub("/.git/?$", "")
-  return get_basename(git_root)
-end
-
-local LspCheckDiagnostics = function()
-  if
-    #vim.lsp.get_active_clients() > 0
-    and #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN }) == 0
-    and #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO }) == 0
-    and #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR }) == 0
-    and #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT }) == 0
-  then
-    return "  "
-  end
-  return ""
-end
-
--- Left side
-gls.left[1] = {
-  ViMode = {
-    provider = function()
-      local aliases = {
-        [110] = "Neoim",
-        [105] = "INSERT",
-        [99] = "COMMAND",
-        [116] = "TERMINAL",
-        [118] = "VISUAL",
-        [22] = "V-BLOCK",
-        [86] = "V-LINE",
-        [82] = "REPLACE",
-        [115] = "SELECT",
-        [83] = "S-LINE",
-      }
-      vim.api.nvim_command("hi GalaxyViMode guibg=" .. mode_color())
-      local alias = aliases[vim.fn.mode():byte()]
-      local mode
-      if alias ~= nil then
-        if utils.has_width_gt(35) then
-          mode = alias
-        else
-          mode = alias:sub(1, 1)
-        end
-      else
-        mode = vim.fn.mode():byte()
-      end
-      return "  " .. mode .. " "
-    end,
-    highlight = { colors.bg, colors.bg, "bold" },
+require("lualine").setup {
+  options = {
+    icons_enabled = true,
+    theme = custom_auto,
+    component_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
+    disabled_filetypes = {},
+    always_divide_middle = true,
   },
-}
-gls.left[2] = {
-  FileIcon = {
-    provider = {
-      function()
-        return "  "
-      end,
-      "FileIcon",
+  sections = {
+    lualine_a = { "mode" },
+    lualine_b = {
+      { "b:gitsigns_head", icon = "" },
+      { "diff", source = diff_source },
+      { "diagnostics", sources = { "nvim_lsp" } },
     },
-    condition = buffer_not_empty,
-    highlight = {
-      require("galaxyline.providers.fileinfo").get_file_icon,
-      colors.section_bg,
-    },
+    lualine_c = { { "filename", path = 1 } },
+    lualine_x = { "filetype" },
+    lualine_y = { { current_buffer_number }, { current_working_dir }, { current_date } },
+    lualine_z = { "location" },
   },
-}
-gls.left[3] = {
-  FileName = {
-    provider = get_current_file_name,
-    condition = buffer_not_empty,
-    highlight = { colors.fg, colors.section_bg },
-    separator = "",
-    separator_highlight = { colors.section_bg, colors.bg },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { "filename" },
+    lualine_x = { "location" },
+    lualine_y = { { current_buffer_number } },
+    lualine_z = {},
   },
+  tabline = {},
+  extensions = {},
 }
-
-gls.left[5] = {
-  DiagnosticsCheck = {
-    provider = { LspCheckDiagnostics },
-    highlight = { colors.middlegrey, colors.bg },
-  },
-}
-
-gls.left[6] = {
-  Space = {
-    provider = function()
-      return " "
-    end,
-    highlight = { colors.section_bg, colors.bg },
-  },
-}
-
-gls.left[7] = {
-  DiagnosticError = {
-    provider = { "DiagnosticError" },
-    icon = " ",
-    highlight = { colors.red1, colors.bg },
-  },
-}
-
-gls.left[8] = {
-  Space = {
-    provider = function()
-      return " "
-    end,
-    highlight = { colors.section_bg, colors.bg },
-  },
-}
-
-gls.left[11] = {
-  DiagnosticWarn = {
-    provider = { "DiagnosticWarn" },
-    icon = " ",
-    highlight = { colors.yellow, colors.bg },
-  },
-}
-gls.left[12] = {
-  Space = {
-    provider = function()
-      return " "
-    end,
-    highlight = { colors.section_bg, colors.bg },
-  },
-}
-gls.left[13] = {
-  DiagnosticHint = {
-    provider = { "DiagnosticHint" },
-    icon = " ",
-    highlight = { colors.brightgreen, colors.bg },
-  },
-}
-gls.left[14] = {
-  Space = {
-    provider = function()
-      return " "
-    end,
-    highlight = { colors.section_bg, colors.bg },
-  },
-}
-gls.left[15] = {
-  DiagnosticInfo = {
-    provider = { "DiagnosticInfo" },
-    icon = " ",
-    highlight = { colors.dodgerblue, colors.bg },
-  },
-}
-
-gls.right[1] = {
-  DiffAdd = {
-    provider = "DiffAdd",
-    condition = checkwidth,
-    icon = "+",
-    highlight = { colors.green, colors.bg },
-    separator = " ",
-    separator_highlight = { colors.section_bg, colors.bg },
-  },
-}
-gls.right[2] = {
-  DiffModified = {
-    provider = "DiffModified",
-    condition = checkwidth,
-    icon = "~",
-    highlight = { colors.orange, colors.bg },
-  },
-}
-gls.right[3] = {
-  DiffRemove = {
-    provider = "DiffRemove",
-    condition = checkwidth,
-    icon = "-",
-    highlight = { colors.red1, colors.bg },
-  },
-}
-
-gls.right[4] = {
-  Space = {
-    provider = function()
-      return " "
-    end,
-    highlight = { colors.section_bg, colors.bg },
-  },
-}
-
-gls.right[5] = {
-  BufferNumber = {
-    provider = "BufferNumber",
-    -- Custom provider fixes (overrides): /lua/galaxyline/provider_buffer.lua#L36
-    -- https://git.io/Ju7Xa - not sure why they return the index not bufnr?
-    -- provider = function()
-    --   return vim.api.nvim_win_get_buf(0)
-    -- end,
-    icon = "﬘ ",
-    highlight = { colors.dodgerblue, colors.bg },
-  },
-}
-
-gls.right[6] = {
-  Space = {
-    provider = function()
-      return " "
-    end,
-    highlight = { colors.section_bg, colors.bg },
-  },
-}
-
-gls.right[7] = {
-  GitBranch = {
-    provider = {
-      function()
-        return " "
-      end,
-      "GitBranch",
-    },
-    condition = condition.check_git_workspace,
-    highlight = { colors.redish_white, colors.bg },
-  },
-}
-
-gls.right[8] = {
-  GitRoot = {
-    provider = { GetGitRoot },
-    condition = function()
-      return utils.has_width_gt(50) and condition.check_git_workspace
-    end,
-    highlight = { colors.neovim_green, colors.bg },
-    separator = " ",
-    separator_highlight = { colors.middlegrey, colors.bg },
-  },
-}
-
-gls.right[9] = {
-  LineColumn = {
-    provider = "LineColumn",
-    highlight = { colors.fg, colors.bg },
-    separator = " ",
-    separator_highlight = { colors.middlegrey, colors.bg },
-  },
-}
-
--- Short status line
-gls.short_line_left[1] = {
-  FileIcon = {
-    provider = {
-      function()
-        return "  "
-      end,
-      "FileIcon",
-    },
-    condition = function()
-      return buffer_not_empty and has_value(gl.short_line_list, vim.bo.filetype)
-    end,
-    highlight = {
-      require("galaxyline.providers.fileinfo").get_file_icon,
-      colors.section_bg,
-    },
-  },
-}
-gls.short_line_left[2] = {
-  FileName = {
-    provider = get_current_file_name,
-    condition = buffer_not_empty,
-    highlight = { colors.fg, colors.section_bg },
-    separator = " ",
-    separator_highlight = { colors.section_bg, colors.bg },
-  },
-}
-
-gls.short_line_right[1] = {
-  BufferNumber = {
-    provider = function()
-      return vim.api.nvim_win_get_buf(0)
-    end,
-    icon = "﬘ ",
-    highlight = { colors.dodgerblue, colors.bg },
-  },
-}
-
--- Force manual load so that nvim boots with a status line
-gl.load_galaxyline()
