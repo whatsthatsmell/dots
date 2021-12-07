@@ -50,13 +50,7 @@ export BAT_THEME="ansi"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Load tab completion
 if type brew &>/dev/null; then
@@ -154,7 +148,7 @@ _fzf_comprun() {
 }
 # Apply the command to CTRL-T
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--height 64% --layout=reverse --border'
+export FZF_DEFAULT_OPTS='--height 64% --layout=reverse --border --color=fg:#d0d0d0,bg:#121212,hl:#5f87af --color=fg+:#d0d0d0,bg+:#262626,hl+:#648ce3 --color=info:#6d7d85,prompt:#b53c10,pointer:#5895db --color=marker:#87ff00,spinner:#2b751c,header:#87afaf'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.iterm2_shell_integration.zsh
 export PYENV_ROOT="$HOME/.pyenv"
