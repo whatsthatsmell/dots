@@ -19,6 +19,19 @@ key_map("n", "<Leader>\\", [[<Cmd>lua require'joel.settings'.toggle_crosshairs()
   silent = true,
 })
 
+-- Paste/Put ALL the Vim things in a new buffer!
+-- @TODOUA: make `vim` a function param
+key_map(
+  "n",
+  "<Leader>pv",
+  [[<Cmd>new<bar>put =execute('lua print(vim.inspect(vim))')
+<CR>]],
+  {
+    noremap = true,
+    silent = true,
+  }
+)
+
 -- cliclick maps - MacOS specific - 2560x1440
 -- cliclick → CLICK system notification banner
 key_map("n", ",cn", ":lua require('joel.funcs').click_banner_notification()<CR>", { noremap = true, silent = true })
