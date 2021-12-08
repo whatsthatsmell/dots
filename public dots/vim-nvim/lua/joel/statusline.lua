@@ -21,6 +21,7 @@ local function current_working_dir()
   local cwd = string.sub(vim.fn.getcwd(), 12)
   return "~" .. cwd
 end
+
 -- @TODOUA: keep tinkering with theme and section layouts!
 -- @TODOUA: roll my own status bar or try expressline
 -- https://github.com/nvim-lualine/lualine.nvim
@@ -43,7 +44,7 @@ require("lualine").setup {
     component_separators = { left = "⦚", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {},
-    always_divide_middle = true,
+    always_divide_middle = false,
   },
   sections = {
     lualine_a = { "mode" },
@@ -53,7 +54,7 @@ require("lualine").setup {
       { "diagnostics", sources = { "nvim_lsp" } },
     },
     lualine_c = { { "filename", path = 1 } },
-    lualine_x = { "filetype" },
+    lualine_x = { { "filetype", icon_only = true } },
     lualine_y = { { current_buffer_number }, { current_working_dir }, { current_date } },
     lualine_z = { "location" },
   },
@@ -65,6 +66,5 @@ require("lualine").setup {
     lualine_y = { { current_buffer_number } },
     lualine_z = {},
   },
-  tabline = {},
   extensions = {},
 }
