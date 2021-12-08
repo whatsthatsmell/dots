@@ -18,7 +18,7 @@ return require("packer").startup {
         require("stabilize").setup()
       end,
     }
-
+    use { "stevearc/dressing.nvim" }
     use {
       "lewis6991/spellsitter.nvim",
       config = function()

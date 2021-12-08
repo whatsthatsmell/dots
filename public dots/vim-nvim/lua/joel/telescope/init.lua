@@ -168,11 +168,20 @@ function M.gh_prs()
 end
 -- end github functions
 
-function M.grep_prompt()
+-- grep_string pre-filtered from grep_prompt
+local function grep_filtered(opts)
+  opts = opts or {}
   require("telescope.builtin").grep_string {
     path_display = { "smart" },
-    search = vim.fn.input "Rg ",
+    search = opts.filter_word or "",
   }
+end
+
+-- open vim.ui.input dressing prompt for initial filter
+function M.grep_prompt()
+  vim.ui.input({ prompt = "Rg " }, function(input)
+    grep_filtered { filter_word = input }
+  end)
 end
 
 -- search Neovim related todos
