@@ -42,13 +42,14 @@ return require("packer").startup {
     use "rust-lang/rust.vim"
     use "wbthomason/packer.nvim"
     use "neovim/nvim-lspconfig"
-    -- Telescope Plugins
+    -- Telescope Extensions
     -- using local telescope branch, see below
     -- use 'nvim-telescope/telescope.nvim'
     -- using local telescope-github branch
     -- use "nvim-telescope/telescope-github.nvim"
     use "cljoly/telescope-repo.nvim"
     use { "nvim-telescope/telescope-file-browser.nvim" }
+    -- use { "nvim-telescope/telescope-ui-select.nvim" }
     use "dhruvmanila/telescope-bookmarks.nvim"
     use {
       "AckslD/nvim-neoclip.lua",
@@ -58,6 +59,7 @@ return require("packer").startup {
     }
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use "jvgrootveld/telescope-zoxide"
+
     use "andymass/vim-matchup"
     use "windwp/nvim-autopairs"
     use "nvim-lua/lsp_extensions.nvim"

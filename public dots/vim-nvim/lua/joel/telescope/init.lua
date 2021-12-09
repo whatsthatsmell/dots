@@ -52,6 +52,9 @@ require("telescope").setup {
       override_file_sorter = true,
       case_mode = "smart_case", -- this is default
     },
+    -- ["ui-select"] = {
+    --   require("telescope.themes").get_cursor(),
+    -- },
     bookmarks = {
       selected_browser = "brave",
 
@@ -121,7 +124,8 @@ require("telescope").setup {
 -- 🔭 Extensions --
 -- https://github.com/nvim-telescope/telescope-file-browser.nvim
 require("telescope").load_extension "file_browser"
-
+-- https://github.com/nvim-telescope/telescope-ui-select.nvim
+-- require("telescope").load_extension "ui-select"
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-fzf-nativenvim
 require("telescope").load_extension "fzf"
 

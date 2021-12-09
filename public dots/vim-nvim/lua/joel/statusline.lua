@@ -14,7 +14,7 @@ local function diff_source()
 end
 
 local function current_date()
-  return os.date "%x"
+  return string.sub(os.date "%x", 1, 5)
 end
 
 local function current_working_dir()

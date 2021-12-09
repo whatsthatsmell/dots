@@ -190,9 +190,24 @@ nvim_lsp.rust_analyzer.setup {
     },
   },
 }
+
 -- rust-tools config: https://github.com/simrat39/rust-tools.nvim
 -- You want this if you're a Rust developer.
-require("rust-tools").setup {}
+require("rust-tools").setup {
+  tools = { -- rust-tools options
+    runnables = {
+      -- whether to use telescope for selection menu or not
+      -- @TODOUA: change to true once rust-tools handles close
+      -- @TODOUA: also, this setting seems to be ignored: rust-tools 7b4d155 - 09-Dec-2021
+      use_telescope = false,
+    },
+    debuggables = {
+      -- whether to use telescope for selection menu or not
+      -- @TODOUA: change to true once rust-tools handles close
+      use_telescope = false,
+    },
+  },
+}
 
 -- GitSigns
 require("gitsigns").setup {
