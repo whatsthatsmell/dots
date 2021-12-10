@@ -51,7 +51,7 @@ require("lualine").setup {
     lualine_b = {
       { "b:gitsigns_head", icon = "" },
       { "diff", source = diff_source },
-      { "diagnostics", sources = { "nvim_lsp" } },
+      { "diagnostics", sources = { "nvim_diagnostic" } },
     },
     lualine_c = { { "filename", path = 1 } },
     lualine_x = { { "filetype", icon_only = true } },
