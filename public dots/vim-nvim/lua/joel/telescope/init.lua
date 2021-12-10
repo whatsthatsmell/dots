@@ -52,6 +52,9 @@ require("telescope").setup {
       override_file_sorter = true,
       case_mode = "smart_case", -- this is default
     },
+    file_browser = {
+      hidden = true,
+    },
     -- ["ui-select"] = {
     --   require("telescope.themes").get_cursor(),
     -- },
