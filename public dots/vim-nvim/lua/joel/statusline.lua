@@ -41,7 +41,7 @@ require("lualine").setup {
   options = {
     icons_enabled = true,
     theme = custom_auto,
-    component_separators = { left = "⦚", right = "" },
+    component_separators = { left = "⦚", right = "  " },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {},
     always_divide_middle = false,
@@ -53,7 +53,7 @@ require("lualine").setup {
       { "diff", source = diff_source },
       { "diagnostics", sources = { "nvim_diagnostic" } },
     },
-    lualine_c = { { "filename", path = 1 } },
+    lualine_c = { { "filename", path = 1, symbols = { modified = "[]", readonly = " " } } },
     lualine_x = { { "filetype", icon_only = true } },
     lualine_y = { { current_buffer_number }, { current_working_dir }, { current_date } },
     lualine_z = { "location" },
@@ -61,7 +61,7 @@ require("lualine").setup {
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = { "filename" },
+    lualine_c = { { "filename", path = 1, symbols = { modified = "[]", readonly = " " } } },
     lualine_x = { "location" },
     lualine_y = { { current_buffer_number } },
     lualine_z = {},
