@@ -9,7 +9,7 @@ return require("packer").startup {
     use "tpope/vim-surround"
     use "tpope/vim-fugitive"
     use "tpope/vim-repeat"
-    use "antoinemadec/FixCursorHold.nvim"
+    -- use "antoinemadec/FixCursorHold.nvim"
     use "ellisonleao/glow.nvim"
     use "mogelbrod/vim-jsonpath"
     use {
