@@ -16,7 +16,7 @@ vim.api.nvim_buf_set_keymap(0, "n", ",md", "<Plug>MarkdownPreview", { noremap = 
 vim.api.nvim_buf_set_keymap(0, "n", ",th", ":TSBufToggle highlight<CR>", { noremap = false })
 
 -- wrap selection in markdown link
-vim.api.nvim_buf_set_keymap(0, "v", ",wl", [[c[<c-r>"]()<esc>>]], { noremap = false })
+vim.api.nvim_buf_set_keymap(0, "v", ",wl", [[c[<c-r>"]()<esc>]], { noremap = false })
 
 vim.api.nvim_exec(
   [[
