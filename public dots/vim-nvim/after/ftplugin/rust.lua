@@ -46,6 +46,9 @@ vim.api.nvim_buf_set_keymap(
   { noremap = true, silent = true }
 )
 
+-- @TODOUA: check to see if rust-tools selects is handling close (nil)
+-- Meantime, close runnable & debuggable pickers manually :close!
+
 -- Lsp maps
 vim.api.nvim_buf_set_keymap(
   0,

@@ -254,13 +254,8 @@ end
 function M.grep_notes()
   local opts = {}
   opts.hidden = true
-  -- opts.file_ignore_patterns = { 'thesaurus/'}
   opts.search_dirs = {
     "~/notes/",
-    "~/dotfiles",
-    "~/vim-dev",
-    "~/.oh-my-zsh/custom",
-    "~/.config",
   }
   opts.prompt_prefix = "   "
   opts.prompt_title = " Grep Notes"
@@ -294,7 +289,7 @@ function M.find_configs()
     results_title = "Config Files Results",
     path_display = { "smart" },
     search_dirs = {
-      "~/.oh-my-zsh/custom/",
+      "~/.oh-my-zsh/custom",
       "~/.config/nvim",
       "~/.config/alacritty",
     },
