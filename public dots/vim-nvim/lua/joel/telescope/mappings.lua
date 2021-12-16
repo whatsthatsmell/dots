@@ -46,23 +46,33 @@ key_map(
   { noremap = true, silent = true }
 )
 
--- commands - Lua API in the works: https://github.com/neovim/neovim/pull/12378
+-- git telescope goodness
 -- git_branches
 key_map(
   "n",
-  "<leader>gc",
-  [[<Cmd>lua require'telescope.builtin'.git_branches()<CR>]],
+  "<space>gb",
+  [[<Cmd>lua require'telescope.builtin'.git_branches({prompt_title = ' ', results_title='Git Branches'})<CR>]],
+  {
+    noremap = true,
+    silent = true,
+  }
+)
+-- git_bcommits - file/buffer scoped commits to vsp diff
+key_map(
+  "n",
+  "<space>gc",
+  [[<Cmd>lua require'telescope.builtin'.git_bcommits({prompt_title = '  ', results_title='Git File Commits'})<CR>]],
   { noremap = true, silent = true }
 )
--- git_commits (log)
+-- git_commits (log) git log
 key_map("n", "gl", [[<Cmd>lua require'telescope.builtin'.git_commits()<CR>]], { noremap = true, silent = true })
 -- git_status - <tab> to toggle staging
 key_map("n", "gs", [[<Cmd>lua require'telescope.builtin'.git_status()<CR>]], { noremap = true, silent = true })
--- ** the Telescope comma maps **
 
 -- registers picker
 key_map("n", "<space>r", [[<Cmd>lua require'telescope.builtin'.registers()<CR>]], { noremap = true, silent = true })
 
+-- ** the Telescope comma maps **
 -- find files with names that contain cursor word
 key_map(
   "n",

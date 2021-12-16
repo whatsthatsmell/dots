@@ -3,7 +3,10 @@ require "joel.telescope.mappings"
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 local utils = require "telescope.utils"
+
 local custom_actions = {}
+
+-- custom temp multi-select
 function custom_actions._multiopen(prompt_bufnr, open_cmd)
   local picker = action_state.get_current_picker(prompt_bufnr)
   local num_selections = #picker:get_multi_selection()
@@ -43,6 +46,9 @@ end
 function custom_actions.multi_selection_open(prompt_bufnr)
   custom_actions._multiopen(prompt_bufnr, "edit")
 end
+
+-- @TODOUA: create a git history keyword search picker
+-- @TODOUA: add action to commits pickers to yank commit hash
 
 require("telescope").setup {
   extensions = {
@@ -96,6 +102,7 @@ require("telescope").setup {
         preview_height = 0.5,
       },
     },
+    -- using custom temp multi-select maps for some
     mappings = {
       i = {
         ["<esc>"] = actions.close,
@@ -114,7 +121,7 @@ require("telescope").setup {
         ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
         ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
         ["<cr>"] = custom_actions.multi_selection_open,
-        ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
+        ["<c-v>"] = actions.select_vertical,
         ["<c-s>"] = custom_actions.multi_selection_open_split,
         ["<c-t>"] = custom_actions.multi_selection_open_tab,
       },
