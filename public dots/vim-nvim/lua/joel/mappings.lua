@@ -149,7 +149,7 @@ key_map("n", "<Leader>x", ":bd<CR>", { noremap = true, silent = true })
 -- Fugitive maps
 key_map("n", "<leader>gb", ":Git blame<Return>", { noremap = true, silent = false })
 key_map("n", "<leader>gp", ":G push origin ", { noremap = false })
--- :Gvdiffsplit*
+key_map("n", "<space>do", ":Gvdiffsplit!<cr>", { noremap = true, silent = true })
 
 -- open file in directory of current file
 key_map("n", "<leader>e", ":e %:h/", { noremap = false, silent = false })
