@@ -127,7 +127,7 @@ require("telescope").setup {
       },
     },
     dynamic_preview_title = true,
-    winblend = 3,
+    winblend = 4,
   },
 }
 

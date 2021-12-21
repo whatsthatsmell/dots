@@ -90,16 +90,7 @@ set undodir=~/.config/nvim/undodir
 set undofile
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m,%f:%l:%m
-
 ]]
-
--- Trial DAP maps
--- vim.cmd [[nnoremap <silent> <leader>dr :lua require'dap'.continue()<CR>]]
--- vim.cmd [[nnoremap <leader>ds :lua require'dap'.stop()<CR>]]
--- vim.cmd [[nnoremap <leader>da :lua require'joel.debugHelper'.attach()<CR>]]
--- vim.cmd [[nnoremap <leader>dg :lua require'joel.debugHelper'.debugGql()<CR>]]
--- vim.cmd [[nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>]]
--- vim.cmd [[nnoremap <silent> <space>dh :lua require('dap.ui.variables').hover()<CR>]]
 
 -- THEME stuff
 vim.cmd "set fillchars+=vert:│"

@@ -5,13 +5,21 @@
 -- Plugins via Packer
 return require("packer").startup {
   function(use, use_rocks)
-    use "editorconfig/editorconfig-vim"
+    -- use "antoinemadec/FixCursorHold.nvim"
+    -- tpope
     use "tpope/vim-surround"
     use "tpope/vim-fugitive"
     use "tpope/vim-repeat"
-    -- use "antoinemadec/FixCursorHold.nvim"
+    use "tpope/vim-eunuch"
+    use "tpope/vim-unimpaired"
+    use "tpope/vim-abolish"
+    use "editorconfig/editorconfig-vim"
+    -- markdown plugins
     use "ellisonleao/glow.nvim"
+    use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
+    -- json pathing
     use "mogelbrod/vim-jsonpath"
+
     use {
       "luukvbaal/stabilize.nvim",
       config = function()
@@ -20,20 +28,11 @@ return require("packer").startup {
     }
     use { "stevearc/dressing.nvim" }
     use {
-      "lewis6991/spellsitter.nvim",
-      config = function()
-        require("spellsitter").setup()
-      end,
-    }
-    use {
       "numToStr/Comment.nvim",
       config = function()
         require("Comment").setup()
       end,
     }
-    use "tpope/vim-eunuch"
-    use "tpope/vim-unimpaired"
-    use "tpope/vim-abolish"
     use "pbrisbin/vim-mkdir"
     use "vim-test/vim-test"
     use "mbbill/undotree"
@@ -69,6 +68,13 @@ return require("packer").startup {
     use "folke/lua-dev.nvim"
     use "onsails/lspkind-nvim"
     use "ray-x/lsp_signature.nvim"
+    -- sitting
+    use {
+      "lewis6991/spellsitter.nvim",
+      config = function()
+        require("spellsitter").setup()
+      end,
+    }
     use {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
@@ -79,12 +85,12 @@ return require("packer").startup {
     use "David-Kunz/treesitter-unit"
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
     use "simrat39/rust-tools.nvim"
+
     use "chrisbra/Colorizer"
     use "nvim-lua/plenary.nvim"
     use "kyazdani42/nvim-web-devicons"
     use "lukas-reineke/indent-blankline.nvim"
     use "rcarriga/nvim-notify"
-    use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
 
     -- nvim-cmp
     -- if we move away from cmp in the future, consider 'joel.completion requirement'

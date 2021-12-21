@@ -1,5 +1,7 @@
 ![Neovim version](https://img.shields.io/badge/Neovim-0.7.x-57A143?style=plastic&logo=neovim)
 ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=plastic&logo=lua&logoColor=white)
+![YouTubeSubs](https://img.shields.io/youtube/channel/subscribers/UC4S7Fm5x-WXRCWP6MjK6k2A?style=social)
+
 ### NeoNews:
 - [Neovim 0.6 has released](https://github.com/neovim/neovim/releases/tag/v0.6.0)
 ### RustyNews:
