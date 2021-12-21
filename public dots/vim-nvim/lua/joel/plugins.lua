@@ -1,10 +1,29 @@
--- allows `hererocks` to install on Mac
--- https://github.com/wbthomason/packer.nvim/issues/180#issuecomment-871634199
--- Still some weirdness that needs further testing around rock installs (which, env, version)
--- vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
+-- install packer automatically on new system
+-- https://github.com/wbthomason/packer.nvim#bootstrapping
+local fn = vim.fn
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system {
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  }
+end
+
+-- sync plugins on write/save
+vim.cmd [[
+  augroup packer_sync_plugins
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
 -- Plugins via Packer
 return require("packer").startup {
-  function(use, use_rocks)
+  function(use)
     -- use "antoinemadec/FixCursorHold.nvim"
     -- tpope
     use "tpope/vim-surround"
@@ -93,7 +112,6 @@ return require("packer").startup {
     use "rcarriga/nvim-notify"
 
     -- nvim-cmp
-    -- if we move away from cmp in the future, consider 'joel.completion requirement'
     use {
       "hrsh7th/nvim-cmp",
       requires = {
@@ -134,9 +152,10 @@ return require("packer").startup {
     -- need some diffent functionality, may put up a PR later
     use "~/vim-dev/plugins/telescope-github.nvim"
 
-    -- Lua Rocks 🎸
-    -- don't forget env setting at top if uncommenting
-    -- use_rocks "rapidjson"
+    -- setup config after cloning packer
+    if PACKER_BOOTSTRAP then
+      require("packer").sync()
+    end
   end,
   config = {
     display = {
