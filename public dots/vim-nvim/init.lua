@@ -1,10 +1,10 @@
 -- Always on bleeding edge Neovim from https://git.io/NeovimHEAD --
--- NVIM v0.7.0-dev+755-g1062ea2cc
+-- NVIM v0.7.0-dev+814-g76435c0cf
 
--- Plugins
+-- Plugins --
 require "joel.plugins"
 
--- config/setup
+-- config/setup --
 require "joel.config"
 
 -- Telescope 🔭
