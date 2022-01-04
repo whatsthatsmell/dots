@@ -13,7 +13,7 @@ _Last Updated: 04-Jan-2022 or more recently._
 - [Neovim](https://neovim.io/) - _Important Note_: these Dotfiles target bleeding edge Neovim APIs. I try to update these runtime files as soon as the Neovim team pushes changes (including & especially breaking) to [their master branch](https://git.io/NeovimHEAD) and I pull the latest. 
   - I usually pull the latest a few times per week or if I see that a particularly juicy PR has landed. I do test Neovim feature branches. But, only code that works with `Neovim → master` will be pushed to this repo. [Neovim 0.6.0](https://github.com/neovim/neovim/releases/tag/v0.6.0) should work with most of what you see here. 
   - However, a lot of API changes are coming out of Neovim on the 0.6 track (master). So, I'd recommend using [Neovim Nightly](https://github.com/neovim/neovim/releases/tag/nightly) to use all the goodness in these Dotfiles. Or, [building from source](https://github.com/neovim/neovim#install-from-source) - [Code Smell video instructions](https://youtu.be/wep2_b_QU7Q). It's unlikely that I am more than a day or 2 behind. 
-  - The Neovim [commit](https://github.com/neovim/neovim/commit/3fd454bd4a6ceb1989d15cf2d3d5e11d7a253b2d) that I am on: `NVIM v0.7.0-dev+826-g3fd454bd4`
+  - The Neovim [commit](https://github.com/neovim/neovim/commit/39238435dbfc632356d10f287994c80142dd95bd) that I am on: `NVIM v0.7.0-dev+829-g39238435d`
 	- Theme: [codesmell_dark](https://github.com/whatsthatsmell/codesmell_dark.vim)
 	  - `Telescope`, `nvim-cmp`, `GitSigns`, many other plugins and builtins are colored from this theme using `Treesitter 🌲` 
 	- Config: [Lua](https://neovim.io/doc/user/lua.html)
@@ -31,7 +31,7 @@ _I update my private Dotfiles on a regular basis. They're in a private repo. How
 
 The `gitsigns` map that will make your life better:
 ```lua
--- toogle virtual current line blame → <leader>hb for Full line blame
+-- toggle virtual current line blame → <leader>hb for Full line blame
 key_map("n", ",tb", [[<Cmd>lua require'gitsigns'.toggle_current_line_blame()<CR>]], { noremap = true, silent = true })
 ```
 
