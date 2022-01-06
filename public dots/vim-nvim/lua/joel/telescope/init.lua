@@ -4,47 +4,21 @@ local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 local utils = require "telescope.utils"
 
-local custom_actions = {}
+-- https://github.com/nvim-telescope/telescope.nvim/issues/1048
+local telescope_custom_actions = {}
 
--- custom temp multi-select
-function custom_actions._multiopen(prompt_bufnr, open_cmd)
+function telescope_custom_actions._multiopen(prompt_bufnr, open_cmd)
   local picker = action_state.get_current_picker(prompt_bufnr)
   local num_selections = #picker:get_multi_selection()
-  if num_selections > 1 then
-    local cwd = picker.cwd
-    if cwd == nil then
-      cwd = ""
-    else
-      cwd = string.format("%s/", cwd)
-    end
-    vim.cmd "bw!"
-    for _, entry in ipairs(picker:get_multi_selection()) do
-      vim.cmd(string.format("%s %s%s", open_cmd, cwd, entry.value))
-    end
-    vim.cmd "stopinsert"
-  else
-    if open_cmd == "vsplit" then
-      actions.file_vsplit(prompt_bufnr)
-    elseif open_cmd == "split" then
-      actions.file_split(prompt_bufnr)
-    elseif open_cmd == "tabe" then
-      actions.file_tab(prompt_bufnr)
-    else
-      actions.select_default(prompt_bufnr)
-    end
+  if not num_selections or num_selections <= 1 then
+    actions.add_selection(prompt_bufnr)
   end
+  actions.send_selected_to_qflist(prompt_bufnr)
+  vim.cmd("cfdo " .. open_cmd)
 end
-function custom_actions.multi_selection_open_vsplit(prompt_bufnr)
-  custom_actions._multiopen(prompt_bufnr, "vsplit")
-end
-function custom_actions.multi_selection_open_split(prompt_bufnr)
-  custom_actions._multiopen(prompt_bufnr, "split")
-end
-function custom_actions.multi_selection_open_tab(prompt_bufnr)
-  custom_actions._multiopen(prompt_bufnr, "tabe")
-end
-function custom_actions.multi_selection_open(prompt_bufnr)
-  custom_actions._multiopen(prompt_bufnr, "edit")
+
+function telescope_custom_actions.multi_selection_open(prompt_bufnr)
+  telescope_custom_actions._multiopen(prompt_bufnr, "edit")
 end
 
 -- @TODOUA: create a git history keyword search picker
@@ -66,7 +40,6 @@ require("telescope").setup {
     -- },
     bookmarks = {
       selected_browser = "brave",
-
       url_open_command = "open",
     },
   },
@@ -75,6 +48,7 @@ require("telescope").setup {
       timeout = 500,
       msg_bg_fillchar = "",
     },
+    multi_icon = " ",
     vimgrep_arguments = {
       "rg",
       "--color=never",
@@ -102,28 +76,17 @@ require("telescope").setup {
         preview_height = 0.5,
       },
     },
-    -- using custom temp multi-select maps for some
+
+    -- using custom temp multi-select maps
+    -- https://github.com/nvim-telescope/telescope.nvim/issues/1048
     mappings = {
-      i = {
-        ["<esc>"] = actions.close,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
-        ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-        ["<cr>"] = custom_actions.multi_selection_open,
-        ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
-        ["<c-s>"] = custom_actions.multi_selection_open_split,
-        ["<c-t>"] = custom_actions.multi_selection_open_tab,
-      },
       n = {
         ["<Del>"] = actions.close,
+        ["<C-A>"] = telescope_custom_actions.multi_selection_open,
+      },
+      i = {
         ["<esc>"] = actions.close,
-        ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
-        ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-        ["<cr>"] = custom_actions.multi_selection_open,
-        ["<c-v>"] = actions.select_vertical,
-        ["<c-s>"] = custom_actions.multi_selection_open_split,
-        ["<c-t>"] = custom_actions.multi_selection_open_tab,
+        ["<C-A>"] = telescope_custom_actions.multi_selection_open,
       },
     },
     dynamic_preview_title = true,
