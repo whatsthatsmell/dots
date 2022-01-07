@@ -42,7 +42,7 @@ require("lualine").setup {
     icons_enabled = true,
     theme = custom_auto,
     component_separators = { left = "⦚", right = "  " },
-    section_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
     disabled_filetypes = {},
     always_divide_middle = false,
   },
@@ -55,8 +55,12 @@ require("lualine").setup {
     },
     lualine_c = { { "filename", path = 1, symbols = { modified = "[]", readonly = " " } } },
     lualine_x = { { "filetype", icon_only = true } },
-    lualine_y = { { current_buffer_number }, { current_working_dir }, { current_date } },
-    lualine_z = { "location" },
+    lualine_y = {
+      { current_buffer_number, color = { fg = "#A9A9A9" } },
+      { current_working_dir, color = { fg = "#A9A9A9" } },
+      { current_date, color = { fg = "#C6CDC2" } },
+    },
+    lualine_z = { { "location", color = { fg = "#D3DCE2", bg = "#191919" } } },
   },
   inactive_sections = {
     lualine_a = {},
