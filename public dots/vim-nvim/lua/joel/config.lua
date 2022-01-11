@@ -207,7 +207,7 @@ require("gitsigns").setup {
     },
     change = {
       hl = "DiffChange",
-      text = "│",
+      text = "",
       numhl = "GitSignsChangeNr",
     },
     delete = {
