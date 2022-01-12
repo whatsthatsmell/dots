@@ -179,7 +179,7 @@ key_map("n", "<leader>pr", [[<Cmd>lua require'joel.telescope'.gh_prs()<CR>]], { 
 key_map(
   "n",
   "<C-n>",
-  [[<Cmd>lua require('telescope').extensions.neoclip.plus()<CR>]],
+  [[<Cmd>lua require('telescope').extensions.neoclip.default()<CR>]],
   { noremap = true, silent = true }
 )
 

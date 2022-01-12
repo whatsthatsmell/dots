@@ -204,6 +204,10 @@ key_map("n", "<down>", "<C-w><down>", { noremap = false })
 key_map("n", "<left>", "<C-w><left>", { noremap = false })
 key_map("n", "<right>", "<C-w><right>", { noremap = false })
 
+-- resize vsplits
+key_map("n", "<C-H>", ":vertical resize -2<CR>", { noremap = false })
+key_map("n", "<C-L>", ":vertical resize +2<CR>", { noremap = false })
+
 -- Replace word under cursor in Buffer (case-sensitive)
 key_map("n", "<leader>sr", ":%s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
 -- Replace word under cursor on Line (case-sensitive)

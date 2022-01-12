@@ -69,6 +69,7 @@ return require("packer").startup {
     use { "nvim-telescope/telescope-file-browser.nvim" }
     -- use { "nvim-telescope/telescope-ui-select.nvim" }
     use "dhruvmanila/telescope-bookmarks.nvim"
+    use "nvim-telescope/telescope-github.nvim"
     use {
       "AckslD/nvim-neoclip.lua",
       config = function()
@@ -149,8 +150,8 @@ return require("packer").startup {
     -- Local plugins
     use "~/vim-dev/plugins/codesmell_dark.vim"
     use "~/vim-dev/plugins/telescope.nvim"
-    -- need some diffent functionality, may put up a PR later
-    use "~/vim-dev/plugins/telescope-github.nvim"
+    -- when I need some diffent functionality, may put up a PR later
+    -- use "~/vim-dev/plugins/telescope-github.nvim"
 
     -- setup config after cloning packer
     if PACKER_BOOTSTRAP then
