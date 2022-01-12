@@ -189,6 +189,18 @@ cmp.setup.buffer {
   },
 }
 
+vim.api.nvim_exec(
+  [[
+" rainbow color HLs
+hi rainbowcol1 guifg=#91D2A3
+hi rainbowcol2 guifg=#3791D4
+hi rainbowcol3 guifg=#8182EB
+hi rainbowcol4 guifg=#BCCEA3
+hi rainbowcol6 guifg=#1B9C36
+]],
+  false
+)
+
 -- ** Letting rust-tools handle the below:
 -- Get error at first to to RA loading and: https://github.com/neovim/neovim/pull/15926
 -- @TODOUA: 11-Oct-2021 ← revist
