@@ -5,13 +5,13 @@
 ### NeoNews:
 - [Neovim 0.6.1 has released](https://github.com/neovim/neovim/releases/tag/v0.6.1)
 ### RustyNews:
-- [Rust 1.57.0 Stable Released](https://blog.rust-lang.org/2021/12/02/Rust-1.57.0.html) *_you should use nightly though_
+- [Rust 1.58.0 Stable Released](https://blog.rust-lang.org/2021/12/02/Rust-1.58.0.html) *_you should use nightly though_
 # Public version of Code Smell dotfiles
 
 ## Current Setup 
-_Last Updated: 12-Jan-2022 or more recently._
+_Last Updated: 13-Jan-2022 or more recently._
 - [Neovim](https://neovim.io/) - _Important Note_: these Dotfiles target bleeding edge Neovim APIs. I try to update these runtime files as soon as the Neovim team pushes changes (including & especially breaking) to [their master branch](https://git.io/NeovimHEAD) and I pull the latest. 
-  - I usually pull the latest a few times per week or if I see that a particularly juicy PR has landed. I do test Neovim feature branches. But, only code that works with `Neovim → master` will be pushed to this repo. [Neovim 0.6.0](https://github.com/neovim/neovim/releases/tag/v0.6.0) should work with most of what you see here. 
+  - I usually pull the latest a few times per week or if I see that a particularly juicy PR has landed. I do test Neovim feature branches. But, only code that works with `Neovim → master` will be pushed to this repo. [Neovim 0.6.1](https://github.com/neovim/neovim/releases/tag/v0.6.1) should work with most of what you see here. 
   - However, a lot of API changes are coming out of Neovim on the 0.6 track (master). So, I'd recommend using [Neovim Nightly](https://github.com/neovim/neovim/releases/tag/nightly) to use all the goodness in these Dotfiles. Or, [building from source](https://github.com/neovim/neovim#install-from-source) - [Code Smell video instructions](https://youtu.be/wep2_b_QU7Q). It's unlikely that I am more than a day or 2 behind. 
   - The Neovim [commit](https://github.com/neovim/neovim/commit/25eb7692d8e29cc83a70d74cbe1a8a1fae1f8ba2) that I am on: `Nvim Version: NVIM v0.7.0-dev+868-g25eb7692d`
 	- Theme: [codesmell_dark](https://github.com/whatsthatsmell/codesmell_dark.vim)
@@ -21,7 +21,7 @@ _Last Updated: 12-Jan-2022 or more recently._
 	- Featuring: `Telescope 🔭`, `gitsigns`, `nvim-cmp`, `Treesitter` and all the LSP goodness
 - [Rust](https://www.rust-lang.org/)
 	- [compiler](https://rustup.rs/): `1.60.0-nightly (1409c015b 2022-01-11)`
-  - [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp): `54782428a 2022-01-12 dev` 
+  - [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp): `rust-analyzer 1bfd903af 2022-01-13 dev` 
 - [Alacritty](https://github.com/alacritty/alacritty) and 2 [iTerm Hotkey Windows](https://www.iterm2.com/)
     - Zsh Theme: [code-smell.zsh-theme](https://github.com/whatsthatsmell/dots/blob/master/public%20dots/zsh/code-smell.zsh-theme)
 - Zsh  
