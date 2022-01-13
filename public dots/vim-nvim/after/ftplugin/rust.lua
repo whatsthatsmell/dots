@@ -1,5 +1,5 @@
 -- rustc 1.60.0-nightly (1409c015b 2022-01-11)
--- rust-analyzer 54782428a 2022-01-12 dev
+-- rust-analyzer 1bfd903af 2022-01-13 dev
 
 -- treesitter folding
 vim.opt_local.foldmethod = "expr"
@@ -34,17 +34,17 @@ noremap <silent><localleader>cr :Crun<cr>
 -- snippets dir- vsnip. Need to try LuaSnip
 vim.b.vsnip_snippet_dir = vim.fn.expand "~/.config/nvim/snippets/"
 
--- rust-tools --
+-- rust-tools -- REMOVED FOR NOW: https://github.com/simrat39/rust-tools.nvim
 -- Command:
 -- RustRunnables
-vim.api.nvim_buf_set_keymap(
-  0,
-  "n",
-  "<space>rr",
-  [[<cmd>lua require('rust-tools.runnables').runnables()<cr>
-]],
-  { noremap = true, silent = true }
-)
+-- vim.api.nvim_buf_set_keymap(
+--   0,
+--   "n",
+--   "<space>rr",
+--   [[<cmd>lua require('rust-tools.runnables').runnables()<cr>
+-- ]],
+--   { noremap = true, silent = true }
+-- )
 
 -- @TODOUA: check to see if rust-tools selects is handling close (nil)
 -- Meantime, close runnable & debuggable pickers manually :close!
@@ -201,16 +201,14 @@ hi rainbowcol6 guifg=#1B9C36
   false
 )
 
--- ** Letting rust-tools handle the below:
--- Get error at first to to RA loading and: https://github.com/neovim/neovim/pull/15926
--- @TODOUA: 11-Oct-2021 ← revist
 -- Enable type inlay hints
--- vim.api.nvim_exec(
---   [[
--- augroup RustInlayHints
---   autocmd!
---   autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '=>', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
--- augroup end
--- ]],
---   false
--- )
+-- Not executing on Buf*Enter because they are not ready then. CursorMoved is fine for now.
+vim.api.nvim_exec(
+  [[
+augroup RustInlayHints
+  autocmd!
+  autocmd CursorMoved,InsertLeave,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '=>', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+augroup end
+]],
+  false
+)
