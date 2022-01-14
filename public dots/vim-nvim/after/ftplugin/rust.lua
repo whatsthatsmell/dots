@@ -49,7 +49,19 @@ vim.b.vsnip_snippet_dir = vim.fn.expand "~/.config/nvim/snippets/"
 -- @TODOUA: check to see if rust-tools selects is handling close (nil)
 -- Meantime, close runnable & debuggable pickers manually :close!
 
--- Lsp maps
+-- LSP maps
+-- turn on inlay_hints → only Chaining hints work as of now 14-Jan-2022
+-- Bringing back rust-tools ASAP
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  ",ih",
+  [[<cmd>lua require'lsp_extensions'.inlay_hints{ prefix = ' ', highlight = 'Comment', enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+<CR>
+]],
+  { noremap = true, silent = true }
+)
+
 vim.api.nvim_buf_set_keymap(
   0,
   "n",
@@ -201,14 +213,15 @@ hi rainbowcol6 guifg=#1B9C36
   false
 )
 
+-- @TODOUA: bring back rust-tools once it catches up with upstream changes
 -- Enable type inlay hints
 -- Not executing on Buf*Enter because they are not ready then. CursorMoved is fine for now.
-vim.api.nvim_exec(
-  [[
-augroup RustInlayHints
-  autocmd!
-  autocmd CursorMoved,InsertLeave,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '=>', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
-augroup end
-]],
-  false
-)
+-- vim.api.nvim_exec(
+--   [[
+-- augroup RustInlayHints
+--   autocmd!
+--   autocmd CursorMoved,InsertLeave,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '=>', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+-- augroup end
+-- ]],
+--   false
+-- )
