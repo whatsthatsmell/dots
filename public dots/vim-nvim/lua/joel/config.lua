@@ -108,11 +108,11 @@ require("lspconfig").tsserver.setup {
       -- mode, 10 by default
 
       floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
-      hint_enable = true, -- virtual hint enable
-      hint_prefix = "🌟 ", -- Panda for parameter
+      hint_enable = true,
+      hint_prefix = "🌟 ",
       hint_scheme = "String",
-      use_lspsaga = false, -- set to true if you want to use lspsaga popup
-      hi_parameter = "Search", -- how your parameter will be highlight
+      use_lspsaga = false,
+      hi_parameter = "Search", -- hl-search
       max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
       -- to view the hiding contents
       max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
