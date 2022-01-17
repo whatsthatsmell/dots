@@ -157,6 +157,7 @@ key_map("n", "<space>do", ":Gvdiffsplit!<cr>", { noremap = true, silent = true }
 -- open file in directory of current file
 key_map("n", "<leader>e", ":e %:h/", { noremap = false, silent = false })
 key_map("n", "<leader>v", ":vs %:h/", { noremap = false, silent = false })
+-- Note: use :Di(rbuf) to edit directory via a buffer
 
 -- open quickfix / close
 key_map("n", "<leader>co", ":cope<cr>", { noremap = false, silent = true })
