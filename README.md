@@ -20,8 +20,8 @@ _Last Updated: 18-Jan-2022 or more recently._
 	- Package Management: [Packer](https://github.com/wbthomason/packer.nvim)
 	- Featuring: `Telescope 🔭`, `gitsigns`, `nvim-cmp`, `Treesitter` and all the LSP goodness
 - [Rust](https://www.rust-lang.org/)
-	- [compiler](https://rustup.rs/): `1.60.0-nightly (1409c015b 2022-01-11)`
-  - [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp): `rust-analyzer 1bfd903af 2022-01-13 dev` 
+	- [compiler](https://rustup.rs/): `rustc 1.60.0-nightly (ee5d8d37b 2022-01-17)`
+  - [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp): `rust-analyzer ac8806df0 2022-01-18 dev` 
 - [Alacritty](https://github.com/alacritty/alacritty) and 2 [iTerm Hotkey Windows](https://www.iterm2.com/)
     - Zsh Theme: [code-smell.zsh-theme](https://github.com/whatsthatsmell/dots/blob/master/public%20dots/zsh/code-smell.zsh-theme)
 - Zsh  
