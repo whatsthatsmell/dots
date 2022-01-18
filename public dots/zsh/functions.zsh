@@ -1,11 +1,11 @@
 # ZSH Functions
 
-# get trackpad battery %
-tpb() {
-  BATTLVL=$(ioreg -r -l -n AppleHSBluetoothDevice | rg '"BatteryPercent" = |^  \|   "Bluetooth Product Name" = ' | sed 's/  |   "Bluetooth Product Name" = "Magic Trackpad 2"/  \| Trackpad:/' | sed 's/  |   |       "BatteryPercent" = / /')
-  BATTRPT=${BATTLVL//[$'\t\r\n|']/} # Strips all instances of tab, newline, return.
-  echo $BATTRPT%
-}
+# get trackpad battery % - not currently using but leaving for others for now.
+# tpb() {
+#   BATTLVL=$(ioreg -r -l -n AppleHSBluetoothDevice | rg '"BatteryPercent" = |^  \|   "Bluetooth Product Name" = ' | sed 's/  |   "Bluetooth Product Name" = "Magic Trackpad 2"/  \| Trackpad:/' | sed 's/  |   |       "BatteryPercent" = / /')
+#   BATTRPT=${BATTLVL//[$'\t\r\n|']/} # Strips all instances of tab, newline, return.
+#   echo $BATTRPT%
+# }
 
 # zd - use zoxide & FZF to find and go to directory
 # Not sure why zoxide query -i with FZF doesn't CD

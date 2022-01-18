@@ -1,5 +1,5 @@
 local key_map = vim.api.nvim_set_keymap
--- TELESCOPE keymaps  --
+-- TELESCOPE keymaps 🔭 --
 -- Search through your Neovim related todos
 key_map("n", "<leader>st", ":lua require'joel.telescope'.search_todos()<CR>", { noremap = true, silent = true })
 
@@ -111,6 +111,12 @@ key_map(
 key_map("n", ",g", [[<Cmd>lua require'telescope.builtin'.live_grep()<CR>]], { noremap = true, silent = true })
 key_map(
   "n",
+  ",bf",
+  [[<Cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find()<CR>]],
+  { noremap = true, silent = true }
+)
+key_map(
+  "n",
   ",k",
   [[<Cmd>lua require'telescope.builtin'.keymaps({results_title='Key Maps Results'})<CR>]],
   { noremap = true, silent = true }
@@ -172,7 +178,7 @@ key_map("n", "<leader>nc", [[<Cmd>lua require'joel.telescope'.nvim_config()<CR>]
 
 -- Github issues
 key_map("n", "<leader>is", [[<Cmd>lua require'joel.telescope'.gh_issues()<CR>]], { noremap = true, silent = true })
--- github PRs
+-- github Pull Requests - PRs
 key_map("n", "<leader>pr", [[<Cmd>lua require'joel.telescope'.gh_prs()<CR>]], { noremap = true, silent = true })
 
 -- neoclip
