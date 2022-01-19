@@ -30,6 +30,7 @@ key_map(
   { noremap = true, silent = true }
 )
 
+-- LSP!
 -- show LSP implementations
 key_map(
   "n",
@@ -43,6 +44,13 @@ key_map(
   "n",
   "<leader>td",
   [[<Cmd>lua require'telescope.builtin'.lsp_definitions({layout_config = { preview_width = 0.50, width = 0.92 }, path_display = { "shorten" }, results_title='Definitions'})<CR>]],
+  { noremap = true, silent = true }
+)
+-- show DOCUMENT Symbols
+key_map(
+  "n",
+  ",ws",
+  [[<Cmd>lua require'telescope.builtin'.lsp_document_symbols()<CR>]],
   { noremap = true, silent = true }
 )
 
@@ -72,7 +80,6 @@ key_map("n", "gs", [[<Cmd>lua require'telescope.builtin'.git_status()<CR>]], { n
 -- registers picker
 key_map("n", "<space>r", [[<Cmd>lua require'telescope.builtin'.registers()<CR>]], { noremap = true, silent = true })
 
--- ** the Telescope comma maps **
 -- find files with names that contain cursor word
 key_map(
   "n",
@@ -80,13 +87,9 @@ key_map(
   [[<Cmd>lua require'telescope.builtin'.find_files({find_command={'fd', vim.fn.expand('<cword>')}})<CR>]],
   { noremap = true, silent = true }
 )
--- show LSP diagnostics for all open buffers
-key_map(
-  "n",
-  ",d",
-  [[<Cmd>lua require'telescope.builtin'.lsp_workspace_diagnostics()<CR>]],
-  { noremap = true, silent = true }
-)
+-- show Workspace Diagnostics
+key_map("n", ",d", [[<Cmd>lua require'telescope.builtin'.diagnostics()<CR>]], { noremap = true, silent = true })
+
 -- open available commands & run it
 key_map(
   "n",
@@ -153,7 +156,6 @@ key_map(
   [[<Cmd>lua require'telescope'.extensions.file_browser.file_browser()<CR>]],
   { noremap = true, silent = true }
 )
--- End Telescope comma maps
 
 -- grep word under cursor
 key_map("n", "<leader>g", [[<Cmd>lua require'telescope.builtin'.grep_string()<CR>]], { noremap = true, silent = true })
