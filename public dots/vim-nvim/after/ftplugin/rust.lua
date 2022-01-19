@@ -74,47 +74,18 @@ vim.api.nvim_buf_set_keymap(
 vim.api.nvim_buf_set_keymap(
   0,
   "n",
-  "g0",
-  [[<cmd>lua vim.lsp.buf.document_symbol()<CR>]],
-  { noremap = true, silent = true }
-)
-
-vim.api.nvim_buf_set_keymap(
-  0,
-  "n",
-  "gW",
-  [[<cmd>lua vim.lsp.buf.workspace_symbol()<CR>]],
-  { noremap = true, silent = true }
-)
-
-vim.api.nvim_buf_set_keymap(
-  0,
-  "n",
   "gr",
   [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>
 ]],
   { noremap = true, silent = true }
 )
 
-vim.api.nvim_buf_set_keymap(
-  0,
-  "n",
-  "gD",
-  "<cmd>lua vim.lsp.buf.implementation()<CR>",
-  { noremap = true, silent = true }
-)
-
-vim.api.nvim_buf_set_keymap(0, "n", "gd", [[<cmd>lua vim.lsp.buf.declaration()<CR>]], {
-  noremap = true,
-  silent = true,
-})
-
 vim.api.nvim_buf_set_keymap(0, "n", "K", [[<cmd>lua vim.lsp.buf.hover()<CR>]], { noremap = true, silent = true })
 
 vim.api.nvim_buf_set_keymap(
   0,
   "n",
-  "<c-]>",
+  "gd",
   [[<cmd>lua require'telescope.builtin'.lsp_definitions()<CR>
 ]],
   { noremap = true, silent = true }
@@ -123,15 +94,20 @@ vim.api.nvim_buf_set_keymap(
 vim.api.nvim_buf_set_keymap(
   0,
   "n",
+  ",gi",
+  [[<cmd>lua require'telescope.builtin'.lsp_implementations()<CR>
+]],
+  { noremap = true, silent = true }
+)
+
+-- @TODOUA: probably kill this map
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
   "<c-k>",
   [[<cmd>lua vim.lsp.buf.signature_help()<CR>]],
   { noremap = true, silent = true }
 )
-
-vim.api.nvim_buf_set_keymap(0, "n", "1gD", [[<cmd>lua vim.lsp.buf.definition()<CR>]], {
-  noremap = true,
-  silent = true,
-})
 
 vim.api.nvim_buf_set_keymap(0, "n", "ga", [[<cmd>lua vim.lsp.buf.code_action()<CR>]], {
   noremap = true,
@@ -153,7 +129,6 @@ vim.api.nvim_buf_set_keymap(
   [[<cmd>lua vim.lsp.diagnostic.goto_next()<CR>]],
   { noremap = true, silent = true }
 )
--- end of LSP buf maps
 
 -- define LSP signs
 vim.fn.sign_define("DiagnosticSignHint", {
