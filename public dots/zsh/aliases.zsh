@@ -49,6 +49,8 @@ alias cov='open coverage/index.html'
 alias cpnotes='cp -R  ~/notes/ ~/Dropbox/notes'
 alias cprs='rsync -a ~/rusty ~/Dropbox/tech --exclude rust-sources'
 alias cpwd='pwd|pbcopy'
+# npm projects - all dependencies
+alias ndeps='bat package.json | jq ".dependencies, .devDependencies"'
 alias dots='zsh ~/dotfiles/index.txt'
 alias dud='du -d 1 -h'
 alias esl='node_modules/.bin/eslint .'
@@ -89,6 +91,8 @@ alias note='nvim -c "lcd ~/notes/" -c "lua require\"joel.telescope\".browse_note
 alias nv='nvim -c "lua require\"joel.telescope\".project_files()"'
 alias nun='nvim -u NONE'
 alias nvc='cd ~/.config/nvim && nvim ~/.config/nvim/init.lua'
+# pretty and unique paths on your $PATH to FZF
+alias path='echo ${PATH//:/"\n"} | sort | uniq -u | fzf'
 alias ppwd='pbpaste'
 alias rdb='rust-lldb'
 alias rdc='rustup doc --core'

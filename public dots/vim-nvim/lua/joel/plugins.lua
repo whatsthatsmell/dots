@@ -52,7 +52,7 @@ return require("packer").startup {
         require("Comment").setup()
       end,
     }
-    use "elihunter173/dirbuf.nvim"
+    -- use "elihunter173/dirbuf.nvim"
     use "pbrisbin/vim-mkdir"
     use "vim-test/vim-test"
     use "mbbill/undotree"

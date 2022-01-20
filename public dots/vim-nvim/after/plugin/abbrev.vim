@@ -14,3 +14,5 @@ iabbrev TT$ 
 iabbrev B$ ﬘
 iabbrev :-) 
 iabbrev :D 
+iabbrev grm Guilherme
+iabbrev chk ✔
