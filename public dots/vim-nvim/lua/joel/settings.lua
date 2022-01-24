@@ -124,14 +124,14 @@ vim.opt.pumblend = 5
 vim.cmd [[hi PmenuSel blend=0]]
 
 -- Global Vim vars that are on a solo-ish mission **
--- vim.g.fzf_gh_website = 1
 vim.g.matchup_matchparen_deferred = 1
 -- * Colorizer *
 -- auto color fts
 vim.g.colorizer_auto_filetype = "yaml,zsh,zsh-theme,lua,vim,json"
 -- keep colorizing on bufleave
 vim.g.colorizer_disable_bufleave = 1
-
+-- glow
+vim.g.glow_border = "rounded"
 -- vim-test settings (JavaScript only)
 -- https://github.com/vim-test/vim-test
 -- @TODOUA: Need to figure out how to setlocal in ftplugin

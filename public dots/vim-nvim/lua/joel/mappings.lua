@@ -98,14 +98,7 @@ key_map("n", "<Leader>w", ":up<CR>", { noremap = true })
 key_map("n", "<Leader>q", ":q<CR>", { noremap = true, silent = true })
 
 -- GitSigns maps
--- toggle hunk line highlight - staying with the leader + h + one-letter identifier for Hunks (not ,t*)
-key_map("n", "<Leader>hh", [[<Cmd>lua require'gitsigns'.toggle_linehl()<CR>]], { noremap = true, silent = true })
--- toggle hunk line Num highlight
-key_map("n", "<Leader>hn", [[<Cmd>lua require'gitsigns'.toggle_numhl()<CR>]], { noremap = true, silent = true })
--- toogle Virtual current line blame → <leader>hb for Full line blame
-key_map("n", ",tb", [[<Cmd>lua require'gitsigns'.toggle_current_line_blame()<CR>]], { noremap = true, silent = true })
--- toggle Virtual deleted lines
-key_map("n", ",td", [[<Cmd>lua require'gitsigns'.toggle_deleted()<CR>]], { noremap = true, silent = true })
+-- now in Gitsigns setup in config, see: https://github.com/lewis6991/gitsigns.nvim/commit/58e5d6d85e429bfc78fc425dff6d4053ed41753f
 
 -- toggle neoclip - https://github.com/AckslD/nvim-neoclip.lua#startstop
 key_map("n", ",tn", [[<Cmd>lua require('neoclip').toggle()<CR>]], { noremap = true, silent = true })
