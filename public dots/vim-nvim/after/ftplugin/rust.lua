@@ -34,34 +34,22 @@ noremap <silent><localleader>cr :Crun<cr>
 -- snippets dir- vsnip. Need to try LuaSnip
 vim.b.vsnip_snippet_dir = vim.fn.expand "~/.config/nvim/snippets/"
 
--- rust-tools -- REMOVED FOR NOW: https://github.com/simrat39/rust-tools.nvim
+-- rust-tools
 -- Command:
 -- RustRunnables
--- vim.api.nvim_buf_set_keymap(
---   0,
---   "n",
---   "<space>rr",
---   [[<cmd>lua require('rust-tools.runnables').runnables()<cr>
--- ]],
---   { noremap = true, silent = true }
--- )
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "<space>rr",
+  [[<cmd>lua require('rust-tools.runnables').runnables()<cr>
+]],
+  { noremap = true, silent = true }
+)
 
 -- @TODOUA: check to see if rust-tools selects is handling close (nil)
 -- Meantime, close runnable & debuggable pickers manually :close!
 
 -- LSP maps
--- turn on inlay_hints → only Chaining hints work as of now 14-Jan-2022
--- Bringing back rust-tools ASAP
-vim.api.nvim_buf_set_keymap(
-  0,
-  "n",
-  ",ih",
-  [[<cmd>lua require'lsp_extensions'.inlay_hints{ prefix = ' ', highlight = 'Comment', enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
-<CR>
-]],
-  { noremap = true, silent = true }
-)
-
 vim.api.nvim_buf_set_keymap(
   0,
   "n",

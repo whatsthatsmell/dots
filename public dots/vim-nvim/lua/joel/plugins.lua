@@ -105,7 +105,7 @@ return require("packer").startup {
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use "David-Kunz/treesitter-unit"
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
-    -- use "simrat39/rust-tools.nvim"
+    use "simrat39/rust-tools.nvim"
 
     use "chrisbra/Colorizer"
     use "nvim-lua/plenary.nvim"

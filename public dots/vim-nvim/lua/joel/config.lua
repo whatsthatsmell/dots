@@ -191,12 +191,11 @@ nvim_lsp.rust_analyzer.setup {
   },
 }
 
--- rust-tools removed for now
 -- rust-tools config: https://github.com/simrat39/rust-tools.nvim
 -- You want this if you're a Rust developer.
 -- @TODOUA: selects on *abbles require manual close with no select
 -- ... not handling nil in select telescope or otherwise
--- require("rust-tools").setup {}
+require("rust-tools").setup {}
 
 -- GitSigns
 require("gitsigns").setup {
