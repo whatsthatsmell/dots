@@ -208,9 +208,9 @@ colors:
   #
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  #vi_mode_cursor:
+  vi_mode_cursor:
   #  text: CellBackground
-  #  cursor: CellForeground
+    cursor: '#1e90ff'
 
   # Search colors
   #
@@ -732,7 +732,7 @@ key_bindings:
 
   # Vi Mode
   #- { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
-  #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
+  - { key: Space,  mods: Control, mode: ~Search,    action: ToggleViMode            }
   #- { key: Escape,                      mode: Vi|~Search, action: ClearSelection          }
   #- { key: I,                           mode: Vi|~Search, action: ScrollToBottom          }
   #- { key: I,                           mode: Vi|~Search, action: ToggleViMode            }
