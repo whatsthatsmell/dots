@@ -97,7 +97,7 @@ key_map("n", "<Leader>w", ":up<CR>", { noremap = true })
 -- quit (or close window)
 key_map("n", "<Leader>q", ":q<CR>", { noremap = true, silent = true })
 
--- GitSigns maps
+-- Gitsigns maps
 -- now in Gitsigns setup in config, see: https://github.com/lewis6991/gitsigns.nvim/commit/58e5d6d85e429bfc78fc425dff6d4053ed41753f
 
 -- toggle neoclip - https://github.com/AckslD/nvim-neoclip.lua#startstop

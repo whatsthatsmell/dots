@@ -8,7 +8,7 @@ vim.opt.linebreak = true
 vim.opt_local.spell = true
 vim.opt_local.conceallevel = 2
 
--- Markdown Preview in browser
+-- Markdown Preview
 -- For Glow, just type :Glow, I almost never use the :MarkdownPreview keymap, I type it.
 vim.api.nvim_buf_set_keymap(0, "n", ",md", "<Plug>MarkdownPreview", { noremap = false })
 

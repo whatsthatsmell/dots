@@ -102,6 +102,14 @@ vim.api.nvim_buf_set_keymap(0, "n", "ga", [[<cmd>lua vim.lsp.buf.code_action()<C
   silent = true,
 })
 
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "<space>ld",
+  [[<cmd>lua vim.diagnostic.open_float(0, {focusable = false, scope = 'line'})<CR>]],
+  { noremap = true, silent = true }
+)
+
 -- Goto previous/next diagnostic warning/error
 vim.api.nvim_buf_set_keymap(
   0,

@@ -97,7 +97,7 @@ require("dressing").setup {
 }
 
 -- Search/Replace visual b/c inccommand preview doesn't show all (PRs in flight on Neovim)
--- tsserver - JavaScript lsp config
+-- tsserver - JavaScript LSP config
 require("lspconfig").tsserver.setup {
   on_attach = function(client)
     require("lsp_signature").on_attach {
@@ -269,7 +269,7 @@ require("gitsigns").setup {
     map("n", "<leader>hn", gs.toggle_numhl)
     map("n", "<leader>hh", gs.toggle_linehl)
 
-    -- Text object
+    -- Hunk Text Object
     map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
   end,
 }
