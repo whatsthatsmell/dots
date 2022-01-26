@@ -51,6 +51,10 @@ augroup end
 vim.fn.matchadd("matchURL", [[http[s]\?:\/\/[[:alnum:]%\/_#.-]*]])
 vim.cmd "hi matchURL guifg=DodgerBlue"
 
+-- grey out for strikethrough
+vim.fn.matchadd("matchStrike", [[[~]\{2}.\+[~]\{2}]])
+vim.cmd "hi matchStrike guifg=gray"
+
 -- Setup cmp setup buffer configuration - 👻 text off for markdown
 local cmp = require "cmp"
 cmp.setup.buffer {

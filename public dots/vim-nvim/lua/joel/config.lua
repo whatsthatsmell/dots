@@ -195,7 +195,17 @@ nvim_lsp.rust_analyzer.setup {
 -- You want this if you're a Rust developer.
 -- @TODOUA: selects on *abbles require manual close with no select
 -- ... not handling nil in select telescope or otherwise
-require("rust-tools").setup {}
+require("rust-tools").setup {
+  tools = {
+    inlay_hints = {
+      -- prefix for parameter hints
+      parameter_hints_prefix = " ",
+
+      -- prefix for all the other hints (type, chaining)
+      other_hints_prefix = " ",
+    },
+  },
+}
 
 -- GitSigns
 require("gitsigns").setup {
