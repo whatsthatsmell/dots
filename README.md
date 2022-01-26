@@ -5,7 +5,7 @@
 ### NeoNews:
 - [Neovim 0.6.1 has released](https://github.com/neovim/neovim/releases/tag/v0.6.1)
 ### RustyNews:
-- [Rust 1.58.0 Stable Released](https://blog.rust-lang.org/2022/01/13/Rust-1.58.0.html) *_you should use nightly though_
+- [Rust 1.58.1 Stable Released](https://blog.rust-lang.org/2022/01/20/Rust-1.58.1.html) *_you should use nightly though_
 # Public version of Code Smell dotfiles
 
 ## Current Setup 
@@ -20,8 +20,8 @@ _Last Updated: 26-Jan-2022 or more recently._
 	- Package Management: [Packer](https://github.com/wbthomason/packer.nvim)
 	- Featuring: `Telescope 🔭`, `gitsigns`, `nvim-cmp`, `Treesitter` and all the LSP goodness
 - [Rust](https://www.rust-lang.org/)
-	- [compiler](https://rustup.rs/): `rustc 1.60.0-nightly (84322efad 2022-01-23)`
-  - [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp): `rust-analyzer 17afa2e77 2022-01-24 dev` 
+	- [compiler](https://rustup.rs/): `rustc 1.60.0-nightly (8cdb3cd94 2022-01-25)`
+  - [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp): `rust-analyzer 2cb85c14b 2022-01-26 dev` 
 - [Alacritty](https://github.com/alacritty/alacritty) and 2 [iTerm Hotkey Windows](https://www.iterm2.com/)
     - Zsh Theme: [code-smell.zsh-theme](https://github.com/whatsthatsmell/dots/blob/master/public%20dots/zsh/code-smell.zsh-theme)
 - Zsh  
