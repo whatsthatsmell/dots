@@ -11,6 +11,8 @@ alias -s yml=nvim
 alias -s lua=nvim
 alias arec='asciinema rec'
 alias c='cargo'
+alias cb='cargo build'
+alias cr='cargo run'
 alias cfg='cd ~/.config'
 alias cfg='cd ~/.config'
 # TODO: move cliclick aliases to functions with options for preset locations
@@ -47,7 +49,6 @@ alias ck1='cliclick "c:180,1895"'
 alias cnv='cd ~/.config/nvim'
 alias cov='open coverage/index.html'
 alias cpnotes='cp -R  ~/notes/ ~/Dropbox/notes'
-alias cprs='rsync -a ~/rusty ~/Dropbox/tech --exclude rust-sources'
 alias cpwd='pwd|pbcopy'
 # npm projects - all dependencies
 alias ndeps='bat package.json | jq ".dependencies, .devDependencies"'
