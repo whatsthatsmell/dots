@@ -61,14 +61,12 @@ return require("packer").startup {
     use "rust-lang/rust.vim"
     use "wbthomason/packer.nvim"
     use "neovim/nvim-lspconfig"
+    -- 🔭telescope
+    use "nvim-telescope/telescope.nvim"
     -- Telescope Extensions
-    -- using local telescope branch, see below
-    -- use 'nvim-telescope/telescope.nvim'
-    -- using local telescope-github branch
-    -- use "nvim-telescope/telescope-github.nvim"
     use "cljoly/telescope-repo.nvim"
     use { "nvim-telescope/telescope-file-browser.nvim" }
-    -- use { "nvim-telescope/telescope-ui-select.nvim" }
+    use { "nvim-telescope/telescope-ui-select.nvim" }
     use "dhruvmanila/telescope-bookmarks.nvim"
     use "nvim-telescope/telescope-github.nvim"
     use {
@@ -150,7 +148,7 @@ return require("packer").startup {
 
     -- Local plugins
     use "~/vim-dev/plugins/codesmell_dark.vim"
-    use "~/vim-dev/plugins/telescope.nvim"
+    -- use "~/vim-dev/plugins/telescope.nvim"
     -- when I need some diffent functionality, may put up a PR later
     -- use "~/vim-dev/plugins/telescope-github.nvim"
 

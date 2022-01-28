@@ -35,9 +35,9 @@ require("telescope").setup {
     file_browser = {
       hidden = true,
     },
-    -- ["ui-select"] = {
-    --   require("telescope.themes").get_cursor(),
-    -- },
+    ["ui-select"] = {
+      require("telescope.themes").get_cursor(),
+    },
     bookmarks = {
       selected_browser = "brave",
       url_open_command = "open",
@@ -98,7 +98,7 @@ require("telescope").setup {
 -- https://github.com/nvim-telescope/telescope-file-browser.nvim
 require("telescope").load_extension "file_browser"
 -- https://github.com/nvim-telescope/telescope-ui-select.nvim
--- require("telescope").load_extension "ui-select"
+require("telescope").load_extension "ui-select"
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-fzf-nativenvim
 require("telescope").load_extension "fzf"
 
