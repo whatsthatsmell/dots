@@ -127,7 +127,7 @@ key_map(
 key_map(
   "n",
   ",b",
-  [[<Cmd>lua require'telescope.builtin'.buffers({prompt_title = '', results_title='﬘', winblend = 3, layout_strategy = 'vertical', layout_config = { width = 0.40, height = 0.55 }})<CR>]],
+  [[<Cmd>lua require'telescope.builtin'.buffers({prompt_title = '', results_title='﬘', winblend = 3, layout_strategy = 'vertical', layout_config = { width = 0.60, height = 0.55 }})<CR>]],
   { noremap = true, silent = true }
 )
 
