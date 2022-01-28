@@ -13,6 +13,7 @@ alias arec='asciinema rec'
 alias c='cargo'
 alias cb='cargo build'
 alias ccl='cargo clippy'
+alias cclf='cargo clippy --fix'
 alias cclp='cargo clippy -- -W clippy::pedantic'
 # update all global crates
 alias cua='cargo install-update -a'
