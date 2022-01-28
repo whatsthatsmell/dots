@@ -54,6 +54,8 @@ alias cpnotes='cp -R  ~/notes/ ~/Dropbox/notes'
 alias cpwd='pwd|pbcopy'
 # npm projects - all dependencies
 alias ndeps='bat package.json | jq ".dependencies, .devDependencies"'
+# directory file count
+alias dfc='exa | wc -l'
 alias dots='zsh ~/dotfiles/index.txt'
 alias dud='du -d 1 -h'
 alias esl='node_modules/.bin/eslint .'
