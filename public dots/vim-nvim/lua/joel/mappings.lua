@@ -64,6 +64,15 @@ key_map(
   { noremap = false }
 )
 
+-- create work other task in todoist
+-- @TODOUA: make more robust → a picker for proj, label etc.
+key_map(
+  "v",
+  "<leader>tp",
+  [[<Cmd>lua require'joel.funcs'.create_todoist_task({proj_id = 2277745348, label_id = 2158772896})<CR>]],
+  { noremap = false }
+)
+
 -- clear nvim-notify notifications history
 key_map(
   "n",
