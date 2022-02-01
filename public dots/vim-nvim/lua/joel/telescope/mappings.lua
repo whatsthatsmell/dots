@@ -97,6 +97,7 @@ key_map(
   [[<Cmd>lua require'telescope.builtin'.commands({results_title='Commands Results'})<CR>]],
   { noremap = true, silent = true }
 )
+
 -- Telescope oldfiles
 key_map(
   "n",
@@ -137,12 +138,14 @@ key_map(
   [[<Cmd>lua require'telescope.builtin'.help_tags({results_title='Help Results'})<CR>]],
   { noremap = true, silent = true }
 )
+
 key_map(
   "n",
   ",m",
   [[<Cmd>lua require'telescope.builtin'.marks({results_title='Marks Results'})<CR>]],
   { noremap = true, silent = true }
 )
+
 -- find files with gitfiles & fallback on find_files
 key_map("n", ",<space>", [[<Cmd>lua require'joel.telescope'.project_files()<CR>]], { noremap = true, silent = true })
 -- browse, explore and create notes
