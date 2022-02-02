@@ -27,7 +27,8 @@ end
 -- https://github.com/nvim-lualine/lualine.nvim
 local custom_auto = require "lualine.themes.auto"
 custom_auto.terminal.a.bg = "#1e90ff"
-custom_auto.normal.a.bg = "#A9A9A9"
+custom_auto.normal.a.bg = "#131313"
+custom_auto.normal.a.fg = "#D3DCE2"
 custom_auto.normal.c.fg = "#E2E5DC"
 custom_auto.normal.c.bg = "#131313"
 custom_auto.insert.c.fg = "#51A266"
