@@ -7,6 +7,12 @@
 #   echo $BATTRPT%
 # }
 
+#look up synonym - (word)
+# slow and buggy
+syn() {
+  curl -s "https://api.dictionaryapi.dev/api/v2/entries/en/$1" | jq '.[].meanings[].definitions[].synonyms[]'
+}
+
 # zd - use zoxide & FZF to find and go to directory
 # Not sure why zoxide query -i with FZF doesn't CD
 zd() {

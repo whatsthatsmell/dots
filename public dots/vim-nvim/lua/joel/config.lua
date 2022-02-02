@@ -180,7 +180,7 @@ nvim_lsp.eslint.setup {
 }
 
 -- Enable rust_analyzer
--- rust-analyzer 0808ade4e 2022-01-31 dev
+-- rust-analyzer 34138379b 2022-02-02 dev
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
@@ -202,7 +202,7 @@ require("rust-tools").setup {
       parameter_hints_prefix = " ",
 
       -- prefix for all the other hints (type, chaining)
-      other_hints_prefix = " ",
+      other_hints_prefix = " ",
     },
   },
 }
@@ -237,6 +237,7 @@ require("gitsigns").setup {
     },
   },
   numhl = true,
+  -- word_diff = true,
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 
@@ -265,7 +266,10 @@ require("gitsigns").setup {
     map("n", "<leader>hD", function()
       gs.diffthis "~"
     end)
-    map("n", ",td", gs.toggle_deleted)
+    map("n", ",td", function()
+      gs.toggle_deleted()
+      gs.toggle_word_diff()
+    end)
     map("n", "<leader>hn", gs.toggle_numhl)
     map("n", "<leader>hh", gs.toggle_linehl)
 

@@ -98,7 +98,7 @@ key_map("x", "au", ':lua require"treesitter-unit".select(true)<CR>', { noremap =
 key_map("o", "iu", ':<c-u>lua require"treesitter-unit".select()<CR>', { noremap = true })
 key_map("o", "au", ':<c-u>lua require"treesitter-unit".select(true)<CR>', { noremap = true })
 
--- one of the greatest commands ever
+-- a very useful command
 key_map("n", "<space>t", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
 
 -- write only if changed
