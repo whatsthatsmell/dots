@@ -71,6 +71,13 @@ ghi() {
   gh issue view $item --web
 }
 
+# select and go to gh pull on web
+ghp() {
+  local item
+  item=$(gh pr list | fzf | awk '{print $1}')
+  gh pr view $item --web
+}
+
 # Rerun a Github workflow
 ghrr() {
   local runid
@@ -111,13 +118,20 @@ ghprc() {
   fi
 }
 
-# select from PRs needing my review and view in vim
-ghprr() {
+# select from PRs needing my review and create a todoist task
+# proj and label ids are hardcoded - change to yours
+# @TODO: allow for todoist options
+ghprt() {
+  local pr
   local prid
-  prid=$(gh pr list -L100 --search "is:open is:pr review-requested:@me" | fzf | cut -f1)
+  local title
+  pr=$(gh pr list -L100 --search "is:open is:pr review-requested:@me" | fzf)
+  prid=$(echo "$pr" | cut -f1)
+  title=$(echo "$pr" | cut -f2)
   if [[ -n $prid ]]
   then
-    gh pr view $prid | nvim -R -c 'set ft=markdown' -c 'norm! zt' -
+    todoist add "PR Review: $title #$prid" -P 2236720344  -d today -L 2158924977,2159700119 -p 2
+    echo "Todoist task created for PR $prid"
   fi
 }
 
