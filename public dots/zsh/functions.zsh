@@ -140,6 +140,13 @@ tgav() {
   nvim $1
 }
 
+# node PBT: pull, build, test
+npbt() {
+  git pull
+  npm ci
+  npm test
+}
+
 # take, npm init and git init and ignore node_modules
 tng() {
   take $1 && npm init -y && git init && echo "node_modules" >> .gitignore
