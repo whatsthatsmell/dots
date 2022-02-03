@@ -1,5 +1,13 @@
 local key_map = vim.api.nvim_set_keymap
 -- TELESCOPE keymaps 🔭 --
+-- command palette
+key_map(
+  "n",
+  "<space>k",
+  [[<Cmd>lua require('telescope').extensions.command_palette.command_palette()<CR>]],
+  { noremap = true, silent = true }
+)
+
 -- Search through your Neovim related todos
 key_map("n", "<leader>st", ":lua require'joel.telescope'.search_todos()<CR>", { noremap = true, silent = true })
 

@@ -42,6 +42,38 @@ require("telescope").setup {
       selected_browser = "brave",
       url_open_command = "open",
     },
+    command_palette = {
+      {
+        "File",
+        { "Yank Current File Name", ":lua require('joel.funcs').yank_current_file_name()" },
+        { "Write Current Buffer", ":w" },
+        { "Write All Buffers", ":wa" },
+        { "Quit", ":qa" },
+        { "File Browser", ":lua require'telescope'.extensions.file_browser.file_browser()", 1 },
+        { "Search for Word", ":lua require('telescope.builtin').live_grep()", 1 },
+        { "Git Files", ":lua require('telescope.builtin').git_files()", 1 },
+      },
+      {
+        "Help",
+        { "Search Help", ":lua require('telescope.builtin').help_tags()", 1 },
+      },
+      {
+        "Neovim",
+        { "checkhealth", ":checkhealth" },
+        { "commands", ":lua require('telescope.builtin').commands()" },
+        { "command history", ":lua require('telescope.builtin').command_history()" },
+        { "registers", ":lua require('telescope.builtin').registers()" },
+        { "options", ":lua require('telescope.builtin').vim_options()" },
+        { "keymaps", ":lua require('telescope.builtin').keymaps()" },
+        { "buffers", ":Telescope buffers" },
+        { "search history", ":lua require('telescope.builtin').search_history()" },
+        { "cursor line", ":set cursorline!" },
+        { "cursor column", ":set cursorcolumn!" },
+        { "spell checker", ":set spell!" },
+        { "relative number", ":set relativenumber!" },
+        { "search highlighting", ":set hlsearch!" },
+      },
+    },
   },
   defaults = {
     preview = {
@@ -101,7 +133,8 @@ require("telescope").load_extension "file_browser"
 require("telescope").load_extension "ui-select"
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-fzf-nativenvim
 require("telescope").load_extension "fzf"
-
+-- https://github.com/LinArcX/telescope-command-palette.nvim
+require("telescope").load_extension "command_palette"
 -- https://github.com/dhruvmanila/telescope-bookmarks.nvim
 -- <space>b
 require("telescope").load_extension "bookmarks"

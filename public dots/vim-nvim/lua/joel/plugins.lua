@@ -69,6 +69,8 @@ return require("packer").startup {
     use { "nvim-telescope/telescope-ui-select.nvim" }
     use "dhruvmanila/telescope-bookmarks.nvim"
     use "nvim-telescope/telescope-github.nvim"
+    -- Trying command palette
+    use { "LinArcX/telescope-command-palette.nvim" }
     use {
       "AckslD/nvim-neoclip.lua",
       config = function()
