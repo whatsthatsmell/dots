@@ -20,6 +20,9 @@ alias cua='cargo install-update -a'
 # list all global crates - check for updates
 alias cul='cargo install-update -l'
 alias cr='cargo run'
+alias ct='cargo test'
+alias ce='cargo expand --theme 1337'
+alias cinsp='cargo inspect --theme 1337'
 alias cfg='cd ~/.config'
 alias cfg='cd ~/.config'
 # TODO: move cliclick aliases to functions with options for preset locations

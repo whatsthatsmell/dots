@@ -1,4 +1,4 @@
--- rustc 1.60.0-nightly (2681f253b 2022-02-01)
+-- rustc 1.60.0-nightly (27f5d830e 2022-02-02)
 -- rust-analyzer 34138379b 2022-02-02 dev
 
 -- treesitter folding
@@ -47,8 +47,9 @@ vim.api.nvim_buf_set_keymap(
   { noremap = true, silent = true }
 )
 
--- @TODOUA: check to see if rust-tools selects is handling close (nil)
--- Meantime, close runnable & debuggable pickers manually :close!
+-- rust.vim
+-- RustTest → run test under cursor
+vim.api.nvim_buf_set_keymap(0, "n", "<space>rt", [[<cmd>RustTest<cr>]], { noremap = true, silent = true })
 
 -- LSP maps
 vim.api.nvim_buf_set_keymap(
