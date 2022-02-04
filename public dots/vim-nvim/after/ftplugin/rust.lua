@@ -117,14 +117,14 @@ vim.api.nvim_buf_set_keymap(
   0,
   "n",
   "g[",
-  [[<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]],
+  [[<cmd>lua vim.diagnostic.goto_prev()<CR>]],
   { noremap = true, silent = true }
 )
 vim.api.nvim_buf_set_keymap(
   0,
   "n",
   "g]",
-  [[<cmd>lua vim.lsp.diagnostic.goto_next()<CR>]],
+  [[<cmd>lua vim.diagnostic.goto_next()<CR>]],
   { noremap = true, silent = true }
 )
 
