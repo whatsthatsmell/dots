@@ -51,14 +51,26 @@ require("telescope").setup {
         { "Quit", ":qa" },
         { "File Browser", ":lua require'telescope'.extensions.file_browser.file_browser()", 1 },
         { "Search for Word", ":lua require('telescope.builtin').live_grep()", 1 },
-        { "Git Files", ":lua require('telescope.builtin').git_files()", 1 },
+        { "Project Files", ":lua require'joel.telescope'.project_files()", 1 },
       },
       {
-        "Help",
-        { "Search Help", ":lua require('telescope.builtin').help_tags()", 1 },
+        "Git",
+        -- buggy blame
+        { "Blame", ":Git blame", 1 },
+        { "Diff Split Vertical", ":Gvdiffsplit!", 1 },
+        {
+          "File Commits - Diff",
+          ":lua require'telescope.builtin'.git_bcommits({prompt_title = '  ', results_title='Git File Commits'})",
+          1,
+        },
+      },
+      {
+        "Terminal",
+        { "Vertical Right", ":vsp | terminal", 1 },
       },
       {
         "Neovim",
+        -- @TODOUA: change these to my own
         { "checkhealth", ":checkhealth" },
         { "commands", ":lua require('telescope.builtin').commands()" },
         { "command history", ":lua require('telescope.builtin').command_history()" },

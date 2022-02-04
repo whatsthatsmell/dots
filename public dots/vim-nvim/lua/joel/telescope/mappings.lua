@@ -73,7 +73,7 @@ key_map(
     silent = true,
   }
 )
--- git_bcommits - file/buffer scoped commits to vsp diff
+-- git_bcommits - file scoped commits with diff preview. <C-V> for vsp diff to parent
 key_map(
   "n",
   "<space>gc",
