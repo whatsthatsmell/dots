@@ -1,3 +1,6 @@
+local types = require "cmp.types"
+local str = require "cmp.utils.str"
+
 -- completion maps (not cmp) --
 -- line completion - use more!
 -- inoremap <C-l> <C-x><C-l>
@@ -13,7 +16,6 @@ local cmp = require "cmp"
 -- lspkind
 local lspkind = require "lspkind"
 lspkind.init {
-  with_text = true,
   symbol_map = {
     Text = "",
     Method = "ƒ",
@@ -38,7 +40,6 @@ lspkind.init {
   },
 }
 
--- @TODOUA: Try cmdline again soon, lots of updates since last tried
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -84,21 +85,43 @@ cmp.setup {
     { name = "spell" },
   },
   formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind = string.format("%s %s", lspkind.presets.default[vim_item.kind], vim_item.kind)
-      vim_item.menu = ({
-        nvim_lsp = "ﲳ",
-        nvim_lua = "",
-        treesitter = "",
-        path = "ﱮ",
-        buffer = "﬘",
-        zsh = "",
-        vsnip = "",
-        spell = "暈",
-      })[entry.source.name]
+    fields = {
+      cmp.ItemField.Abbr,
+      cmp.ItemField.Kind,
+      cmp.ItemField.Menu,
+    },
+    format = lspkind.cmp_format {
+      mode = "symbol_text",
+      maxwidth = 60,
+      before = function(entry, vim_item)
+        vim_item.menu = ({
+          nvim_lsp = "ﲳ",
+          nvim_lua = "",
+          treesitter = "",
+          path = "ﱮ",
+          buffer = "﬘",
+          zsh = "",
+          vsnip = "",
+          spell = "暈",
+        })[entry.source.name]
 
-      return vim_item
-    end,
+        -- Get the full snippet (and only keep first line)
+        local word = entry:get_insert_text()
+        if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
+          word = vim.lsp.util.parse_snippet(word)
+        end
+        word = str.oneline(word)
+        if
+          entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet
+          and string.sub(vim_item.abbr, -1, -1) == "~"
+        then
+          word = word .. "~"
+        end
+        vim_item.abbr = word
+
+        return vim_item
+      end,
+    },
   },
 }
 
