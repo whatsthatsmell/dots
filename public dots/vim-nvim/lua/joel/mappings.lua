@@ -121,14 +121,14 @@ key_map("n", "<Leader>W", ":wqall<CR>", { noremap = true, silent = true })
 -- @TODOUA: figure out the semantics of <space> vs <leader>
 --- ',' comma seems to have a pattern as a leader
 
---  **Buffer Stuff****
---- <C-6> is toggle current and alt(last viewed)
---- Go to next buffer - Skip Terminal buffers in specified splits (settings aug: UnlistSplitTerms )
-key_map("n", "<Leader><right>", [[<Cmd>bnext<CR>]], { noremap = true, silent = true })
+-- **Buffer Stuff****
+-- <C-6> is toggle current and alt(last viewed)
+-- Go to next buffer - Skip Terminal buffers in specified splits (settings aug: UnlistSplitTerms )
+-- ]b -- unimpaired
 -- go to previous buffer - skip terminal buffers in splits (settings aug: UnlistSplitTerms )
-key_map("n", "<Leader><left>", [[<Cmd>bprevious<CR>]], { noremap = true, silent = true })
+-- [b
 
--- delete current buffer - don't close split/window
+-- delete current buffer - But, don't close split/window
 -- Mnemonic: 'delete buffer' - db
 key_map(
   "n",
@@ -240,7 +240,7 @@ key_map("n", "<leader>ps", [[<Cmd>PackerSync<CR>]], { noremap = true, silent = t
 
 -- change dir for window to file's dir
 key_map("n", "<leader>cd", ":lcd %:p:h<cr>", { noremap = true, silent = true })
--- change dir for window to file's git working dir
+-- change cwd for window to file's git working dir
 key_map("n", "<leader>gd", ":Glcd<cr>", { noremap = true, silent = true })
 -- toggle foldcolumn - Toggles are usually leader ,t + one-letter identifier
 key_map("n", ",tf", ":lua require'joel.settings'.toggle_fold_col()<CR>", { noremap = true, silent = true })

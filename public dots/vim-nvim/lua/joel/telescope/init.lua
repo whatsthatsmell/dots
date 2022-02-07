@@ -57,6 +57,7 @@ require("telescope").setup {
         "Git",
         -- buggy blame
         { "Blame", ":Git blame", 1 },
+        { "Status", "lua require'telescope.builtin'.git_status()", 1 },
         { "Diff Split Vertical", ":Gvdiffsplit!", 1 },
         {
           "File Commits - Diff",
@@ -79,6 +80,7 @@ require("telescope").setup {
         { "keymaps", ":lua require('telescope.builtin').keymaps()" },
         { "buffers", ":Telescope buffers" },
         { "search history", ":lua require('telescope.builtin').search_history()" },
+        { "Search TODOS", ":lua require'joel.telescope'.search_todos()" },
         { "cursor line", ":set cursorline!" },
         { "cursor column", ":set cursorcolumn!" },
         { "spell checker", ":set spell!" },
