@@ -88,11 +88,11 @@ key_map("n", "gs", [[<Cmd>lua require'telescope.builtin'.git_status()<CR>]], { n
 -- registers picker
 key_map("n", "<space>r", [[<Cmd>lua require'telescope.builtin'.registers()<CR>]], { noremap = true, silent = true })
 
--- find files with names that contain cursor word
+-- find files including gitignored
 key_map(
   "n",
   ",f",
-  [[<Cmd>lua require'telescope.builtin'.find_files({find_command={'fd', vim.fn.expand('<cword>')}})<CR>]],
+  [[<Cmd>lua require'telescope.builtin'.find_files({find_command={'fd','--no-ignore-vcs'}})<CR>]],
   { noremap = true, silent = true }
 )
 -- show Workspace Diagnostics

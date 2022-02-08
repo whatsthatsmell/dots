@@ -14,8 +14,6 @@ vim.api.nvim_exec(
 setlocal shortmess+=c
 " wrap selection in Some(*)
 vmap ,sm cSome(<c-r>"<esc>
-" grep for functions and move function sig to top of window
-nnoremap <silent><buffer>,f :Rg<Space>fn<Space><CR>
 " surround (W)ord with angle brackets
 nmap <localleader>ab ysiW>
 
