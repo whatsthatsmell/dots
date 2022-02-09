@@ -55,8 +55,6 @@ require("telescope").setup {
       },
       {
         "Git(Hub)",
-        -- buggy with blame
-        -- { "Blame", ":Git blame", 1 },
         { " Issues", "lua require'joel.telescope'.gh_issues()", 1 },
         { " Pulls", "lua require'joel.telescope'.gh_prs()", 1 },
         { " Status", "lua require'telescope.builtin'.git_status()", 1 },

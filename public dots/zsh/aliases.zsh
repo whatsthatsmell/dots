@@ -77,7 +77,6 @@ alias exag='exa -a --long --git --group-directories-first --no-permissions --no-
 alias exal='exa -allI "node_modules|.git|coverage"'
 alias xl='exa -allI "node_modules|.git|coverage"'
 alias exat='exa -aTI "node_modules|.git|coverage"'
-alias gCal='cd ~/oss/gCal'
 alias gdotc='git -C ~/dotfiles commit -a -m'
 alias gdots='git -C ~/dotfiles status'
 # unified diff instead of configured side-by-side

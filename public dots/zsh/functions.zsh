@@ -7,6 +7,27 @@
 #   echo $BATTRPT%
 # }
 
+#WIP!
+# Create Google Calendar event - primary for user
+# params - in order!
+# 1 @title: any string
+# 2 @event-date: 2022-02-09
+# 3 @start-time: 04:15
+# 4 @end-time: 04:45
+# TODO: add way more options
+gcal() {
+  local title
+  title=$1
+  local eventstart
+  eventstart="$2T$3"
+  local eventend
+  eventend="$2T$4"
+
+   echo calendar3 events insert '"primary"' -r "start.date-time=$eventstart:00-06 end.date-time=$eventend:00-06 summary='$title'"
+
+  # 2022-02-09T02:55:00-6
+}
+
 #look up synonym - (word)
 # slow and buggy
 syn() {

@@ -185,8 +185,9 @@ nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
     ["rust-analyzer"] = {
-      cargo = { loadOutDirsFromCheck = true },
-      procMacro = { enable = true },
+      -- cargo = { loadOutDirsFromCheck = true },
+      -- procMacro = { enable = true },
+      -- hoverActions = { references = true },
     },
   },
 }
