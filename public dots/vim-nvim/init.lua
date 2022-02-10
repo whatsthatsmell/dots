@@ -4,7 +4,7 @@
 -- Plugins --
 require "joel.plugins"
 
--- config/setup --
+-- Config/Setup --
 require "joel.config"
 
 -- Telescope 🔭
