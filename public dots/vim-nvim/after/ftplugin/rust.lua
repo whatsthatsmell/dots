@@ -1,5 +1,5 @@
--- rustc 1.60.0-nightly (e7aca8959 2022-02-09)
--- rust-analyzer 08348d79f 2022-02-10 dev
+-- rustc 1.60.0-nightly (1e12aef3f 2022-02-13)
+-- rust-analyzer 0247e5067 2022-02-14 dev
 
 -- treesitter folding
 vim.opt_local.foldmethod = "expr"
