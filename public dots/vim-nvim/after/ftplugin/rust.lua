@@ -178,7 +178,7 @@ vim.api.nvim_exec(
 hi rainbowcol1 guifg=#91D2A3
 hi rainbowcol2 guifg=#3791D4
 hi rainbowcol3 guifg=#8182EB
-hi rainbowcol4 guifg=#BCCEA3
+hi rainbowcol4 guifg=#1E90FF
 hi rainbowcol6 guifg=#1B9C36
 ]],
   false
