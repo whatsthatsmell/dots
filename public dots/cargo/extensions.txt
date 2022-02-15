@@ -1,0 +1,22 @@
+15-Feb-2022 
+
+Package               Installed        
+cargo-expand          v1.0.15          
+cargo-fix             v0.4.1           
+cargo-generate        v0.13.0          
+cargo-inspect         v0.10.3          
+cargo-modules         v0.5.7           
+cargo-nextest         v0.9.3           
+cargo-release         v0.20.1          
+cargo-update          v8.1.2           
+cargo-watch           v8.1.1           
+fd-find               v8.3.1           
+gfold                 v3.0.0           
+google-calendar3-cli  v2.0.4+20210327  
+grex                  v1.3.0           
+mini-redis            v0.4.1           
+procs                 v0.12.1          
+stylua                v0.12.2          
+vimv                  v1.7.3           
+zoxide                v0.8.0           
+
