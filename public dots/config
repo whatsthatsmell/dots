@@ -4,3 +4,4 @@ theme = "GitHub"
 [alias]
 gen = "generate"
 iu = "install-update"
+nt = "nextest run"

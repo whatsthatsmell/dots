@@ -15,6 +15,7 @@ alias cb='cargo build'
 alias ccl='cargo clippy'
 alias cclf='cargo clippy --fix'
 alias cclp='cargo clippy -- -W clippy::pedantic'
+alias cnt='cargo nextest run'
 # update all global crates
 alias cua='cargo install-update -a'
 # list all global crates - check for updates
