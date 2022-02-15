@@ -37,6 +37,8 @@ key_map(
   [[<Cmd>lua require('telescope').extensions.notify.notify({results_title='Notification History', prompt_title='Search Messages'})<CR>]],
   { noremap = true, silent = true }
 )
+-- Telescope resume (last picker)
+key_map("n", "<leader>tr", [[<Cmd>lua require'telescope.builtin'.resume()<CR>]], { noremap = true, silent = true })
 
 -- LSP!
 -- show LSP implementations
