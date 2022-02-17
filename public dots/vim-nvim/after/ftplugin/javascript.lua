@@ -10,17 +10,18 @@ vim.opt_local.foldnestmax = 3
 vim.opt_local.foldlevel = 1
 
 -- ** Key Maps ** --
--- *** Test and coverage related - Jest **
+-- *** Test related - Jest **
+-- You can set these globally or per ftp. Only using for JS for now. 17-Feb-2022
 -- these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
 -- Test running keymaps for JavaScript and Jest
--- @TODOUA: I don't always want the `-i`
+-- @TODOUA: I want -i like with vim-test for Jest on some projects
 -- @TODOUA: Figure out what to do with globals in settings → Lua
--- https://github.com/vim-test/vim-test
+-- Trying https://github.com/klen/nvim-test - was https://github.com/vim-test/vim-test
 vim.api.nvim_buf_set_keymap(0, "n", "t<C-n>", ":TestNearest<CR>", { noremap = false, silent = true })
 vim.api.nvim_buf_set_keymap(0, "n", "t<C-f>", ":TestFile<CR>", { noremap = false, silent = true })
-vim.api.nvim_buf_set_keymap(0, "n", "t<C-s>", ":TestSuite -i<CR>", { noremap = false, silent = true })
+vim.api.nvim_buf_set_keymap(0, "n", "t<C-s>", ":TestSuite<CR>", { noremap = false, silent = true })
 vim.api.nvim_buf_set_keymap(0, "n", "t<C-l>", ":TestLast<CR>", { noremap = false, silent = true })
-vim.api.nvim_buf_set_keymap(0, "n", "t<C-g>", ":TestVisit<CR>", { noremap = false, silent = true })
+-- vim.api.nvim_buf_set_keymap(0, "n", "t<C-g>", ":TestVisit<CR>", { noremap = false, silent = true })
 -- End of Test stuff
 
 -- LSP buf maps

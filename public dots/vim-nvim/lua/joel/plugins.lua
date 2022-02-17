@@ -54,7 +54,31 @@ return require("packer").startup {
     }
     -- use "elihunter173/dirbuf.nvim"
     use "pbrisbin/vim-mkdir"
-    use "vim-test/vim-test"
+    -- use "vim-test/vim-test"
+
+    use {
+      "klen/nvim-test",
+      config = function()
+        require("nvim-test").setup {
+          commands_create = true, -- create commands (TestFile, TestLast, ...)
+          silent = false, -- less notifications
+          run = true, -- run test commands
+          term = "terminal", -- a terminal to run (terminal|toggleterm)
+          termOpts = {
+            direction = "vertical", -- terminal's direction (horizontal|vertical|float)
+            width = 86, -- terminal's width (for vertical|float)
+            height = 24, -- terminal's height (for horizontal|float)
+            go_back = false, -- return focus to original window after executing
+            stopinsert = false, -- exit from insert mode
+          },
+          runners = { -- setup test runners, only using for JS. Currently, doesn't add value to Rust workflow 17-Feb-2022
+            javascript = "nvim-test.runners.jest",
+            lua = "nvim-test.runners.busted",
+            -- rust = "nvim-test.runners.cargo-test",
+          },
+        }
+      end,
+    }
     use "mbbill/undotree"
     use "ruanyl/coverage.vim"
     use "moll/vim-node"
