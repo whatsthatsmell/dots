@@ -7,7 +7,8 @@
 - [Note](https://github.com/lewis6991/gitsigns.nvim/commit/0cba66ab9ef2316eea742dc9d17f1b7a5bf17f54) for `Gitsigns` users who use the development version of Neovim (master)
 
 ### RustyNews:
-- [Rust 1.58.1 Stable Released](https://blog.rust-lang.org/2022/01/20/Rust-1.58.1.html) *_you should use nightly though_
+- [rust-analyzer joins the Rust organization!](https://blog.rust-lang.org/2022/01/20/Rust-1.58.1.html)
+
 # Public version of Code Smell dotfiles
 
 ## Current Setup 
