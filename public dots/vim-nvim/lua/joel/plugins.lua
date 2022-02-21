@@ -167,6 +167,8 @@ return require("packer").startup {
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
     }
 
+    use "arkav/lualine-lsp-progress"
+
     use {
       "lewis6991/gitsigns.nvim",
       requires = { "nvim-lua/plenary.nvim" },
