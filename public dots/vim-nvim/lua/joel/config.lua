@@ -180,7 +180,7 @@ nvim_lsp.eslint.setup {
 }
 
 -- Enable rust_analyzer
--- rust-analyzer 24255e5b3 2022-02-21 dev
+-- rust-analyzer 7ce06d4b1 2022-02-22 dev
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
@@ -193,7 +193,6 @@ nvim_lsp.rust_analyzer.setup {
 }
 
 -- rust-tools config: https://github.com/simrat39/rust-tools.nvim
--- You want this if you're a Rust developer.
 -- @TODOUA: selects on *abbles require manual close with no select
 -- ... not handling nil in select telescope or otherwise
 require("rust-tools").setup {
