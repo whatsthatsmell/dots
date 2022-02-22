@@ -54,7 +54,10 @@ require("lualine").setup {
       { "diff", source = diff_source },
       { "diagnostics", sources = { "nvim_diagnostic" } },
     },
-    lualine_c = { { "filename", path = 1, symbols = { modified = "[]", readonly = " " } }, "lsp_progress" },
+    lualine_c = {
+      { "filename", path = 1, symbols = { modified = "[]", readonly = " " } },
+      { "lsp_progress", display_components = { "lsp_client_name" } },
+    },
     lualine_x = { { "filetype", icon_only = true } },
     lualine_y = {
       { current_buffer_number, color = { fg = "#A9A9A9" } },
