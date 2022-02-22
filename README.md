@@ -4,10 +4,10 @@
 
 ### NeoNews:
 - [Neovim 0.6.1 has released](https://github.com/neovim/neovim/releases/tag/v0.6.1)
-- [Note](https://github.com/lewis6991/gitsigns.nvim/commit/0cba66ab9ef2316eea742dc9d17f1b7a5bf17f54) for `Gitsigns` users who use the development version of Neovim (master)
 
 ### RustyNews:
 - [rust-analyzer joins the Rust organization!](https://blog.rust-lang.org/2022/01/20/Rust-1.58.1.html)
+- [quick note](https://github.com/whatsthatsmell/q-note) 🦀⚙ -- a little Rust WIP from 💩-- contributions welcomed
 
 # Public version of Code Smell dotfiles
 
