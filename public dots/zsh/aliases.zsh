@@ -115,6 +115,8 @@ alias nvc='cd ~/.config/nvim && nvim ~/.config/nvim/init.lua'
 # pretty and unique paths on your $PATH to FZF
 alias path='echo ${PATH//:/"\n"} | sort | uniq -u | fzf'
 alias ppwd='pbpaste'
+# img preview (MacOS only)
+alias imgp='qlmanage -p'
 alias rdb='rust-lldb'
 alias ru='rustup'
 alias rud='rustup doc'
