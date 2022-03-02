@@ -15,10 +15,10 @@
 # Public version of CodeSmell's Dotfiles 💩 
 
 ## Current Setup 
-_Last Updated: 28-Feb-2022 or more recently._
+_Last Updated: 02-Mar-2022 or more recently._
 
 - **[Rust](https://www.rust-lang.org/)** 🦀⚙
-	- [compiler](https://rustup.rs/) version: `rustc 1.61.0-nightly (6a7055661 2022-02-27)`
+	- [compiler](https://rustup.rs/) version: `rustc 1.61.0-nightly (f0c4da499 2022-03-01)`
 	- [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp) version: `rust-analyzer 342c3c42b 2022-02-28 dev` 
 - **[Neovim](https://neovim.io/)** - _Important Note_: these Dotfiles target bleeding edge Neovim APIs. I try to update these runtime files as soon as the Neovim team pushes changes (including & especially breaking) to [their master branch](https://git.io/NeovimHEAD) and I pull the latest. 
   - I usually pull the latest a few times per week or if I see that a particularly juicy PR has landed. I do test Neovim feature branches. But, only code that works with `Neovim → master` will be pushed to this repo. [Neovim 0.6.1](https://github.com/neovim/neovim/releases/tag/v0.6.1) should work with most of what you see here. 
@@ -31,6 +31,7 @@ _Last Updated: 28-Feb-2022 or more recently._
 	- Featuring: `Telescope 🔭`, `gitsigns`, `nvim-cmp`, `Treesitter` and all the LSP goodness
 - [Alacritty](https://github.com/alacritty/alacritty) and 2 [iTerm Hotkey Windows](https://www.iterm2.com/)
     - Zsh Theme: [code-smell.zsh-theme](https://github.com/whatsthatsmell/dots/blob/master/public%20dots/zsh/code-smell.zsh-theme)
+		- Font: `JetBrainsMono Nerd Font Mono`
 - Zsh  
     - [Oh My Zsh](https://ohmyz.sh/) - _For now_
 
