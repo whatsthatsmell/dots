@@ -46,7 +46,7 @@ key_map(
   { noremap = true, silent = true }
 )
 
--- Yank Current File Name
+-- Yank Current File Name - path
 key_map("n", "<leader>fp", ":lua require('joel.funcs').yank_current_file_name()<CR>", {
   noremap = true,
   silent = true,
@@ -196,6 +196,9 @@ key_map("n", "<leader>tv", [[<Cmd>vsp <bar>terminal<CR>]], { noremap = false, si
 
 key_map("n", "<leader>t", [[<Cmd>sp <bar>terminal<CR>]], { noremap = false, silent = true })
 -- ** end Terminal open maps
+
+-- open lazygit in vert split - custom lazygit config uses ctrl-x as menu close
+key_map("n", "<space>lg", [[<Cmd>135vsp <bar>terminal lazygit<CR>]], { noremap = true, silent = true })
 
 -- yank all in buffer
 key_map("n", "<leader>a", ":%y<cr>", { noremap = false, silent = true })
