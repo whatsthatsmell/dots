@@ -85,6 +85,7 @@ return require("packer").startup {
     use "rust-lang/rust.vim"
     use "wbthomason/packer.nvim"
     use "neovim/nvim-lspconfig"
+    use "williamboman/nvim-lsp-installer"
     -- 🔭telescope
     use "nvim-telescope/telescope.nvim"
     -- Telescope Extensions
