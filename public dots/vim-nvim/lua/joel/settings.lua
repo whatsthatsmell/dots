@@ -1,5 +1,6 @@
 -- Neovim Settings & Options - Lua
-
+-- @TODOUA: refactor to use Lua autocmd API: https://github.com/neovim/neovim/pull/17551
+-- -- not just here but in ftps and anywhere else in rtp
 -- go to last location when opening a buffer
 vim.cmd [[
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
