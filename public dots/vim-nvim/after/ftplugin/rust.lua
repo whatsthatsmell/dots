@@ -144,15 +144,11 @@ vim.fn.sign_define("DiagnosticSignError", {
   texthl = "DiagnosticSignError",
 })
 
--- Show diagnostic popup on cursor hold
-vim.api.nvim_exec(
-  [[
-augroup RustLineDiagnostics
-   autocmd!
-   autocmd CursorHold * lua vim.diagnostic.open_float(0, {focusable = false, scope = 'line'})
-augroup end
-]],
-  false
+-- Show diagnostic popup on CursorHold
+vim.api.nvim_create_augroup("RustLineDiagnostics", {})
+vim.api.nvim_create_autocmd(
+  "CursorHold",
+  { command = "lua vim.diagnostic.open_float(0, {focusable = false, scope = 'line'})", group = "RustLineDiagnostics" }
 )
 
 -- Setup cmp source buffer configuration

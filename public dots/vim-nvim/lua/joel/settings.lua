@@ -1,6 +1,7 @@
 -- Neovim Settings & Options - Lua
--- @TODOUA: refactor to use Lua autocmd API: https://github.com/neovim/neovim/pull/17551
+-- @TODOUA: continue refactor to Lua autocmd API: https://github.com/neovim/neovim/pull/17551
 -- -- not just here but in ftps and anywhere else in rtp
+
 -- go to last location when opening a buffer
 vim.cmd [[
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
@@ -29,39 +30,6 @@ vim.cmd [[
   augroup end
 ]]
 
--- auto exit insert mode
-vim.api.nvim_exec(
-  [[
-  augroup AutoExitInsertMode
-    autocmd!
-    autocmd CursorHoldI * stopinsert
-  augroup end
-]],
-  false
-)
-
--- set markdown FTs
-vim.api.nvim_exec(
-  [[
-  augroup SetMarkdownFt
-    autocmd!
-    autocmd BufNewFile,BufFilePre,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
-  augroup end
-]],
-  false
-)
-
--- Highlight on yank
-vim.api.nvim_exec(
-  [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]],
-  false
-)
-
 -- turn on cursorline, cursorcolumn when searching, sync with hlsearch
 vim.api.nvim_exec(
   [[
@@ -73,10 +41,23 @@ augroup END
   false
 )
 
-vim.cmd [[
-" header files should be treated like .c files
-autocmd BufRead,BufNewFile *.h set filetype=c
+-- ** Lua autocmd API ** --
+-- auto exit insert mode
+vim.api.nvim_create_augroup("AutoExitInsertMode", {})
+vim.api.nvim_create_autocmd("CursorHoldI", { command = "stopinsert", group = "AutoExitInsertMode" })
 
+-- Highlight yanked
+vim.api.nvim_create_augroup("HighlightYank", {})
+vim.api.nvim_create_autocmd(
+  "TextYankPost",
+  { command = "silent! lua vim.highlight.on_yank()", group = "HighlightYank" }
+)
+
+-- header files should be treated like .c files (not cpp)
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = "*.h", command = "set filetype=c" })
+
+-- options --
+vim.cmd [[
 " Options in VimL form
 set termguicolors
 " syntax highlight only to 1K instead of default 3K

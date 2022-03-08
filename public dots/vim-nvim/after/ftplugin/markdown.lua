@@ -35,15 +35,12 @@ let b:vsnip_snippet_dir = expand('~/.config/nvim/snippets/')
   false
 )
 
-vim.api.nvim_exec(
-  [[
-augroup PersistMarkdownFolds
-  autocmd!
-  autocmd BufWinLeave *.md mkview
-  autocmd BufWinEnter *.md silent! loadview
-augroup end
-]],
-  false
+-- Persist Markdown Folds
+vim.api.nvim_create_augroup("PersistMarkdownFolds", {})
+vim.api.nvim_create_autocmd("BufWinLeave", { command = "mkview", pattern = "*.md", group = "PersistMarkdownFolds" })
+vim.api.nvim_create_autocmd(
+  "BufWinEnter",
+  { command = "silent! loadview", pattern = "*.md", group = "PersistMarkdownFolds" }
 )
 
 -- match and highlight hyperlinks

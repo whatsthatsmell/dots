@@ -14,12 +14,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- sync plugins on write/save
-vim.cmd [[
-  augroup packer_sync_plugins
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+vim.api.nvim_create_augroup("SyncPackerPlugins", {})
+vim.api.nvim_create_autocmd(
+  "BufWritePost",
+  { command = "source <afile> | PackerSync", pattern = "plugins.lua", group = "SyncPackerPlugins" }
+)
 
 -- Plugins via Packer
 return require("packer").startup {

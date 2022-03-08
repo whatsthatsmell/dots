@@ -181,15 +181,11 @@ hi rainbowcol6 guifg=#1B9C36
   false
 )
 
--- Show diagnostic float on CursorHold but don't steal cursor
-vim.api.nvim_exec(
-  [[
-  augroup ShowDiagnosticFloat
-    autocmd!
-    autocmd CursorHold * lua vim.diagnostic.open_float(0, {focusable = false, scope = 'line', source = 'always'})
-  augroup end
-]],
-  false
+-- Show diagnostic float on CursorHold
+vim.api.nvim_create_augroup("JSLineDiagnostics", {})
+vim.api.nvim_create_autocmd(
+  "CursorHold",
+  { command = "lua vim.diagnostic.open_float(0, {focusable = false, scope = 'line'})", group = "JSLineDiagnostics" }
 )
 
 vim.api.nvim_exec(

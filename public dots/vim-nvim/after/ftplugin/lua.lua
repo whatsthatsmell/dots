@@ -1,20 +1,16 @@
--- sumneko/lua-language-server 2.5.1
+-- sumneko/lua-language-server 2.5.1+
 vim.opt_local.textwidth = 120
 vim.opt_local.shiftwidth = 2
 vim.opt_local.colorcolumn = "121"
 vim.opt_local.spell = false
 vim.opt_local.formatoptions = "jcrql"
 
--- Show diagnostic float on CursorHold but don't steal cursor
-vim.api.nvim_exec(
-  [[
-  augroup ShowDiagnosticFloat
-    autocmd!
-    autocmd CursorHold * lua vim.diagnostic.open_float(0, {focusable = false, scope = 'line', source = 'always'})
-  augroup end
-]],
-  false
-)
+-- Show diagnostic float on CursorHold
+vim.api.nvim_create_augroup("LuaLineDiagnostics", {})
+vim.api.nvim_create_autocmd("CursorHold", {
+  command = "lua vim.diagnostic.open_float(0, {focusable = false, scope = 'line', source = 'always'})",
+  group = "LuaLineDiagnostics",
+})
 
 -- LSP buf maps
 vim.api.nvim_buf_set_keymap(
