@@ -177,6 +177,7 @@ nvim_lsp.eslint.setup {
 
 -- Enable rust_analyzer
 -- rust-analyzer 18d0faf02 2022-03-07 dev
+-- @TODOUA: see Rust FTP about inlay_hints bump
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {

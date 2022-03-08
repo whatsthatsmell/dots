@@ -1,5 +1,7 @@
--- rustc 1.61.0-nightly (38a0b81b1 2022-03-06)
--- rust-analyzer 18d0faf02 2022-03-07 dev
+-- rustc 1.61.0-nightly (03918badd 2022-03-07)
+-- rust-analyzer 18d0faf02 2022-03-07 dev (no bump until rust-tools &/or lsp_extensions handles new inlay_hints API)
+-- Ref: https://rust-analyzer.github.io/thisweek/2022/03/07/changelog-119.html#heads-up
+-- @TODOUA: watch rust-tools and lsp_extensions for inlay_hints update
 
 -- treesitter folding
 vim.opt_local.foldmethod = "expr"
