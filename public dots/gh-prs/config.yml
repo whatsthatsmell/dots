@@ -1,0 +1,10 @@
+prSections:
+- title: Needs My Review
+  filters: is:open review-requested:@me
+- title: My Open PRs
+  filters: is:open author:@me
+defaults:
+  preview:
+    open: true
+    width: 60
+  prsLimit: 20
