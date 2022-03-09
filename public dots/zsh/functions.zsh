@@ -1,11 +1,14 @@
 # ZSH Functions
 
-# get trackpad battery % - not currently using but leaving for others for now.
-# tpb() {
-#   BATTLVL=$(ioreg -r -l -n AppleHSBluetoothDevice | rg '"BatteryPercent" = |^  \|   "Bluetooth Product Name" = ' | sed 's/  |   "Bluetooth Product Name" = "Magic Trackpad 2"/  \| Trackpad:/' | sed 's/  |   |       "BatteryPercent" = / /')
-#   BATTRPT=${BATTLVL//[$'\t\r\n|']/} # Strips all instances of tab, newline, return.
-#   echo $BATTRPT%
-# }
+# update Neovim to lastest from master
+upnvim() {
+  cd ~/vim-dev/sources/neovim
+  git pull
+  make distclean
+  make CMAKE_BUILD_TYPE=RelWithDebInfo -j4
+  sleep 10
+  sudo make install
+}
 
 #WIP!
 # Create Google Calendar event - primary for user
@@ -455,3 +458,9 @@ rgaf() {
                 open "$file"
 }
 
+# get trackpad battery % - not currently using but leaving for others for now.
+# tpb() {
+#   BATTLVL=$(ioreg -r -l -n AppleHSBluetoothDevice | rg '"BatteryPercent" = |^  \|   "Bluetooth Product Name" = ' | sed 's/  |   "Bluetooth Product Name" = "Magic Trackpad 2"/  \| Trackpad:/' | sed 's/  |   |       "BatteryPercent" = / /')
+#   BATTRPT=${BATTLVL//[$'\t\r\n|']/} # Strips all instances of tab, newline, return.
+#   echo $BATTRPT%
+# }
