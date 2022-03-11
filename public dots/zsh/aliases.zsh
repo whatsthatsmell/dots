@@ -123,6 +123,8 @@ alias ru='rustup'
 alias rud='rustup doc'
 alias rus='rustup show'
 alias ruu='rustup update'
+# local serve the mdBook in CWD or pass in a path
+alias sbook='mdbook serve --open'
 alias ta='todoist add'
 alias tl1='tree -L 1'
 alias triage='nvim ~/notes/rust/triage-template'
