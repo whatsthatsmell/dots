@@ -15,10 +15,10 @@
 # Public version of CodeSmell's Dotfiles 💩 
 
 ## Current Setup 
-_Last Updated: 10-Mar-2022 or more recently._
+_Last Updated: 11-Mar-2022 or more recently._
 
 - **[Rust](https://www.rust-lang.org/)** 🦀⚙
-	- [compiler](https://rustup.rs/) version: `rustc 1.61.0-nightly (03918badd 2022-03-07)`
+	- [compiler](https://rustup.rs/) version: `rustc 1.61.0-nightly (5f4e06771 2022-03-10)`
 	- [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp) version: `rust-analyzer 18d0faf02 2022-03-08 dev` (no bump until [inlayhints are fixed](https://rust-analyzer.github.io/thisweek/2022/03/07/changelog-119.html#heads-up) in lsp_extensions &/or rust-tools)
 - **[Neovim](https://neovim.io/)** - _Important Note_: these Dotfiles target bleeding edge Neovim APIs. I try to update these runtime files as soon as the Neovim team pushes changes (including & especially breaking) to [their master branch](https://git.io/NeovimHEAD) and I pull the latest. 
   - I usually pull the latest a few times per week or if I see that a particularly juicy PR has landed. I do test Neovim feature branches. But, only code that works with `Neovim → master` will be pushed to this repo. [Neovim 0.6.1](https://github.com/neovim/neovim/releases/tag/v0.6.1) should work with most of what you see here. 
