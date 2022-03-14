@@ -1,4 +1,4 @@
--- rustc 1.61.0-nightly (5f4e06771 2022-03-10)
+-- rustc 1.61.0-nightly (e95b10ba4 2022-03-13)
 -- rust-analyzer 18d0faf02 2022-03-07 dev (no bump until rust-tools &/or lsp_extensions handles new inlay_hints API)
 -- Ref: https://rust-analyzer.github.io/thisweek/2022/03/07/changelog-119.html#heads-up
 -- @TODOUA: watch rust-tools and lsp_extensions for inlay_hints update
