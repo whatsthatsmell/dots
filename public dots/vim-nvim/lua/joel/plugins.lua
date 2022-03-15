@@ -129,7 +129,9 @@ return require("packer").startup {
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use "David-Kunz/treesitter-unit"
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
-    use "simrat39/rust-tools.nvim"
+    -- temp rust-tools inlayhints fix: https://github.com/simrat39/rust-tools.nvim/pull/151
+    -- use "simrat39/rust-tools.nvim"
+    use { "matze/rust-tools.nvim", branch = "fix-upstreamed-inlayhints" }
 
     use "chrisbra/Colorizer"
     use "nvim-lua/plenary.nvim"
