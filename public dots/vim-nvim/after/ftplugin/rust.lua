@@ -1,6 +1,5 @@
 -- rustc 1.61.0-nightly (285fa7ecd 2022-03-14)
 -- rust-analyzer 88ade4203 2022-03-15 dev
--- Temp fix for inlay_hints: https://github.com/simrat39/rust-tools.nvim/pull/151
 
 -- treesitter folding
 vim.opt_local.foldmethod = "expr"

@@ -62,12 +62,6 @@ require("dressing").setup {
     -- Priority list of preferred vim.select implementations
     backend = { "telescope", "builtin" },
 
-    -- Options for telescope selector
-    telescope = {
-      -- can be 'dropdown', 'cursor', or 'ivy'
-      theme = "cursor",
-    },
-
     -- Options for built-in selector
     builtin = {
       -- These are passed to nvim_open_win
@@ -177,7 +171,6 @@ nvim_lsp.eslint.setup {
 
 -- Enable rust_analyzer
 -- rust-analyzer 88ade4203 2022-03-15 dev
--- Temp Fix: https://github.com/simrat39/rust-tools.nvim/pull/151
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
