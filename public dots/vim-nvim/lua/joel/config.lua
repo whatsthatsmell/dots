@@ -170,7 +170,7 @@ nvim_lsp.eslint.setup {
 }
 
 -- Enable rust_analyzer
--- rust-analyzer 88ade4203 2022-03-15 dev
+-- rust-analyzer 88ade4203 2022-03-18 dev
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
