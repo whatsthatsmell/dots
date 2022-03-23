@@ -10,6 +10,13 @@ upnvim() {
   sudo make install
 }
 
+# update rust analyzer
+uprusta() {
+  cd ~/rusty/rust-sources/rust-analyzer
+  git pull
+  cargo xtask install --server
+}
+
 #WIP!
 # Create Google Calendar event - primary for user
 # params - in order!
