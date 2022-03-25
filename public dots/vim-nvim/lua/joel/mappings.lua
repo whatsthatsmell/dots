@@ -151,6 +151,7 @@ key_map(
 key_map("n", "<Leader>x", ":bd<CR>", { noremap = true, silent = true })
 
 -- Fugitive maps
+key_map("n", "<leader>gr", ":Gread<Return>", { noremap = true, silent = false })
 key_map("n", "<leader>gb", ":Git blame<Return>", { noremap = true, silent = false })
 key_map("n", "<leader>gp", ":G push origin m", { noremap = false })
 -- use telescope git_bcommits with vsp also
