@@ -102,6 +102,12 @@ sc() {
 }
 
 # --- Github CLI goodness ---
+# list changed diff files from PR and open file in nvim
+# @param - PR Number
+ghprls() {
+  nvim $(gh pr view $1 --json files --jq '.files.[].path' | fzf) 
+}
+
 # select and go to gh issue on web
 ghi() {
   local item
