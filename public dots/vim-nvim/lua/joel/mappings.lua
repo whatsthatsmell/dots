@@ -183,6 +183,9 @@ key_map("i", "<F1>", "<Esc>", { noremap = false })
 -- open split below, slightly smaller
 key_map("n", ",-", ":23sp<CR><C-w><down>", { noremap = true, silent = true })
 
+-- open left vertical scratchy split
+key_map("n", ",vl", ":above 40vsp scratch<CR>", { noremap = true, silent = true })
+
 -- ** Terminal open maps** - see <leader>tx for close terminal
 -- open 2 vertically split terminals
 key_map(
