@@ -28,7 +28,7 @@ end
 local custom_auto = require "lualine.themes.auto"
 custom_auto.terminal.a.bg = "#1e90ff"
 custom_auto.normal.a.bg = "#131313"
-custom_auto.normal.a.fg = "#D3DCE2"
+custom_auto.normal.a.fg = "#6d7275"
 custom_auto.normal.c.fg = "#E2E5DC"
 custom_auto.normal.c.bg = "#131313"
 custom_auto.insert.c.fg = "#51A266"
@@ -46,12 +46,12 @@ require("lualine").setup {
     section_separators = { left = "", right = "" },
     disabled_filetypes = {},
     always_divide_middle = false,
-    globalstatus = true,
+    globalstatus = false,
   },
   sections = {
     lualine_a = { "mode" },
     lualine_b = {
-      { "b:gitsigns_head", icon = { "", color = { fg = "#D3DCE2" } } },
+      { "b:gitsigns_head", icon = { "", color = { fg = "#F64E26" } } },
       { "diff", source = diff_source },
       { "diagnostics", sources = { "nvim_diagnostic" } },
     },
@@ -72,7 +72,7 @@ require("lualine").setup {
     lualine_b = {},
     lualine_c = { { "filename", path = 1, symbols = { modified = "[]", readonly = " " } } },
     lualine_x = { "location" },
-    lualine_y = { { current_buffer_number } },
+    lualine_y = { { current_buffer_number, color = { fg = "#A9A9A9" } } },
     lualine_z = {},
   },
   extensions = {},
