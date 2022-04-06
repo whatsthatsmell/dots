@@ -3,7 +3,7 @@ local lspconfig = require "lspconfig"
 local luadev = require("lua-dev").setup {
   lspconfig = {
     cmd = {
-      "/Users/joel/vim-dev/sources/lua-language-server/bin/macOS/lua-language-server",
+      "/Users/joel/vim-dev/sources/lua-language-server/bin/lua-language-server",
       "-E",
       "/Users/joel/vim-dev/sources/lua-language-server/main.lua",
     },
@@ -20,7 +20,7 @@ local luadev = require("lua-dev").setup {
   },
 }
 
--- sumneko/lua-language-server 2.5.1
+-- sumneko/lua-language-server 2.6.7 + ec715c27d22ab336e339effe1267a34774d8d33a
 lspconfig.sumneko_lua.setup(luadev)
 
 -- nvim-web-devicons: https://www.nerdfonts.com/cheat-sheet →     

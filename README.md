@@ -16,7 +16,7 @@
 # Public version of CodeSmell's Dotfiles 💩 
 
 ## Current Setup 
-_Last Updated: 04-Apr-2022 or more recently._
+_Last Updated: 06-Apr-2022 or more recently._
 
 - **[Rust](https://www.rust-lang.org/)** 🦀⚙
 	- [compiler](https://rustup.rs/) version: `rustc 1.61.0-nightly (0677edc86 2022-03-31)`
