@@ -115,7 +115,7 @@ key_map(
   [[<Cmd>lua require'telescope.builtin'.oldfiles({results_title='Recent-ish Files'})<CR>]],
   { noremap = true, silent = true }
 )
--- Telescopic version of FZF's :Lines
+-- Telescopic approach for FZF's :Lines
 key_map(
   "n",
   ",l",
@@ -123,6 +123,8 @@ key_map(
   { noremap = true, silent = true }
 )
 key_map("n", ",g", [[<Cmd>lua require'telescope.builtin'.live_grep()<CR>]], { noremap = true, silent = true })
+
+-- Telescopic approach for FZF's :BLines
 key_map(
   "n",
   ",bf",

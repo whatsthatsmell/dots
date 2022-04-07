@@ -2,10 +2,23 @@ local key_map = vim.api.nvim_set_keymap
 -- ** Key Mappings ***
 -- *Telescope-related maps at telescope/mappings (for now)
 
+-- *Quickly surround Words*
+-- filetype specific quick surrounds in ftps
+-- vS to surround selection with argument
+-- cs'" will change single to double quotes. Flip or change surroundings as needed.
+-- ds{surrounding} to remove surroundings
 -- Surround word under cursor w/ backticks (required vim-surround)
 key_map("n", "<leader>`", "ysiW`", { noremap = false })
--- REPLACE: delete inner word & replace with last yanked (including system)
-key_map("n", ",r", '"_diwhp', { noremap = true })
+-- Surround word under cursor w/ double quotes (required vim-surround)
+key_map("n", '<leader>"', 'ysiW"', { noremap = false })
+-- Surround word under cursor w/ single quotes (required vim-surround)
+key_map("n", "<leader>'", "ysiW'", { noremap = false })
+-- copy plus register contents to "c reqister
+key_map("n", "<space>c", [[<cmd>let @c=@+<CR>]], { noremap = true })
+-- paste from "c
+key_map("n", "<space>p", '"cp', { noremap = true })
+-- REPLACE: cut inner word to "r & replace with last yanked (including system)
+key_map("n", ",r", '"rdiwhp', { noremap = true })
 -- DELETE: with y,d or c{motion} & it wont replace "0
 key_map("n", "_", '"_', { noremap = true })
 -- paste last thing yanked(not system copied), not deleted
