@@ -5,12 +5,12 @@
 <a href="https://www.redbubble.com/shop/ap/102956214"><img align="right" width="100" height="100" src="https://user-images.githubusercontent.com/8049061/155224899-71324823-4cc0-431a-90e5-63e3c51af05f.png"></a>
 
 ### RustyNews:
-- [Announcing Rust 1.59.0 Stable](https://blog.rust-lang.org/2022/02/24/Rust-1.59.0.html) 🦀 [Release Notes](https://github.com/rust-lang/rust/blob/master/RELEASES.md#version-1590-2022-02-24)
+- [Announcing Rust 1.60.0 Stable](https://blog.rust-lang.org/2022/04/07/Rust-1.60.0.html) 🦀 [Release Notes](https://github.com/rust-lang/rust/blob/master/RELEASES.md#version-1600-2022-04-07)
 - [rust-analyzer joins the Rust organization!](https://blog.rust-lang.org/2022/01/20/Rust-1.58.1.html)
 - [quick note](https://github.com/whatsthatsmell/q-note) 🦀⚙ -- a little Rust WIP from 💩-- contributions welcomed
 ### NeoNews:
 - [Global Status](https://github.com/neovim/neovim/commit/5ab122917474b3f9e88be4ee88bc6d627980cfe0) **[Goodness](https://github.com/nvim-lualine/lualine.nvim/pull/613)**!
-- [Neovim 0.6.1 has released](https://github.com/neovim/neovim/releases/tag/v0.6.1)
+- *Neovim 0.7 coming April 15th!*
 - This `NVim` → `cmp` plugin is a game changer for Rust devs: [crates.nvim: manage crates.io dependencies](https://github.com/Saecki/crates.nvim)
 
 # Public version of CodeSmell's Dotfiles 💩 
