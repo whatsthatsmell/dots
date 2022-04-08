@@ -198,6 +198,7 @@ key_map("n", ",-", ":23sp<CR><C-w><down>", { noremap = true, silent = true })
 
 -- open left vertical scratchy split
 key_map("n", ",vl", ":above 40vsp scratch<CR>", { noremap = true, silent = true })
+-- *** :vne {new_file_name} → New file in vert split in CWD ***
 
 -- ** Terminal open maps** - see <leader>tx for close terminal
 -- open 2 vertically split terminals

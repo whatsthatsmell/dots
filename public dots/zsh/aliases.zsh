@@ -127,6 +127,8 @@ alias rus='rustup show'
 alias ruu='rustup update'
 # local serve the mdBook in CWD or pass in a path
 alias sbook='mdbook serve --open'
+# serve CWD on local network
+alias sloco='python3 -m http.server'
 alias ta='todoist add'
 alias tl1='tree -L 1'
 alias triage='nvim ~/notes/rust/triage-template'
