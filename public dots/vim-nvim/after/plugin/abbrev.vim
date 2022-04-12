@@ -16,3 +16,4 @@ iabbrev :-) 
 iabbrev :D 
 iabbrev grm Guilherme
 iabbrev chk ✔
+iabbrev pi π
