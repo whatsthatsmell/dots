@@ -65,9 +65,6 @@ cmp.setup {
   experimental = {
     ghost_text = true,
   },
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-  },
   sources = {
     -- 'crates' is lazy loaded
     { name = "nvim_lsp" },

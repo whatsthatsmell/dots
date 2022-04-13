@@ -302,7 +302,7 @@ key_map(
   { noremap = false, expr = true }
 )
 
--- Back in jumplist - great for after 'jumping to definition'
+-- Backward in jumplist - great for after 'jumping to definition'
 -- these makes since with my keyboard → Kinesis Advantage 2
 key_map("n", "<leader><bs>", "<C-o>", {
   noremap = false,
