@@ -42,8 +42,8 @@ require("lualine").setup {
   options = {
     icons_enabled = true,
     theme = custom_auto,
-    component_separators = { left = "⦚", right = "  " },
-    section_separators = { left = "", right = " " },
+    component_separators = { left = "⦚", right = " ⦚" },
+    section_separators = { left = " ", right = " " },
     disabled_filetypes = {},
     always_divide_middle = false,
     globalstatus = false,
@@ -63,9 +63,9 @@ require("lualine").setup {
     lualine_y = {
       { current_buffer_number, color = { fg = "#A9A9A9" } },
       { current_working_dir, color = { fg = "#A9A9A9" } },
-      { current_date, color = { fg = "#C6CDC2" } },
+      { current_date, color = { fg = "#A9A9A9" } },
     },
-    lualine_z = { { "location", color = { fg = "#D3DCE2" } } },
+    lualine_z = { { "location", color = { fg = "#6d7275", bg = "#131313" } } },
   },
   inactive_sections = {
     lualine_a = {},
