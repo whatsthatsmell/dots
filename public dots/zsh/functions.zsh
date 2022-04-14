@@ -1,5 +1,12 @@
 # ZSH Functions
 
+# lookup area code
+# @area code
+# Still in search of a nice JSON API
+arc() {
+  open https://www.allareacodes.com/$1
+}
+
 # update Neovim to lastest from master
 upnvim() {
   cd ~/vim-dev/sources/neovim
