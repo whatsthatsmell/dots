@@ -185,9 +185,9 @@ key_map("n", "<leader>lo", ":lope<cr>", { noremap = false, silent = true })
 key_map("n", "<leader>ss", ":mksession ~/vim-sessions/", { noremap = false, silent = false })
 -- overwrite current session (this is probably not idiomatic)
 key_map("n", "<leader>os", ':wa<Bar>exe "mksession! " . v:this_session', { noremap = false, silent = false })
--- save some strokes (best mapping ever)
-key_map("v", ";", ":", { noremap = true })
-key_map("n", ";", ":", { noremap = true })
+-- save some strokes (not worth losing left/right motion repeat)
+-- key_map("v", ";", ":", { noremap = true })
+-- key_map("n", ";", ":", { noremap = true })
 
 -- no Help when I fat finger F1
 key_map("n", "<F1>", "<Esc>", { noremap = false })
