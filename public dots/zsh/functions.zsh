@@ -265,14 +265,16 @@ cdf() {
   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
-# find all git repos, select one and CD to its parent dir
+# From ancestor dir, find all git repos, including linked worktrees.
+# Select one and CD to its parent dir
+# See td() to do this from groot
 cdg() {
   local file
   local dir
   file=$(fd -H -g .git | fzf) && dir=$(dirname "$file") && cd "$dir"
 }
 
-# look up Git worktrees and CD to selected! This was the best idea ever - 
+# List Git worktrees while in groot & CD to selected!
 td() {
   local wtdir
   wtdir=$(git worktree list | fzf | awk '{print $1}')
