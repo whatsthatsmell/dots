@@ -33,10 +33,10 @@ return require("packer").startup {
     use "tpope/vim-abolish"
     use "editorconfig/editorconfig-vim"
     -- markdown plugins
-    use "ellisonleao/glow.nvim"
+    use { "ellisonleao/glow.nvim", cmd = "Glow" }
     use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
     -- json pathing
-    use "mogelbrod/vim-jsonpath"
+    use { "mogelbrod/vim-jsonpath", cmd = "JsonPath" }
 
     use {
       "luukvbaal/stabilize.nvim",
@@ -78,7 +78,11 @@ return require("packer").startup {
         }
       end,
     }
-    use "mbbill/undotree"
+    use {
+      "mbbill/undotree",
+      cmd = "UndotreeToggle",
+      config = [[vim.g.undotree_SetFocusWhenToggle = 1]],
+    }
     use "ruanyl/coverage.vim"
     use "moll/vim-node"
     use "rust-lang/rust.vim"
@@ -131,7 +135,7 @@ return require("packer").startup {
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
     use "simrat39/rust-tools.nvim"
 
-    use "chrisbra/Colorizer"
+    use { "chrisbra/Colorizer", cmd = "ColorToggle" }
     use "nvim-lua/plenary.nvim"
     use "kyazdani42/nvim-web-devicons"
     use "lukas-reineke/indent-blankline.nvim"
