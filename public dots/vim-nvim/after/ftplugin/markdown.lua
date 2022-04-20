@@ -16,7 +16,7 @@ vim.api.nvim_buf_set_keymap(0, "v", ",wl", [[c[<c-r>"]()<esc>]], { noremap = fal
 vim.api.nvim_buf_set_keymap(0, "n", "<leader>_", "ysiW_", { noremap = false })
 
 -- Markdown Preview
--- For Glow, just type :Glow, I almost never use the :MarkdownPreview keymap, I type it.
+-- For Glow, just type :Glow
 vim.api.nvim_buf_set_keymap(0, "n", ",md", "<Plug>MarkdownPreview", { noremap = false })
 
 -- toggle TS highlighting for markdown

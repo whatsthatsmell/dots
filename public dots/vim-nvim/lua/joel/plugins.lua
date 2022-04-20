@@ -34,7 +34,7 @@ return require("packer").startup {
     use "editorconfig/editorconfig-vim"
     -- markdown plugins
     use { "ellisonleao/glow.nvim", cmd = "Glow" }
-    use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install" }
+    use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install", cmd = "MarkdownPreview" }
     -- json pathing
     use { "mogelbrod/vim-jsonpath", cmd = "JsonPath" }
 
