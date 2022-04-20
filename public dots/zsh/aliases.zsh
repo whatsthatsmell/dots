@@ -73,7 +73,11 @@ alias dud='du -d 1 -h'
 alias esl='node_modules/.bin/eslint .'
 alias exaf='exa -allFI "node_modules|.git|coverage"'
 alias fs='fselect'
+# exa one line
+alias x1='exa -1'
 alias xa='exa -a'
+# exa oneline, details, sorted: modified
+alias xm='exa --sort modified -1l'
 alias xg='exa -a --long --git --group-directories-first --no-permissions --no-user --icons -FI "node_modules|.git|coverage|.DS_Store|.vscode"'
 alias exg='exa -a --long --git --group-directories-first --no-permissions --no-user --icons -FI "node_modules|.git|coverage|.DS_Store|.vscode"'
 alias exag='exa -a --long --git --group-directories-first --no-permissions --no-user --icons -FI "node_modules|.git|coverage|.DS_Store|.vscode"'
