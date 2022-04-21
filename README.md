@@ -17,7 +17,7 @@
 # Public version of CodeSmell's Dotfiles 💩 
 
 ## Current Setup 
-_Last Updated: 20-Apr-2022 or more recently._
+_Last Updated: 21-Apr-2022 or more recently._
 
 - **[Rust](https://www.rust-lang.org/)** 🦀⚙
 	- [compiler](https://rustup.rs/) version: `rustc 1.62.0-nightly (52ca603da 2022-04-12)`
@@ -25,7 +25,7 @@ _Last Updated: 20-Apr-2022 or more recently._
 - **[Neovim](https://neovim.io/)** - _Important Note_: these Dotfiles target bleeding edge Neovim APIs. I try to update these runtime files as soon as the Neovim team pushes changes (including & especially breaking) to [their master branch](https://git.io/NeovimHEAD) and I pull the latest. 
   - I usually pull the latest a few times per week or if I see that a particularly juicy PR has landed. I do test Neovim feature branches. But, only code that works with `Neovim → master` will be pushed to this repo. [Neovim 0.7](https://github.com/neovim/neovim/releases/tag/v0.7.0) should work with most of what you see here. 
   - However, a lot of API changes are coming out of Neovim on the 0.6 track (master). So, I'd recommend using [Neovim Nightly](https://github.com/neovim/neovim/releases/tag/nightly) to use all the goodness in these Dotfiles. Or, [building from source](https://github.com/neovim/neovim#install-from-source) - [Code Smell video instructions](https://youtu.be/wep2_b_QU7Q). It's unlikely that I am more than a day or 2 behind. 
-  - The Neovim [commit](https://github.com/neovim/neovim/commit/e73ef5c09281fa45ce6b0a0959467722af2840e8) that I am on: `NVIM v0.8.0-dev+10-ge73ef5c09`
+  - The Neovim [commit](https://github.com/neovim/neovim/commit/5c4ec254784e7e92f61b69114c6091a198fe600f) that I am on: `NVIM v0.8.0-dev+27-g5c4ec2547`
 	- Theme: [codesmell_dark](https://github.com/whatsthatsmell/codesmell_dark.vim)
 	  - `Telescope`, `nvim-cmp`, `GitSigns`, many other plugins and builtins are colored from this theme using `Treesitter 🌲` 
 	- Config: [Lua](https://neovim.io/doc/user/lua.html)
