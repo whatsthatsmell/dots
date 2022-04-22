@@ -193,8 +193,11 @@ key_map("n", "<leader>os", ':wa<Bar>exe "mksession! " . v:this_session', { norem
 key_map("n", "<F1>", "<Esc>", { noremap = false })
 key_map("i", "<F1>", "<Esc>", { noremap = false })
 
--- open split below, slightly smaller
-key_map("n", ",-", ":23sp<CR><C-w><down>", { noremap = true, silent = true })
+-- open split below, short → focus
+key_map("n", ",_", ":below 12sp<CR><C-w><down>", { noremap = true, silent = true })
+
+-- open split above, short → focus
+key_map("n", ",-", ":above 12sp<CR><C-w><up>", { noremap = true, silent = true })
 
 -- open left vertical scratchy split
 key_map("n", ",vl", ":above 40vsp scratch<CR>", { noremap = true, silent = true })
@@ -212,7 +215,8 @@ key_map(
 -- open new Neovim Terminal in vsplit or split
 key_map("n", "<leader>tv", [[<Cmd>vsp <bar>terminal<CR>]], { noremap = false, silent = true })
 
-key_map("n", "<leader>t", [[<Cmd>sp <bar>terminal<CR>]], { noremap = false, silent = true })
+-- open short terminal at the bottom of the buffer
+key_map("n", "<leader>t", [[<Cmd>11sp <bar>terminal<CR>]], { noremap = false, silent = true })
 -- ** end Terminal open maps
 
 -- open lazygit in vert split - custom lazygit config uses ctrl-x as menu close

@@ -181,7 +181,7 @@ colors:
   # Default colors
   primary:
     background: '#121212'
-    foreground: '#e1e9e1'
+    foreground: '#D8DFD8'
 
     # Bright and dim foreground colors
     #
@@ -190,7 +190,7 @@ colors:
     # `draw_bold_text_with_bright_colors` is `false`, the normal foreground
     # color will be used.
     dim_foreground: '#545554'
-    bright_foreground: '#eff6ef'
+    bright_foreground: '#DFEEDF'
 
   # Cursor colors
   #
