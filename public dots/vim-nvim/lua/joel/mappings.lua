@@ -18,12 +18,17 @@ key_map("n", "<space>c", [[<cmd>let @c=@+<CR>]], { noremap = true })
 -- paste from "c
 key_map("n", "<space>p", '"cp', { noremap = true })
 -- REPLACE: cut inner word to "r & replace with last yanked (including system)
+-- Or, visually select and p
 key_map("n", ",r", '"rdiwhp', { noremap = true })
 -- DELETE: with y,d or c{motion} & it wont replace "0
 key_map("n", "_", '"_', { noremap = true })
 -- paste last thing yanked(not system copied), not deleted
 key_map("n", ",p", '"0p', { noremap = true })
 key_map("n", ",P", '"0P', { noremap = true })
+
+-- increment/decrement numberwidth by 2
+-- :set nuw +=2
+-- :set nuw -=2
 
 -- Toggle search highlights with cursorline & cursorcolumn: crosshairs
 -- See augroup nvim-incsearch-cursorline for symmetry

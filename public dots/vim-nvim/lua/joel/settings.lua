@@ -86,6 +86,7 @@ vim.cmd "filetype plugin indent on"
 -- @TODOUA: I really should just be using `opt` in here
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.wo.numberwidth = 6
 
 -- Global scope
 vim.o.completeopt = "menu,menuone,preview,noselect,noinsert"
