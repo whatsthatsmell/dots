@@ -1,6 +1,6 @@
 -- use '=' in command mode to pretty print returned value
 -- Ex: `:lua =vim.api.nvim_get_mode()`
--- P() for in code debugging
+-- P() for in code debugging or vim.pretty_print()
 P = function(v)
   print(vim.inspect(v))
   return v
