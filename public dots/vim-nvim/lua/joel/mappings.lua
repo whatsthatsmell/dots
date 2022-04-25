@@ -1,4 +1,6 @@
 local key_map = vim.api.nvim_set_keymap
+-- @TODOUA: use 0.7's *vim.keymap.set()* API for inline funcs as appropriate
+
 -- ** Key Mappings ***
 -- *Telescope-related maps at telescope/mappings (for now)
 
