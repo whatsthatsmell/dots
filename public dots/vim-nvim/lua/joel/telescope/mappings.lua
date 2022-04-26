@@ -112,9 +112,10 @@ key_map(
 key_map(
   "n",
   ",o",
-  [[<Cmd>lua require'telescope.builtin'.oldfiles({results_title='Recent-ish Files'})<CR>]],
+  [[<Cmd>lua require'telescope.builtin'.oldfiles({prompt_title=':oldfiles', results_title='Old Files'})<CR>]],
   { noremap = true, silent = true }
 )
+
 -- Telescopic approach for FZF's :Lines
 key_map(
   "n",
