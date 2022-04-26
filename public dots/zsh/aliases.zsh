@@ -126,6 +126,9 @@ alias oghrs='open $(gh s)'
 # img preview (MacOS only)
 alias imgp='qlmanage -p'
 alias rdb='rust-lldb'
+# Bulk Rename
+alias rn='vimv'
+# update Rust toolchain
 alias ru='rustup'
 alias rud='rustup doc'
 alias rus='rustup show'
@@ -151,3 +154,5 @@ alias vt='nvim +terminal'
 # open nvim with norelativenumber set
 alias vnr='nvim -c "set nornu"'
 alias yp='pwd|pbcopy'
+# Bulk Rename (same as rn)
+alias vrn='vimv'
