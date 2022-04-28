@@ -224,7 +224,10 @@ key_map("n", "<leader>tv", [[<Cmd>vsp <bar>terminal<CR>]], { noremap = false, si
 
 -- open short terminal at the bottom of the buffer
 key_map("n", "<leader>t", [[<Cmd>11sp <bar>terminal<CR>]], { noremap = false, silent = true })
--- ** end Terminal open maps
+
+-- open terminal in new tab
+key_map("n", "<C-t>", [[<Cmd>tabnew <bar>terminal<CR>]], { noremap = false, silent = true })
+-- ** End Terminal open maps
 
 -- open lazygit in vert split - custom lazygit config uses ctrl-x as menu close
 key_map("n", "<space>lg", [[<Cmd>135vsp <bar>terminal lazygit<CR>]], { noremap = true, silent = true })
