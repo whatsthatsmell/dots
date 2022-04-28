@@ -151,6 +151,7 @@ alias vgm='nvim $(gd --name-only)'
 alias vp='pbpaste | nvim'
 alias vsl='nvim -S ~/vim-sessions/latest.vim'
 alias vt='nvim +terminal'
+alias vz='nvim -c "lua require\"telescope\".extensions.zoxide.list{results_title=\"Z Directories\", prompt_title=\"Z Prompt\"}"'
 # open nvim with norelativenumber set
 alias vnr='nvim -c "set nornu"'
 alias yp='pwd|pbcopy'
