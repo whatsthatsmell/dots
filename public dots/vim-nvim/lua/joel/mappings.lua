@@ -241,9 +241,12 @@ key_map("n", "<down>", "<C-w><down>", { noremap = false })
 key_map("n", "<left>", "<C-w><left>", { noremap = false })
 key_map("n", "<right>", "<C-w><right>", { noremap = false })
 
--- resize vsplits
-key_map("n", "<C-H>", ":vertical resize -2<CR>", { noremap = false })
-key_map("n", "<C-L>", ":vertical resize +2<CR>", { noremap = false })
+-- Resize Splits
+-- CTRL-W <	   decrease current window width N columns
+-- CTRL-W >	   increase current window width N columns
+-- CTRL-W +	   increase current window height N lines
+-- CTRL-W -	   decrease current window height N lines
+-- CTRL-W =	   make all windows the same height & width
 
 -- Replace word under cursor in Buffer (case-sensitive)
 key_map("n", "<leader>sr", ":%s/<C-R><C-W>//gI<left><left><left>", { noremap = false })
