@@ -111,7 +111,9 @@ alias mpl='multipass list'
 # alias mps='multipass shell'
 alias ng='npm init -y && git init && echo "node_modules" >> .gitignore'
 alias nij='node inspect node_modules/.bin/jest --runInBand'
-alias nn='nnn -eiH'
+# alias nn='nnn -eiH'
+# New Note - be careful not to nnn
+alias nn="nvim -c ':exe \"normal iTdate\<Esc>o\"' -c ':lcd ~/notes'"
 alias note='nvim -c "lcd ~/notes/" -c "lua require\"joel.telescope\".browse_notes()"'
 alias nv='nvim -c "lua require\"joel.telescope\".project_files()"'
 # open Nvim, run PackerSync and quit
