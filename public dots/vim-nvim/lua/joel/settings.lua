@@ -30,6 +30,7 @@ vim.cmd [[
   augroup end
 ]]
 
+-- @TODOUA: Figure out why incsearch HL stopped working!
 -- turn on cursorline, cursorcolumn when searching, sync with hlsearch
 vim.api.nvim_exec(
   [[
