@@ -141,6 +141,9 @@ alias sbook='mdbook serve --open'
 alias sloco='python3 -m http.server'
 alias ta='todoist add'
 alias tl1='tree -L 1'
+# tmux
+# @TODO: add more for tmux
+alias tsrc='tmux source ~/.tmux.conf'
 alias triage='nvim ~/notes/rust/triage-template'
 alias v='nvim'
 alias vac='nvim ~/.config/alacritty/alacritty.yml'

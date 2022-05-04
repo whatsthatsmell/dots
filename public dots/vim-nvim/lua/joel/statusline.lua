@@ -13,9 +13,9 @@ local function diff_source()
   end
 end
 
-local function current_date()
-  return string.sub(os.date "%x", 1, 5)
-end
+-- local function current_date()
+--   return string.sub(os.date "%x", 1, 5)
+-- end
 
 local function current_working_dir()
   local cwd = string.sub(vim.fn.getcwd(), 12)
@@ -63,7 +63,7 @@ require("lualine").setup {
     lualine_y = {
       { current_buffer_number, color = { fg = "#A9A9A9" } },
       { current_working_dir, color = { fg = "#A9A9A9" } },
-      { current_date, color = { fg = "#A9A9A9" } },
+      -- { current_date, color = { fg = "#A9A9A9" } },
     },
     lualine_z = { { "location", color = { fg = "#6d7275", bg = "#131313" } } },
   },
