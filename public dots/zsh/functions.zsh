@@ -45,6 +45,22 @@ gcal() {
   # 2022-02-09T02:55:00-6
 }
 
+# tmux stuff ---
+# zsh; needs setopt re_match_pcre.
+# b/c alacritty starts with a new session, killing quits alacritty (with this script)
+tmuxkillf () {
+    local sessions
+    sessions="$(tmux ls|fzf --exit-0 --multi)"  || return $?
+    local i
+    for i in "${(f@)sessions}"
+    do
+        [[ $i =~ '([^:]*):.*' ]] && {
+            echo "Killing $match[1]"
+            tmux kill-session -t "$match[1]"
+        }
+    done
+}
+
 #look up synonym - (word)
 # slow and buggy
 syn() {
