@@ -82,7 +82,7 @@ function git_prompt_short_sha_with_icon() {
   SHA=$(__git_prompt_git rev-parse --short HEAD 2> /dev/null) && echo " $ZSH_THEME_GIT_PROMPT_SHA_BEFORE$SHA$ZSH_THEME_GIT_PROMPT_SHA_AFTER"
 }
 
-RPROMPT='$FG[238]$(git_prompt_short_sha_with_icon)%{$reset_color%}'
+RPROMPT='$FG[238]$(git_prompt_short_sha_with_icon) %T%{$reset_color%}'
 # Move above to theme file -----------
 
 # User configuration
