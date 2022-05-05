@@ -105,6 +105,7 @@ alias ldot='exa -ld .*'
 alias mdc='make distclean'
 alias mj4='make CMAKE_BUILD_TYPE=RelWithDebInfo -j4'
 alias smi='sudo make install'
+alias monglo='mongosh mongodb://localhost:27017'
 alias mp='multipass'
 alias mpl='multipass list'
 # not using multipass much, using `mps` in work-related alias
