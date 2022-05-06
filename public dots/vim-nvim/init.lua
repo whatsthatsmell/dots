@@ -1,5 +1,5 @@
 -- Always on bleeding edge Neovim from https://git.io/NeovimHEAD --
--- NVIM v0.8.0-dev+126-g95b7851f6
+-- NVIM v0.8.0-dev+143-g8bbeab998
 
 -- Plugins --
 require "joel.plugins"
