@@ -137,7 +137,7 @@ require("lspconfig").tsserver.setup {
     -- required to fix code action ranges
     ts_utils.setup_client(client)
     -- disable tsserver formatting
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.document_formatting = false
   end,
 }
 
@@ -161,8 +161,8 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make
 nvim_lsp.eslint.setup {
   on_attach = function(client)
     -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
-    -- the resolved capabilities of the eslint server ourselves!
-    client.resolved_capabilities.document_formatting = true
+    -- the resolved/server capabilities of the eslint server ourselves!
+    client.server_capabilities.document_formatting = true
   end,
   settings = {
     format = { enable = true },
