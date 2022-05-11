@@ -126,15 +126,15 @@ vim.api.nvim_buf_set_keymap(
 vim.api.nvim_buf_set_keymap(
   0,
   "n",
-  "g[",
-  [[<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]],
+  "[d",
+  [[<cmd>lua vim.diagnostic.goto_prev()<CR>]],
   { noremap = true, silent = true }
 )
 vim.api.nvim_buf_set_keymap(
   0,
   "n",
-  "g]",
-  [[<cmd>lua vim.lsp.diagnostic.goto_next()<CR>]],
+  "]d",
+  [[<cmd>lua vim.diagnostic.goto_next()<CR>]],
   { noremap = true, silent = true }
 )
 -- end of LSP buf maps
