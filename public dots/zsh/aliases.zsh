@@ -145,6 +145,7 @@ alias tl1='tree -L 1'
 # tmux
 # @TODO: add more for tmux
 alias tsrc='tmux source ~/.tmux.conf'
+alias th='tmux new-window -c ~ -n 🏠Home'
 alias tn='tmux new-window -c ~/notes -n 📔Notes'
 alias tcn='tmux new-window -c ~/.config/nvim/ -n NVim-Cfg'
 alias triage='nvim ~/notes/rust/triage-template'
