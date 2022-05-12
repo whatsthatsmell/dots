@@ -199,6 +199,8 @@ return require("packer").startup {
       requires = { "nvim-lua/plenary.nvim" },
     }
 
+    use { "Pocco81/HighStr.nvim", cmd = "HSHighlight" }
+
     -- Local plugins
     use "~/vim-dev/plugins/codesmell_dark.vim"
     -- use "~/vim-dev/plugins/telescope.nvim"

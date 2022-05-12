@@ -332,6 +332,35 @@ key_map("n", "<leader><space>", "<C-i>", {
   silent = true,
 })
 
+-- HighStr maps
+-- @TODOUA: check on ability to persist HLs
+-- https://github.com/Pocco81/HighStr.nvim#-to-do
+vim.api.nvim_set_keymap("v", "<C-h>", ":<c-u>HSHighlight 2<CR>", {
+  noremap = true,
+  silent = true,
+})
+
+-- -- Reference
+-- vim.api.nvim_set_keymap(
+--     "v",
+--     "<F4>",
+--     ":<c-u>HSRmHighlight<CR>",
+--     {
+--         noremap = true,
+--         silent = true
+--     }
+-- )
+--
+-- vim.api.nvim_set_keymap(
+--     "v",
+--     "<F4>",
+--     ":<c-u>HSRmHighlight rm_all<CR>",
+--     {
+--         noremap = true,
+--         silent = true
+--     }
+-- )
+
 -- quick diff since last write
 key_map("n", "<leader>c", ":w !diff % -<cr>", { noremap = true })
 
