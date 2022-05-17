@@ -51,7 +51,7 @@ require("lualine").setup {
   sections = {
     lualine_a = { "mode" },
     lualine_b = {
-      { "b:gitsigns_head", icon = { "", color = { fg = "#F64E26" } } },
+      { "b:gitsigns_head", icon = { "", color = { fg = "#f2891c" } } },
       { "diff", source = diff_source },
       { "diagnostics", sources = { "nvim_diagnostic" } },
     },
