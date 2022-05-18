@@ -10,6 +10,7 @@
 	- New Location: https://github.com/rust-lang/rust-analyzer
 - [quick note](https://github.com/whatsthatsmell/q-note) 🦀⚙ -- a little Rust WIP from 💩-- contributions welcomed
 ### NeoNews:
+- [winbar](https://github.com/neovim/neovim/commit/d7dd6007167eac919205404bc4e556237118a7a7) 
 - Neovim 0.7 is released! → Get it [here](https://github.com/neovim/neovim/releases) 
 - [Global Status](https://github.com/neovim/neovim/commit/5ab122917474b3f9e88be4ee88bc6d627980cfe0) **[Goodness](https://github.com/nvim-lualine/lualine.nvim/pull/613)**!
 - This `NVim` → `cmp` plugin is a game changer for Rust devs: [crates.nvim: manage crates.io dependencies](https://github.com/Saecki/crates.nvim)
@@ -17,7 +18,7 @@
 # Public version of CodeSmell's Dotfiles 💩 
 
 ## Current Setup 
-_Last Updated: 17-May-2022 or more recently._
+_Last Updated: 18-May-2022 or more recently._
 
 - **[Rust](https://www.rust-lang.org/)** 🦀⚙
 	- [compiler](https://rustup.rs/) version: `rustc 1.63.0-nightly (c52b9c10b 2022-05-16)`
@@ -25,7 +26,7 @@ _Last Updated: 17-May-2022 or more recently._
 - **[Neovim](https://neovim.io/)** - _Important Note_: these Dotfiles target bleeding edge Neovim APIs. I try to update these runtime files as soon as the Neovim team pushes changes (including & especially breaking) to [their master branch](https://git.io/NeovimHEAD) and I pull the latest. 
   - I usually pull the latest a few times per week or if I see that a particularly juicy PR has landed. I do test Neovim feature branches. But, only code that works with `Neovim → master` will be pushed to this repo. [Neovim 0.7](https://github.com/neovim/neovim/releases/tag/v0.7.0) should work with most of what you see here. 
   - However, a lot of API changes are coming out of Neovim on the 0.6 track (master). So, I'd recommend using [Neovim Nightly](https://github.com/neovim/neovim/releases/tag/nightly) to use all the goodness in these Dotfiles. Or, [building from source](https://github.com/neovim/neovim#install-from-source) - [Code Smell video instructions](https://youtu.be/wep2_b_QU7Q). It's unlikely that I am more than a day or 2 behind. 
-  - The Neovim [commit](https://github.com/neovim/neovim/commit/6613f58cebde7db4e69709b84d511c32a7c4ce32) that I am on: `NVIM v0.8.0-dev+227-g6613f58ce`
+  - The Neovim [commit](https://github.com/neovim/neovim/commit/d7dd6007167eac919205404bc4e556237118a7a7) that I am on: `NVIM v0.8.0-dev+240-gd7dd60071`
 	- Theme: [codesmell_dark](https://github.com/whatsthatsmell/codesmell_dark.vim)
 	  - `Telescope`, `nvim-cmp`, `GitSigns`, many other plugins and builtins are colored from this theme using `Treesitter 🌲` 
 	- Config: [Lua](https://neovim.io/doc/user/lua.html)
