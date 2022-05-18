@@ -7,7 +7,7 @@ export ZSH="/Users/joel/.oh-my-zsh"
 ZSH_THEME="code-smell"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7"
 # Bat Theme
-export BAT_THEME="ansi"
+export BAT_THEME="1337"
 export LS_COLORS="di=34;1;1:"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # Set list of themes to pick from when loading at random
