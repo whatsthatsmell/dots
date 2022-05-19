@@ -5,7 +5,7 @@
 <a href="https://www.redbubble.com/shop/ap/102956214"><img align="right" width="100" height="100" src="https://user-images.githubusercontent.com/8049061/155224899-71324823-4cc0-431a-90e5-63e3c51af05f.png"></a>
 
 ### RustyNews:
-- [Announcing Rust 1.60.0 Stable](https://blog.rust-lang.org/2022/04/07/Rust-1.60.0.html) 🦀 [Release Notes](https://github.com/rust-lang/rust/blob/master/RELEASES.md#version-1600-2022-04-07)
+- [Announcing Rust 1.61.0 Stable](https://blog.rust-lang.org/2022/05/19/Rust-1.61.0.html) 🦀 [Release Notes](https://github.com/rust-lang/rust/releases/tag/1.61.0)
 - [rust-analyzer joins the Rust organization!](https://blog.rust-lang.org/2022/01/20/Rust-1.58.1.html)
 	- New Location: https://github.com/rust-lang/rust-analyzer
 - [quick note](https://github.com/whatsthatsmell/q-note) 🦀⚙ -- a little Rust WIP from 💩-- contributions welcomed
