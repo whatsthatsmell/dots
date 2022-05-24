@@ -46,8 +46,7 @@ require("lualine").setup {
     section_separators = { left = " ", right = " " },
     disabled_filetypes = {},
     always_divide_middle = false,
-    -- set winbar=%=%m\ %f
-    globalstatus = false,
+    globalstatus = true,
   },
   sections = {
     lualine_a = { "mode" },

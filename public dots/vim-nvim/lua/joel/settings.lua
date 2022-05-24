@@ -62,7 +62,8 @@ vim.cmd [[
 set termguicolors
 " syntax highlight only to 1K instead of default 3K
 set synmaxcol=1000
-
+" winbar with file name,git change counts and modified
+set winbar=%=%m\ %f\ %{get(b:,'gitsigns_status','')}
 let &packpath=&runtimepath
 set dictionary+=/usr/share/dict/words
 set wildignore+=*/node_modules/*,*/coverage/*
