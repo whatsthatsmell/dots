@@ -49,7 +49,6 @@ prompt_end() {
 prompt_context() { }
 
 # Git: branch/detached head, dirty status
-
 prompt_git() {
   (( $+commands[git] )) || return
   if [[ "$(git config --get oh-my-zsh.hide-status 2>/dev/null)" = 1 ]]; then
@@ -88,7 +87,7 @@ prompt_git() {
     zstyle ':vcs_info:*' get-revision true
     zstyle ':vcs_info:*' check-for-changes true
     zstyle ':vcs_info:*' stagedstr '✚'
-    zstyle ':vcs_info:*' unstagedstr '±'
+    zstyle ':vcs_info:*' unstagedstr '± '
     zstyle ':vcs_info:*' formats ' %u%c'
     zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
@@ -164,7 +163,7 @@ prompt_dir () {
 	if [[ "$PWD" == "$HOME" ]]; then
 		prompt_segment blue $CURRENT_FG ''
 	else
-		prompt_segment blue $CURRENT_FG '%2~'
+		prompt_segment blue CURRENT_FG '%2~'
 	fi
 }
 
@@ -217,4 +216,4 @@ build_prompt() {
   prompt_end
 }
 
-PROMPT='%{%f%b%k%}$(build_prompt) '
+PROMPT='%{%F{blue}%}  %{%f%b%k%}$(build_prompt) '
