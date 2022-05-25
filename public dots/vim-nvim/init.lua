@@ -1,6 +1,10 @@
 -- Always on bleeding edge Neovim from https://git.io/NeovimHEAD --
 -- NVIM v0.8.0-dev+296-g307c5c63e
 
+-- https://github.com/lewis6991/impatient.nvim
+-- :LuaCacheClear
+require "impatient"
+
 -- Plugins --
 require "joel.plugins"
 
