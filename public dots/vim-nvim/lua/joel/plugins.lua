@@ -23,6 +23,7 @@ vim.api.nvim_create_autocmd(
 -- Plugins via Packer
 return require("packer").startup {
   function(use)
+    -- @TODOUA: try https://github.com/tmux-plugins/vim-tmux
     -- use "antoinemadec/FixCursorHold.nvim"
     -- tpope
     use "tpope/vim-surround"
