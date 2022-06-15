@@ -99,16 +99,19 @@ vim.o.scrolloff = 1
 vim.o.hidden = true
 vim.o.splitbelow = true
 vim.o.splitright = true
--- vim.o.showcmd = false - handled by cmdheight being 0
+vim.o.showcmd = false -- default if cmdheight is 0
+-- vim.opt.cmdheight = 0 - let is default to 1 until https://github.com/neovim/neovim/issues/18958
 -- @TODOUA: consider using the global `cursorhold_updatetime` from FixCursorHold
 vim.o.updatetime = 2000
-vim.opt.cmdheight = 0
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.pumblend = 5
 vim.cmd [[hi PmenuSel blend=0]]
 
--- Global Vim vars that are on a solo-ish mission **
+-- ** Global Vim vars that are on a solo-ish mission **
+-- update tmux status on every move
+vim.g.tpipeline_cursormoved = 1
+
 vim.g.matchup_matchparen_deferred = 1
 -- * Colorizer *
 -- auto color fts
