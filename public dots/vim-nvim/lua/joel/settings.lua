@@ -109,8 +109,10 @@ vim.opt.pumblend = 5
 vim.cmd [[hi PmenuSel blend=0]]
 
 -- ** Global Vim vars that are on a solo-ish mission **
--- update tmux status on every move
-vim.g.tpipeline_cursormoved = 1
+-- update tmux status on every move - but it only updates when moved - I want it to update on move and default
+-- vim.g.tpipeline_cursormoved = 1
+-- restore tmux status after vim closed
+-- vim.g.tpipeline_restore = 1
 
 vim.g.matchup_matchparen_deferred = 1
 -- * Colorizer *

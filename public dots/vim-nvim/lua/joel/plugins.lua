@@ -32,7 +32,7 @@ return require("packer").startup {
     use "tpope/vim-eunuch"
     use "tpope/vim-unimpaired"
     use "tpope/vim-abolish"
-    use "vimpostor/vim-tpipeline"
+    -- use "vimpostor/vim-tpipeline"
     use "lewis6991/impatient.nvim"
     use "editorconfig/editorconfig-vim"
     -- markdown plugins
