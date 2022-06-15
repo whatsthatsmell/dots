@@ -99,9 +99,10 @@ vim.o.scrolloff = 1
 vim.o.hidden = true
 vim.o.splitbelow = true
 vim.o.splitright = true
-vim.o.showcmd = false
+-- vim.o.showcmd = false - handled by cmdheight being 0
 -- @TODOUA: consider using the global `cursorhold_updatetime` from FixCursorHold
 vim.o.updatetime = 2000
+vim.opt.cmdheight = 0
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.pumblend = 5
