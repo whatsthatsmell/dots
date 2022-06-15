@@ -110,6 +110,8 @@ alias smi='sudo make install'
 alias monglo='mongosh mongodb://localhost:27017'
 alias mp='multipass'
 alias mpl='multipass list'
+# verbose move: echoes the moved
+alias mvv='mv -v'
 # not using multipass much, using `mps` in work-related alias
 # alias mps='multipass shell'
 alias ng='npm init -y && git init && echo "node_modules" >> .gitignore'
