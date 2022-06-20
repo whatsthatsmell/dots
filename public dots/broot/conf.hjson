@@ -24,7 +24,7 @@
     # if you don't want the hidden files you can launch `br -H`)
     # A popular flag is the `g` one which displays git related info.
     #
-    # default_flags:
+    default_flags: gh
 
     ###############################################################
     # Date/Time format
@@ -100,7 +100,7 @@
     # to cancel (for example when you just opened broot), uncomment
     # this parameter
     # 
-    # quit_on_last_cancel: true
+    quit_on_last_cancel: true
 
     ###############################################################
     # Search modes
