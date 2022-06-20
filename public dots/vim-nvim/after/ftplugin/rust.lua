@@ -1,4 +1,4 @@
--- rustc 1.63.0-nightly (fee3a459d 2022-06-05)
+-- rustc 1.63.0-nightly (bb8c2f411 2022-06-19)
 -- rust-analyzer ad6810e90 2022-06-06 dev
 
 -- treesitter folding
