@@ -90,6 +90,8 @@ alias gdots='git -C ~/dotfiles status'
 # unified diff instead of configured side-by-side
 alias gdu='git -c delta.side-by-side=false diff'
 alias ghil='gh issue list'
+# Github repo search and go!
+alias ghrs='gh s | xargs -n1 gh browse -R'
 alias ghweb='gh repo view --web'
 alias gijs='git init && echo "node_modules" >> .gitignore'
 alias glf='git log --stat'
