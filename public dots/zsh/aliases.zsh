@@ -71,7 +71,10 @@ alias ndeps='bat package.json | jq ".dependencies, .devDependencies"'
 # directory file count
 alias dfc='exa | wc -l'
 alias dots='zsh ~/dotfiles/index.txt'
+# size of each dir and total
 alias dud='du -d 1 -h'
+# Only total size of dir
+alias dush='du -sh'
 alias esl='node_modules/.bin/eslint .'
 alias exaf='exa -allFI "node_modules|.git|coverage"'
 alias fs='fselect'
