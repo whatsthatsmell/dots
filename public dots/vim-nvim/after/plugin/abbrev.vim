@@ -1,5 +1,6 @@
-inoreabbrev Tdate <C-R>=strftime("%d-%b-%Y")<CR>
+inoreabbrev Fdate <C-R>=strftime("%d-%b-%Y")<CR>
 inoreabbrev Gdate <C-R>=strftime("%FT%T")<CR>
+inoreabbrev Tdate <C-R>=strftime("%a %d, %b %Y")<CR>
 inoreabbrev ryme rhyme
 inoreabbrev undering understanding
 inoreabbrev understaning understanding

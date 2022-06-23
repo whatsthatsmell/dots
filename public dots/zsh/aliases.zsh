@@ -10,6 +10,8 @@ alias -s {rs,toml}=nvim
 alias -s {yml,yaml}=nvim
 alias -s lua=nvim
 alias arec='asciinema rec'
+# use d and FZF to navigate to recent dir
+alias bd='cd -$(d | fzf | cut -f1)'
 alias c='cargo'
 alias cb='cargo build'
 alias ccl='cargo clippy'
