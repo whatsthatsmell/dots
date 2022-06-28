@@ -5,7 +5,6 @@ inoreabbrev ryme rhyme
 inoreabbrev undering understanding
 inoreabbrev understaning understanding
 inoreabbrev graphql GraphQL
-iabbrev dont don't
 inoreabbrev mdl []()
 iabbrev syntac syntax
 iabbrev zfz fzf
@@ -18,3 +17,5 @@ iabbrev :D 
 iabbrev grm Guilherme
 iabbrev chk ✔
 iabbrev pi π
+iabbrev joel Joel
+iabbrev jp Joel Palmer
