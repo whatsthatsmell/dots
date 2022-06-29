@@ -4,9 +4,6 @@ right_format = """$git_commit"""
 [aws]
 symbol = "  "
 
-[buf]
-symbol = " "
-
 [c]
 symbol = " "
 
@@ -25,7 +22,6 @@ symbol = " "
 [git_branch]
 symbol = " "
 style = "bold #3FA75C"
-# style = "bold #E69138"
 
 [git_commit]
 commit_hash_length = 7
@@ -34,13 +30,12 @@ format = "[$hash$tag]($style) "
 style = "#BDCAD7"
 
 [git_metrics]
-#format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 disabled = false
 
 [git_status]
 ahead = "(⇡${count})"
 diverged = "(⇕⇡${ahead_count}⇣${behind_count})"
-behind = "⇣${count}"
+behind = "(⇣${count})"
 modified = '[\($count\)](bold yellow)'
 staged = '[\($count\)](bold green)'
 format = '([\[$all_status$ahead_behind\]]($style) )'
