@@ -1,4 +1,5 @@
 # Custom ZSH Aliases
+alias -s {graphql,gql}=nvim
 alias -s txt=nvim
 alias -s vim=nvim
 alias -s zsh=nvim

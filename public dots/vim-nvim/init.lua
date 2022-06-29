@@ -1,4 +1,4 @@
--- Always on bleeding edge Neovim from https://git.io/NeovimHEAD --
+-- Always on bleeding edge Neovim from https://git.io/NeovimHEAD
 -- NVIM v0.8.0-dev+510-ge0f605bfd
 
 -- https://github.com/lewis6991/impatient.nvim

@@ -77,12 +77,11 @@ source $ZSH/oh-my-zsh.sh
 # TODO: Save locally & source: https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/git.zsh
 # Move this to functions file
 # Formats string for current git commit short SHA
-function git_prompt_short_sha_with_icon() {
-  local SHA
-  SHA=$(__git_prompt_git rev-parse --short HEAD 2> /dev/null) && echo " $ZSH_THEME_GIT_PROMPT_SHA_BEFORE$SHA$ZSH_THEME_GIT_PROMPT_SHA_AFTER"
-}
+# function git_prompt_short_sha_with_icon() {
+#   local SHA
+#   SHA=$(__git_prompt_git rev-parse --short HEAD 2> /dev/null) && echo " $ZSH_THEME_GIT_PROMPT_SHA_BEFORE$SHA$ZSH_THEME_GIT_PROMPT_SHA_AFTER"
+# }
 
-RPROMPT='$FG[238]$(git_prompt_short_sha_with_icon) %T%{$reset_color%}'
 # Move above to theme file -----------
 
 # User configuration
@@ -176,3 +175,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source /Users/joel/.config/broot/launcher/bash/br
+# use starship prompt
+eval "$(starship init zsh)"
+#RPROMPT='$FG[238]$(git_prompt_short_sha_with_icon) %T%{$reset_color%}'

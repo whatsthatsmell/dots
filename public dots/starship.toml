@@ -23,7 +23,8 @@ symbol = " "
 
 [git_branch]
 symbol = " "
-style = "bold #E69138"
+style = "bold #3FA75C"
+# style = "bold #E69138"
 
 [git_commit]
 commit_hash_length = 7
