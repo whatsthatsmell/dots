@@ -1,4 +1,5 @@
 command_timeout = 750
+right_format = """$git_commit"""
 
 [aws]
 symbol = "  "
@@ -29,7 +30,8 @@ style = "bold #3FA75C"
 [git_commit]
 commit_hash_length = 7
 only_detached = false
-style = "bold #BDCAD7"
+format = "[$hash$tag]($style) "
+style = "#BDCAD7"
 
 [git_metrics]
 #format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
@@ -39,6 +41,9 @@ disabled = false
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
+modified = '[\($count\)](bold yellow)'
+staged = '[\($count\)](bold green)'
+style = "bold #CEDBE8"
 
 [golang]
 symbol = " "
