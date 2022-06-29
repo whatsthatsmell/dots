@@ -1,0 +1,62 @@
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[directory]
+truncation_length = 5
+truncation_symbol = "  "
+truncate_to_repo = false
+style = "#CEDBE8"
+repo_root_style = "bold #1E90FF"
+format = "[$path]($style)[$lock_symbol]($lock_style) "
+read_only = " "
+
+[docker_context]
+symbol = " "
+
+[git_branch]
+symbol = " "
+style = "bold #E69138"
+
+[git_commit]
+commit_hash_length = 7
+only_detached = false
+style = "bold #BDCAD7"
+
+[git_metrics]
+#format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+disabled = false
+
+[git_status]
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+
+[golang]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rust]
+symbol = " "
