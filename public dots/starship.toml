@@ -41,7 +41,7 @@ disabled = false
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
-modified = '[\($count\)](bold yellow)'
+modified = '[\($count\) ](bold yellow)'
 staged = '[\($count\)](bold green)'
 style = "bold #CEDBE8"
 
