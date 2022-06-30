@@ -49,17 +49,24 @@ symbol = " "
 [julia]
 symbol = " "
 
+[lua]
+symbol = " "
+format = '[$symbol]($style)'
+
 [memory_usage]
 symbol = " "
 
 [nodejs]
-symbol = " "
+symbol = " "
+format = '[$symbol]($style)'
 
 [package]
 symbol = " "
+disabled = true
 
 [python]
 symbol = " "
 
 [rust]
 symbol = " "
+format = '[$symbol]($style)'
