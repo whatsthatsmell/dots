@@ -33,39 +33,15 @@ disabled = false
 style = "fg:#BDCAD7"
 stashed = " ${count}"
 ahead = '( [ﲗ\($count\)](bold #C6D0D8))'
-behind = "ﲔ ${count}"
+behind = '( [ﲔ\($count\)](bold #C6D0D8))'
 diverged = "李 ${ahead_count} ${behind_count}"
-conflicted = "${count}"
-deleted = " ${count}"
-renamed = "﫦${count}"
+conflicted = '( [\($count\)](bold #C6D0D8))'
+deleted = '( [\($count\)](bold #C6D0D8))'
+renamed = '( [﫦\($count\)](bold #C6D0D8))'
 modified = '( [U\($count\)](bold yellow))'
 staged = '( [S\($count\)](bold green))'
-# staged = "  ${count}"
-untracked = "  ${count}"
+untracked = '( [\($count\)](red))'
 format = "$all_status$ahead_behind "
-
-# [git_status]
-# conflicted = "⚔️ "
-# ahead = "🏎️ 💨 ×${count}"
-# behind = "🐢 ×${count}"
-# diverged = "🔱 🏎️ 💨 ×${ahead_count} 🐢 ×${behind_count}"
-# untracked = "🛤️  ×${count}"
-# stashed = "📦 "
-# modified = "${count}"
-# staged = "🗃️  ×${count}"
-# renamed = "📛 ×${count}"
-# deleted = "🗑️  ×${count}"
-# style = "bright-white"
-# format = "$all_status$ahead_behind"
-
-# [git_status]
-# ahead = "(⇡${count})"
-# diverged = "(⇕⇡${ahead_count}⇣${behind_count})"
-# behind = "(⇣${count})"
-# modified = '([\($count\)](bold yellow) )'
-# staged = '([\($count\)](bold green))'
-# format = '([\[$all_status$ahead_behind\]]($style) )'
-# style = "bold #CEDBE8"
 
 [golang]
 symbol = " "
