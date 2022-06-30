@@ -1,9 +1,6 @@
 command_timeout = 750
 right_format = """$git_commit"""
 
-[aws]
-symbol = "  "
-
 [c]
 symbol = " "
 
@@ -14,7 +11,7 @@ truncate_to_repo = false
 style = "#CEDBE8"
 repo_root_style = "bold #1E90FF"
 format = "[$path]($style)[$lock_symbol]($lock_style) "
-read_only = " "
+read_only = " "
 
 [docker_context]
 symbol = " "
@@ -33,19 +30,45 @@ style = "#BDCAD7"
 disabled = false
 
 [git_status]
-ahead = "(⇡${count})"
-diverged = "(⇕⇡${ahead_count}⇣${behind_count})"
-behind = "(⇣${count})"
-modified = '[\($count\)](bold yellow)'
-staged = '[\($count\)](bold green)'
-format = '([\[$all_status$ahead_behind\]]($style) )'
-style = "bold #CEDBE8"
+# disabled = true
+style = "fg:#BDCAD7"
+stashed = " ${count}"
+ahead = "ﲗ ${count}"
+behind = "ﲔ ${count}"
+diverged = "李 ${ahead_count} ${behind_count}"
+conflicted = "${count}"
+deleted = " ${count}"
+renamed = "﫦${count}"
+modified = " 凜${count}"
+staged = "  ${count}"
+untracked = "  ${count}"
+format = "([[](fg:#A6A6A6)$stashed$staged$modified$renamed$untracked$deleted$conflicted$ahead_behind[](fg:#E0B25D)]($style))"
+
+# [git_status]
+# conflicted = "⚔️ "
+# ahead = "🏎️ 💨 ×${count}"
+# behind = "🐢 ×${count}"
+# diverged = "🔱 🏎️ 💨 ×${ahead_count} 🐢 ×${behind_count}"
+# untracked = "🛤️  ×${count}"
+# stashed = "📦 "
+# modified = "${count}"
+# staged = "🗃️  ×${count}"
+# renamed = "📛 ×${count}"
+# deleted = "🗑️  ×${count}"
+# style = "bright-white"
+# format = "$all_status$ahead_behind"
+
+# [git_status]
+# ahead = "(⇡${count})"
+# diverged = "(⇕⇡${ahead_count}⇣${behind_count})"
+# behind = "(⇣${count})"
+# modified = '([\($count\)](bold yellow) )'
+# staged = '([\($count\)](bold green))'
+# format = '([\[$all_status$ahead_behind\]]($style) )'
+# style = "bold #CEDBE8"
 
 [golang]
 symbol = " "
-
-[haskell]
-symbol = " "
 
 [julia]
 symbol = " "
