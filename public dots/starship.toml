@@ -33,16 +33,18 @@ disabled = false
 # disabled = true
 style = "fg:#BDCAD7"
 stashed = " ${count}"
-ahead = "ﲗ ${count}"
+# ahead = "ﲗ ${count}"
+ahead = '( [ﲗ\($count\)](bold #C6D0D8))'
 behind = "ﲔ ${count}"
 diverged = "李 ${ahead_count} ${behind_count}"
 conflicted = "${count}"
 deleted = " ${count}"
 renamed = "﫦${count}"
-modified = " 凜${count}"
-staged = "  ${count}"
+modified = '( [U\($count\)](bold yellow))'
+staged = '( [S\($count\)](bold green))'
+# staged = "  ${count}"
 untracked = "  ${count}"
-format = "([[](fg:#A6A6A6)$stashed$staged$modified$renamed$untracked$deleted$conflicted$ahead_behind[](fg:#E0B25D)]($style))"
+format = "$all_status$ahead_behind "
 
 # [git_status]
 # conflicted = "⚔️ "
