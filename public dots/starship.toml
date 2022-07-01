@@ -1,4 +1,4 @@
-command_timeout = 750
+command_timeout = 950
 right_format = """$git_commit"""
 
 [c]

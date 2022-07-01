@@ -1,14 +1,14 @@
-![Rust](https://img.shields.io/badge/Rust-1.63.x-%23000000.svg?style=plastic&logo=rust&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-1.64.x-%23000000.svg?style=plastic&logo=rust&logoColor=white)
 ![Neovim version](https://img.shields.io/badge/Neovim-0.8.x-57A143?style=plastic&logo=neovim)
 ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=plastic&logo=lua&logoColor=white)
 ![YouTubeSubs](https://img.shields.io/youtube/channel/subscribers/UC4S7Fm5x-WXRCWP6MjK6k2A?style=social)
 <a href="https://www.redbubble.com/shop/ap/102956214"><img align="right" width="100" height="100" src="https://user-images.githubusercontent.com/8049061/155224899-71324823-4cc0-431a-90e5-63e3c51af05f.png"></a>
 
 ### RustyNews:
-- [Announcing Rust 1.61.0 Stable](https://blog.rust-lang.org/2022/05/19/Rust-1.61.0.html) 🦀 [Release Notes](https://github.com/rust-lang/rust/releases/tag/1.61.0)
+- [Announcing Rust 1.62.0 Stable](https://blog.rust-lang.org/2022/06/30/Rust-1.62.0.html) 🦀 [Release Notes](https://github.com/rust-lang/rust/releases/tag/1.62.0)
 - [rust-analyzer joins the Rust organization!](https://blog.rust-lang.org/2022/01/20/Rust-1.58.1.html)
 	- New Location: https://github.com/rust-lang/rust-analyzer
-- [quick note](https://github.com/whatsthatsmell/q-note) 🦀⚙ -- a little Rust WIP from 💩-- contributions welcomed
+- [quick note](https://github.com/whatsthatsmell/q-note) 🦀⚙ -- a little Rust WI from  contributions welcomed
 ### NeoNews:
 - [winbar](https://github.com/neovim/neovim/commit/d7dd6007167eac919205404bc4e556237118a7a7) 
 - Neovim 0.7 is released! → Get it [here](https://github.com/neovim/neovim/releases) 
@@ -18,10 +18,10 @@
 # Public version of CodeSmell's Dotfiles 💩 
 
 ## Current Setup 
-_Last Updated: 30-Jun-2022 or more recently._
+_Last Updated: 01-Jul-2022 or more recently._
 
 - **[Rust](https://www.rust-lang.org/)** 🦀⚙
-	- [compiler](https://rustup.rs/) version: `rustc 1.63.0-nightly (dc80ca78b 2022-06-21)`
+	- [compiler](https://rustup.rs/) version: `rustc 1.64.0-nightly (7425fb293 2022-06-30)`
 	- [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp) version: `rust-analyzer 312ac83ca 2022-06-20`
 - **[Neovim](https://neovim.io/)** - _Important Note_: these Dotfiles target bleeding edge Neovim APIs. I try to update these runtime files as soon as the Neovim team pushes changes (including & especially breaking) to [their master branch](https://git.io/NeovimHEAD) and I pull the latest. 
   - I usually pull the latest a few times per week or if I see that a particularly juicy PR has landed. I do test Neovim feature branches. But, only code that works with `Neovim → master` will be pushed to this repo. [Neovim 0.7](https://github.com/neovim/neovim/releases/tag/v0.7.0) should work with most of what you see here. 
