@@ -149,7 +149,7 @@ _fzf_comprun() {
 }
 # Apply the command to CTRL-T
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--height 64% --layout=reverse --border --color=fg:#d0d0d0,bg:#121212,hl:#5f87af --color=fg+:#d0d0d0,bg+:#262626,hl+:#648ce3 --color=info:#6d7d85,prompt:#b53c10,pointer:#5895db --color=marker:#87ff00,spinner:#2b751c,header:#87afaf'
+export FZF_DEFAULT_OPTS='--height 64% --layout=reverse --border --color=fg:#d0d0d0,bg:#121212,hl:#5f87af --color=fg+:#d0d0d0,bg+:#262626,hl+:#648ce3 --color=info:#6d7d85,prompt:#b53c10,pointer:#5895db --color=marker:#87ff00,spinner:#2b751c,header:#87afaf --bind ctrl-t:toggle-sort'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.iterm2_shell_integration.zsh
 export PYENV_ROOT="$HOME/.pyenv"
