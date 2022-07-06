@@ -138,9 +138,6 @@ key_map("n", "<Leader>Q", ":qall!<CR>", { noremap = true, silent = true })
 -- write all and quit
 key_map("n", "<Leader>W", ":wqall<CR>", { noremap = true, silent = true })
 
--- @TODOUA: figure out the semantics of <space> vs <leader>
---- ',' comma seems to have a pattern as a leader
-
 -- **Buffer Stuff****
 -- <C-6> is toggle current and alt(last viewed)
 -- Go to next buffer - Skip Terminal buffers in specified splits (settings aug: UnlistSplitTerms )
@@ -366,3 +363,7 @@ key_map("n", "<leader>c", ":w !diff % -<cr>", { noremap = true })
 
 -- Join lines and restore cursor location
 key_map("n", "J", "mjJ`j", { noremap = true })
+
+-- open icon/symbol/Emoji/NerdFont picker
+-- https://github.com/ziontee113/icon-picker.nvim#available-commands
+key_map("n", ",i", ":PickEverything<CR>", { noremap = true, silent = true })

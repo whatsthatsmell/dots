@@ -47,7 +47,17 @@ return require("packer").startup {
         require("stabilize").setup()
       end,
     }
+
     use { "stevearc/dressing.nvim" }
+
+    use {
+      "ziontee113/icon-picker.nvim",
+      cmd = "PickEverything",
+      config = function()
+        require "icon-picker"
+      end,
+    }
+
     use {
       "numToStr/Comment.nvim",
       config = function()
