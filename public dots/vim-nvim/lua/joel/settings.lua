@@ -114,7 +114,12 @@ vim.cmd [[hi PmenuSel blend=0]]
 -- restore tmux status after vim closed
 -- vim.g.tpipeline_restore = 1
 
+-- Copilot globals
+vim.g.copilot_filetypes = { ["*"] = false }
+vim.g.copilot_no_tab_map = true
+
 vim.g.matchup_matchparen_deferred = 1
+
 -- * Colorizer *
 -- auto color fts
 vim.g.colorizer_auto_filetype = "yaml,zsh,zsh-theme,lua,vim,json"

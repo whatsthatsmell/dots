@@ -215,6 +215,10 @@ return require("packer").startup {
 
     use { "Pocco81/HighStr.nvim", cmd = "HSHighlight" }
 
+    -- copilot 😱
+    -- @TODOUA: figure out why adding this plugin makes packer behave differently
+    use "github/copilot.vim"
+
     -- Local plugins
     use "~/vim-dev/plugins/codesmell_dark.vim"
     -- use "~/vim-dev/plugins/telescope.nvim"

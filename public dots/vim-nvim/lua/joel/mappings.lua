@@ -297,6 +297,11 @@ key_map("t", "<Del>", "<C-\\><C-n>", { noremap = true })
 -- please iTerm hotkey windows
 key_map("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
 
+-- Copilot settings and accept map: <ctrl-j> instead of <tab> due to conflict with nvim-cmp
+-- @TODOUA: Integrate with cmp and fully Luatize via https://github.com/zbirenbaum/copilot.lua AND...
+-- @TODOUA: https://github.com/zbirenbaum/copilot-cmp
+key_map("i", "<C-J>", [[copilot#Accept("\<CR>")]], { noremap = false, expr = true, script = true })
+
 -- vsnip jump through snippets with <Tab>
 key_map("i", "<Tab>", [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']], { noremap = false, expr = true })
 
