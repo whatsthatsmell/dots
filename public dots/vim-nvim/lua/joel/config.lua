@@ -157,7 +157,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- `eslint` lang server setup through lspconfig
--- vscode-langservers-extracted@4.1.0 → https://github.com/hrsh7th/vscode-langservers-extracted
+-- vscode-langservers-extracted@4.2.1 → https://github.com/hrsh7th/vscode-langservers-extracted
 nvim_lsp.eslint.setup {
   on_attach = function(client)
     -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set

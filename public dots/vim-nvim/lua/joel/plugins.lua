@@ -55,7 +55,8 @@ return require("packer").startup {
       end,
     }
     -- use "elihunter173/dirbuf.nvim"
-    use "pbrisbin/vim-mkdir"
+    -- doing mkdir locally
+    -- use "pbrisbin/vim-mkdir"
     -- use "vim-test/vim-test"
 
     -- mongo-nvim - install when needed. Fairly buggy as of 05-May-2022. Great potential.
