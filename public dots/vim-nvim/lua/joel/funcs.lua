@@ -20,9 +20,7 @@ function M.create_todoist_task(opts)
   local selection = string.sub(current_line, first_char, last_char)
 
   local identifier = "Neovim"
-  if project_id ~= 2251750391 then
-    identifier = "Work"
-  end
+  if project_id ~= 2251750391 then identifier = "Work" end
 
   local ret_val = utils.get_os_command_output(
     { "todoist", "add", selection, "-P", project_id, "-d", "today", "-L", label_id, "-p", "3" },
@@ -77,7 +75,7 @@ function M.click_banner_notification()
   return _
 end
 
--- cliclick -> move pointer off top Mac sys menu - MacOS specific - 2560x1440
+-- cliclick  move pointer off top Mac sys menu - MacOS specific - 2560x1440
 -- most annoying issue in Big Sur!!!!
 function M.move_pointer_off_menu()
   local _ = utils.get_os_command_output({ "cliclick", "m:1300,95" }, "~")

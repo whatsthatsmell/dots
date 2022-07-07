@@ -7,7 +7,7 @@ vim.api.nvim_buf_set_keymap(0, "n", "<localleader>f", ":%!jq .<CR>", { noremap =
 vim.api.nvim_buf_set_keymap(0, "n", "<localleader>jp", ":JsonPath<CR>", { noremap = true, silent = false })
 vim.api.nvim_buf_set_keymap(0, "n", "<localleader>jg", ":call jsonpath#goto()<CR>", { noremap = true, silent = true })
 
----- https://github.com/lewis6991/dotfiles/blob/de2f982b4d6fa03cf01d115a2df7dffa6fcf6398/config/nvim/after/ftplugin/json.lua --
+--- https://github.com/lewis6991/dotfiles/blob/de2f982b4d6fa03cf01d115a2df7dffa6fcf6398/config/nvim/after/ftplugin/json.lua --
 function JsonFolds()
   local line = vim.fn.getline(vim.v.lnum)
   -- let l:lline = split(l:line, '\zs')
