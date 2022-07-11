@@ -170,7 +170,7 @@ nvim_lsp.eslint.setup {
 }
 
 -- Enable rust_analyzer
--- rust-analyzer 312ac83ca 2022-06-20
+-- rust-analyzer 5342f47f4 2022-07-09
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
@@ -263,14 +263,10 @@ require("gitsigns").setup {
     map("n", "<leader>hu", gs.undo_stage_hunk)
     map("n", "<leader>hR", gs.reset_buffer)
     map("n", "<leader>hp", gs.preview_hunk)
-    map("n", "<leader>hb", function()
-      gs.blame_line { full = true }
-    end)
+    map("n", "<leader>hb", function() gs.blame_line { full = true } end)
     map("n", ",tb", gs.toggle_current_line_blame)
     map("n", "<leader>hd", gs.diffthis)
-    map("n", "<leader>hD", function()
-      gs.diffthis "~"
-    end)
+    map("n", "<leader>hD", function() gs.diffthis "~" end)
     map("n", ",td", function()
       gs.toggle_deleted()
       gs.toggle_word_diff()

@@ -1,5 +1,5 @@
--- rustc 1.64.0-nightly (27eb6d701 2022-07-04)
--- rust-analyzer 312ac83ca 2022-06-20
+-- rustc 1.64.0-nightly (c396bb3b8 2022-07-10)
+--
 
 -- treesitter folding
 vim.opt_local.foldmethod = "expr"
@@ -159,9 +159,7 @@ cmp.setup.buffer {
     {
       name = "buffer",
       option = {
-        get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
-        end,
+        get_bufnrs = function() return vim.api.nvim_list_bufs() end,
       },
     },
     { name = "path" },
