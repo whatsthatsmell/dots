@@ -1,0 +1,3 @@
+# Set from: export RIPGREP_CONFIG_PATH=~/.config/ripgrep/.ripgreprc
+--hidden
+--smart-case
