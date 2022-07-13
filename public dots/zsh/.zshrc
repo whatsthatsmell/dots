@@ -123,7 +123,7 @@ bindkey "^F" fzf-cd-widget
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 # Setting rg as the default source for fzf
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-
+export RIPGREP_CONFIG_PATH=~/.config/ripgrep/.ripgreprc
 # use fd instead of rg for file search, rg author says so!
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_COMPLETION_OPTS='--border --info=inline'

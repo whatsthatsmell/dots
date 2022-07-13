@@ -26,7 +26,7 @@ return require("packer").startup {
     -- @TODOUA: try https://github.com/tmux-plugins/vim-tmux
     -- use "antoinemadec/FixCursorHold.nvim"
     -- tpope
-    use "tpope/vim-surround"
+    -- use "tpope/vim-surround"
     use "tpope/vim-fugitive"
     use "tpope/vim-repeat"
     use "tpope/vim-eunuch"
@@ -43,9 +43,12 @@ return require("packer").startup {
 
     use {
       "luukvbaal/stabilize.nvim",
-      config = function()
-        require("stabilize").setup()
-      end,
+      config = function() require("stabilize").setup() end,
+    }
+
+    use {
+      "kylechui/nvim-surround",
+      config = function() require("nvim-surround").setup {} end,
     }
 
     use { "stevearc/dressing.nvim" }
@@ -53,17 +56,14 @@ return require("packer").startup {
     use {
       "ziontee113/icon-picker.nvim",
       cmd = "PickEverything",
-      config = function()
-        require "icon-picker"
-      end,
+      config = function() require "icon-picker" end,
     }
 
     use {
       "numToStr/Comment.nvim",
-      config = function()
-        require("Comment").setup()
-      end,
+      config = function() require("Comment").setup() end,
     }
+
     -- use "elihunter173/dirbuf.nvim"
     -- doing mkdir locally
     -- use "pbrisbin/vim-mkdir"
@@ -136,9 +136,7 @@ return require("packer").startup {
     use { "LinArcX/telescope-command-palette.nvim" }
     use {
       "AckslD/nvim-neoclip.lua",
-      config = function()
-        require("neoclip").setup()
-      end,
+      config = function() require("neoclip").setup() end,
     }
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use "jvgrootveld/telescope-zoxide"
@@ -155,9 +153,7 @@ return require("packer").startup {
     -- sitting
     use {
       "lewis6991/spellsitter.nvim",
-      config = function()
-        require("spellsitter").setup()
-      end,
+      config = function() require("spellsitter").setup() end,
     }
     use {
       "nvim-treesitter/nvim-treesitter",
@@ -193,16 +189,12 @@ return require("packer").startup {
         -- { "hrsh7th/cmp-cmdline" },
         { "tamago324/cmp-zsh" },
       },
-      config = function()
-        require "joel.completion"
-      end,
+      config = function() require "joel.completion" end,
     }
 
     use {
       "nvim-lualine/lualine.nvim",
-      config = function()
-        require "joel.statusline"
-      end,
+      config = function() require "joel.statusline" end,
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
     }
 
@@ -226,9 +218,7 @@ return require("packer").startup {
     -- use "~/vim-dev/plugins/telescope-github.nvim"
 
     -- setup config after cloning packer
-    if PACKER_BOOTSTRAP then
-      require("packer").sync()
-    end
+    if PACKER_BOOTSTRAP then require("packer").sync() end
   end,
   config = {
     display = {

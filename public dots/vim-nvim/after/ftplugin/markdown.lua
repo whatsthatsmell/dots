@@ -8,7 +8,7 @@ vim.opt.linebreak = true
 vim.opt_local.spell = true
 vim.opt_local.conceallevel = 2
 
--- *markdown surround maps - with vim-surround and without*
+-- *markdown surround maps - with nvim-surround and without*
 -- wrap selection in markdown link
 vim.api.nvim_buf_set_keymap(0, "v", ",wl", [[c[<c-r>"]()<esc>]], { noremap = false })
 

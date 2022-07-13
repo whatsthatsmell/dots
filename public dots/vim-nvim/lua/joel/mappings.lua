@@ -5,7 +5,7 @@ local key_map = vim.api.nvim_set_keymap
 -- *Telescope-related maps at telescope/mappings (for now)
 
 -- *Quickly surround Words*
--- filetype specific quick surrounds in ftps
+-- Filetype specific quick surrounds in FTPs
 -- vS to surround selection with argument
 -- cs'" will change single to double quotes. Flip or change surroundings as needed.
 -- ds{surrounding} to remove surroundings
@@ -207,7 +207,7 @@ key_map("n", ",-", ":above 12sp<CR><C-w><up>", { noremap = true, silent = true }
 key_map("n", ",vl", ":above 40vsp scratch<CR>", { noremap = true, silent = true })
 -- *** :vne {new_file_name} → New file in vert split in CWD ***
 
--- ** Terminal open maps** - see <leader>tx for close terminal
+-- ** Terminal Open Maps** - See <leader>tx for close terminal
 -- open 2 vertically split terminals
 key_map(
   "n",
