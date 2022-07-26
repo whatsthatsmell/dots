@@ -1,5 +1,5 @@
 -- Credit: https://git.io/tjsstylua
--- `stylua v0.13.0` → https://github.com/JohnnyMorganz/StyLua
+-- `stylua v0.14.1` → https://github.com/JohnnyMorganz/StyLua
 local Path = require "plenary.path"
 local Job = require "plenary.job"
 
@@ -18,9 +18,7 @@ local stylua_finder = function(path)
 
     local relative_diff = #file_parents - #root_parents
     for index, dir in ipairs(file_parents) do
-      if index > relative_diff then
-        break
-      end
+      if index > relative_diff then break end
 
       local stylua_path = Path:new { dir, "stylua.toml" }
       if stylua_path:exists() then
@@ -47,9 +45,7 @@ stylua.format = function(bufnr)
   local filepath = Path:new(vim.api.nvim_buf_get_name(bufnr)):absolute()
   local stylua_toml = stylua_finder(filepath)
 
-  if not stylua_toml then
-    return
-  end
+  if not stylua_toml then return end
 
   -- stylua: ignore
   local j = Job:new {
@@ -63,9 +59,7 @@ stylua.format = function(bufnr)
 
   if j.code ~= 0 then
     -- Schedule this so that it doesn't do dumb stuff like printing two things.
-    vim.schedule(function()
-      print "[stylua] Failed to process due to errors"
-    end)
+    vim.schedule(function() print "[stylua] Failed to process due to errors" end)
 
     return
   end
