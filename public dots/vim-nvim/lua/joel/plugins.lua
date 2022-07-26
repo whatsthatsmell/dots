@@ -25,6 +25,10 @@ return require("packer").startup {
   function(use)
     -- @TODOUA: try https://github.com/tmux-plugins/vim-tmux
     -- use "antoinemadec/FixCursorHold.nvim"
+    use {
+      "ruifm/gitlinker.nvim",
+      requires = "nvim-lua/plenary.nvim",
+    }
     -- tpope
     -- use "tpope/vim-surround"
     use "tpope/vim-fugitive"

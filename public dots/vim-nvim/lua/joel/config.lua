@@ -34,6 +34,9 @@ require("nvim-web-devicons").setup {
   default = true,
 }
 
+-- <leader>gy
+require("gitlinker").setup()
+
 -- Dressing up the vim.ui
 -- https://github.com/stevearc/dressing.nvim
 -- @TODOUA: resist temptation to go crazy with this!

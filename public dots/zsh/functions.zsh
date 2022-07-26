@@ -332,10 +332,11 @@ reddit() {
   fi
 }
 
+# @TODO: use a different link shortener - git.io is deprecated
 # Shorten Github URL with vanity (url, vanity code) - saves to clipboard! - MacOS - use `pbcopy` equiv for your OS
-ghurl() {
-  curl -i -s https://git.io -F "url=$1" -F "code=$2" | rg "Location" | cut -f 2 -d " " | pbcopy
-}
+# ghurl() {
+#   curl -i -s https://git.io -F "url=$1" -F "code=$2" | rg "Location" | cut -f 2 -d " " | pbcopy
+# }
 
 # get JSON response from route and make it pretty
 csjq() {
