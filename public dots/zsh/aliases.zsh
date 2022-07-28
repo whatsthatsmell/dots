@@ -7,7 +7,7 @@ alias -s zshrc=nvim
 alias -s {c,h}=nvim
 alias -s {js,json,hjson}=nvim
 alias -s {md,MD}=nvim
-alias -s {rs,toml}=nvim
+alias -s {rs,toml,ron}=nvim
 alias -s {yml,yaml}=nvim
 alias -s lua=nvim
 alias arec='asciinema rec'
@@ -107,6 +107,7 @@ alias glps='git log -p --stat'
 alias gt='git difftool --no-prompt' #delta
 alias gwtl='git worktree list'
 alias gyhc='git rev-parse HEAD | pbcopy'
+alias gu='gitui'
 alias hack='history -75 | rg'
 alias rig='ig --editor neovim'
 alias jlc='jest --config=jest.local.js'

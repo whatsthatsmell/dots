@@ -18,7 +18,7 @@ vim.opt_local.foldnestmax = 3
 vim.opt_local.foldlevel = 1
 
 -- ** Key Maps ** --
--- *** Test related - Jest **
+-- *** Test related - 🤡 Jest **
 -- You can set these globally or per ftp. Only using for JS for now. 17-Feb-2022
 -- these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
 -- Test running keymaps for JavaScript and Jest
@@ -215,9 +215,7 @@ cmp.setup.buffer {
     {
       name = "buffer",
       option = {
-        get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
-        end,
+        get_bufnrs = function() return vim.api.nvim_list_bufs() end,
       },
     },
     { name = "path" },
