@@ -109,11 +109,13 @@ vim.api.nvim_buf_set_keymap(
   { noremap = true, silent = true }
 )
 
+-- @TODOUA: debug this. Wonky inconsistent behavior
+-- Better off just grepping for <cword> for now: <leader>g on cursor word
 vim.api.nvim_buf_set_keymap(
   0,
   "n",
   "gW",
-  [[<cmd>lua vim.lsp.buf.workspace_symbol()<CR>]],
+  [[<cmd>lua require'telescope.builtin'.lsp_workspace_symbols({query=vim.fn.expand('<cword>')})<CR>]],
   { noremap = true, silent = true }
 )
 
