@@ -120,6 +120,8 @@ vim.g.copilot_no_tab_map = true
 
 vim.g.matchup_matchparen_deferred = 1
 
+vim.g.cursorhold_updatetime = 2000
+
 -- * Colorizer *
 -- auto color fts
 vim.g.colorizer_auto_filetype = "yaml,zsh,zsh-theme,lua,vim,json"
