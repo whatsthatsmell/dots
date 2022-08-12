@@ -124,6 +124,7 @@ alias mvv='mv -v'
 # not using multipass much, using `mps` in work-related alias
 # alias mps='multipass shell'
 alias ng='npm init -y && git init && echo "node_modules" >> .gitignore'
+alias nt='npm test'
 alias nij='node inspect node_modules/.bin/jest --runInBand'
 # alias nn='nnn -eiH'
 # New Note - be careful not to nnn
