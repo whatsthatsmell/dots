@@ -84,6 +84,7 @@ end
 -- end of cliclick goodness
 
 -- toggle boolean word - true/false
+-- @TODOUA: Try https://github.com/nguyenvukhang/nvim-toggler/blob/main/lua/nvim-toggler.lua
 function M.toggle_bool(args)
   if args.word == "true" then
     vim.cmd [[norm ciwfalse]]
