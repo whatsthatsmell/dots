@@ -115,8 +115,8 @@ vim.cmd [[hi PmenuSel blend=0]]
 -- vim.g.tpipeline_restore = 1
 
 -- Copilot globals
-vim.g.copilot_filetypes = { ["*"] = false }
-vim.g.copilot_no_tab_map = true
+-- vim.g.copilot_filetypes = { ["*"] = false }
+-- vim.g.copilot_no_tab_map = true
 
 vim.g.matchup_matchparen_deferred = 1
 

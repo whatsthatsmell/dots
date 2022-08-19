@@ -213,7 +213,7 @@ return require("packer").startup {
 
     -- copilot 😱
     -- @TODOUA: figure out why adding this plugin makes packer behave differently
-    use { "github/copilot.vim" }
+    -- use { "github/copilot.vim" }
 
     -- Local plugins
     use "~/vim-dev/plugins/codesmell_dark.vim"

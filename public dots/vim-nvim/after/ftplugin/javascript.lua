@@ -1,10 +1,10 @@
 -- copilot enabled explicitly for JS
-vim.b.copilot_enabled = true
-require "notify"(
-  "Copilot enabled for JavaScript. :copilot disable/enable. <C-j> to Accept().",
-  "info",
-  { title = "Copilot " }
-)
+-- vim.b.copilot_enabled = true
+-- require "notify"(
+--   "Copilot enabled for JavaScript. :copilot disable/enable. <C-j> to Accept().",
+--   "info",
+--   { title = "Copilot " }
+-- )
 
 -- typescript-language-server: 0.11.2
 vim.opt_local.linebreak = true
