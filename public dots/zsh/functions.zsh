@@ -158,6 +158,7 @@ cn() {
 }
 
 # create new rust lib proj, move in to it then open src/lib.rs & toml
+# @name
 cnl() {
   cargo new $1 --lib
   cd $1
