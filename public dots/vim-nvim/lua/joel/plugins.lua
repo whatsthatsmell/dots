@@ -156,10 +156,6 @@ return require("packer").startup {
     use "ray-x/lsp_signature.nvim"
     -- sitting
     use {
-      "lewis6991/spellsitter.nvim",
-      config = function() require("spellsitter").setup() end,
-    }
-    use {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
     }
