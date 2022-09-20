@@ -167,6 +167,8 @@ return require("packer").startup {
     use "simrat39/rust-tools.nvim"
 
     use { "chrisbra/Colorizer", cmd = "ColorToggle" }
+    --- Cool but buggy, check back later
+    --- use { "uga-rosa/ccc.nvim" }
     use "nvim-lua/plenary.nvim"
     use "kyazdani42/nvim-web-devicons"
     use "lukas-reineke/indent-blankline.nvim"
@@ -210,6 +212,11 @@ return require("packer").startup {
     -- copilot 😱
     -- @TODOUA: figure out why adding this plugin makes packer behave differently
     -- use { "github/copilot.vim" }
+
+    -- mostly greyscale colorscheme
+    -- use {
+    --   "cranberry-clockworks/coal.nvim",
+    -- }
 
     -- Local plugins
     use "~/vim-dev/plugins/codesmell_dark.vim"
