@@ -120,8 +120,6 @@ vim.cmd [[hi PmenuSel blend=0]]
 
 vim.g.matchup_matchparen_deferred = 1
 
-vim.g.cursorhold_updatetime = 2000
-
 -- * Colorizer *
 -- auto color fts
 vim.g.colorizer_auto_filetype = "yaml,zsh,zsh-theme,lua,vim,json"
