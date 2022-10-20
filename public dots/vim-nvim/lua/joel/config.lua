@@ -1,27 +1,23 @@
--- lua-dev for Neovim and Lua everywhere
+require("nvim-lsp-installer").setup {}
+require("neodev").setup {}
+
 local lspconfig = require "lspconfig"
-local luadev = require("lua-dev").setup {
-  lspconfig = {
-    cmd = {
-      "/Users/joel/vim-dev/sources/lua-language-server/bin/lua-language-server",
-      "-E",
-      "/Users/joel/vim-dev/sources/lua-language-server/main.lua",
-    },
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "use" },
-        },
-        workspace = {
-          preloadFileSize = 350,
-        },
+
+lspconfig.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "use" },
+      },
+      workspace = {
+        preloadFileSize = 350,
+      },
+      completion = {
+        callSnippet = "Replace",
       },
     },
   },
 }
-
--- sumneko/lua-language-server 2.6.7 + ec715c27d22ab336e339effe1267a34774d8d33a
-lspconfig.sumneko_lua.setup(luadev)
 
 -- nvim-web-devicons: https://www.nerdfonts.com/cheat-sheet →     
 require("nvim-web-devicons").setup {
@@ -157,7 +153,7 @@ local nvim_lsp = require "lspconfig"
 -- snippet support
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- `eslint` lang server setup through lspconfig
 -- vscode-langservers-extracted@4.2.1 → https://github.com/hrsh7th/vscode-langservers-extracted
@@ -173,7 +169,7 @@ nvim_lsp.eslint.setup {
 }
 
 -- Enable rust_analyzer
--- rust-analyzer (d08f1c3df 2022-10-11)
+-- rust-analyzer (f3cce5fee 2022-10-20)
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {

@@ -125,9 +125,11 @@ return require("packer").startup {
     use "moll/vim-node"
     use "rust-lang/rust.vim"
     use "wbthomason/packer.nvim"
-    use "neovim/nvim-lspconfig"
-    use "williamboman/nvim-lsp-installer"
-    -- 🔭telescope
+    use {
+      "williamboman/nvim-lsp-installer",
+      "neovim/nvim-lspconfig",
+    }
+    -- 🔭Telescope
     use "nvim-telescope/telescope.nvim"
     -- Telescope Extensions
     use "cljoly/telescope-repo.nvim"
@@ -150,7 +152,7 @@ return require("packer").startup {
     use "p00f/nvim-ts-rainbow"
     use "nvim-lua/popup.nvim"
     use "nvim-lua/lsp-status.nvim"
-    use "folke/lua-dev.nvim"
+    use "folke/neodev.nvim"
     use "onsails/lspkind-nvim"
     use "ray-x/lsp_signature.nvim"
     -- sitting
