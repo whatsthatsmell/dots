@@ -206,9 +206,9 @@ key_map("n", ",_", ":below 12sp<CR><C-w><down>", { noremap = true, silent = true
 -- open split above, short → focus
 key_map("n", ",-", ":above 12sp<CR><C-w><up>", { noremap = true, silent = true })
 
--- open left vertical scratchy split
-key_map("n", ",vl", ":above 40vsp scratch<CR>", { noremap = true, silent = true })
--- *** :vne {new_file_name} → New file in vert split in CWD ***
+-- open 47 col LEFT vertical split → new file - convenience
+key_map("n", ",vl", ":above 47vne<CR>", { noremap = true, silent = true })
+-- *** ...Right → :[N]vne {new_file_name - optional} → New file in right vert split in CWD ***
 
 -- ** Terminal Open Maps** - See <leader>tx for close terminal
 -- open 2 vertically split terminals
