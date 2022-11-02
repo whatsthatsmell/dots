@@ -62,8 +62,6 @@ vim.cmd [[
 set termguicolors
 " syntax highlight only to 1K instead of default 3K
 set synmaxcol=1000
-" winbar with file name,git change counts and modified
-set winbar=%=%m\ %f\ %{get(b:,'gitsigns_status','')}
 let &packpath=&runtimepath
 set dictionary+=/usr/share/dict/words
 set wildignore+=*/node_modules/*,*/coverage/*
@@ -89,6 +87,8 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.numberwidth = 6
 
+-- winbar with time/date, file name,git change counts and modified
+vim.opt.winbar = "%=%m %{strftime('%b %d %H:%M')}  %f %{get(b:,'gitsigns_status','')} "
 -- Global scope
 vim.o.completeopt = "menu,menuone,preview,noselect,noinsert"
 vim.o.inccommand = "split"
