@@ -1,5 +1,5 @@
 -- Credit: https://git.io/tjsstylua
--- `stylua 0.15.1` → https://github.com/JohnnyMorganz/StyLua
+-- `stylua 0.15.2` → https://github.com/JohnnyMorganz/StyLua
 local Path = require "plenary.path"
 local Job = require "plenary.job"
 
