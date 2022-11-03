@@ -196,6 +196,10 @@ key_map("n", "<leader>os", ':wa<Bar>exe "mksession! " . v:this_session', { norem
 -- key_map("v", ";", ":", { noremap = true })
 -- key_map("n", ";", ":", { noremap = true })
 
+-- move to first or after last char from insert to insert
+key_map("i", "<C-a>", "<Esc>I", { noremap = false })
+key_map("i", "<C-e>", "<Esc>A", { noremap = false })
+
 -- no Help when I fat finger F1
 key_map("n", "<F1>", "<Esc>", { noremap = false })
 key_map("i", "<F1>", "<Esc>", { noremap = false })

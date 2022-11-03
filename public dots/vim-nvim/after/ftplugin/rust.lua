@@ -50,14 +50,14 @@ vim.api.nvim_buf_set_keymap(
 vim.api.nvim_buf_set_keymap(0, "n", "<space>rt", [[<cmd>RustTest<cr>]], { noremap = true, silent = true })
 
 -- LSP maps
-vim.api.nvim_buf_set_keymap(
-  0,
-  "n",
-  "<localleader>=",
-  [[<cmd>lua vim.lsp.buf.formatting()<CR>
-]],
-  { noremap = true, silent = true }
-)
+-- vim.api.nvim_buf_set_keymap(
+--   0,
+--   "n",
+--   "<localleader>=",
+--   [[<cmd>lua vim.lsp.buf.formatting()<CR>
+-- ]],
+--   { noremap = true, silent = true }
+-- )
 
 vim.api.nvim_buf_set_keymap(
   0,
