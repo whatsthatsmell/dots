@@ -33,6 +33,16 @@ noremap <silent><localleader>cr :Crun<cr>
 -- snippets dir- vsnip. Need to try LuaSnip
 vim.b.vsnip_snippet_dir = vim.fn.expand "~/.config/nvim/snippets/"
 
+-- cargo fix --broken-code (to add missing semicolons etc), reload file, restart rust analyzer
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "<localleader>cf",
+  [[<cmd>execute '!cargo fix --broken-code' | edit | LspRestart<cr>
+]],
+  { noremap = true, silent = true }
+)
+
 -- rust-tools
 -- Command:
 -- RustRunnables
