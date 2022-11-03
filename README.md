@@ -1,4 +1,4 @@
-![Rust](https://img.shields.io/badge/Rust-1.66.x-%23000000.svg?style=plastic&logo=rust&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-1.67.x-%23000000.svg?style=plastic&logo=rust&logoColor=white)
 ![Neovim version](https://img.shields.io/badge/Neovim-0.9.x-57A143?style=plastic&logo=neovim)
 ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=plastic&logo=lua&logoColor=white)
 ![YouTubeSubs](https://img.shields.io/youtube/channel/subscribers/UC4S7Fm5x-WXRCWP6MjK6k2A?style=social)
@@ -10,7 +10,7 @@
 _Last Updated: November 3nd, 2022 or more recently._
 
 - **[Rust](https://www.rust-lang.org/)** 🦀⚙
-	- [compiler](https://rustup.rs/) version: `rustc 1.66.0-nightly (4b8f43199 2022-10-19)`
+	- [compiler](https://rustup.rs/) version: `rustc 1.67.0-nightly (edf018221 2022-11-02)`
 	- [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp) version: `rust-analyzer (f3cce5fee 2022-10-20)`
 - **[Neovim](https://neovim.io/)** - _Important Note_: these Dotfiles target bleeding edge Neovim APIs. I try to update these runtime files as soon as the Neovim team pushes changes (including & especially breaking) to [their master branch](https://git.io/NeovimHEAD) and I pull the latest. 
   - I usually pull the latest a few times per week or if I see that a particularly juicy PR has landed. I do test Neovim feature branches. But, only code that works with `Neovim → master` will be pushed to this repo. [Neovim 0.8](https://github.com/neovim/neovim/releases/tag/v0.8.0) should work with most of what you see here. 
