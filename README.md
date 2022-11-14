@@ -7,15 +7,15 @@
 # Public version of CodeSmell's Dotfiles 💩 
 
 ## Current Setup 
-_Last Updated: November 3nd, 2022 or more recently._
+_Last Updated: November 14th, 2022 or more recently._
 
 - **[Rust](https://www.rust-lang.org/)** 🦀⚙
-	- [compiler](https://rustup.rs/) version: `rustc 1.67.0-nightly (edf018221 2022-11-02)`
-	- [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp) version: `rust-analyzer (56c97a835 2022-11-02)`
+	- [compiler](https://rustup.rs/) version: `rustc 1.67.0-nightly (e631891f7 2022-11-13)`
+	- [rust-analyzer](https://rust-analyzer.github.io/manual.html#nvim-lsp) version: `rust-analyzer (45ec315e0 2022-11-11)`
 - **[Neovim](https://neovim.io/)** - _Important Note_: these Dotfiles target bleeding edge Neovim APIs. I try to update these runtime files as soon as the Neovim team pushes changes (including & especially breaking) to [their master branch](https://git.io/NeovimHEAD) and I pull the latest. 
   - I usually pull the latest a few times per week or if I see that a particularly juicy PR has landed. I do test Neovim feature branches. But, only code that works with `Neovim → master` will be pushed to this repo. [Neovim 0.8](https://github.com/neovim/neovim/releases/tag/v0.8.0) should work with most of what you see here. 
   - However, a lot of API changes are coming out of Neovim on the 0.6 track (master). So, I'd recommend using [Neovim Nightly](https://github.com/neovim/neovim/releases/tag/nightly) to use all the goodness in these Dotfiles. Or, [building from source](https://github.com/neovim/neovim#install-from-source) - [Code Smell video instructions](https://youtu.be/wep2_b_QU7Q). It's unlikely that I am more than a day or 2 behind. 
-  - The Neovim [commit](https://github.com/neovim/neovim/commit/cc5b7368d61cfcd775dd02803dbdb8d4d05b5d5d) that I am on: `NVIM v0.9.0-dev-213+gcc5b7368d`
+  - The Neovim [commit](https://github.com/neovim/neovim/commit/e8cc489accc435076afb4fdf89778b64f0a48473) that I am on: `NVIM v0.9.0-dev-314+ge8cc489ac`
 	- Theme: [codesmell_dark](https://github.com/whatsthatsmell/codesmell_dark.vim)
 	  - `Telescope`, `nvim-cmp`, `GitSigns`, many other plugins and builtins are colored from this theme using `Treesitter 🌲` 
 	- Config: [Lua](https://neovim.io/doc/user/lua.html)
