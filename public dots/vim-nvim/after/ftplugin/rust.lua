@@ -11,20 +11,20 @@ vim.opt_local.formatoptions = "crqnlj"
 -- @TODOUA: refactor this exec block
 vim.api.nvim_exec(
   [[
-setlocal shortmess+=c
-" wrap selection in Some(*)
-vmap ,sm cSome(<c-r>"<esc>
-" surround (W)ord with angle brackets
-nmap <localleader>ab ysiW>
+	setlocal shortmess+=c
+	" wrap selection in Some(*)
+	vmap ,sm cSome(<c-r>"<esc>
+	" surround (W)ord with angle brackets
+	nmap <localleader>ab ysiW>
 
-" rustfmt/vim-rust settings
-let g:rustfmt_autosave = 1
+	" rustfmt/vim-rust settings
+	let g:rustfmt_autosave = 1
 
-" local mappings
-noremap <silent><localleader>cb :Cbuild<cr>
-noremap <silent><localleader>cc :Ccheck<cr>
-noremap <silent><localleader>ct :Ctest<cr>
-noremap <silent><localleader>cr :Crun<cr>
+	" local mappings
+	noremap <silent><localleader>cb :Cbuild<cr>
+	noremap <silent><localleader>cc :Ccheck<cr>
+	noremap <silent><localleader>ct :Ctest<cr>
+	noremap <silent><localleader>cr :Crun<cr>
 
 ]],
   false
@@ -68,6 +68,15 @@ vim.api.nvim_buf_set_keymap(0, "n", "<space>rt", [[<cmd>RustTest<cr>]], { norema
 -- ]],
 --   { noremap = true, silent = true }
 -- )
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  "n",
+  "grn",
+  [[<cmd>lua vim.lsp.buf.rename()<CR>
+]],
+  { noremap = true }
+)
 
 vim.api.nvim_buf_set_keymap(
   0,
