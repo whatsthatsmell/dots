@@ -1,5 +1,7 @@
 local key_map = vim.api.nvim_set_keymap
 -- @TODOUA: use 0.7's *vim.keymap.set()* API for inline funcs as appropriate
+-- FML!
+vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 -- ** Key Mappings ***
 -- *Telescope-related maps at telescope/mappings (for now)

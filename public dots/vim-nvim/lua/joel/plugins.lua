@@ -202,7 +202,7 @@ return require("packer").startup {
     }
 
     use "arkav/lualine-lsp-progress"
-
+    use "eandrju/cellular-automaton.nvim"
     use {
       "lewis6991/gitsigns.nvim",
       requires = { "nvim-lua/plenary.nvim" },
