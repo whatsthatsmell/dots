@@ -69,7 +69,10 @@ require("dressing").setup {
       border = "rounded",
 
       -- Window options
-      winblend = 10,
+      win_options = {
+
+        winblend = 10,
+      },
 
       -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
       width = nil,
@@ -169,7 +172,7 @@ nvim_lsp.eslint.setup {
 }
 
 -- Enable rust_analyzer
--- rust-analyzer (acd06de16 2022-11-29)
+-- rust-analyzer (df07c8faf 2022-12-06)
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {

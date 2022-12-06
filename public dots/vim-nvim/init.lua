@@ -1,5 +1,5 @@
 -- Always on bleeding edge Neovim from https://git.io/NeovimHEAD
--- NVIM v0.9.0-dev-373+gf1b88ced0
+-- NVIM v0.9.0-dev-456+g9628348a6
 
 -- https://github.com/lewis6991/impatient.nvim
 -- :LuaCacheClear
