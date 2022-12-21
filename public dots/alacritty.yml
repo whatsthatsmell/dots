@@ -180,12 +180,12 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Tomorrow Night)
+# Colors (Tokyo Night) - https://github.com/folke/tokyonight.nvim/blob/main/extras/alacritty/tokyonight_night.yml
 colors:
   # Default colors
   primary:
-    background: '#121212'
-    foreground: '#D8DFD8'
+    background: '0x020203'
+    foreground: '0xc0caf5'
 
     # Bright and dim foreground colors
     #
@@ -272,26 +272,45 @@ colors:
   #  background: CellForeground
 
   # Normal colors
-  normal:
+#  normal:
   #  black:   '#1d1f21'
   #  red:     '#cc6666'
-    green:   '#59e858'
-    yellow:  '#ffea7f'
-    blue:    '#0fc9e4'
-    magenta: '#b392f0'
-    cyan:    '#73e3ff'
-    white:   '#666666'
+  #  green:   '#59e858'
+  #  yellow:  '#ffea7f'
+  #  blue:    '#0fc9e4'
+  #  magenta: '#b392f0'
+  #  cyan:    '#73e3ff'
+  #  white:   '#666666'
+  normal:
+    black:   '0x15161e'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xa9b1d6'
 
   # Bright colors
-  bright:
+  #bright:
   #  black:   '#666666'
   #  red:     '#d54e53'
-    green:   '#85e89d'
-    yellow:  '#ffea7f'
-    blue:    '#1e90ff'
-    magenta: '#b392f0'
-    cyan:    '#1e90ff'
-    white:   '#f6f8fa'
+  #  green:   '#85e89d'
+  #  yellow:  '#ffea7f'
+  #  blue:    '#1e90ff'
+  #  magenta: '#b392f0'
+  #  cyan:    '#1e90ff'
+  #  white:   '#f6f8fa'
+
+  bright:
+    black:   '0x414868'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xc0caf5'
 
   # Dim colors
   #
@@ -315,8 +334,9 @@ colors:
   # Example:
   #   `- { index: 16, color: '#ff00ff' }`
   #
-  #indexed_colors: []
-
+  indexed_colors: 
+    - { index: 16, color: '0xff9e64' }
+    - { index: 17, color: '0xdb4b4b' }
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
