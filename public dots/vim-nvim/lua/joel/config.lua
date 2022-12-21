@@ -25,7 +25,7 @@ require("gitsigns").setup {
     add = {
       hl = "DiffAdd",
       text = "│",
-      numhl = "GitSignsAdd",
+      numhl = "GitSignsAddNr",
     },
     change = {
       hl = "DiffChange",
@@ -101,35 +101,35 @@ require("gitsigns").setup {
   end,
 }
 
-require("tokyonight").setup {
-  style = "night",
-  on_colors = function(colors)
-    colors.bg = "#020203"
-    colors.bg_dark = "#010101"
-    colors.bg_visual = "#2d3f6f"
-  end,
-  on_highlights = function(hl, c)
-    hl.gitsignsadd = {
-      fg = c.teal,
-    }
-    hl.gitsignschange = {
-      fg = "#e0e049",
-    }
-    hl.DiffAdd = {
-      bg = c.bg_dark,
-    }
-    hl.DiffChange = {
-      bg = c.bg_dark,
-    }
-    hl.String = {
-      fg = "#FBE7D5",
-      style = {
-        italic = true,
-      },
-    }
-    hl["@parameter"] = { fg = c.blue5 }
-  end,
-}
+-- require("tokyonight").setup {
+--   style = "night",
+--   on_colors = function(colors)
+--     colors.bg = "#020203"
+--     colors.bg_dark = "#010101"
+--     colors.bg_visual = "#2d3f6f"
+--   end,
+--   on_highlights = function(hl, c)
+--     hl.gitsignsadd = {
+--       fg = c.teal,
+--     }
+--     hl.gitsignschange = {
+--       fg = "#e0e049",
+--     }
+--     hl.DiffAdd = {
+--       bg = c.bg_dark,
+--     }
+--     hl.DiffChange = {
+--       bg = c.bg_dark,
+--     }
+--     hl.String = {
+--       fg = "#FBE7D5",
+--       style = {
+--         italic = true,
+--       },
+--     }
+--     hl["@parameter"] = { fg = c.blue5 }
+--   end,
+-- }
 
 -- nvim-web-devicons: https://www.nerdfonts.com/cheat-sheet →     
 require("nvim-web-devicons").setup {

@@ -20,25 +20,27 @@ local function current_working_dir()
   return "~" .. cwd
 end
 
--- Using tokyonight theme
+-- @TODOUA: keep tinkering with theme and section layouts!
+-- @TODOUA: roll my own status bar or try expressline?
+-- @TODOUA: keep tinkering with tokyonight
 -- https://github.com/nvim-lualine/lualine.nvim
--- local custom_auto = require "lualine.themes.auto"
--- custom_auto.terminal.a.bg = "#1e90ff"
--- custom_auto.normal.a.bg = "#131313"
--- custom_auto.normal.a.fg = "#6d7275"
--- custom_auto.normal.c.fg = "#E2E5DC"
--- custom_auto.normal.c.bg = "#131313"
--- custom_auto.insert.c.fg = "#51A266"
--- custom_auto.command.a.bg = "#1e90ff"
--- custom_auto.command.b.fg = "#1e90ff"
--- custom_auto.replace.a.bg = "#C83434"
--- custom_auto.visual.a.bg = "#725191"
--- custom_auto.visual.b.fg = "#1e90ff"
+local custom_auto = require "lualine.themes.auto"
+custom_auto.terminal.a.bg = "#1e90ff"
+custom_auto.normal.a.bg = "#131313"
+custom_auto.normal.a.fg = "#6d7275"
+custom_auto.normal.c.fg = "#E2E5DC"
+custom_auto.normal.c.bg = "#131313"
+custom_auto.insert.c.fg = "#51A266"
+custom_auto.command.a.bg = "#1e90ff"
+custom_auto.command.b.fg = "#1e90ff"
+custom_auto.replace.a.bg = "#C83434"
+custom_auto.visual.a.bg = "#725191"
+custom_auto.visual.b.fg = "#1e90ff"
 
 require("lualine").setup {
   options = {
     icons_enabled = true,
-    theme = "tokyonight",
+    theme = custom_auto,
     component_separators = { left = "⦚", right = " ⦚" },
     section_separators = { left = " ", right = " " },
     disabled_filetypes = {},
