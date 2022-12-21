@@ -75,7 +75,8 @@ set grepformat=%f:%l:%c:%m,%f:%l:%m
 
 -- THEME stuff
 vim.cmd "set fillchars+=vert:│"
-vim.cmd "colorscheme codesmell_dark"
+-- vim.cmd "colorscheme codesmell_dark"
+vim.cmd "colorscheme tokyonight-night"
 
 vim.cmd "set spellfile=~/.config/nvim/spell/en.utf-8.add"
 vim.cmd "filetype plugin indent on"

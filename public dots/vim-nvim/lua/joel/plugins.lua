@@ -209,7 +209,7 @@ return require("packer").startup {
     }
 
     use { "Pocco81/HighStr.nvim", cmd = "HSHighlight" }
-
+    use "folke/tokyonight.nvim"
     -- copilot 😱
     -- @TODOUA: figure out why adding this plugin makes packer behave differently
     -- use { "github/copilot.vim" }
@@ -220,7 +220,7 @@ return require("packer").startup {
     -- }
 
     -- Local plugins
-    use "~/vim-dev/plugins/codesmell_dark.vim"
+    -- use "~/vim-dev/plugins/codesmell_dark.vim"
     -- use "~/vim-dev/plugins/telescope.nvim"
     -- when I need some diffent functionality, may put up a PR later
     -- use "~/vim-dev/plugins/telescope-github.nvim"
