@@ -149,7 +149,7 @@ return require("packer").startup {
     use "andymass/vim-matchup"
     use "windwp/nvim-autopairs"
     use "nvim-lua/lsp_extensions.nvim"
-    use "p00f/nvim-ts-rainbow"
+    use "mrjones2014/nvim-ts-rainbow"
     use "nvim-lua/popup.nvim"
     use "nvim-lua/lsp-status.nvim"
     use "folke/neodev.nvim"
