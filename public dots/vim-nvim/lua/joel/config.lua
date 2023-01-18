@@ -20,6 +20,7 @@ lspconfig.sumneko_lua.setup {
 }
 
 -- GitSigns
+-- @TODOUA: https://github.com/lewis6991/gitsigns.nvim/commit/e272fcfc99003caada48bbcea7a6f95966799ceb
 require("gitsigns").setup {
   signs = {
     add = {
@@ -284,7 +285,7 @@ nvim_lsp.eslint.setup {
 }
 
 -- Enable rust_analyzer
--- rust-analyzer (f32e20edb 2023-01-09)
+-- rust-analyzer (3a7271336 2023-01-17)
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
