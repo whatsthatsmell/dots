@@ -1,6 +1,6 @@
 -- Used to run stylua automatically if in a Lua file & writing
 -- & the file "stylua.toml" exists in the base root of the repo.
--- `stylua 0.15.3` → https://github.com/JohnnyMorganz/StyLua
+-- `stylua 0.16.0` → https://github.com/JohnnyMorganz/StyLua
 
 if vim.fn.executable "stylua" == 0 then
   require "notify"("Stylua is not installed", "warn", { title = "Stylua" })
