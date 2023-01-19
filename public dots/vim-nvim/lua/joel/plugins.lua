@@ -209,6 +209,7 @@ return require("packer").startup {
     }
 
     use { "Pocco81/HighStr.nvim", cmd = "HSHighlight" }
+    -- Also tried bluloco
     -- use "folke/tokyonight.nvim"
     -- copilot 😱
     -- @TODOUA: figure out why adding this plugin makes packer behave differently
