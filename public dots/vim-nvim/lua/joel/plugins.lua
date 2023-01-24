@@ -243,7 +243,9 @@ return require("packer").startup {
     --     })
     --   end,
     -- }
-
+    use {
+      "ldelossa/nvim-ide",
+    }
     -- Local plugins
     use "~/vim-dev/plugins/codesmell_dark.vim"
     -- use "~/vim-dev/plugins/telescope.nvim"
