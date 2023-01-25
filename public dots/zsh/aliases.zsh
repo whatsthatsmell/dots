@@ -173,6 +173,8 @@ alias vdp='cd ~/vim-dev/plugins'
 alias vdro='nvim -d -R'
 # open only modified files in CWD Git repo
 alias vgm='nvim $(gd --name-only)'
+# open vifm
+alias vm='vifm'
 alias vo='nvim -c "lua require\"telescope.builtin\".oldfiles()"'
 alias vp='pbpaste | nvim'
 alias vsl='nvim -S ~/vim-sessions/latest.vim'
