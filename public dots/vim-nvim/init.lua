@@ -1,5 +1,5 @@
 -- Always on bleeding edge Neovim from https://git.io/NeovimHEAD
--- NVIM v0.9.0-dev-844+gb649a96fc
+-- NVIM v0.9.0-dev-890+g645daaf5e
 
 -- https://github.com/lewis6991/impatient.nvim
 -- :LuaCacheClear
@@ -14,11 +14,11 @@ require "joel.config"
 -- Telescope 🔭
 require "joel.telescope"
 
--- mappings (telescope-related maps loaded via telescope mod)
+-- Mappings (telescope-related maps loaded via telescope mod)
 require "joel.mappings"
 
--- settings(options)
+-- Settings(options)
 require "joel.settings"
 
--- globals like P() & DN()
+-- Globals like P() & DN()
 require "joel.globals"
