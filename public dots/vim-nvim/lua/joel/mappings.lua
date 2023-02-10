@@ -85,7 +85,7 @@ key_map("v", "<leader>t", [[<Cmd>lua require'joel.funcs'.create_todoist_task()<C
 key_map(
   "v",
   "<leader>tw",
-  [[<Cmd>lua require'joel.funcs'.create_todoist_task({proj_id = 2236720344, label_id = 2158924977})<CR>]],
+  [[<Cmd>lua require'joel.funcs'.create_todoist_task({proj_id = 2236720344, label_id = 'CX'})<CR>]],
   { noremap = false }
 )
 
@@ -94,7 +94,7 @@ key_map(
 key_map(
   "v",
   "<leader>tp",
-  [[<Cmd>lua require'joel.funcs'.create_todoist_task({proj_id = 2277745348, label_id = 2158772896})<CR>]],
+  [[<Cmd>lua require'joel.funcs'.create_todoist_task({proj_id = 2277745348, label_id = 'Other'})<CR>]],
   { noremap = false }
 )
 

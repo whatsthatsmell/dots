@@ -175,7 +175,9 @@ alias vdro='nvim -d -R'
 alias vgm='nvim $(gd --name-only)'
 # open vifm
 alias vm='vifm'
-alias vo='nvim -c "lua require\"telescope.builtin\".oldfiles()"'
+# alias vo='nvim -c "lua require\"telescope.builtin\".oldfiles()"'
+# @TODO: vo and vz broken after 2-8-23
+alias vo='nvim -c "Telescope oldfiles"'
 alias vp='pbpaste | nvim'
 alias vsl='nvim -S ~/vim-sessions/latest.vim'
 alias vt='nvim +terminal'

@@ -8,12 +8,13 @@ local Job = require "plenary.job"
 -- -- -- -- -- sections possibly available all or in part in master: https://github.com/sachaos/todoist/pull/146
 -- @TODOUA: Scorched Earth: create a CLI or contrib to sachaos'
 -- @TODOUA: Currently, priority is hardcoded to 3, Fix this & add picker for fields
+-- @TODOUA: Update to use updated todoist CLI API - start with label names instead of IDs
 local M = {}
 function M.create_todoist_task(opts)
   opts = opts or {}
   -- default: My 'Neovim' project & 'Neovim' label
   local project_id = opts.proj_id or 2251750391
-  local label_id = opts.label_id or 2154624877
+  local label_id = opts.label_id or "Neovim"
   local current_line = vim.fn.getline "."
   local first_char = vim.fn.col "v"
   local last_char = vim.fn.col "."
