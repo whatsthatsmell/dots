@@ -3,7 +3,7 @@ require("neodev").setup {}
 
 local lspconfig = require "lspconfig"
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   settings = {
     Lua = {
       diagnostics = {
@@ -354,7 +354,7 @@ nvim_lsp.eslint.setup {
 }
 
 -- Enable rust_analyzer
--- rust-analyzer (b75803ad3 2023-01-30)
+-- rust-analyzer (27239fbb5 2023-02-21)
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {

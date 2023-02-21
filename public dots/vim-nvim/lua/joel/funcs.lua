@@ -8,7 +8,7 @@ local Job = require "plenary.job"
 -- -- -- -- -- sections possibly available all or in part in master: https://github.com/sachaos/todoist/pull/146
 -- @TODOUA: Scorched Earth: create a CLI or contrib to sachaos'
 -- @TODOUA: Currently, priority is hardcoded to 3, Fix this & add picker for fields
--- @TODOUA: Update to use updated todoist CLI API - start with label names instead of IDs
+-- @TODOUA: Update to use more updated todoist CLI API
 local M = {}
 function M.create_todoist_task(opts)
   opts = opts or {}
