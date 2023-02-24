@@ -21,8 +21,11 @@ function M.create_todoist_task(opts)
   local selection = string.sub(current_line, first_char, last_char)
 
   local identifier = "Neovim"
-  if project_id ~= 2251750391 then identifier = "Work" end
-
+  if project_id ~= 2251750391 then identifier = "Personal" end
+  -- @TODOUA: fix for upstream breaking change once todoist CLI updates accordingly...
+  -- Todoist Sync API replaced `date str w/ 'Due'`. todoist CLI needs to fix for breaking change.
+  -- There is a PR: https://github.com/sachaos/todoist/pull/205
+  -- For now, you can't set a (due)date. Task still created but missing due date.
   local ret_val = utils.get_os_command_output(
     { "todoist", "add", selection, "-P", project_id, "-d", "today", "-L", label_id, "-p", "3" },
     "~"

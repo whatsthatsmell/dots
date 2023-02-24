@@ -69,6 +69,7 @@ vim.api.nvim_buf_set_keymap(0, "n", "<space>rt", [[<cmd>RustTest<cr>]], { norema
 --   { noremap = true, silent = true }
 -- )
 
+-- @TODOUA: borrow making renaming of lifetimes easier: https://github.com/Saecki/dotfiles/commit/9c86377e4db9e67990fcb3874204efe855cdeba6
 vim.api.nvim_buf_set_keymap(
   0,
   "n",

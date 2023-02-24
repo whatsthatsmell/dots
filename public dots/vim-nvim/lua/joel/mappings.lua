@@ -80,23 +80,23 @@ vim.api.nvim_create_user_command("FP", "lua require('joel.funcs').yank_current_f
 -- Create tasks in todoist using current Visual selection
 -- default: create task in 'Neovim' project with 'Neovim' label
 key_map("v", "<leader>t", [[<Cmd>lua require'joel.funcs'.create_todoist_task()<CR>]], { noremap = false })
--- create work task in todoist
+-- create Personal task in todoist
 -- @TODOUA: make more robust → a picker for proj, label etc.
 key_map(
   "v",
-  "<leader>tw",
-  [[<Cmd>lua require'joel.funcs'.create_todoist_task({proj_id = 2236720344, label_id = 'CX'})<CR>]],
+  "<leader>tp",
+  [[<Cmd>lua require'joel.funcs'.create_todoist_task({proj_id = 2283751657, label_id = 'Other'})<CR>]],
   { noremap = false }
 )
 
 -- create work other task in todoist
 -- @TODOUA: make more robust → a picker for proj, label etc.
-key_map(
-  "v",
-  "<leader>tp",
-  [[<Cmd>lua require'joel.funcs'.create_todoist_task({proj_id = 2277745348, label_id = 'Other'})<CR>]],
-  { noremap = false }
-)
+-- key_map(
+--   "v",
+--   "<leader>tp",
+--   [[<Cmd>lua require'joel.funcs'.create_todoist_task({proj_id = 2277745348, label_id = 'Other'})<CR>]],
+--   { noremap = false }
+-- )
 
 -- clear nvim-notify notifications history
 key_map(
