@@ -30,6 +30,14 @@ command = ["cargo", "clippy", "--color", "always", "--", "-W", "clippy::pedantic
 need_stdout = false
 watch = ["tests", "benches", "examples"]
 
+# Show all tests
+# https://github.com/Canop/bacon/issues/108#issuecomment-1416678555
+# [jobs.test]
+# command = ["cargo", "test", "--color", "always"]
+# need_stdout = true
+# allow_warnings = true
+# watch = ["tests"]
+
 # Uncomment and change the key-bindings you want to define
 # (some of those ones are the defaults)
 [keybindings]
