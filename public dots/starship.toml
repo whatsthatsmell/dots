@@ -2,6 +2,12 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 command_timeout = 950
+
+# Use custom format
+format = '''
+[┌─────────┤ ](bold green)$directory$git_branch$git_metrics$git_status$rust$golang$lua$package
+[└─⎨](bold green) '''
+
 right_format = """$git_commit"""
 
 [c]
@@ -41,13 +47,14 @@ diverged = "李 ${ahead_count} ${behind_count}"
 conflicted = '( [\($count\)](bold #C6D0D8))'
 deleted = '( [\($count\)](bold #C6D0D8))'
 renamed = '( [﫦\($count\)](bold #C6D0D8))'
-modified = '( [U\($count\)](bold yellow))'
+modified = '( [M\($count\)](bold yellow))'
 staged = '( [S\($count\)](bold green))'
 untracked = '( [\($count\)](red))'
 format = "$all_status$ahead_behind "
 
 [golang]
 symbol = " "
+format = '[$symbol]($style)'
 
 [julia]
 symbol = " "

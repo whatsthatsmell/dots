@@ -70,14 +70,16 @@ vim.api.nvim_buf_set_keymap(0, "n", "<space>rt", [[<cmd>RustTest<cr>]], { norema
 -- )
 
 -- @TODOUA: borrow making renaming of lifetimes easier: https://github.com/Saecki/dotfiles/commit/9c86377e4db9e67990fcb3874204efe855cdeba6
-vim.api.nvim_buf_set_keymap(
-  0,
-  "n",
-  "grn",
-  [[<cmd>lua vim.lsp.buf.rename()<CR>
-]],
-  { noremap = true }
-)
+-- vim.api.nvim_buf_set_keymap(
+--   0,
+--   "n",
+--   "grn",
+--   [[<cmd>lua vim.lsp.buf.rename()<CR>
+-- ]],
+--   { noremap = true }
+-- )
+
+-- ** For renaming in buffer, use treesitter's smart rename: grr **
 
 vim.api.nvim_buf_set_keymap(
   0,
