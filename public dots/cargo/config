@@ -5,3 +5,6 @@ theme = "GitHub"
 gen = "generate"
 iu = "install-update"
 nt = "nextest run"
+
+[build]
+rustc-wrapper = "/Users/joel/.cargo/bin/sccache"
