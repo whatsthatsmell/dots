@@ -149,6 +149,7 @@ return require("packer").startup {
     use "andymass/vim-matchup"
     use "windwp/nvim-autopairs"
     use "nvim-lua/lsp_extensions.nvim"
+    -- @TODOUA: update to ts-rainbow2 fork
     use "mrjones2014/nvim-ts-rainbow"
     use "nvim-lua/popup.nvim"
     use "nvim-lua/lsp-status.nvim"
