@@ -3,6 +3,9 @@ local key_map = vim.api.nvim_set_keymap
 -- FML!
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
+-- Note: Redirect Vim command output to buffer:
+-- Example: `:redir > vim.output | highlight | redir END`
+
 -- ** Key Mappings ***
 -- *Telescope-related maps at telescope/mappings (for now)
 

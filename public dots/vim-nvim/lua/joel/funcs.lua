@@ -1,5 +1,5 @@
-local utils = require "joel.utils"
 local Job = require "plenary.job"
+local utils = require "joel.utils"
 
 -- Create todoist task using currect selection (Neovim project and Neovim label)
 -- Using(for now): https://github.com/sachaos/todoist
@@ -12,7 +12,7 @@ local Job = require "plenary.job"
 local M = {}
 function M.create_todoist_task(opts)
   opts = opts or {}
-  -- default: My 'Neovim' project & 'Neovim' label
+  -- Default: My 'Neovim' project & 'Neovim' label
   local project_id = opts.proj_id or 2251750391
   local label_id = opts.label_id or "Neovim"
   local current_line = vim.fn.getline "."
