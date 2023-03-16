@@ -103,17 +103,17 @@ require("gitsigns").setup {
 }
 
 -- nvim-ide: default components
+local bookmarks = require "ide.components.bookmarks"
+local branches = require "ide.components.branches"
 local bufferlist = require "ide.components.bufferlist"
-local explorer = require "ide.components.explorer"
-local outline = require "ide.components.outline"
 local callhierarchy = require "ide.components.callhierarchy"
-local timeline = require "ide.components.timeline"
-local terminal = require "ide.components.terminal"
-local terminalbrowser = require "ide.components.terminal.terminalbrowser"
 local changes = require "ide.components.changes"
 local commits = require "ide.components.commits"
-local branches = require "ide.components.branches"
-local bookmarks = require "ide.components.bookmarks"
+local explorer = require "ide.components.explorer"
+local outline = require "ide.components.outline"
+local terminal = require "ide.components.terminal"
+local terminalbrowser = require "ide.components.terminal.terminalbrowser"
+local timeline = require "ide.components.timeline"
 
 require("ide").setup {
   -- The global icon set to use.
@@ -353,18 +353,19 @@ nvim_lsp.eslint.setup {
   },
 }
 
+-- Enabling through rust-tools!
 -- Enable rust_analyzer
 -- rust-analyzer (27239fbb5 2023-02-21)
-nvim_lsp.rust_analyzer.setup {
-  capabilities = capabilities,
-  settings = {
-    ["rust-analyzer"] = {
-      -- cargo = { loadOutDirsFromCheck = true },
-      -- procMacro = { enable = true },
-      -- hoverActions = { references = true },
-    },
-  },
-}
+-- nvim_lsp.rust_analyzer.setup {
+--   capabilities = capabilities,
+--   settings = {
+--     ["rust-analyzer"] = {
+--       -- cargo = { loadOutDirsFromCheck = true },
+--       -- procMacro = { enable = true },
+--       -- hoverActions = { references = true },
+--     },
+--   },
+-- }
 
 -- rust-tools config: https://github.com/simrat39/rust-tools.nvim
 -- @TODOUA: selects on *abbles require manual close with no select
@@ -377,6 +378,10 @@ require("rust-tools").setup {
 
       -- prefix for all the other hints (type, chaining)
       other_hints_prefix = " ",
+    },
+    server = {
+      -- @TODOUA: See if this is even available
+      on_attach = function(client, bufnr) client.server_capabilities.semanticTokensProvider = nil end,
     },
   },
 }

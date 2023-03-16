@@ -295,6 +295,8 @@ key_map("n", ",tf", ":lua require'joel.settings'.toggle_fold_col()<CR>", { norem
 key_map("n", ",tc", ":ColorToggle<CR>", { noremap = false, silent = true })
 -- toggle IndentBlankline → `:set list` manually as needed
 key_map("n", ",ti", ":IndentBlanklineToggle<CR>", { noremap = true, silent = true })
+-- toggle NVim IDE Workspace - left panel
+key_map("n", ",tw", ":Workspace LeftPanelToggle<CR>", { noremap = true, silent = true })
 -- toggle scope highlight
 key_map("n", ",th", ":lua require'treesitter-unit'.toggle_highlighting()<CR>", { noremap = true, silent = true })
 

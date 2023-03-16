@@ -59,7 +59,7 @@ key_map(
 -- show DOCUMENT Symbols
 key_map(
   "n",
-  ",ws",
+  ",ds",
   [[<Cmd>lua require'telescope.builtin'.lsp_document_symbols()<CR>]],
   { noremap = true, silent = true }
 )

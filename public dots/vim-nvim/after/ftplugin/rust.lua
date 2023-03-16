@@ -14,6 +14,9 @@ vim.api.nvim_exec(
 	setlocal shortmess+=c
 	" wrap selection in Some(*)
 	vmap ,sm cSome(<c-r>"<esc>
+	" wrap selection in Ok(*)
+	" @TODOUA: needs work but fixes on format/save"
+	vmap ,ok cOk(<c-r>"<esc>
 	" surround (W)ord with angle brackets
 	nmap <localleader>ab ysiW>
 
