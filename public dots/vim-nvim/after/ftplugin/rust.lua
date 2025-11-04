@@ -203,6 +203,9 @@ hi rainbowcol6 guifg=#1B9C36
   false
 )
 
+-- Just in case you feel like killing Semantic Highlighting
+-- `lua vim.lsp.semantic_tokens.stop(18,1)`
+
 -- @TODOUA: bring back rust-tools once it catches up with upstream changes
 -- Enable type inlay hints
 -- Not executing on Buf*Enter because they are not ready then. CursorMoved is fine for now.

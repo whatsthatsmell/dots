@@ -333,7 +333,7 @@ require("lspconfig").vimls.setup {}
 -- nvim-autopairs
 require("nvim-autopairs").setup { check_ts = true }
 -- nvim_lsp object
-local nvim_lsp = require "lspconfig"
+-- local nvim_lsp = require "lspconfig"
 
 -- snippet support
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -342,7 +342,7 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.mak
 
 -- `eslint` lang server setup through lspconfig
 -- vscode-langservers-extracted@4.2.1 → https://github.com/hrsh7th/vscode-langservers-extracted
-nvim_lsp.eslint.setup {
+lspconfig.eslint.setup {
   on_attach = function(client)
     -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
     -- the resolved/server capabilities of the eslint server ourselves!
@@ -424,3 +424,11 @@ local border_style = {
 local pop_opts = { border = border_style }
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, pop_opts)
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, pop_opts)
+
+-- diagnostic hover popup borders!
+vim.diagnostic.config {
+  float = { border = "rounded" },
+}
+
+-- LspInfo window border
+require("lspconfig.ui.windows").default_options.border = "single"

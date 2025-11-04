@@ -154,7 +154,7 @@ cde() {
 cn() {
   cargo new $1
   cd $1
-  nvim src/main.rs Cargo.toml
+  hx src/main.rs Cargo.toml
 }
 
 # create new rust lib proj, move in to it then open src/lib.rs & toml
@@ -162,7 +162,7 @@ cn() {
 cnl() {
   cargo new $1 --lib
   cd $1
-  nvim src/lib.rs Cargo.toml
+  hx src/lib.rs Cargo.toml
 }
 
 # rust std docs find:  rustup doc get result or search
@@ -415,21 +415,34 @@ vg() {
   fi
 }
 
-# find a file and open it fzf → fd → Vim -- no args, looks in cwd - rg to highlight etc
-vf() {
+# find a file and open it fzf → fd → helix -- no args, looks in cwd - rg to highlight etc
+hf() {
   IFS=$'\n' files=($(fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60%  --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
+  [[ -n "$files" ]] && ${EDITOR:-hx} "${files[@]}"
 }
 
-# search notes and open it in nvim
-vn() {
+# vf() {
+#   IFS=$'\n' files=($(fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 6 '$1' || rg --ignore-case --pretty --context 6 '$1' {}" --preview-window=right:60%  --query="$1" --multi --select-1 --exit-0))
+#   [[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
+# }
+
+# search notes and open it in helix
+hn() {
   local note
   note=$(fd . '/Users/joel/notes' | fzf)
   if [[ -n $note ]]
   then
-    nvim $note
+    hx $note
   fi
 }
+# vn() {
+#   local note
+#   note=$(fd . '/Users/joel/notes' | fzf)
+#   if [[ -n $note ]]
+#   then
+#     nvim $note
+#   fi
+# }
 
 # list vim sessions and select one to open
 vs() {

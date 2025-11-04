@@ -85,7 +85,8 @@ source $ZSH/oh-my-zsh.sh
 # Move above to theme file -----------
 
 # User configuration
-export MANPAGER='nvim +Man!'
+#export MANPAGER="hx -c <(cat <<EOF\ntheme = 'merionette'\n[editor]\ncursorline = true\n...\nEOF\n)"
+# export MANPAGER='nvim +Man!'
 export BAT_PAGER="less -R"
 export DELTA_PAGER="less -RS"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -97,7 +98,8 @@ export DELTA_PAGER="less -RS"
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-export EDITOR='nvim'
+#export EDITOR='nvim'
+export EDITOR='hx'
 # fi
 # jq - change colors to show better in gruvbox lite
 export JQ_COLORS="1;30:1;31:1;32:0;37:0;32:1;30:1;30"
@@ -178,3 +180,4 @@ source /Users/joel/.config/broot/launcher/bash/br
 # use starship prompt
 eval "$(starship init zsh)"
 #RPROMPT='$FG[238]$(git_prompt_short_sha_with_icon) %T%{$reset_color%}'
+fpath+=${ZDOTDIR:-~}/.zsh_functions

@@ -29,7 +29,10 @@
 command = ["cargo", "clippy", "--color", "always", "--", "-W", "clippy::pedantic"]
 need_stdout = false
 watch = ["tests", "benches", "examples"]
-
+# Tests nocapture
+[jobs.test-nocapture]
+command = ["cargo", "test", "--", "--nocapture"]
+need_stdout = true   
 # Show all tests
 # https://github.com/Canop/bacon/issues/108#issuecomment-1416678555
 # [jobs.test]
@@ -47,6 +50,7 @@ watch = ["tests", "benches", "examples"]
 # q = "quit"
 r = "rerun"
 p = "job:clippy-pedantic"
+ctrl-t = "job:test-nocapture"
 # s = "toggle-summary"
 # w = "toggle-wrap"
 # t = "toggle-backtrace"
