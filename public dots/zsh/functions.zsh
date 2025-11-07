@@ -1,4 +1,8 @@
 # ZSH Functions
+# Create new dir(s) with a file
+cfd() {
+  mkdir -p "${1:h}" && touch "$1"
+}   
 
 # lookup area code
 # @area code
