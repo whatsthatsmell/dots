@@ -94,6 +94,7 @@ alias exg='exa -a --long --git --group-directories-first --no-permissions --no-u
 alias exag='exa -a --long --git --group-directories-first --no-permissions --no-user --icons -FI "node_modules|.git|coverage|.DS_Store|.vscode"'
 alias exal='eza -allI "node_modules|.git|coverage"'
 alias ezal='eza -allI "node_modules|.git|coverage"'
+alias ezam='ezal --sort=modified'
 alias xl='exa -allI "node_modules|.git|coverage"'
 alias exat='eza -aTI "node_modules|.git|coverage|tmp|target|.idea"'
 alias ezat='eza -aTI "node_modules|.git|coverage|tmp|target|.idea"'
