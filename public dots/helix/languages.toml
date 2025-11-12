@@ -1,0 +1,34 @@
+# --- markdown ----
+# XCode latest required, no can do on Ventura, needs Sequoia
+#[[language]]
+#name = "markdown"
+#language-servers = [ "marksman" ]
+
+# --- Rust ----
+[[language]]
+name = "rust"
+auto-format = true
+formatter = { command = "rustfmt" }
+# comment-tokens = ["//", "///"] doesn't work as expected
+roots = [
+  "Cargo.toml",
+  "Cargo.lock"
+]
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+inlayHints.bindingModeHints.enable = false
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideClosureInitialization = false

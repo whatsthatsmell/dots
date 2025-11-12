@@ -1,0 +1,37 @@
+#theme = "dark_high_contrast"
+theme = "jetbrains_dark"
+[editor]
+color-modes = true
+end-of-line-diagnostics = "hint"
+insert-final-newline = false
+popup-border = "popup"
+rulers = [80]
+[editor.inline-diagnostics]
+# cursor-line = "warning" # show warnings and errors on the cursorline inline
+[editor.auto-save]
+after-delay.enable = true
+after-delay.timeout = 4000
+[editor.soft-wrap]
+enable = true
+max-wrap = 25 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 0
+wrap-indicator = ""  # set wrap-indicator to "" to hide it
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+[editor.gutters]
+layout = ["diff", "diagnostics", "line-numbers", "spacer"]
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+left = ["mode", "spinner", "version-control", "file-name", "file-modification-indicator"]
+right = ["diagnostics", "selections", "position", "file-type"]
+[keys.normal]
+"#" = "toggle_comments"
+esc = ["collapse_selection", "keep_primary_selection"]
+D = ["extend_to_line_end", "delete_selection"]
+[keys.normal.space]
+w = ":write"
+q = ":quit"
