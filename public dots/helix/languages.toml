@@ -1,8 +1,18 @@
+[language-server.harper-ls]
+command = "harper-ls"
+args = ["--stdio"]
+[language-server.harper-ls.config.harper-ls.linters]
+# TODO: add more rules -> https://writewithharper.com/docs/rules
+spaces = false
+OrthographicConsistency = false
+CompoundNouns = false
+[language-server.harper-ls.config.harper-ls]
+diagnosticSeverity = "warning"
 # --- markdown ----
 # XCode latest required, no can do on Ventura, needs Sequoia
-#[[language]]
-#name = "markdown"
-#language-servers = [ "marksman" ]
+[[language]]
+name = "markdown"
+language-servers = [ "harper-ls" ]
 
 # --- Rust ----
 [[language]]
