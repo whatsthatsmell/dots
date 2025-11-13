@@ -3,9 +3,11 @@ command = "harper-ls"
 args = ["--stdio"]
 [language-server.harper-ls.config.harper-ls.linters]
 # TODO: add more rules -> https://writewithharper.com/docs/rules
+# https://writewithharper.com/docs/integrations/helix#Optional-Configuration
 spaces = false
 OrthographicConsistency = false
 CompoundNouns = false
+SentenceCapitalization = false
 [language-server.harper-ls.config.harper-ls]
 diagnosticSeverity = "warning"
 # --- markdown ----
